@@ -1,0 +1,22 @@
+# Task ID: 3
+# Title: Create Leistungen (Services) Page with Accordion
+# Status: pending
+# Dependencies: 1
+# Priority: medium
+# Description: Develop the services page featuring an accordion component to showcase different service categories: Entrümpelung, Wohnungsauflösung, and B2B services.
+# Details:
+1. Create app/leistungen/page.tsx
+2. Design page header with service overview
+3. Implement accordion component with three main sections:
+   - Entrümpelung (Junk Removal)
+   - Wohnungsauflösung (Apartment Clearance)
+   - B2B Services
+4. Each accordion item should expand to show detailed service information
+5. Include relevant images for each service type using next/image
+6. Add CTAs within each service section
+7. Ensure smooth animations for accordion open/close actions
+8. Implement breadcrumb navigation
+9. Add schema.org markup for services
+
+# Test Strategy:
+Test accordion functionality across all devices and browsers. Verify that all content is accessible. Check that images are optimized and responsive. Ensure proper SEO metadata and schema markup. Validate Lighthouse accessibility score ≥90.

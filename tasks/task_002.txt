@@ -1,0 +1,19 @@
+# Task ID: 2
+# Title: Implement Home Page with Hero Section and USPs
+# Status: done
+# Dependencies: 1
+# Priority: high
+# Description: Create the home page with an engaging hero section, USP icons, Google reviews integration, and primary CTA buttons for conversion.
+# Details:
+1. Create app/page.tsx as the home page
+2. Design and implement hero section with compelling headline and background image
+3. Create USP (Unique Selling Proposition) icon components with brief descriptions
+4. Implement Google Reviews section with star ratings and testimonial carousel
+5. Add primary CTA button "Kostenlose Schätzung" prominently in the hero section
+6. Add floating WhatsApp button that remains visible while scrolling
+7. Ensure all images use next/image for optimization
+8. Implement responsive design for all sections (320px to 1920px)
+9. Add animations for improved user experience (subtle fade-ins, hover effects)
+
+# Test Strategy:
+Test responsiveness across all breakpoints (320px, 768px, 1024px, 1440px, 1920px). Verify Lighthouse performance score ≥90. Ensure all CTAs are clickable and lead to appropriate destinations. Test image loading performance.

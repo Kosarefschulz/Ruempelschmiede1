@@ -1,0 +1,19 @@
+Projekt: Entrümpelungs-Website (Next.js 14, App Router)npx task-master parse-prd scripts/prd.txt
+
+
+Ziele
+- Hochperformante, SEO-optimierte Seite (Core Web Vitals ≥ 90)
+- Klare Conversion-Journey: CTA “Kostenlose Schätzung” + WhatsApp-Button
+
+Seiten & Features
+1. Home (Hero, USP-Icons, Google-Bewertungen, CTA)
+2. Leistungen mit Accordion (Entrümpelung, Wohnungsauflösung, B2B)
+3. B2B-Landingpage (Logistik-Partner, Facility-Manager)
+4. Preise (Festpreis-Garantie, Preistabelle)
+5. Kontakt (Formular + WhatsApp-Deep-Link)
+6. Ratgeber-Blog (MDX, Kategorien, Pagination)
+
+Akzeptanzkriterien
+- Voll responsiv (320 px – 1920 px)
+- Lighthouse ≥ 90 / 90 / 90 / 100
+- Bildoptimierung via next/image

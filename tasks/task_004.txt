@@ -1,0 +1,21 @@
+# Task ID: 4
+# Title: Develop B2B Landing Page
+# Status: pending
+# Dependencies: 1, 3
+# Priority: medium
+# Description: Create a dedicated B2B landing page targeting logistics partners and facility managers with specialized service offerings.
+# Details:
+1. Create app/b2b/page.tsx
+2. Design professional B2B-focused hero section
+3. Create sections specifically addressing:
+   - Logistics partners' needs
+   - Facility managers' requirements
+4. Implement case studies or success stories section
+5. Add B2B-specific CTAs and contact information
+6. Include partnership benefits and service level agreements
+7. Create a form for B2B inquiry with relevant fields
+8. Optimize copy for B2B decision-makers
+9. Add downloadable resources (e.g., service brochures in PDF format)
+
+# Test Strategy:
+Test form submission functionality. Verify all downloadable resources are accessible. Ensure page is optimized for B2B search terms. Test page load time and ensure it meets performance requirements. Validate mobile responsiveness for B2B users who might be on-site.

@@ -1,0 +1,24 @@
+# Task ID: 7
+# Title: Implement Ratgeber-Blog with MDX Support
+# Status: pending
+# Dependencies: 1
+# Priority: medium
+# Description: Create a blog system using MDX for content management, with category filtering and pagination features.
+# Details:
+1. Create app/ratgeber/page.tsx for the blog index
+2. Set up app/ratgeber/[slug]/page.tsx for individual blog posts
+3. Configure MDX support with next-mdx-remote or similar
+4. Create a content directory structure for blog posts
+5. Implement category system with filtering capability
+6. Add pagination for blog listing pages
+7. Design blog post cards for the index page
+8. Create blog post template with:
+   - Featured image
+   - Author info
+   - Publication date
+   - Category tags
+   - Related posts
+9. Implement social sharing functionality
+
+# Test Strategy:
+Test MDX rendering for various content types (text, images, code blocks). Verify pagination works correctly. Test category filtering. Ensure blog posts are properly indexed by search engines. Test social sharing functionality. Verify responsive design for blog posts.

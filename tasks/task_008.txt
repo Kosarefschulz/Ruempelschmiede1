@@ -1,0 +1,20 @@
+# Task ID: 8
+# Title: Implement SEO Optimization and Core Web Vitals Improvements
+# Status: pending
+# Dependencies: 1, 2, 3, 4, 5, 6, 7
+# Priority: high
+# Description: Optimize the website for search engines and implement techniques to achieve Core Web Vitals scores of 90 or higher.
+# Details:
+1. Implement dynamic metadata for all pages using Next.js metadata API
+2. Create a sitemap.xml generator
+3. Add robots.txt configuration
+4. Implement schema.org structured data for relevant pages
+5. Optimize image loading with proper sizing, formats (WebP/AVIF), and lazy loading
+6. Implement font optimization strategies (subset, preload, etc.)
+7. Configure proper caching headers
+8. Minimize and optimize JavaScript bundles
+9. Implement performance monitoring with web-vitals library
+10. Add canonical URLs for all pages
+
+# Test Strategy:
+Run Lighthouse audits targeting scores ≥90 for Performance, Accessibility, Best Practices, and 100 for SEO. Test Core Web Vitals (LCP, FID, CLS) using PageSpeed Insights. Validate structured data using Google's Rich Results Test. Verify sitemap.xml and robots.txt functionality.

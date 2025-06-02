@@ -1,0 +1,24 @@
+# Task ID: 6
+# Title: Create Contact Page with Form and WhatsApp Integration
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Develop the contact page with a user-friendly form and WhatsApp deep link integration for easy communication.
+# Details:
+1. Create app/kontakt/page.tsx
+2. Design and implement contact form with fields:
+   - Name
+   - Email
+   - Phone
+   - Service interest
+   - Message
+3. Implement form validation using React Hook Form or similar
+4. Set up form submission handling (store in database or email notification)
+5. Add WhatsApp deep link with pre-filled message
+6. Include business contact information and hours
+7. Add Google Maps integration showing business location
+8. Implement GDPR-compliant privacy checkbox
+9. Add success/error states for form submission
+
+# Test Strategy:
+Test form validation for all fields. Verify form submissions are processed correctly. Test WhatsApp deep link on both mobile and desktop. Ensure GDPR compliance. Verify Google Maps integration. Test form accessibility for keyboard and screen reader users.

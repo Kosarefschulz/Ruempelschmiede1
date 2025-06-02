@@ -1,0 +1,27 @@
+# Task ID: 9
+# Title: Implement Global Components: Header, Footer, and CTA Elements
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create consistent global components including navigation header, footer, and conversion-focused CTA elements that appear across the site.
+# Details:
+1. Design and implement responsive header with:
+   - Logo
+   - Navigation menu (desktop and mobile versions)
+   - Contact information
+   - CTA button
+2. Create footer with:
+   - Company information
+   - Service links
+   - Contact details
+   - Social media links
+   - Legal links (Impressum, Datenschutz)
+3. Implement floating WhatsApp button component
+4. Create reusable CTA section for "Kostenlose Schätzung"
+5. Implement mobile navigation drawer/hamburger menu
+6. Add scroll-to-top button
+7. Ensure all components are fully responsive
+8. Implement proper focus states and accessibility features
+
+# Test Strategy:
+Test navigation across all pages. Verify mobile menu functionality. Ensure CTAs are consistently styled and functional. Test accessibility of all global components. Verify responsive behavior across all breakpoints. Test keyboard navigation.

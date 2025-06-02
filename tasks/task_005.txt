@@ -1,0 +1,22 @@
+# Task ID: 5
+# Title: Implement Pricing Page with Price Table
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create the pricing page featuring the fixed-price guarantee and a comprehensive price table for different services.
+# Details:
+1. Create app/preise/page.tsx
+2. Design a section highlighting the "Festpreis-Garantie" (Fixed Price Guarantee)
+3. Implement a responsive pricing table with:
+   - Service categories
+   - Price ranges or fixed prices
+   - Service inclusions
+4. Add comparison features for different service levels if applicable
+5. Include FAQ section addressing common pricing questions
+6. Add CTAs to request custom quotes
+7. Implement a simple calculator tool if pricing depends on variables (e.g., room size)
+8. Ensure pricing information is clearly structured and easy to understand
+9. Add schema.org pricing markup for SEO
+
+# Test Strategy:
+Verify price table is responsive and readable on all devices. Test any interactive pricing calculators. Ensure all pricing information is consistent across the site. Validate schema markup for pricing. Test that CTAs for custom quotes function correctly.
