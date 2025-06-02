@@ -14,7 +14,7 @@ export default function KontaktPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [timeLeft, setTimeLeft] = useState(900);
-  const [selectedQuickOption, setSelectedQuickOption] = useState(null);
+  const [selectedQuickOption, setSelectedQuickOption] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,17 +34,17 @@ export default function KontaktPage() {
     return () => clearInterval(timer);
   }, []);
 
- const formatTime = (seconds: number) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Formulardaten:', formData);
     setFormSubmitted(true);
