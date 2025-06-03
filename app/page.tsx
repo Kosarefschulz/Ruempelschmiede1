@@ -64,7 +64,7 @@ export default function HomePage() {
             playsInline
             poster="/video-poster.jpg"
           >
-            <source src="/public/Mein Film.mp4" type="video/mp4" />
+            <source src="/Mein Film.mp4" type="video/mp4" />
             Ihr Browser unterstützt keine Videos.
           </video>
           {/* Overlay für bessere Lesbarkeit - mit Logo-Farben */}
@@ -83,7 +83,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-                 Preis berechnen
+                📊 Preis berechnen
               </a>
               <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
                 ✉️ Direktanfrage
@@ -98,7 +98,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-               Berechnen Sie Ihre Entrümpelungskosten sofort!
+              📊 Berechnen Sie Ihre Entrümpelungskosten sofort!
             </h2>
             <p className="text-xl text-gray-600">
               Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung kostet
@@ -522,7 +522,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="4e8ee2de-8ca6-4622-8847-02226d7301d7.png" 
+                  src="/4e8ee2de-8ca6-4622-8847-02226d7301d7.png" 
                   alt="Haushaltsauflösung"
                   className="w-full h-full object-cover"
                 />
@@ -547,7 +547,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="Gewerbe 2.jpg" 
+                  src="/Gewerbe 2.jpg" 
                   alt="Gewerbeauflösung"
                   className="w-full h-full object-cover"
                 />
@@ -572,7 +572,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="Voller Messie Flur .jpg" 
+                  src="/Voller Messie Flur .jpg" 
                   alt="Messie-Wohnung Entrümpelung"
                   className="w-full h-full object-cover"
                 />
@@ -597,7 +597,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="1-2.jpg" 
+                  src="/1-2.jpg" 
                   alt="Kellerentrümpelung"
                   className="w-full h-full object-cover"
                 />
@@ -622,7 +622,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="Dachboden.jpg" 
+                  src="/Dachboden.jpg" 
                   alt="Dachbodenentrümpelung"
                   className="w-full h-full object-cover"
                 />
@@ -647,7 +647,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
+                  src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
                   alt="Express Entrümpelung"
                   className="w-full h-full object-cover"
                 />
