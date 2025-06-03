@@ -1,4 +1,3 @@
-// components/Header.tsx - Professioneller Header mit voller Breite
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -37,12 +36,43 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Header - Volle Breite mit großem Logo */}
+      {/* Main Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-24 md:h-28">
+          {/* Mobile Header - Logo zentriert */}
+          <div className="flex lg:hidden items-center justify-between h-20 relative">
+            {/* Platzhalter links für Balance */}
+            <div className="w-11"></div>
             
-            {/* Logo - RICHTIG GROSS */}
+            {/* Logo - Zentriert und größer auf Mobile */}
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+              <img 
+                src="/Logo.png" 
+                alt="Rümpel Schmiede" 
+                className="h-14 w-auto"
+              />
+            </Link>
+            
+            {/* Mobile Menu Button - Rechts */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 z-10"
+              aria-label="Menü"
+            >
+              <svg className="w-7 h-7 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {/* Desktop Header - Normal */}
+          <div className="hidden lg:flex items-center justify-between h-24 md:h-28">
+            
+            {/* Logo - Links auf Desktop */}
             <Link href="/" className="flex-shrink-0">
               <img 
                 src="/Logo.png" 
@@ -52,7 +82,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation - ÜBER DIE GESAMTE BREITE VERTEILT */}
-            <nav className="hidden lg:flex flex-1 items-center justify-center px-8">
+            <nav className="flex-1 flex items-center justify-center px-8">
               <ul className="flex items-center justify-between w-full max-w-4xl">
                 <li>
                   <Link 
@@ -97,8 +127,8 @@ export default function Header() {
               </ul>
             </nav>
 
-            {/* Kontakt Button - Nur Desktop */}
-            <div className="hidden lg:block flex-shrink-0">
+            {/* Kontakt Button - Rechts auf Desktop */}
+            <div className="flex-shrink-0">
               <Link 
                 href="/kontakt" 
                 className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all text-base"
@@ -106,21 +136,6 @@ export default function Header() {
                 Anfrage stellen
               </Link>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2"
-              aria-label="Menü"
-            >
-              <svg className="w-7 h-7 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
           </div>
         </div>
 
