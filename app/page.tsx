@@ -11,7 +11,7 @@ export default function HomePage() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleDotClick = (index) => {
+  const handleDotClick = (index: number) => {
     setCurrentSlide(index)
   }
 
@@ -262,8 +262,9 @@ export default function HomePage() {
                     alt="Festpreisgarantie Badge"
                     className="w-16 h-16 object-contain"
                     onError={(e) => {
-                      console.log('Image failed to load:', e.target.src);
-                      e.target.style.display = 'none';
+                      const target = e.target as HTMLImageElement;
+                      console.log('Image failed to load:', target.src);
+                      target.style.display = 'none';
                     }}
                   />
                 </div>
@@ -277,8 +278,9 @@ export default function HomePage() {
                     alt="Vollversichert Shield"
                     className="w-16 h-16 object-contain"
                     onError={(e) => {
-                      console.log('Image failed to load:', e.target.src);
-                      e.target.style.display = 'none';
+                      const target = e.target as HTMLImageElement;
+                      console.log('Image failed to load:', target.src);
+                      target.style.display = 'none';
                     }}
                   />
                 </div>
@@ -292,8 +294,9 @@ export default function HomePage() {
                     alt="Umweltgerecht Recycling"
                     className="w-16 h-16 object-contain"
                     onError={(e) => {
-                      console.log('Image failed to load:', e.target.src);
-                      e.target.style.display = 'none';
+                      const target = e.target as HTMLImageElement;
+                      console.log('Image failed to load:', target.src);
+                      target.style.display = 'none';
                     }}
                   />
                 </div>
@@ -306,7 +309,11 @@ export default function HomePage() {
                     src="/handshake-icon.png?v=1" 
                     alt="Persönlich" 
                     className="w-16 h-16 object-contain"
-                    onError={(e) => console.error('Handshake icon failed to load:', e)}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      console.error('Handshake icon failed to load:', target.src);
+                      target.style.display = 'none';
+                    }}
                   />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Persönlich</h4>
