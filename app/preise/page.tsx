@@ -5,7 +5,29 @@ import { useState, useEffect, useRef } from 'react';
 const BASE_PRICE_PER_CUBIC_METER = 85;
 const DISCOUNT_PERCENTAGE = 15;
 
-const buildingTypes = [
+interface BuildingType {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  estimatedM3: number;
+}
+
+interface FurnitureItem {
+  name: string;
+  m3: number;
+  icon: string;
+  popular?: boolean;
+}
+
+interface CustomerData {
+  name: string;
+  email: string;
+  phone: string;
+  urgency: string;
+}
+
+const buildingTypes: BuildingType[] = [
   { id: 'wohnung', name: 'Wohnung', icon: '🏠', description: 'Komplette Wohnungsauflösung', estimatedM3: 15 },
   { id: 'haus', name: 'Haus', icon: '🏡', description: 'Haushaltsauflösung inkl. Keller', estimatedM3: 30 },
   { id: 'keller', name: 'Keller/Dachboden', icon: '🧱', description: 'Einzelne Räume', estimatedM3: 8 },
@@ -13,7 +35,7 @@ const buildingTypes = [
 ];
 
 // Reduzierte, intuitivere Möbelauswahl
-const furnitureData = [
+const furnitureData: FurnitureItem[] = [
   // Große Möbel (meist ausgewählt)
   { name: 'Sofa/Couch', m3: 2.0, icon: '🛋️', popular: true },
   { name: 'Bett (komplett)', m3: 2.5, icon: '🛏️', popular: true },
@@ -44,9 +66,9 @@ const furnitureData = [
 export default function EntruempelungsRechner() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedBuildingType, setSelectedBuildingType] = useState('');
-  const [selectedFurniture, setSelectedFurniture] = useState({});
+  const [selectedFurniture, setSelectedFurniture] = useState<Record<string, number>>({});
   const [totalM3, setTotalM3] = useState(0);
-  const [customerData, setCustomerData] = useState({
+  const [customerData, setCustomerData] = useState<CustomerData>({
     name: '',
     email: '',
     phone: '',
@@ -54,7 +76,7 @@ export default function EntruempelungsRechner() {
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [timeLeft, setTimeLeft] = useState(900);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Timer für Rabatt
   useEffect(() => {
@@ -64,7 +86,7 @@ export default function EntruempelungsRechner() {
     return () => clearInterval(timer);
   }, []);
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -86,10 +108,10 @@ export default function EntruempelungsRechner() {
   const discountAmount = regularPrice * (DISCOUNT_PERCENTAGE / 100);
   const finalPrice = regularPrice - discountAmount;
 
-  const handleBuildingSelect = (building) => {
+  const handleBuildingSelect = (building: BuildingType) => {
     setSelectedBuildingType(building.id);
     // Pre-fill with estimated items
-    const prefilledItems = {};
+    const prefilledItems: Record<string, number> = {};
     if (building.estimatedM3 > 20) {
       prefilledItems['Sofa/Couch'] = 1;
       prefilledItems['Bett (komplett)'] = 1;
@@ -101,7 +123,7 @@ export default function EntruempelungsRechner() {
     scrollToTop();
   };
 
-  const handleFurnitureChange = (itemName, delta) => {
+  const handleFurnitureChange = (itemName: string, delta: number) => {
     setSelectedFurniture(prev => {
       const currentQuantity = prev[itemName] || 0;
       const newQuantity = Math.max(0, currentQuantity + delta);
