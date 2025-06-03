@@ -12,19 +12,15 @@ export default function KontaktPage() {
     propertySize: '',
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentMonth, setCurrentMonth] = useState('');
   const [timeLeft, setTimeLeft] = useState(900);
   const [selectedQuickOption, setSelectedQuickOption] = useState<string | null>(null);
+  const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+    const now = new Date();
+    setCurrentMonth(months[now.getMonth()]);
   }, []);
 
   useEffect(() => {
@@ -58,54 +54,54 @@ export default function KontaktPage() {
   };
 
   const quickEstimates = [
-    { size: '1-Zimmer', price: '690€', icon: '🏠' },
-    { size: '2-Zimmer', price: '990€', icon: '🏘️' },
-    { size: '3-Zimmer', price: '1.490€', icon: '🏡' },
-    { size: '4+ Zimmer', price: 'ab 1.990€', icon: '🏢' },
+    { size: '1-Zimmer', price: '690€', iconLabel: 'ICON_1ZIMMER' },
+    { size: '2-Zimmer', price: '990€', iconLabel: 'ICON_2ZIMMER' },
+    { size: '3-Zimmer', price: '1.490€', iconLabel: 'ICON_3ZIMMER' },
+    { size: '4+ Zimmer', price: 'ab 1.990€', iconLabel: 'ICON_4ZIMMER' },
   ];
 
   const trustSignals = [
-    { number: '50.000+', text: 'Erfolgreiche Entrümpelungen', icon: '✅' },
-    { number: '4.9/5', text: 'Sterne Bewertung', icon: '⭐' },
-    { number: '24h', text: 'Reaktionszeit garantiert', icon: '⚡' },
-    { number: '100%', text: 'Festpreisgarantie', icon: '🛡️' },
+    { number: '50.000+', text: 'Erfolgreiche Entrümpelungen', iconLabel: 'ICON_ERFOLG' },
+    { number: '4.9/5', text: 'Sterne Bewertung', iconLabel: 'ICON_BEWERTUNG' },
+    { number: '24h', text: 'Reaktionszeit garantiert', iconLabel: 'ICON_ZEIT' },
+    { number: '100%', text: 'Festpreisgarantie', iconLabel: 'ICON_GARANTIE' },
   ];
 
   const contactMethods = [
     {
-      icon: '📞',
+      iconLabel: 'ICON_TELEFON',
       title: 'Sofort-Beratung',
       subtitle: 'Rufen Sie jetzt an',
-      value: '0521 / 999 999 00',
-      href: 'tel:+4952199999900',
+      value: '0521 / 1200 510',
+      href: 'tel:+4952112000510',
       bgColor: 'bg-gradient-to-br from-[#C73E3A] to-[#B02E2A]',
       popular: true,
       badge: 'Beliebteste Option',
       subtext: 'Kostenlose Erstberatung'
     },
     {
-      icon: '🎥',
+      iconLabel: 'ICON_VIDEO',
       title: 'Video-Beratung',
       subtitle: 'Live-Besichtigung',
       value: 'Termin buchen',
-      href: 'https://calendly.com/ruempelschmiede/videoberatung',
+      href: '#video-beratung',
       bgColor: 'bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47]',
       popular: false,
       badge: 'NEU',
       subtext: 'Zoom, WhatsApp, FaceTime'
     },
     {
-      icon: '💬',
+      iconLabel: 'ICON_WHATSAPP',
       title: 'WhatsApp',
       subtitle: 'Schnell & einfach',
       value: 'Chat starten',
-      href: 'https://wa.me/4952199999900?text=Hallo,%20ich%20interessiere%20mich%20für%20eine%20Entrümpelung',
-      bgColor: 'bg-gradient-to-br from-gray-600 to-gray-700',
+      href: 'https://wa.me/4952112000510?text=Hallo,%20ich%20interessiere%20mich%20für%20eine%20Entrümpelung',
+      bgColor: 'bg-gradient-to-br from-green-600 to-green-700',
       popular: false,
       subtext: 'Antwort in < 30 Min'
     },
     {
-      icon: '✉️',
+      iconLabel: 'ICON_EMAIL',
       title: 'E-Mail',
       subtitle: 'Detaillierte Anfrage',
       value: 'info@ruempelschmiede.de',
@@ -118,20 +114,16 @@ export default function KontaktPage() {
 
   return (
     <div className="bg-gray-50 text-gray-700 overflow-x-hidden">
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50">
-        <div 
-          className="h-full bg-gradient-to-r from-[#C73E3A] to-[#2C4F5E] transition-all duration-200"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
+      {/* Emotionale Aktion Bar */}
       <div className="bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-2 text-center sticky top-0 z-40">
-        <p className="text-sm font-medium">
-          🔥 Sonderaktion: <strong>15% Rabatt</strong> auf alle Entrümpelungen! 
-          Nur noch <span className="font-mono font-bold">{formatTime(timeLeft)}</span> verfügbar
+        <p className="text-sm font-medium px-4">
+          <span className="inline-block w-12 h-12 bg-white/20 rounded-lg mr-2 text-center leading-[3rem]">ICON_AKTION</span>
+          <strong>{currentMonth}-Aktion:</strong> <strong>15% Rabatt</strong> auf alle Entrümpelungen! 
+          Nur noch <span className="font-mono font-bold bg-white/20 px-2 py-1 rounded">{formatTime(timeLeft)}</span> verfügbar
         </p>
       </div>
 
+      {/* Hero Section - Emotional & Trust-Building */}
       <section className="relative py-16 md:py-20 bg-gradient-to-br from-[#1a2b36] via-[#2C4F5E] to-[#1E3A47]">
         <div className="absolute inset-0 opacity-5">
           <div className="h-full w-full" style={{
@@ -143,16 +135,17 @@ export default function KontaktPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <span className="inline-block px-6 py-2 mb-6 text-sm font-semibold text-white bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
-              ÜBER 50.000 ZUFRIEDENE KUNDEN SEIT 2009
+              IHR VERTRAUENSPARTNER SEIT 2009
             </span>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-              In <span className="text-[#C73E3A]">3 Minuten</span> zu Ihrem<br />
-              kostenlosen Entrümpelungsangebot
+              Wir sind <span className="text-[#C73E3A]">persönlich</span> für Sie da<br />
+              
             </h1>
             
-            <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-8">
-              Keine Wartezeit. Keine versteckten Kosten. Nur ehrliche Preise und erstklassiger Service.
+            <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Eine Entrümpelung ist mehr als nur das Ausräumen von Gegenständen. 
+              Wir verstehen Ihre Situation und begleiten Sie mit Einfühlungsvermögen und Professionalität.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
@@ -161,7 +154,9 @@ export default function KontaktPage() {
                   key={index} 
                   className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center transform hover:scale-105 transition-all"
                 >
-                  <div className="text-2xl mb-1">{signal.icon}</div>
+                  <div className="w-12 h-12 bg-white/20 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                    <span className="text-xs font-bold">{signal.iconLabel}</span>
+                  </div>
                   <div className="text-2xl font-bold text-[#C73E3A]">{signal.number}</div>
                   <div className="text-sm text-white/80">{signal.text}</div>
                 </div>
@@ -171,12 +166,18 @@ export default function KontaktPage() {
         </div>
       </section>
 
+      {/* Hauptkontaktbereich */}
       <section className="py-16 md:py-20 -mt-10 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Kontaktmethoden */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 mb-12">
-            <h2 className="text-2xl font-bold text-center text-[#2C4F5E] mb-8">
-              Wählen Sie Ihre bevorzugte Kontaktmethode
+            <h2 className="text-2xl font-bold text-center text-[#2C4F5E] mb-4">
+              So erreichen Sie uns am schnellsten
             </h2>
+            <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+              Wählen Sie den Weg, der für Sie am bequemsten ist. 
+              Wir sind auf allen Kanälen für Sie erreichbar.
+            </p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {contactMethods.map((method, index) => (
@@ -191,7 +192,9 @@ export default function KontaktPage() {
                     </span>
                   )}
                   
-                  <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">{method.icon}</div>
+                  <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span className="text-xs font-bold">{method.iconLabel}</span>
+                  </div>
                   <h3 className="text-xl font-bold mb-1">{method.title}</h3>
                   <p className="text-sm opacity-90 mb-2">{method.subtitle}</p>
                   <p className="text-lg font-semibold">{method.value}</p>
@@ -207,45 +210,65 @@ export default function KontaktPage() {
                 </a>
               ))}
             </div>
+
+            {/* Öffnungszeiten */}
+            <div className="mt-8 text-center bg-gray-50 rounded-xl p-6">
+              <h3 className="font-bold text-[#2C4F5E] mb-2">Unsere Erreichbarkeit</h3>
+              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <span className="font-semibold">Mo-Fr:</span> 7:00 - 19:00 Uhr
+                </div>
+                <div>
+                  <span className="font-semibold">Samstag:</span> 8:00 - 16:00 Uhr
+                </div>
+                <div>
+                  <span className="font-semibold">Notfälle:</span> 24/7 erreichbar
+                </div>
+              </div>
+            </div>
           </div>
 
+          {/* Formular und Seitenleiste */}
           <div className="grid lg:grid-cols-12 gap-12">
+            {/* Kontaktformular */}
             <div className="lg:col-span-7">
               <div id="contact-form-section" className="bg-white rounded-3xl shadow-xl p-8 transition-all duration-300">
+                {/* Emotionaler Einstieg */}
+                <div className="mb-8 text-center">
+                  <h2 className="text-3xl font-bold text-[#2C4F5E] mb-3">
+                    Lassen Sie uns gemeinsam eine Lösung finden
+                  </h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Jede Situation ist einzigartig. Erzählen Sie uns von Ihrem Anliegen - 
+                    wir finden den besten Weg für Sie. Keine Verpflichtungen, nur ehrliche Beratung.
+                  </p>
+                </div>
+
+                {/* Progress Steps */}
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-[#C73E3A] text-white rounded-full flex items-center justify-center font-bold">
-                        1
+                    {[
+                      { step: 1, label: 'Kontakt' },
+                      { step: 2, label: 'Details' },
+                      { step: 3, label: 'Fertig' }
+                    ].map((item) => (
+                      <div key={item.step} className={`flex items-center ${item.step < 3 ? 'flex-1' : ''}`}>
+                        <div className={`w-10 h-10 ${currentStep >= item.step ? 'bg-[#C73E3A]' : 'bg-gray-300'} text-white rounded-full flex items-center justify-center font-bold transition-colors`}>
+                          {item.step}
+                        </div>
+                        <span className={`ml-2 ${currentStep >= item.step ? 'text-[#2C4F5E] font-semibold' : 'text-gray-500'}`}>
+                          {item.label}
+                        </span>
+                        {item.step < 3 && (
+                          <div className={`flex-1 h-1 mx-3 ${currentStep > item.step ? 'bg-[#C73E3A]' : 'bg-gray-200'} transition-colors`}></div>
+                        )}
                       </div>
-                      <span className="ml-3 font-semibold text-[#2C4F5E]">Ihre Daten</span>
-                    </div>
-                    <div className="flex items-center opacity-50">
-                      <div className="w-10 h-10 bg-gray-300 text-white rounded-full flex items-center justify-center font-bold">
-                        2
-                      </div>
-                      <span className="ml-3 text-gray-600">Ihr Projekt</span>
-                    </div>
-                    <div className="flex items-center opacity-50">
-                      <div className="w-10 h-10 bg-gray-300 text-white rounded-full flex items-center justify-center font-bold">
-                        3
-                      </div>
-                      <span className="ml-3 text-gray-600">Fertig!</span>
-                    </div>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-[#C73E3A] h-2 rounded-full" style={{ width: '33%' }}></div>
+                    ))}
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold text-[#2C4F5E] mb-2">
-                  Kostenlose Sofort-Beratung sichern
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  Füllen Sie das Formular aus und erhalten Sie innerhalb von 24 Stunden Ihr persönliches Angebot.
-                </p>
-
-                <div className="bg-gray-50 rounded-lg p-4 mb-6 flex items-center">
+                {/* Trust Signal */}
+                <div className="bg-[#C73E3A]/10 rounded-lg p-4 mb-6 flex items-center">
                   <div className="flex -space-x-2 mr-4">
                     {[1, 2, 3, 4].map(i => (
                       <div key={i} className="w-10 h-10 bg-gray-300 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold">
@@ -260,28 +283,43 @@ export default function KontaktPage() {
 
                 {formSubmitted ? (
                   <div id="success-message" className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center transform transition-all duration-500">
-                    <div className="text-6xl mb-4">🎉</div>
+                    <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <span className="text-sm font-bold">ICON_ERFOLG</span>
+                    </div>
                     <h3 className="text-2xl font-bold text-green-800 mb-2">
-                      Geschafft! Ihre Anfrage ist bei uns.
+                      Vielen Dank für Ihr Vertrauen!
                     </h3>
                     <p className="text-green-700 mb-4">
-                      Wir melden uns innerhalb der nächsten 2 Stunden bei Ihnen.
+                      Wir haben Ihre Anfrage erhalten und melden uns innerhalb der nächsten 2 Stunden bei Ihnen.
                     </p>
                     <div className="bg-white rounded-lg p-4 text-left">
                       <p className="font-semibold text-gray-800 mb-2">Was passiert als nächstes?</p>
                       <ol className="space-y-2 text-sm text-gray-600">
-                        <li>✅ Wir prüfen Ihre Anfrage und erstellen ein erstes Angebot</li>
-                        <li>📞 Ein Experte ruft Sie zur Terminvereinbarung an</li>
-                        <li>🏠 Kostenlose Besichtigung vor Ort</li>
-                        <li>💰 Verbindliches Festpreisangebot</li>
+                        <li className="flex items-start">
+                          <span className="text-green-500 mr-2">✓</span>
+                          <span>Wir prüfen Ihre Anfrage und erstellen ein erstes Angebot</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-green-500 mr-2">✓</span>
+                          <span>Ein Experte ruft Sie zur Terminvereinbarung an</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-green-500 mr-2">✓</span>
+                          <span>Kostenlose Besichtigung vor Ort</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-green-500 mr-2">✓</span>
+                          <span>Verbindliches Festpreisangebot ohne versteckte Kosten</span>
+                        </li>
                       </ol>
                     </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit}>
+                    {/* Schnellkalkulation */}
                     <div className="mb-6">
                       <label className="block text-sm font-medium text-gray-700 mb-3">
-                        Schnellkalkulation: Wie groß ist Ihre Immobilie?
+                        Für eine erste Einschätzung: Wie groß ist Ihre Immobilie?
                       </label>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         {quickEstimates.map((estimate) => (
@@ -298,7 +336,9 @@ export default function KontaktPage() {
                                 : 'border-gray-200 hover:border-gray-300'
                             }`}
                           >
-                            <div className="text-2xl mb-1">{estimate.icon}</div>
+                            <div className="w-8 h-8 bg-gray-200 rounded mx-auto mb-1 flex items-center justify-center">
+                              <span className="text-xs">{estimate.iconLabel}</span>
+                            </div>
                             <div className="font-semibold text-sm">{estimate.size}</div>
                             <div className="text-xs text-[#C73E3A] font-bold">ab {estimate.price}</div>
                           </button>
@@ -306,6 +346,7 @@ export default function KontaktPage() {
                       </div>
                     </div>
 
+                    {/* Formular Felder */}
                     <div className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
@@ -370,15 +411,18 @@ export default function KontaktPage() {
                         >
                           <option value="">Bitte wählen...</option>
                           <option value="Haushaltsauflösung">Haushaltsauflösung</option>
-                          <option value="Gewerbeauflösung">Gewerbeauflösung</option>
+                          <option value="Wohnungsauflösung">Wohnungsauflösung</option>
+                          <option value="Nachlassentrümpelung">Nachlassentrümpelung</option>
                           <option value="Messie-Wohnung">Messie-Wohnung</option>
+                          <option value="Gewerbeauflösung">Gewerbeauflösung</option>
                           <option value="Kellerentrümpelung">Keller/Dachboden</option>
                           <option value="Express-Service">Express (48h)</option>
+                          <option value="Sonstiges">Sonstiges</option>
                         </select>
                       </div>
 
                       <div>
-                        <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-2">
                           Wie dringend ist Ihr Anliegen?
                         </label>
                         <div className="grid grid-cols-3 gap-3">
@@ -399,7 +443,7 @@ export default function KontaktPage() {
                             >
                               {option.highlight && (
                                 <span className="absolute -top-2 -right-2 bg-[#C73E3A] text-white text-xs px-2 py-1 rounded-full">
-                                  HOT
+                                  24/7
                                 </span>
                               )}
                               <div className="font-semibold">{option.label}</div>
@@ -411,7 +455,7 @@ export default function KontaktPage() {
 
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                          Zusätzliche Informationen
+                          Ihre Nachricht (optional)
                         </label>
                         <textarea
                           name="message"
@@ -420,7 +464,7 @@ export default function KontaktPage() {
                           onChange={handleChange}
                           rows={3}
                           className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#C73E3A] focus:border-transparent transition-all"
-                          placeholder="z.B. Stockwerk, besondere Gegenstände, Zugangsmöglichkeiten..."
+                          placeholder="Erzählen Sie uns mehr über Ihre Situation..."
                         />
                       </div>
 
@@ -437,9 +481,20 @@ export default function KontaktPage() {
                           </span>
                         </button>
                         
-                        <p className="text-center text-xs text-gray-500 mt-3">
-                          🔒 SSL-verschlüsselt • 100% kostenlos & unverbindlich
-                        </p>
+                        <div className="flex items-center justify-center mt-3 space-x-4 text-xs text-gray-500">
+                          <span className="flex items-center">
+                            <span className="w-4 h-4 bg-gray-300 rounded mr-1"></span>
+                            SSL-verschlüsselt
+                          </span>
+                          <span className="flex items-center">
+                            <span className="w-4 h-4 bg-gray-300 rounded mr-1"></span>
+                            100% kostenlos
+                          </span>
+                          <span className="flex items-center">
+                            <span className="w-4 h-4 bg-gray-300 rounded mr-1"></span>
+                            Unverbindlich
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </form>
@@ -447,21 +502,25 @@ export default function KontaktPage() {
               </div>
             </div>
 
+            {/* Seitenleiste */}
             <div className="lg:col-span-5 space-y-8">
+              {/* Garantien */}
               <div className="bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47] text-white rounded-3xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold mb-6 text-center">
-                  Unsere Garantien für Sie
+                  Unsere Versprechen an Sie
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { icon: '✅', title: '100% Festpreisgarantie', desc: 'Keine versteckten Kosten' },
-                    { icon: '⚡', title: '24h Rückmeldung', desc: 'Garantierte schnelle Antwort' },
-                    { icon: '🛡️', title: 'Voll versichert', desc: 'Bis 5 Mio. Euro Deckung' },
-                    { icon: '♻️', title: 'Umweltgerecht', desc: 'Zertifizierte Entsorgung' },
-                    { icon: '🤝', title: 'Diskret & vertraulich', desc: 'Absolute Verschwiegenheit' }
+                    { iconLabel: 'ICON_FESTPREIS', title: '100% Festpreisgarantie', desc: 'Keine versteckten Kosten' },
+                    { iconLabel: 'ICON_ZEIT', title: '24h Rückmeldung', desc: 'Garantierte schnelle Antwort' },
+                    { iconLabel: 'ICON_VERSICHERUNG', title: 'Voll versichert', desc: 'Bis 5 Mio. Euro Deckung' },
+                    { iconLabel: 'ICON_UMWELT', title: 'Umweltgerecht', desc: 'Zertifizierte Entsorgung' },
+                    { iconLabel: 'ICON_DISKRET', title: 'Diskret & vertraulich', desc: 'Absolute Verschwiegenheit' }
                   ].map((guarantee, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <span className="text-2xl flex-shrink-0">{guarantee.icon}</span>
+                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span className="text-xs font-bold">{guarantee.iconLabel}</span>
+                      </div>
                       <div>
                         <h4 className="font-semibold">{guarantee.title}</h4>
                         <p className="text-sm opacity-80">{guarantee.desc}</p>
@@ -471,15 +530,16 @@ export default function KontaktPage() {
                 </div>
               </div>
 
+              {/* Kundenstimmen */}
               <div className="bg-white rounded-3xl p-8 shadow-xl">
                 <h3 className="text-xl font-bold text-[#2C4F5E] mb-6">
                   Das sagen unsere Kunden
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { name: 'Maria K.', time: 'vor 2 Tagen', text: 'Schnell, sauber und fair im Preis. Absolute Empfehlung!' },
-                    { name: 'Thomas B.', time: 'vor 5 Tagen', text: 'Nach dem Tod meiner Mutter haben sie alles diskret und professionell geregelt.' },
-                    { name: 'Sabine M.', time: 'vor 1 Woche', text: 'Express-Service hat perfekt funktioniert. Innerhalb von 48h war alles erledigt!' }
+                    { name: 'Maria K.', time: 'vor 2 Tagen', text: 'Sehr einfühlsam und professionell. Haben mir in einer schweren Zeit sehr geholfen.' },
+                    { name: 'Thomas B.', time: 'vor 5 Tagen', text: 'Nach dem Tod meiner Mutter haben sie alles diskret und respektvoll geregelt.' },
+                    { name: 'Sabine M.', time: 'vor 1 Woche', text: 'Trotz Messie-Situation kein Urteil, nur Verständnis und professionelle Hilfe.' }
                   ].map((review, index) => (
                     <div key={index} className="border-l-4 border-[#C73E3A] pl-4">
                       <div className="flex items-center justify-between mb-1">
@@ -488,7 +548,7 @@ export default function KontaktPage() {
                       </div>
                       <div className="flex mb-1">
                         {[1, 2, 3, 4, 5].map(star => (
-                          <span key={star} className="text-yellow-400">⭐</span>
+                          <span key={star} className="w-4 h-4 bg-yellow-400 rounded mr-1"></span>
                         ))}
                       </div>
                       <p className="text-sm text-gray-600 italic">"{review.text}"</p>
@@ -500,47 +560,51 @@ export default function KontaktPage() {
                 </a>
               </div>
 
+              {/* Notfall-Hotline */}
               <div className="bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] text-white rounded-3xl p-6 shadow-xl text-center">
-                <h3 className="text-xl font-bold mb-2">🚨 Notfall-Hotline 24/7</h3>
-                <p className="text-3xl font-bold mb-2">0521 / 999 999 00</p>
+                <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                  <span className="text-xs font-bold">ICON_NOTFALL</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Notfall-Hotline 24/7</h3>
+                <p className="text-3xl font-bold mb-2">0521 / 1200 510</p>
                 <p className="text-sm opacity-90">Für dringende Fälle sind wir rund um die Uhr erreichbar</p>
               </div>
 
+              {/* Video-Beratung */}
               <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 rounded-3xl p-6 shadow-xl">
                 <div className="flex items-center mb-4">
-                  <span className="text-3xl mr-3">🎥</span>
+                  <div className="w-12 h-12 bg-green-200 rounded-lg mr-3 flex items-center justify-center">
+                    <span className="text-xs font-bold">ICON_VIDEO</span>
+                  </div>
                   <h3 className="text-xl font-bold text-gray-800">NEU: Video-Besichtigung</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Sparen Sie Zeit! Führen Sie uns per Video durch Ihre Räumlichkeiten und erhalten Sie sofort eine erste Einschätzung.
+                  Sparen Sie Zeit! Zeigen Sie uns Ihre Räume per Video und erhalten Sie sofort eine Einschätzung.
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">✓</span>
-                    <span>Keine Anfahrt nötig - Sie sparen Zeit</span>
+                    <span>Keine Anfahrt nötig</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">✓</span>
-                    <span>Sofortige Preiseinschätzung möglich</span>
+                    <span>Sofortige Preiseinschätzung</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">✓</span>
-                    <span>Via Zoom, WhatsApp oder FaceTime</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
-                    <span>Flexibel auch abends & am Wochenende</span>
+                    <span>Flexibel auch abends</span>
                   </li>
                 </ul>
-                <a href="https://calendly.com/ruempelschmiede/videoberatung" className="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-all transform hover:scale-105">
+                <button className="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-all transform hover:scale-105 w-full">
                   Jetzt Video-Termin buchen →
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* FAQ Section */}
       <section className="py-16 bg-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-[#2C4F5E] mb-12">
@@ -549,20 +613,20 @@ export default function KontaktPage() {
           <div className="space-y-6">
             {[
               {
-                q: 'Wie schnell erhalte ich mein Angebot?',
-                a: 'In der Regel erhalten Sie innerhalb von 2-4 Stunden eine erste Rückmeldung. Spätestens nach 24 Stunden haben Sie Ihr detailliertes Angebot.'
+                q: 'Ist die Anfrage wirklich kostenlos und unverbindlich?',
+                a: 'Ja, absolut! Die Anfrage, Beratung und auch die Vor-Ort-Besichtigung sind komplett kostenlos. Sie gehen keine Verpflichtung ein.'
               },
               {
-                q: 'Ist die Anfrage wirklich kostenlos?',
-                a: 'Ja, absolut! Die Anfrage, Beratung und auch die Vor-Ort-Besichtigung sind komplett kostenlos und unverbindlich.'
+                q: 'Wie schnell können Sie mit der Entrümpelung beginnen?',
+                a: 'In dringenden Fällen können wir innerhalb von 48 Stunden beginnen. Normalerweise vereinbaren wir einen Termin innerhalb von 3-7 Tagen.'
               },
               {
-                q: 'Muss ich vor Ort sein?',
-                a: 'Nein, nach Absprache können wir auch ohne Ihre Anwesenheit arbeiten. Viele Kunden schätzen diese Flexibilität.'
+                q: 'Was passiert mit meinen persönlichen Daten?',
+                a: 'Ihre Daten werden streng vertraulich behandelt und nur zur Bearbeitung Ihrer Anfrage verwendet. Wir geben keine Daten an Dritte weiter.'
               },
               {
-                q: 'Wie läuft die Bezahlung ab?',
-                a: 'Sie zahlen erst nach vollständig erbrachter Leistung. Wir akzeptieren Barzahlung, Überweisung und EC-Karte.'
+                q: 'Arbeiten Sie auch am Wochenende?',
+                a: 'Ja, wir sind flexibel und arbeiten auch samstags. In Notfällen sind wir sogar sonntags für Sie da.'
               }
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-md">
@@ -570,6 +634,30 @@ export default function KontaktPage() {
                 <p className="text-gray-600">{faq.a}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Abschluss CTA */}
+      <section className="py-16 bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-6">
+            Sie sind nicht allein - wir sind für Sie da
+          </h2>
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            Egal ob Nachlass, Umzug oder schwierige Lebenssituation - 
+            wir begleiten Sie mit Verständnis und Professionalität.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+4952112000510" className="bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+              <span className="flex items-center justify-center">
+                <span className="w-6 h-6 bg-gray-300 rounded mr-2"></span>
+                Jetzt anrufen: 0521 / 1200 510
+              </span>
+            </a>
+            <a href="#contact-form-section" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+              Zum Kontaktformular ↑
+            </a>
           </div>
         </div>
       </section>

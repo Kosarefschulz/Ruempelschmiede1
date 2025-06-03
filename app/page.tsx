@@ -5,38 +5,15 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
-    // Auto-slide every 5 seconds
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 3)
     }, 5000)
-
     return () => clearInterval(interval)
   }, [])
 
-  useEffect(() => {
-    const slider = document.getElementById('testimonial-slider')
-    const dots = [
-      document.getElementById('dot-1'),
-      document.getElementById('dot-2'),
-      document.getElementById('dot-3')
-    ]
-
-    if (slider) {
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`
-    }
-
-    dots.forEach((dot, index) => {
-      if (dot) {
-        if (index === currentSlide) {
-          dot.classList.add('bg-[#C73E3A]')
-          dot.classList.remove('bg-gray-300')
-        } else {
-          dot.classList.remove('bg-[#C73E3A]')
-          dot.classList.add('bg-gray-300')
-        }
-      }
-    })
-  }, [currentSlide])
+  const handleDotClick = (index) => {
+    setCurrentSlide(index)
+  }
 
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + 3) % 3)
@@ -46,15 +23,10 @@ export default function HomePage() {
     setCurrentSlide((prev) => (prev + 1) % 3)
   }
 
-  const handleDotClick = (index: number) => {
-    setCurrentSlide(index)
-  }
-
   return (
     <>
-      {/* Hero Section mit Video - VOLLE BREITE */}
+      {/* Hero Section mit Video */}
       <section className="relative overflow-hidden w-full">
-        {/* Video als Hintergrund */}
         <div className="absolute inset-0 z-0">
           <video 
             className="w-full h-full object-cover" 
@@ -63,17 +35,16 @@ export default function HomePage() {
             muted
             playsInline
             poster="/video-poster.jpg"
+            style={{ height: '70vh' }}
           >
             <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
             Ihr Browser unterstützt keine Videos.
           </video>
-          {/* Overlay für bessere Lesbarkeit - mit Logo-Farben */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
 
-        {/* Content über dem Video - OHNE max-width Begrenzung */}
-        <div className="relative z-10 text-white py-20 px-4">
-          <div className="text-center">
+        <div className="relative z-10 text-white px-4" style={{ height: '70vh', display: 'flex', alignItems: 'center' }}>
+          <div className="text-center w-full">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               Wir machen kaputt, aber das richtig gut!
             </h1>
@@ -83,39 +54,41 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-                📊 Preis berechnen
+                <span className="inline-block w-2 h-2 bg-white rounded-full mr-3"></span>
+                Preis berechnen
               </a>
               <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-                ✉️ Direktanfrage
+                <span className="inline-block w-2 h-2 bg-white rounded-full mr-3"></span>
+                Direktanfrage
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Preispakete statt Kalkulator CTA */}
+      {/* Preispakete */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              📊 Berechnen Sie Ihre Entrümpelungskosten sofort!
+              <span className="inline-block w-3 h-3 bg-[#C73E3A] rounded-full mr-3 mb-1"></span>
+              Berechnen Sie Ihre Entrümpelungskosten sofort!
             </h2>
             <p className="text-xl text-gray-600">
               Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung kostet
             </p>
           </div>
 
-          {/* Pakete */}
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">BASIC</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 650 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
               <ul className="text-left space-y-2 mb-6">
-                <li>✓ Komplette Räumung aller Räume</li>
-                <li>✓ Fachgerechte Entsorgung</li>
-                <li>✓ Wertanrechnung möglich</li>
-                <li>✓ Entsorgungsnachweise</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Komplette Räumung aller Räume</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Fachgerechte Entsorgung</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Wertanrechnung möglich</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Entsorgungsnachweise</li>
               </ul>
               <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
@@ -130,11 +103,11 @@ export default function HomePage() {
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.290 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
               <ul className="text-left space-y-2 mb-6">
-                <li>✓ Alle Leistungen aus BASIC</li>
-                <li>✓ Besenreine Endreinigung</li>
-                <li>✓ Kleine Reparaturen</li>
-                <li>✓ Schlüsselübergabe an Vermieter</li>
-                <li>✓ Abmeldung Strom/Gas möglich</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Alle Leistungen aus BASIC</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Besenreine Endreinigung</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Kleine Reparaturen</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Schlüsselübergabe an Vermieter</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Abmeldung Strom/Gas möglich</li>
               </ul>
               <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
@@ -146,12 +119,12 @@ export default function HomePage() {
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.890 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
               <ul className="text-left space-y-2 mb-6">
-                <li>✓ Alle Leistungen aus KOMFORT</li>
-                <li>✓ Persönlicher Projektmanager</li>
-                <li>✓ Komplette Behördengänge</li>
-                <li>✓ Nachlass-Verwaltung</li>
-                <li>✓ 6 Monate Nachbetreuung</li>
-                <li>✓ Digitales Erinnerungsalbum</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Alle Leistungen aus KOMFORT</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Persönlicher Projektmanager</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Komplette Behördengänge</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Nachlass-Verwaltung</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>6 Monate Nachbetreuung</li>
+                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Digitales Erinnerungsalbum</li>
               </ul>
               <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
@@ -167,7 +140,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Warum wir - mit Timeline */}
+      {/* Warum wir */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -200,7 +173,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Ablauf Timeline - Schönere Version */}
+          {/* Timeline */}
           <div className="mb-16">
             <h3 className="text-3xl font-bold text-[#2C4F5E] text-center mb-4">
               So einfach funktioniert's
@@ -210,100 +183,70 @@ export default function HomePage() {
               transparent, fair und zuverlässig.
             </p>
             
-            <div className="relative">
-              {/* Timeline Line - mit Gradient */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#C73E3A] via-[#C73E3A] to-transparent"></div>
-              
-              {/* Timeline Items */}
-              <div className="space-y-16">
-                {/* Step 1 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right md:pr-12 opacity-0 animate-fadeInLeft">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung</h4>
-                      <p className="text-gray-600">
-                        Wir kommen vorbei, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
-                        natürlich kostenlos.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        1
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:block md:w-5/12"></div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="hidden md:block md:w-5/12"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        2
-                      </div>
-                    </div>
-                  </div>
-                  <div className="md:w-5/12 md:pl-12 opacity-0 animate-fadeInRight animation-delay-200">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
-                      <p className="text-gray-600">
-                        Sie erhalten ein detailliertes Festpreisangebot. Keine Überraschungen, 
-                        keine nachträglichen Kosten - versprochen!
-                      </p>
-                    </div>
+            <div className="space-y-8">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    1
                   </div>
                 </div>
-
-                {/* Step 3 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right md:pr-12 opacity-0 animate-fadeInLeft animation-delay-400">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Professionelle Durchführung</h4>
-                      <p className="text-gray-600">
-                        Unser erfahrenes Team räumt schnell, sauber und zuverlässig. 
-                        Wertgegenstände werden selbstverständlich angerechnet.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        3
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:block md:w-5/12"></div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung</h4>
+                  <p className="text-gray-600">
+                    Wir kommen vorbei, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
+                    natürlich kostenlos.
+                  </p>
                 </div>
+              </div>
 
-                {/* Step 4 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="hidden md:block md:w-5/12"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        ✓
-                      </div>
-                    </div>
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    2
                   </div>
-                  <div className="md:w-5/12 md:pl-12 opacity-0 animate-fadeInRight animation-delay-600">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Besenreine Übergabe</h4>
-                      <p className="text-gray-600">
-                        Wir hinterlassen alles besenrein. Auf Wunsch übernehmen wir auch 
-                        die Schlüsselübergabe an den Vermieter.
-                      </p>
-                    </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
+                  <p className="text-gray-600">
+                    Sie erhalten ein detailliertes Festpreisangebot. Keine Überraschungen, 
+                    keine nachträglichen Kosten - versprochen!
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    3
                   </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Professionelle Durchführung</h4>
+                  <p className="text-gray-600">
+                    Unser erfahrenes Team räumt schnell, sauber und zuverlässig. 
+                    Wertgegenstände werden selbstverständlich angerechnet.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    <span className="w-3 h-3 bg-white rounded-full"></span>
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Besenreine Übergabe</h4>
+                  <p className="text-gray-600">
+                    Wir hinterlassen alles besenrein. Auf Wunsch übernehmen wir auch 
+                    die Schlüsselübergabe an den Vermieter.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Trust Elements - Professioneller */}
+          {/* Trust Elements */}
           <div className="bg-gradient-to-r from-[#2C4F5E] to-[#1E3A47] text-white rounded-2xl p-12 shadow-2xl">
             <h3 className="text-3xl font-bold mb-4 text-center">
               Warum über 1.200 Kunden uns vertrauen
@@ -313,29 +256,58 @@ export default function HomePage() {
             </p>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">✓</span>
+                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                  <img 
+                    src="/quality-badge.png?v=1" 
+                    alt="Festpreisgarantie Badge"
+                    className="w-16 h-16 object-contain"
+                    onError={(e) => {
+                      console.log('Image failed to load:', e.target.src);
+                      e.target.style.display = 'none';
+                    }}
+                  />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Festpreisgarantie</h4>
                 <p className="text-sm opacity-80">Keine versteckten Kosten</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">🛡</span>
+                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                  <img 
+                    src="/shield-icon.png?v=1" 
+                    alt="Vollversichert Shield"
+                    className="w-16 h-16 object-contain"
+                    onError={(e) => {
+                      console.log('Image failed to load:', e.target.src);
+                      e.target.style.display = 'none';
+                    }}
+                  />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Vollversichert</h4>
                 <p className="text-sm opacity-80">Für Ihre Sicherheit</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">♻</span>
+                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                  <img 
+                    src="/recycle-icon.png?v=1" 
+                    alt="Umweltgerecht Recycling"
+                    className="w-16 h-16 object-contain"
+                    onError={(e) => {
+                      console.log('Image failed to load:', e.target.src);
+                      e.target.style.display = 'none';
+                    }}
+                  />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Umweltgerecht</h4>
                 <p className="text-sm opacity-80">Fachgerechte Entsorgung</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">🤝</span>
+                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                  <img 
+                    src="/handshake-icon.png?v=1" 
+                    alt="Persönlich" 
+                    className="w-16 h-16 object-contain"
+                    onError={(e) => console.error('Handshake icon failed to load:', e)}
+                  />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Persönlich</h4>
                 <p className="text-sm opacity-80">Ein Ansprechpartner</p>
@@ -361,7 +333,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Vorteile Section - NEU */}
+      {/* Vorteile Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -379,7 +351,7 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">🔒</span>
+                  <div className="w-6 h-6 border-4 border-white rounded-full"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit</h3>
@@ -397,7 +369,7 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">💶</span>
+                  <div className="w-8 h-2 bg-white rounded-full"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
@@ -415,7 +387,7 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">🌱</span>
+                  <div className="w-6 h-6 bg-white rounded-sm rotate-45"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung</h3>
@@ -433,7 +405,7 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">💰</span>
+                  <div className="w-6 h-6 bg-white rounded-full"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Wertanrechnung garantiert</h3>
@@ -451,7 +423,7 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">❤️</span>
+                  <div className="w-6 h-3 bg-white rounded-full"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement</h3>
@@ -469,7 +441,7 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">⭐</span>
+                  <div className="w-6 h-6 bg-white rounded-full border-4 border-[#2C4F5E]"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
@@ -497,7 +469,8 @@ export default function HomePage() {
                 Jetzt Termin vereinbaren
               </a>
               <a href="tel:+4952199999999" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
-                📞 Direkt anrufen
+                <span className="inline-block w-2 h-2 bg-white rounded-full mr-2"></span>
+                Direkt anrufen
               </a>
             </div>
           </div>
@@ -528,17 +501,15 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              <div className="p-3">
+              <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
                 <p className="text-gray-700 mb-4">
                   Komplette Wohnungsauflösungen mit Wertanrechnung. Wir kümmern uns um alles - 
                   von der Entrümpelung bis zur Endreinigung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <span className="ml-2 text-lg">→</span>
                 </a>
               </div>
             </div>
@@ -553,17 +524,15 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              <div className="p-4">
+              <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
                 <p className="text-gray-700 mb-4">
                   Büros, Praxen, Läden - schnell und diskret. Auch am Wochenende und 
                   außerhalb der Geschäftszeiten möglich.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <span className="ml-2 text-lg">→</span>
                 </a>
               </div>
             </div>
@@ -578,17 +547,15 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              <div className="p-4">
+              <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
                 <p className="text-gray-700 mb-4">
                   Sensible Räumung mit Desinfektion. Wir arbeiten diskret, respektvoll 
                   und ohne Vorurteile.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <span className="ml-2 text-lg">→</span>
                 </a>
               </div>
             </div>
@@ -610,10 +577,8 @@ export default function HomePage() {
                   Inkl. fachgerechter Entsorgung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <span className="ml-2 text-lg">→</span>
                 </a>
               </div>
             </div>
@@ -635,10 +600,8 @@ export default function HomePage() {
                   Sicher und professionell.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <span className="ml-2 text-lg">→</span>
                 </a>
               </div>
             </div>
@@ -663,10 +626,8 @@ export default function HomePage() {
                   Perfekt bei kurzfristigen Terminen.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <span className="ml-2 text-lg">→</span>
                 </a>
               </div>
             </div>
@@ -676,15 +637,12 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <a href="/leistungen" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
               Alle Leistungen ansehen
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              <span className="ml-2 text-lg">→</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Testimonials - Komplett neu mit Slider */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -696,24 +654,23 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Slider Container */}
           <div className="relative overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-in-out" id="testimonial-slider">
-              {/* Slide 1 - Bewertungen 1-3 */}
+            <div 
+              className="flex transition-transform duration-500 ease-in-out" 
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {/* Slide 1 */}
               <div className="min-w-full">
                 <div className="grid md:grid-cols-3 gap-8 px-4">
-                  {/* Bewertung 1 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
                       "Nach dem plötzlichen Tod meiner Mutter stand ich völlig überfordert vor ihrer Wohnung. 
-                      Das Team von Rümpel Schmiedel war nicht nur professionell, sondern auch unglaublich einfühlsam. 
-                      Sie haben alles sortiert, Erinnerungsstücke beiseite gelegt und sogar ein Fotoalbum der 
-                      Wohnung für mich erstellt. Diese Menschlichkeit in einer so schweren Zeit werde ich nie vergessen."
+                      Das Team war nicht nur professionell, sondern auch unglaublich einfühlsam."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Maria Schneider</p>
@@ -721,18 +678,15 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 2 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Wir mussten unsere Messie-Wohnung räumen lassen und hatten große Angst vor Verurteilung. 
-                      Aber das Team war diskret, respektvoll und hat uns keine Sekunde das Gefühl gegeben, 
-                      uns schämen zu müssen. Innerhalb von zwei Tagen war alles erledigt. 
-                      Endlich können wir wieder durchatmen. Danke für diese zweite Chance!"
+                      "Das Team war diskret, respektvoll und hat uns keine Sekunde das Gefühl gegeben, 
+                      uns schämen zu müssen. Endlich können wir wieder durchatmen."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Weber</p>
@@ -740,17 +694,14 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 3 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Das Übergabe-Paket war perfekt! Nicht nur die Entrümpelung war top, sondern auch die 
-                      Endreinigung, kleine Reparaturen und sogar die Schlüsselübergabe an den Vermieter wurde 
-                      übernommen. Ich musste mich um nichts kümmern. Der Preis war fair und transparent - 
+                      "Das Komfort-Paket war perfekt! Der Preis war fair und transparent - 
                       keine bösen Überraschungen!"
                     </p>
                     <div className="border-t pt-4">
@@ -761,21 +712,17 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Slide 2 - Bewertungen 4-6 */}
+              {/* Slide 2 */}
               <div className="min-w-full">
                 <div className="grid md:grid-cols-3 gap-8 px-4">
-                  {/* Bewertung 4 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Unser Keller war 30 Jahre lang eine Rumpelkammer. Das Team hat in nur 4 Stunden 
-                      Ordnung geschaffen! Sie haben sogar alte Werkzeuge gefunden, die noch Wert hatten 
-                      und uns den Betrag angerechnet. Jetzt haben wir endlich wieder Platz für wichtige Dinge. 
-                      Absolut empfehlenswert!"
+                      "Unser Keller war 30 Jahre eine Rumpelkammer. In nur 4 Stunden haben sie Ordnung geschaffen!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Petra und Klaus Müller</p>
@@ -783,37 +730,29 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 5 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Als Betreuer musste ich kurzfristig eine Wohnung räumen lassen. Der Express-Service 
-                      war unglaublich! Innerhalb von 48 Stunden war alles erledigt, inkl. Dokumentation 
-                      für das Gericht. Die Zusammenarbeit war professionell und unkompliziert. 
-                      Ich empfehle Rümpel Schmiedel allen meinen Kollegen!"
+                      "Der Express-Service war unglaublich! Innerhalb von 48 Stunden war alles erledigt."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Michael Hoffmann</p>
-                      <p className="text-sm text-gray-600">Berufsbetreuer, Express-Service Frankfurt</p>
+                      <p className="text-sm text-gray-600">Express-Service Frankfurt</p>
                     </div>
                   </div>
 
-                  {/* Bewertung 6 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Wir mussten unser Büro schnell auflösen. Das Team kam am Wochenende, arbeitete 
-                      diskret und effizient. Besonders beeindruckt hat uns, dass funktionierende Büromöbel 
-                      an eine Schule gespendet wurden. So hatte unsere Geschäftsaufgabe noch etwas Positives. 
-                      Vielen Dank!"
+                      "Das Team kam am Wochenende und arbeitete diskret. Funktionierende Büromöbel wurden an eine Schule gespendet."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">StartUp GmbH</p>
@@ -823,21 +762,17 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Slide 3 - Bewertungen 7-9 */}
+              {/* Slide 3 */}
               <div className="min-w-full">
                 <div className="grid md:grid-cols-3 gap-8 px-4">
-                  {/* Bewertung 7 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Nach 40 Jahren im Haus stand der Umzug ins Seniorenheim an. Das Team hat uns 
-                      liebevoll beim Aussortieren geholfen, wichtige Erinnerungen bewahrt und alles 
-                      andere fachgerecht entsorgt. Die Wertanrechnung für unsere Antiquitäten war mehr 
-                      als fair. Wir fühlten uns bestens aufgehoben."
+                      "Das Team hat uns liebevoll beim Aussortieren geholfen und wichtige Erinnerungen bewahrt."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Ingrid und Heinz Schmidt</p>
@@ -845,18 +780,14 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 8 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Der Dachboden meiner Großeltern war eine Zeitkapsel. Das Team hat jeden Fund 
-                      mit mir besprochen, historische Dokumente gesichert und sogar ein altes Gemälde 
-                      entdeckt, das viel wert war. Die Sensibilität und Fachkenntnis waren beeindruckend. 
-                      Absolute Profis mit Herz!"
+                      "Das Team hat jeden Fund mit mir besprochen und sogar ein wertvolles Gemälde entdeckt."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Lisa Zimmermann</p>
@@ -864,69 +795,53 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 9 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Als Vermieter hatte ich schon viele Entrümpelungsfirmen. Aber Rümpel Schmiedel 
-                      ist mit Abstand die beste! Pünktlich, sauber, fair im Preis und immer erreichbar. 
-                      Die Wohnungen werden besenrein übergeben. Mittlerweile beauftrage ich niemand anderen mehr. 
-                      Meine absolute Empfehlung!"
+                      "Pünktlich, sauber, fair im Preis. Die Wohnungen werden besenrein übergeben."
                     </p>
                     <div className="border-t pt-4">
-                      <p className="font-bold text-[#2C4F5E]">Robert Wagner, Immobilienverwaltung</p>
-                      <p className="text-sm text-gray-600">Mehrere Objekte in ganz Deutschland</p>
+                      <p className="font-bold text-[#2C4F5E]">Robert Wagner</p>
+                      <p className="text-sm text-gray-600">Immobilienverwaltung Deutschland</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Slider Controls */}
-            <div className="flex justify-center mt-8 gap-2">
-              <button 
-                className="w-3 h-3 bg-[#C73E3A] rounded-full transition-all duration-300" 
-                id="dot-1"
-                onClick={() => handleDotClick(0)}
-              ></button>
-              <button 
-                className="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300 hover:bg-gray-400" 
-                id="dot-2"
-                onClick={() => handleDotClick(1)}
-              ></button>
-              <button 
-                className="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300 hover:bg-gray-400" 
-                id="dot-3"
-                onClick={() => handleDotClick(2)}
-              ></button>
+            <div className="flex justify-center mt-8 gap-3">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentSlide === index ? 'bg-[#C73E3A]' : 'bg-gray-300'
+                  }`}
+                  onClick={() => handleDotClick(index)}
+                />
+              ))}
             </div>
 
-            {/* Navigation Arrows */}
             <button 
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300"
               onClick={handlePrevSlide}
             >
-              <svg className="w-6 h-6 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <div className="w-0 h-0 border-t-[6px] border-r-[10px] border-b-[6px] border-t-transparent border-r-[#2C4F5E] border-b-transparent"></div>
             </button>
             <button 
               className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300"
               onClick={handleNextSlide}
             >
-              <svg className="w-6 h-6 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <div className="w-0 h-0 border-t-[6px] border-l-[10px] border-b-[6px] border-t-transparent border-l-[#2C4F5E] border-b-transparent"></div>
             </button>
           </div>
         </div>
       </section>
 
-      {/* Städte-Bereich - NEU */}
+      {/* Städte-Bereich */}
       <section className="py-16 bg-[#2C4F5E] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -935,12 +850,11 @@ export default function HomePage() {
             </h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
               Von Hamburg bis München, von Berlin bis Köln - wir sind in allen großen Städten 
-              und deren Umgebung für Sie im Einsatz. Professionelle Entrümpelung überall in Deutschland.
+              und deren Umgebung für Sie im Einsatz.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
-            {/* 20 größte deutsche Städte */}
             <a href="/entruempelung-berlin" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
               <h3 className="font-bold text-lg">Berlin</h3>
               <p className="text-sm opacity-80">3,7 Mio. Einwohner</p>
@@ -1033,9 +947,7 @@ export default function HomePage() {
             </p>
             <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
               Jetzt anfragen
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              <span className="ml-2 text-lg">→</span>
             </a>
           </div>
         </div>
