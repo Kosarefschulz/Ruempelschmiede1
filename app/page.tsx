@@ -64,7 +64,7 @@ export default function HomePage() {
             playsInline
             poster="/video-poster.jpg"
           >
-            <source src="/Mein Film.mp4" type="video/mp4" />
+            <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
             Ihr Browser unterstützt keine Videos.
           </video>
           {/* Overlay für bessere Lesbarkeit - mit Logo-Farben */}
