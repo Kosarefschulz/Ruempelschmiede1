@@ -1,82 +1,204 @@
-'use client'
+// components/Header.tsx - Professioneller Header mit voller Breite
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Schließe Menü beim Klick außerhalb
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (isMenuOpen && !target.closest('header')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMenuOpen]);
   
   return (
-    <div className="sticky top-0 z-50 bg-white shadow-md">
-      {/* Oberer Header-Bereich */}
-      <header className="bg-[#C73E3A]">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex justify-end">
-            {/* Kontakt - Rechte Seite aber weiter links */}
-            <div className="flex flex-col items-end mr-8 md:mr-16">
-              <div className="flex items-center gap-3">
-                <span className="text-white text-2xl">📞</span>
-                <div className="text-right">
-                  <p className="text-xs text-white/80">Zentrale Bielefeld:</p>
-                  <a href="tel:+4952199999999" className="text-xl font-bold text-white hover:text-white/80">
-                    0521 / 1200 510
-                  </a>
-                </div>
-              </div>
-              <Link href="/kontakt" className="text-white hover:text-white/80 font-semibold text-xs mt-1">
-                Jetzt kostenlos anfragen →
-              </Link>
-            </div>
+    <>
+      {/* Top Bar - Kompakt */}
+      <div className="bg-[#C73E3A] text-white py-2">
+        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
+          <span>24/7 Notfall-Service verfügbar</span>
+          <div className="flex items-center gap-2">
+            <a href="tel:+4952112000510" className="hover:text-white/80 flex items-center gap-1">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span className="font-semibold">0521 / 1200 510</span>
+            </a>
           </div>
         </div>
-      </header>
-      
-      {/* Navigation */}
-      <nav className="bg-gray-100 border-b-2 border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center">
-            {/* Logo in der Navigation - GRÖSSER */}
-            <Link href="/" className="py-4 pr-8">
-              <Image
-                src="/Logo.png"
-                alt="Rümpel Schmiedel Logo"
-                width={320}
-                height={100}
-                className="h-28 md:h-32 w-auto"
-                priority
+      </div>
+
+      {/* Main Header - Volle Breite mit großem Logo */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-24 md:h-28">
+            
+            {/* Logo - RICHTIG GROSS */}
+            <Link href="/" className="flex-shrink-0">
+              <img 
+                src="/Logo.png" 
+                alt="Rümpel Schmiede" 
+                className="h-16 md:h-20 w-auto"
               />
             </Link>
-            
-            {/* Mobile Menu Button */}
-            <div className="md:hidden ml-auto">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-700 hover:text-gray-900 p-3"
+
+            {/* Desktop Navigation - ÜBER DIE GESAMTE BREITE VERTEILT */}
+            <nav className="hidden lg:flex flex-1 items-center justify-center px-8">
+              <ul className="flex items-center justify-between w-full max-w-4xl">
+                <li>
+                  <Link 
+                    href="/" 
+                    className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                  >
+                    Start
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/leistungen" 
+                    className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                  >
+                    Leistungen
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/preise" 
+                    className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                  >
+                    Preisrechner
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/ueber-uns" 
+                    className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                  >
+                    Über uns
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/kontakt" 
+                    className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                  >
+                    Kontakt
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* Kontakt Button - Nur Desktop */}
+            <div className="hidden lg:block flex-shrink-0">
+              <Link 
+                href="/kontakt" 
+                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all text-base"
               >
-                <svg className="h-6 w-6" fill="none" stroke="currentColor">
-                  {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
+                Anfrage stellen
+              </Link>
             </div>
-            
-            {/* Desktop Navigation */}
-            <ul className={`${mobileMenuOpen ? 'absolute top-full left-0 right-0 bg-gray-100 shadow-lg' : 'hidden'} md:flex md:flex-1 md:justify-evenly md:items-center`}>
-              <li><Link href="/" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">Start</Link></li>
-              <li><Link href="/leistungen" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">Leistungen</Link></li>
-              <li><Link href="/b2b" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">B2B</Link></li>
-              <li><Link href="/ueber-uns" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">Über uns</Link></li>
-              <li><Link href="/preise" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">Preisrechner</Link></li>
-              <li><Link href="/artikel" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">Ratgeber</Link></li>
-              <li><Link href="/kontakt" className="block py-4 px-4 text-gray-700 hover:text-red-600 font-semibold uppercase text-sm tracking-wide transition-colors">Kontakt</Link></li>
-            </ul>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2"
+              aria-label="Menü"
+            >
+              <svg className="w-7 h-7 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
-      </nav>
-    </div>
-  )
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-100 absolute top-full left-0 right-0 shadow-lg">
+            <nav className="container mx-auto px-4 py-6">
+              <ul className="space-y-4">
+                <li>
+                  <Link 
+                    href="/" 
+                    className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Start
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/leistungen" 
+                    className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Leistungen
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/preise" 
+                    className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Preisrechner
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/ueber-uns" 
+                    className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Über uns
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/kontakt" 
+                    className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Kontakt
+                  </Link>
+                </li>
+                <li className="pt-4">
+                  <Link 
+                    href="/kontakt" 
+                    className="block bg-[#C73E3A] hover:bg-[#B02E2A] text-white text-center px-6 py-3 rounded-lg font-semibold text-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Jetzt anfragen
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      {/* Mobile Call Button */}
+      <a 
+        href="tel:+4952112000510" 
+        className="fixed bottom-6 right-6 lg:hidden bg-[#C73E3A] hover:bg-[#B02E2A] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
+        aria-label="Jetzt anrufen"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+      </a>
+    </>
+  );
 }
