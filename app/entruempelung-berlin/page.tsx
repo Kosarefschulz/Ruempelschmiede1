@@ -1,9 +1,11 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Icon from '../components/Icon'
 
 export default function BerlinPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [visibleSections, setVisibleSections] = useState(new Set())
 
   useEffect(() => {
     // Auto-slide every 5 seconds
@@ -39,6 +41,26 @@ export default function BerlinPage() {
     })
   }, [currentSlide])
 
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setVisibleSections(prev => new Set(prev).add(entry.target.id))
+        }
+      })
+    }, observerOptions)
+
+    const sections = document.querySelectorAll('[id]')
+    sections.forEach(section => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [])
+
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + 3) % 3)
   }
@@ -53,9 +75,55 @@ export default function BerlinPage() {
 
   return (
     <>
-      {/* Hero Section mit Video - VOLLE BREITE */}
+      <style jsx>{`
+        .fade-in-up {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s ease;
+        }
+        .fade-in-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .animate-fadeInLeft {
+          animation: fadeInLeft 0.8s ease forwards;
+        }
+        .animate-fadeInRight {
+          animation: fadeInRight 0.8s ease forwards;
+        }
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+        }
+        .animation-delay-400 {
+          animation-delay: 0.4s;
+        }
+        .animation-delay-600 {
+          animation-delay: 0.6s;
+        }
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </>
+      {/* Hero Section mit Video */}
       <section className="relative overflow-hidden w-full">
-        {/* Video als Hintergrund */}
         <div className="absolute inset-0 z-0">
           <video 
             className="w-full h-full object-cover" 
@@ -64,30 +132,31 @@ export default function BerlinPage() {
             muted
             playsInline
             poster="/video-poster.jpg"
+            style={{ height: '70vh' }}
           >
-            <source src="/240409_Rümpelmeister Vorher Nachher_v1.mp4" type="video/mp4" />
+            <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
             Ihr Browser unterstützt keine Videos.
           </video>
-          {/* Overlay für bessere Lesbarkeit */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/10 to-[#2C4F5E]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
 
-        {/* Content über dem Video - OHNE max-width Begrenzung */}
-        <div className="relative z-10 text-white py-20 px-4">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+        <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
+          <div className="text-center w-full">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
               Entrümpelung Berlin - Wir machen kaputt, aber das richtig gut!
             </h1>
-            <p className="text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 
               in Berlin und Umgebung - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-                 Preis berechnen
+              <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transform hover:scale-105 transition-all">
+                <Icon name="euro" size={20} color="white" className="inline mr-2" />
+                Preis berechnen
               </a>
-              <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-                ✉️ Direktanfrage
+              <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all">
+                <Icon name="email" size={20} color="currentColor" className="inline mr-2" />
+                Direktanfrage
               </a>
             </div>
           </div>
@@ -108,53 +177,63 @@ export default function BerlinPage() {
 
           {/* Pakete */}
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-[#2C4F5E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="haus" size={32} color="#2C4F5E" />
+              </div>
               <h2 className="text-2xl font-bold text-[#2C4F5E]">BASIC</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 890 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Berlin</p>
               <ul className="text-left space-y-2 mb-6">
-                <li>✓ Komplette Räumung aller Räume</li>
-                <li>✓ Fachgerechte Entsorgung</li>
-                <li>✓ Wertanrechnung möglich</li>
-                <li>✓ Entsorgungsnachweise</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Komplette Räumung aller Räume</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Fachgerechte Entsorgung</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Wertanrechnung möglich</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Entsorgungsnachweise</li>
               </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
+              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block transition-all">
                 Anfrage stellen
               </a>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-[#2C4F5E]">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-[#2C4F5E] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="bg-[#2C4F5E] text-white py-1 px-4 rounded-full inline-block mb-4">
+                <Icon name="star" size={16} color="white" className="inline mr-1" />
                 BELIEBTESTE WAHL
+              </div>
+              <div className="w-16 h-16 bg-[#C73E3A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="star" size={32} color="#C73E3A" />
               </div>
               <h2 className="text-2xl font-bold text-[#2C4F5E]">KOMFORT</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.290 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Berlin</p>
               <ul className="text-left space-y-2 mb-6">
-                <li>✓ Alle Leistungen aus BASIC</li>
-                <li>✓ Besenreine Endreinigung</li>
-                <li>✓ Kleine Reparaturen</li>
-                <li>✓ Schlüsselübergabe an Vermieter</li>
-                <li>✓ Abmeldung Strom/Gas möglich</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Alle Leistungen aus BASIC</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Besenreine Endreinigung</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Kleine Reparaturen</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Schlüsselübergabe an Vermieter</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Abmeldung Strom/Gas möglich</li>
               </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
+              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block transition-all">
                 Anfrage stellen
               </a>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="award" size={32} color="#F59E0B" />
+              </div>
               <h2 className="text-2xl font-bold text-[#2C4F5E]">PREMIUM</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.890 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Berlin</p>
               <ul className="text-left space-y-2 mb-6">
-                <li>✓ Alle Leistungen aus KOMFORT</li>
-                <li>✓ Persönlicher Projektmanager</li>
-                <li>✓ Komplette Behördengänge</li>
-                <li>✓ Nachlass-Verwaltung</li>
-                <li>✓ 6 Monate Nachbetreuung</li>
-                <li>✓ Digitales Erinnerungsalbum</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Alle Leistungen aus KOMFORT</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Persönlicher Projektmanager</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Komplette Behördengänge</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Nachlass-Verwaltung</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> 6 Monate Nachbetreuung</li>
+                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Digitales Erinnerungsalbum</li>
               </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
+              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block transition-all">
                 Anfrage stellen
               </a>
             </div>
