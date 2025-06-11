@@ -1,4 +1,6 @@
 'use client'
+import Icon from '../components/Icon';
+
 export default function UeberUnsPage() {
   const teamMembers = [
     {
@@ -26,22 +28,22 @@ export default function UeberUnsPage() {
 
   const coreValues = [
     {
-      iconPlaceholder: 'Herz Icon',
+      icon: 'heart',
       title: 'Menschlichkeit & Empathie',
       description: 'Wir sehen nicht nur Gegenstände – wir sehen die Geschichten dahinter und behandeln sie mit dem Respekt, den sie verdienen.',
     },
     {
-      iconPlaceholder: 'Handschlag Icon',
+      icon: '/icons/handshake-icon.png',
       title: 'Ehrlichkeit & Vertrauen',
       description: 'Ein Wort ist ein Wort. Bei uns gibt es keine versteckten Kosten, keine bösen Überraschungen – nur klare Absprachen.',
     },
     {
-      iconPlaceholder: 'Schutzschild Icon',
+      icon: 'shield',
       title: 'Diskretion & Schutz',
       description: 'Ihre Geschichte bleibt bei uns. Absolute Verschwiegenheit ist für uns selbstverständlich, besonders in schwierigen Situationen.',
     },
     {
-      iconPlaceholder: 'Recycling Icon',
+      icon: 'recycle',
       title: 'Nachhaltigkeit & Verantwortung',
       description: 'Wir entsorgen nicht einfach – wir geben Dingen ein zweites Leben und schützen dabei unsere Umwelt.',
     },
@@ -51,22 +53,22 @@ export default function UeberUnsPage() {
     { 
       title: 'Ein Gesicht, ein Versprechen', 
       description: 'Bei uns haben Sie EINEN Ansprechpartner von Anfang bis Ende. Keine Call-Center, keine Vermittlung an Subunternehmer – nur Ihr persönlicher Betreuer.', 
-      iconPlaceholder: 'Person Icon' 
+      icon: 'heart' 
     },
     { 
       title: 'Geschulte Herzensmenschen', 
       description: 'Unser Team ist speziell ausgebildet für den Umgang mit Trauer, Demenz, Messie-Syndrom und anderen sensiblen Situationen. Wir verstehen, dass hinter jeder Entrümpelung ein Schicksal steht.', 
-      iconPlaceholder: 'Ausbildung Icon'
+      icon: 'award'
     },
     { 
       title: 'Begleitung über den Auftrag hinaus', 
       description: 'Nach der Entrümpelung lassen wir Sie nicht allein. Wir helfen bei Behördengängen, koordinieren Handwerker und sind für Sie da – so lange Sie uns brauchen.', 
-      iconPlaceholder: 'Begleitung Icon'
+      icon: 'heart'
     },
     { 
       title: 'Premium-Service aus Überzeugung', 
       description: 'Keine Billig-Tricks, keine falschen Versprechen. Wir arbeiten zu fairen Preisen mit höchster Qualität – weil Ihre Zufriedenheit unser Antrieb ist.', 
-      iconPlaceholder: 'Premium Icon'
+      icon: 'award'
     },
   ];
 
@@ -243,7 +245,7 @@ export default function UeberUnsPage() {
               <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-[#C73E3A] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-xs text-white">{item.iconPlaceholder}</span>
+                    <Icon name={item.icon} size={32} color="white" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-[#2C4F5E] mb-3">{item.title}</h3>
@@ -343,7 +345,11 @@ export default function UeberUnsPage() {
                 className="bg-white/10 backdrop-blur p-8 rounded-xl text-center hover:bg-white/20 transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xs">{value.iconPlaceholder}</span>
+                  {value.icon.startsWith('/') ? (
+                    <img src={value.icon} alt="Value Icon" className="w-8 h-8 filter brightness-0 invert" />
+                  ) : (
+                    <Icon name={value.icon} size={32} color="white" />
+                  )}
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
                 <p className="opacity-90 leading-relaxed">{value.description}</p>

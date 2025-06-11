@@ -621,17 +621,11 @@ export default function LeistungenPage() {
                                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
                             >
                                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4">
-                                    {benefit.iconPlaceholder.endsWith('.svg') ? (
-                                        <img 
-                                            src={benefit.iconPlaceholder} 
-                                            alt="Benefit Icon"
-                                            className="w-8 h-8 filter brightness-0 invert"
-                                        />
-                                    ) : (
-                                        <span className="text-white text-xs text-center">
-                                            {benefit.iconPlaceholder}
-                                        </span>
-                                    )}
+                                    <img 
+                                        src={benefit.icon} 
+                                        alt="Benefit Icon"
+                                        className="w-8 h-8 filter brightness-0 invert"
+                                    />
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
                                 <p className="text-white/80">{benefit.text}</p>

@@ -728,8 +728,8 @@ export default function B2BPage() {
                                 key={index}
                                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
                             >
-                                <div className="icon-placeholder bg-white/20 mb-4">
-                                    {benefit.iconPlaceholder}
+                                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4">
+                                    <Icon name={benefit.icon} size={32} color="white" />
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
                                 <p className="text-white/80">{benefit.text}</p>
