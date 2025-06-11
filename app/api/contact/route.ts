@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
+import nodemailer from 'nodemailer';
 
 // Rate limiting map
 const rateLimitMap = new Map();
@@ -86,22 +84,25 @@ export async function POST(request: Request) {
       </p>
     `;
 
-    // Send email
-    const { data, error } = await resend.emails.send({
-      from: 'Rümpelschmiede Webseite <onboarding@resend.dev>', // This will be changed to info@ruempelschmiede.de after domain verification
-      to: process.env.CONTACT_EMAIL || 'info@ruempelschmiede.de',
+    // Create transporter for Strato SMTP
+    const transporter = nodemailer.createTransporter({
+      host: 'smtp.strato.de',
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER || 'info@ruempelmeister.de',
+        pass: process.env.SMTP_PASSWORD,
+      },
+    });
+
+    // Send email to business
+    await transporter.sendMail({
+      from: `"Rümpelschmiede Webseite" <${process.env.SMTP_USER || 'info@ruempelmeister.de'}>`,
+      to: 'info@ruempelmeister.de',
       replyTo: email,
       subject: `Neue Anfrage von ${name} - ${service || 'Allgemeine Anfrage'}`,
       html: emailHtml,
     });
-
-    if (error) {
-      console.error('Email send error:', error);
-      return NextResponse.json(
-        { error: 'Fehler beim Senden der E-Mail. Bitte versuchen Sie es später erneut.' },
-        { status: 500 }
-      );
-    }
 
     // Send confirmation email to user
     const confirmationHtml = `
@@ -123,13 +124,13 @@ export async function POST(request: Request) {
       <p style="color: #666; font-size: 12px;">
         Rümpelschmiede<br>
         Tel: 0521 / 1200 510<br>
-        E-Mail: info@ruempelschmiede.de<br>
-        Web: www.ruempelschmiede.de
+        E-Mail: info@ruempelmeister.de<br>
+        Web: www.ruempel-schmiede.de
       </p>
     `;
 
-    await resend.emails.send({
-      from: 'Rümpelschmiede <onboarding@resend.dev>',
+    await transporter.sendMail({
+      from: `"Rümpelschmiede" <${process.env.SMTP_USER || 'info@ruempelmeister.de'}>`,
       to: email,
       subject: 'Ihre Anfrage bei Rümpelschmiede',
       html: confirmationHtml,
