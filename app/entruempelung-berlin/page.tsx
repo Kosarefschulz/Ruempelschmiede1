@@ -5,61 +5,10 @@ import Icon from '../components/Icon'
 
 export default function BerlinPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [visibleSections, setVisibleSections] = useState(new Set())
 
-  useEffect(() => {
-    // Auto-slide every 5 seconds
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3)
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    const slider = document.getElementById('testimonial-slider')
-    const dots = [
-      document.getElementById('dot-1'),
-      document.getElementById('dot-2'),
-      document.getElementById('dot-3')
-    ]
-
-    if (slider) {
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`
-    }
-
-    dots.forEach((dot, index) => {
-      if (dot) {
-        if (index === currentSlide) {
-          dot.classList.add('bg-[#C73E3A]')
-          dot.classList.remove('bg-gray-300')
-        } else {
-          dot.classList.remove('bg-[#C73E3A]')
-          dot.classList.add('bg-gray-300')
-        }
-      }
-    })
-  }, [currentSlide])
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setVisibleSections(prev => new Set(prev).add(entry.target.id))
-        }
-      })
-    }, observerOptions)
-
-    const sections = document.querySelectorAll('[id]')
-    sections.forEach(section => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
+  const handleDotClick = (index: number) => {
+    setCurrentSlide(index)
+  }
 
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + 3) % 3)
@@ -67,10 +16,6 @@ export default function BerlinPage() {
 
   const handleNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % 3)
-  }
-
-  const handleDotClick = (index: number) => {
-    setCurrentSlide(index)
   }
 
   return (
@@ -103,12 +48,10 @@ export default function BerlinPage() {
               in Berlin und Umgebung - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transform hover:scale-105 transition-all">
-                <Icon name="euro" size={20} color="white" className="inline mr-2" />
+              <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
                 Preis berechnen
               </a>
-              <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all">
-                <Icon name="email" size={20} color="currentColor" className="inline mr-2" />
+              <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
                 Direktanfrage
               </a>
             </div>
@@ -121,72 +64,106 @@ export default function BerlinPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              🧮 Entrümpelungskosten in Berlin sofort berechnen!
+              Berechnen Sie Ihre Entrümpelungskosten in Berlin sofort!
             </h2>
             <p className="text-xl text-gray-600">
               Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung in Berlin kostet
             </p>
           </div>
 
-          {/* Pakete */}
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-[#2C4F5E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icon name="haus" size={32} color="#2C4F5E" />
-              </div>
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">BASIC</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 890 €</p>
+              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 650 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Berlin</p>
               <ul className="text-left space-y-2 mb-6">
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Komplette Räumung aller Räume</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Fachgerechte Entsorgung</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Wertanrechnung möglich</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Entsorgungsnachweise</li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Komplette Räumung aller Räume</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Fachgerechte Entsorgung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Wertanrechnung möglich</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Entsorgungsnachweise</span>
+                </li>
               </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block transition-all">
+              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
               </a>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-[#2C4F5E] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-[#2C4F5E]">
               <div className="bg-[#2C4F5E] text-white py-1 px-4 rounded-full inline-block mb-4">
-                <Icon name="star" size={16} color="white" className="inline mr-1" />
                 BELIEBTESTE WAHL
-              </div>
-              <div className="w-16 h-16 bg-[#C73E3A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icon name="star" size={32} color="#C73E3A" />
               </div>
               <h2 className="text-2xl font-bold text-[#2C4F5E]">KOMFORT</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.290 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Berlin</p>
               <ul className="text-left space-y-2 mb-6">
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Alle Leistungen aus BASIC</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Besenreine Endreinigung</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Kleine Reparaturen</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Schlüsselübergabe an Vermieter</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Abmeldung Strom/Gas möglich</li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Alle Leistungen aus BASIC</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Besenreine Endreinigung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Kleine Reparaturen</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Schlüsselübergabe an Vermieter</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Abmeldung Strom/Gas möglich</span>
+                </li>
               </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block transition-all">
+              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
               </a>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icon name="award" size={32} color="#F59E0B" />
-              </div>
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">PREMIUM</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.890 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Berlin</p>
               <ul className="text-left space-y-2 mb-6">
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Alle Leistungen aus KOMFORT</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Persönlicher Projektmanager</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Komplette Behördengänge</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Nachlass-Verwaltung</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> 6 Monate Nachbetreuung</li>
-                <li><Icon name="checkmark" size={16} color="#10B981" className="inline mr-2" /> Digitales Erinnerungsalbum</li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Alle Leistungen aus KOMFORT</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Persönlicher Projektmanager</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Komplette Behördengänge</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Nachlass-Verwaltung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>6 Monate Nachbetreuung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Digitales Erinnerungsalbum</span>
+                </li>
               </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block transition-all">
+              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
               </a>
             </div>
@@ -200,7 +177,7 @@ export default function BerlinPage() {
         </div>
       </section>
 
-      {/* Warum wir - mit Timeline */}
+      {/* Warum wir */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -208,15 +185,15 @@ export default function BerlinPage() {
               Ihre Entrümpelung in Berlin in sicheren Händen
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seit über 20 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Berlin. 
-              Von Spandau bis Köpenick - wir machen Platz für Neues.
+              Seit über 20 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Berlin 
+              - wir machen Platz für Neues.
             </p>
           </div>
 
           {/* Statistiken */}
           <div className="grid md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#C73E3A] mb-2">20+</div>
+              <div className="text-5xl font-bold text-[#C73E3A] mb-2">7+</div>
               <p className="text-gray-600">Jahre Erfahrung</p>
             </div>
             <div className="text-center">
@@ -224,7 +201,7 @@ export default function BerlinPage() {
               <p className="text-gray-600">Zufriedene Kunden in Berlin</p>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#C73E3A] mb-2">48h</div>
+              <div className="text-5xl font-bold text-[#C73E3A] mb-2">24h</div>
               <p className="text-gray-600">Schnellservice</p>
             </div>
             <div className="text-center">
@@ -233,7 +210,7 @@ export default function BerlinPage() {
             </div>
           </div>
 
-          {/* Ablauf Timeline - Schönere Version */}
+          {/* Timeline */}
           <div className="mb-16">
             <h3 className="text-3xl font-bold text-[#2C4F5E] text-center mb-4">
               So einfach funktioniert's in Berlin
@@ -243,100 +220,70 @@ export default function BerlinPage() {
               transparent, fair und zuverlässig.
             </p>
             
-            <div className="relative">
-              {/* Timeline Line - mit Gradient */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#C73E3A] via-[#C73E3A] to-transparent"></div>
-              
-              {/* Timeline Items */}
-              <div className="space-y-16">
-                {/* Step 1 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right md:pr-12 opacity-0 animate-fadeInLeft">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung in Berlin</h4>
-                      <p className="text-gray-600">
-                        Wir kommen zu Ihnen nach Berlin, schauen uns alles an und erstellen ein unverbindliches Angebot - 
-                        natürlich kostenlos und ohne versteckte Kosten.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        1
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:block md:w-5/12"></div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="hidden md:block md:w-5/12"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        2
-                      </div>
-                    </div>
-                  </div>
-                  <div className="md:w-5/12 md:pl-12 opacity-0 animate-fadeInRight animation-delay-200">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
-                      <p className="text-gray-600">
-                        Sie erhalten ein detailliertes Festpreisangebot für Ihre Berliner Immobilie. Keine Überraschungen, 
-                        keine nachträglichen Kosten - versprochen!
-                      </p>
-                    </div>
+            <div className="space-y-8">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    1
                   </div>
                 </div>
-
-                {/* Step 3 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right md:pr-12 opacity-0 animate-fadeInLeft animation-delay-400">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Professionelle Durchführung</h4>
-                      <p className="text-gray-600">
-                        Unser erfahrenes Berliner Team räumt schnell, sauber und zuverlässig. 
-                        Wertgegenstände werden selbstverständlich angerechnet.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        3
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:block md:w-5/12"></div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung in Berlin</h4>
+                  <p className="text-gray-600">
+                    Wir kommen zu Ihnen nach Berlin, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
+                    natürlich kostenlos.
+                  </p>
                 </div>
+              </div>
 
-                {/* Step 4 */}
-                <div className="relative flex items-center md:justify-between">
-                  <div className="hidden md:block md:w-5/12"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        ✓
-                      </div>
-                    </div>
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    2
                   </div>
-                  <div className="md:w-5/12 md:pl-12 opacity-0 animate-fadeInRight animation-delay-600">
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Besenreine Übergabe</h4>
-                      <p className="text-gray-600">
-                        Wir hinterlassen Ihre Berliner Wohnung besenrein. Auf Wunsch übernehmen wir auch 
-                        die Schlüsselübergabe an den Vermieter.
-                      </p>
-                    </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
+                  <p className="text-gray-600">
+                    Sie erhalten ein detailliertes Festpreisangebot für Ihre Berliner Immobilie. Keine Überraschungen, 
+                    keine nachträglichen Kosten - versprochen!
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    3
                   </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Professionelle Durchführung</h4>
+                  <p className="text-gray-600">
+                    Unser erfahrenes Berliner Team räumt schnell, sauber und zuverlässig. 
+                    Wertgegenstände werden selbstverständlich angerechnet.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    4
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Besenreine Übergabe</h4>
+                  <p className="text-gray-600">
+                    Wir hinterlassen Ihre Berliner Wohnung besenrein. Auf Wunsch übernehmen wir auch 
+                    die Schlüsselübergabe an den Vermieter.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Trust Elements - Professioneller */}
+          {/* Trust Elements */}
           <div className="bg-gradient-to-r from-[#2C4F5E] to-[#1E3A47] text-white rounded-2xl p-12 shadow-2xl">
             <h3 className="text-3xl font-bold mb-4 text-center">
               Warum über 3.000 Berliner Kunden uns vertrauen
@@ -346,29 +293,39 @@ export default function BerlinPage() {
             </p>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">✓</span>
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 00-2 2v6a2 2 0 002 2h2a1 1 0 100 2H6a4 4 0 01-4-4V5a4 4 0 014-4h2a1 1 0 100 2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2a1 1 0 100-2h2a4 4 0 014 4v8a4 4 0 01-4 4H6a4 4 0 01-4-4V5z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Festpreisgarantie</h4>
                 <p className="text-sm opacity-80">Keine versteckten Kosten</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">🛡</span>
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Vollversichert</h4>
                 <p className="text-sm opacity-80">Für Ihre Sicherheit</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">♻</span>
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clipRule="evenodd" />
+                    <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Umweltgerecht</h4>
                 <p className="text-sm opacity-80">Fachgerechte Entsorgung</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                  <span className="text-4xl">🤝</span>
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Persönlich</h4>
                 <p className="text-sm opacity-80">Ein Ansprechpartner</p>
@@ -412,14 +369,14 @@ export default function BerlinPage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">🔒</span>
+                  <img src="/icons/shield-icon.svg" alt="Sicherheit" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit in Berlin</h3>
                   <p className="text-gray-600 text-sm">
-                    Vollversichert und zertifiziert nach DIN EN ISO 9001. Ihre Berliner Immobilie ist bei uns in professionellen Händen - 
+                    Vollversichert und zertifiziert - Ihre Berliner Immobilie ist bei uns in professionellen Händen - 
                     garantierte Qualität und Kundenzufriedenheit. Unsere Mitarbeiter sind geschult im Umgang mit sensiblen 
-                    Gegenständen und arbeiten stets diskret. Mit über 20 Jahren Erfahrung in Berlin wissen wir genau, worauf es ankommt. 
+                    Gegenständen und arbeiten stets diskret. Mit über 7 Jahren Erfahrung in Berlin wissen wir genau, worauf es ankommt. 
                     Alle Arbeiten werden dokumentiert und Sie erhalten eine Abnahmebestätigung.
                   </p>
                 </div>
@@ -430,7 +387,7 @@ export default function BerlinPage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">💶</span>
+                  <img src="/icons/eye-icon.svg" alt="Besichtigung" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
@@ -448,7 +405,7 @@ export default function BerlinPage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">🌱</span>
+                  <img src="/icons/recycle-icon.svg" alt="Recycling" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung in Berlin</h3>
@@ -466,7 +423,7 @@ export default function BerlinPage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">💰</span>
+                  <img src="/icons/euro-icon.svg" alt="Wertanrechnung" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Wertanrechnung garantiert</h3>
@@ -484,7 +441,7 @@ export default function BerlinPage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">❤️</span>
+                  <img src="/icons/heart-icon.svg" alt="Soziales Engagement" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement in Berlin</h3>
@@ -502,7 +459,7 @@ export default function BerlinPage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <span className="text-2xl">⭐</span>
+                  <img src="/icons/star-icon.svg" alt="Professionalität" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
@@ -529,8 +486,8 @@ export default function BerlinPage() {
               <a href="/kontakt" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
                 Jetzt Termin vereinbaren
               </a>
-              <a href="tel:+493012345678" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
-                📞 Direkt anrufen
+              <a href="tel:+4952199999999" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
+                Direkt anrufen
               </a>
             </div>
           </div>
@@ -553,15 +510,14 @@ export default function BerlinPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Haushaltsauflösung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
-                  src="/haushaltsaufloesung.jpg" 
+                  src="/Karton.png" 
                   alt="Haushaltsauflösung Berlin"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
@@ -570,25 +526,22 @@ export default function BerlinPage() {
                   von der Entrümpelung bis zur Endreinigung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Gewerbeauflösung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
-                  src="/gewerbeaufloesung.jpg" 
+                  src="/Gewerbe 2.jpg" 
                   alt="Gewerbeauflösung Berlin"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
@@ -597,25 +550,22 @@ export default function BerlinPage() {
                   außerhalb der Geschäftszeiten möglich.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Messie-Wohnungen */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
-                  src="/messie-wohnung.jpg" 
+                  src="/Voller Messie Flur .jpg" 
                   alt="Messie-Wohnung Entrümpelung Berlin"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
@@ -624,25 +574,22 @@ export default function BerlinPage() {
                   und ohne Vorurteile.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Kellerentrümpelung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
-                  src="/kellerentruempelung.jpg" 
+                  src="/1-2.jpg" 
                   alt="Kellerentrümpelung Berlin"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
@@ -651,25 +598,22 @@ export default function BerlinPage() {
                   Inkl. fachgerechter Entsorgung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Dachbodenentrümpelung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
-                  src="/dachboden.jpg" 
+                  src="/Dachboden.jpg" 
                   alt="Dachbodenentrümpelung Berlin"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
@@ -678,25 +622,22 @@ export default function BerlinPage() {
                   Sicher und professionell.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Express-Service */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
-                  src="/express-service.jpg" 
+                  src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
                   alt="Express Entrümpelung Berlin"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 right-4 bg-[#C73E3A] text-white px-3 py-1 rounded-full text-sm font-bold">
                   48h Service
                 </div>
@@ -708,10 +649,8 @@ export default function BerlinPage() {
                   Perfekt bei kurzfristigen Terminen.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren 
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Mehr erfahren
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
@@ -721,15 +660,12 @@ export default function BerlinPage() {
           <div className="text-center mt-12">
             <a href="/leistungen" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
               Alle Leistungen für Berlin ansehen
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              <span className="ml-2 text-lg">→</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Testimonials - Komplett neu mit Slider */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -741,24 +677,23 @@ export default function BerlinPage() {
             </p>
           </div>
 
-          {/* Slider Container */}
           <div className="relative overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-in-out" id="testimonial-slider">
-              {/* Slide 1 - Bewertungen 1-3 */}
+            <div 
+              className="flex transition-transform duration-500 ease-in-out" 
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {/* Slide 1 */}
               <div className="min-w-full">
                 <div className="grid md:grid-cols-3 gap-8 px-4">
-                  {/* Bewertung 1 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
                       "Nach dem plötzlichen Tod meiner Mutter stand ich völlig überfordert vor ihrer Wohnung in Charlottenburg. 
-                      Das Team von Rümpel Schmiedel war nicht nur professionell, sondern auch unglaublich einfühlsam. 
-                      Sie haben alles sortiert, Erinnerungsstücke beiseite gelegt und sogar ein Fotoalbum der 
-                      Wohnung für mich erstellt. Diese Menschlichkeit in einer so schweren Zeit werde ich nie vergessen."
+                      Das Team war nicht nur professionell, sondern auch unglaublich einfühlsam."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Maria Schneider</p>
@@ -766,18 +701,15 @@ export default function BerlinPage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 2 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Wir mussten unsere Messie-Wohnung in Neukölln räumen lassen und hatten große Angst vor Verurteilung. 
-                      Aber das Team war diskret, respektvoll und hat uns keine Sekunde das Gefühl gegeben, 
-                      uns schämen zu müssen. Innerhalb von zwei Tagen war alles erledigt. 
-                      Endlich können wir wieder durchatmen. Danke für diese zweite Chance!"
+                      "Wir mussten unsere Messie-Wohnung in Neukölln räumen lassen. Das Team war diskret, respektvoll und hat uns 
+                      keine Sekunde das Gefühl gegeben, uns schämen zu müssen."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Weber</p>
@@ -785,17 +717,14 @@ export default function BerlinPage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 3 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Das Übergabe-Paket war perfekt für unsere Wohnung in Prenzlauer Berg! Nicht nur die Entrümpelung war top, sondern auch die 
-                      Endreinigung, kleine Reparaturen und sogar die Schlüsselübergabe an den Vermieter wurde 
-                      übernommen. Ich musste mich um nichts kümmern. Der Preis war fair und transparent - 
+                      "Das Komfort-Paket war perfekt für unsere Wohnung in Prenzlauer Berg! Der Preis war fair und transparent - 
                       keine bösen Überraschungen!"
                     </p>
                     <div className="border-t pt-4">
@@ -806,21 +735,17 @@ export default function BerlinPage() {
                 </div>
               </div>
 
-              {/* Slide 2 - Bewertungen 4-6 */}
+              {/* Slide 2 */}
               <div className="min-w-full">
                 <div className="grid md:grid-cols-3 gap-8 px-4">
-                  {/* Bewertung 4 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Unser Keller in Wedding war 30 Jahre lang eine Rumpelkammer. Das Team hat in nur 4 Stunden 
-                      Ordnung geschaffen! Sie haben sogar alte Werkzeuge gefunden, die noch Wert hatten 
-                      und uns den Betrag angerechnet. Jetzt haben wir endlich wieder Platz für wichtige Dinge. 
-                      Absolut empfehlenswert!"
+                      "Unser Keller in Wedding war 30 Jahre eine Rumpelkammer. In nur 4 Stunden haben sie Ordnung geschaffen!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Petra und Klaus Müller</p>
@@ -828,37 +753,29 @@ export default function BerlinPage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 5 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Als Betreuer musste ich kurzfristig eine Wohnung in Spandau räumen lassen. Der Express-Service 
-                      war unglaublich! Innerhalb von 48 Stunden war alles erledigt, inkl. Dokumentation 
-                      für das Gericht. Die Zusammenarbeit war professionell und unkompliziert. 
-                      Ich empfehle Rümpel Schmiedel allen meinen Kollegen!"
+                      "Der Express-Service war unglaublich! Innerhalb von 48 Stunden war alles in Spandau erledigt."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Michael Hoffmann</p>
-                      <p className="text-sm text-gray-600">Berufsbetreuer, Express-Service Spandau</p>
+                      <p className="text-sm text-gray-600">Express-Service Spandau</p>
                     </div>
                   </div>
 
-                  {/* Bewertung 6 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Wir mussten unser Büro in Mitte schnell auflösen. Das Team kam am Wochenende, arbeitete 
-                      diskret und effizient. Besonders beeindruckt hat uns, dass funktionierende Büromöbel 
-                      an eine Schule gespendet wurden. So hatte unsere Geschäftsaufgabe noch etwas Positives. 
-                      Vielen Dank!"
+                      "Das Team kam am Wochenende nach Mitte und arbeitete diskret. Funktionierende Büromöbel wurden gespendet."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">StartUp GmbH</p>
@@ -868,21 +785,17 @@ export default function BerlinPage() {
                 </div>
               </div>
 
-              {/* Slide 3 - Bewertungen 7-9 */}
+              {/* Slide 3 */}
               <div className="min-w-full">
                 <div className="grid md:grid-cols-3 gap-8 px-4">
-                  {/* Bewertung 7 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Nach 40 Jahren im Haus in Zehlendorf stand der Umzug ins Seniorenheim an. Das Team hat uns 
-                      liebevoll beim Aussortieren geholfen, wichtige Erinnerungen bewahrt und alles 
-                      andere fachgerecht entsorgt. Die Wertanrechnung für unsere Antiquitäten war mehr 
-                      als fair. Wir fühlten uns bestens aufgehoben."
+                      "Das Team in Zehlendorf hat uns liebevoll beim Aussortieren geholfen und wichtige Erinnerungen bewahrt."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Ingrid und Heinz Schmidt</p>
@@ -890,18 +803,14 @@ export default function BerlinPage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 8 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Der Dachboden in unserem Altbau in Friedrichshain war eine Zeitkapsel. Das Team hat jeden Fund 
-                      mit mir besprochen, historische Dokumente gesichert und sogar ein altes Gemälde 
-                      entdeckt, das viel wert war. Die Sensibilität und Fachkenntnis waren beeindruckend. 
-                      Absolute Profis mit Herz!"
+                      "Das Team in Friedrichshain hat jeden Fund mit mir besprochen und sogar ein wertvolles Gemälde entdeckt."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Lisa Zimmermann</p>
@@ -909,63 +818,47 @@ export default function BerlinPage() {
                     </div>
                   </div>
 
-                  {/* Bewertung 9 */}
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Als Vermieter hatte ich schon viele Entrümpelungsfirmen. Aber Rümpel Schmiedel 
-                      ist mit Abstand die beste! Pünktlich, sauber, fair im Preis und immer erreichbar. 
-                      Die Wohnungen werden besenrein übergeben. Mittlerweile beauftrage ich niemand anderen mehr. 
-                      Meine absolute Empfehlung!"
+                      "Pünktlich, sauber, fair im Preis. Mittlerweile beauftrage ich in Berlin niemand anderen mehr."
                     </p>
                     <div className="border-t pt-4">
-                      <p className="font-bold text-[#2C4F5E]">Robert Wagner, Immobilienverwaltung</p>
-                      <p className="text-sm text-gray-600">Mehrere Objekte in ganz Berlin</p>
+                      <p className="font-bold text-[#2C4F5E]">Robert Wagner</p>
+                      <p className="text-sm text-gray-600">Immobilienverwaltung Berlin</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Slider Controls */}
-            <div className="flex justify-center mt-8 gap-2">
-              <button 
-                className="w-3 h-3 bg-[#C73E3A] rounded-full transition-all duration-300" 
-                id="dot-1"
-                onClick={() => handleDotClick(0)}
-              ></button>
-              <button 
-                className="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300 hover:bg-gray-400" 
-                id="dot-2"
-                onClick={() => handleDotClick(1)}
-              ></button>
-              <button 
-                className="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300 hover:bg-gray-400" 
-                id="dot-3"
-                onClick={() => handleDotClick(2)}
-              ></button>
+            <div className="flex justify-center mt-8 gap-3">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentSlide === index ? 'bg-[#C73E3A]' : 'bg-gray-300'
+                  }`}
+                  onClick={() => handleDotClick(index)}
+                />
+              ))}
             </div>
 
-            {/* Navigation Arrows */}
             <button 
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300"
               onClick={handlePrevSlide}
             >
-              <svg className="w-6 h-6 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <div className="w-0 h-0 border-t-[6px] border-r-[10px] border-b-[6px] border-t-transparent border-r-[#2C4F5E] border-b-transparent"></div>
             </button>
             <button 
               className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300"
               onClick={handleNextSlide}
             >
-              <svg className="w-6 h-6 text-[#2C4F5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <div className="w-0 h-0 border-t-[6px] border-l-[10px] border-b-[6px] border-t-transparent border-l-[#2C4F5E] border-b-transparent"></div>
             </button>
           </div>
         </div>
@@ -1073,9 +966,7 @@ export default function BerlinPage() {
             </p>
             <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
               Jetzt Anfrage für Berlin senden
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              <span className="ml-2 text-lg">→</span>
             </a>
           </div>
         </div>
