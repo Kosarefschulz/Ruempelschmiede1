@@ -294,7 +294,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
                 <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <img src="/icons/euro-icon.svg" alt="Festpreis" className="w-10 h-10 filter brightness-0 invert" />
+                  <img src="/icons/icons8-euro.svg" alt="Festpreis" className="w-10 h-10 filter brightness-0 invert" />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Festpreisgarantie</h4>
                 <p className="text-sm opacity-80">Keine versteckten Kosten</p>
