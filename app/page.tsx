@@ -294,10 +294,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
                 <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 00-2 2v6a2 2 0 002 2h2a1 1 0 100 2H6a4 4 0 01-4-4V5a4 4 0 014-4h2a1 1 0 100 2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2a1 1 0 100-2h2a4 4 0 014 4v8a4 4 0 01-4 4H6a4 4 0 01-4-4V5z" clipRule="evenodd" />
-                  </svg>
+                  <img src="/icons/euro-icon.svg" alt="Festpreis" className="w-10 h-10 filter brightness-0 invert" />
                 </div>
                 <h4 className="font-bold text-lg mb-2">Festpreisgarantie</h4>
                 <p className="text-sm opacity-80">Keine versteckten Kosten</p>
