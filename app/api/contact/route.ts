@@ -90,7 +90,7 @@ export async function POST(request: Request) {
       port: 587,
       secure: false, // true for 465, false for 587
       auth: {
-        user: process.env.SMTP_USER || 'info@ruempelmeister.de',
+        user: process.env.SMTP_USER || 'info@ruempelschmiede.de',
         pass: process.env.SMTP_PASSWORD,
       },
       tls: {
@@ -101,8 +101,8 @@ export async function POST(request: Request) {
 
     // Send email to business
     await transporter.sendMail({
-      from: `"Rümpelschmiede Webseite" <noreply@ruempel-schmiede.de>`,
-      to: 'info@ruempelmeister.de',
+      from: `"Rümpelschmiede Webseite" <${process.env.SMTP_USER || 'info@ruempelschmiede.de'}>`,
+      to: 'info@ruempelschmiede.de',
       replyTo: email,
       subject: `Neue Anfrage von ${name} - ${service || 'Allgemeine Anfrage'}`,
       html: emailHtml,
@@ -128,13 +128,13 @@ export async function POST(request: Request) {
       <p style="color: #666; font-size: 12px;">
         Rümpelschmiede<br>
         Tel: 0521 / 1200 510<br>
-        E-Mail: info@ruempelmeister.de<br>
+        E-Mail: info@ruempelschmiede.de<br>
         Web: www.ruempel-schmiede.de
       </p>
     `;
 
     await transporter.sendMail({
-      from: `"Rümpelschmiede" <${process.env.SMTP_USER || 'info@ruempelmeister.de'}>`,
+      from: `"Rümpelschmiede" <${process.env.SMTP_USER || 'info@ruempelschmiede.de'}>`,
       to: email,
       subject: 'Ihre Anfrage bei Rümpelschmiede',
       html: confirmationHtml,
