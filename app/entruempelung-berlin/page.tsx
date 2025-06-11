@@ -75,53 +75,6 @@ export default function BerlinPage() {
 
   return (
     <>
-      <style jsx>{`
-        .fade-in-up {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.6s ease;
-        }
-        .fade-in-up.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .animate-fadeInLeft {
-          animation: fadeInLeft 0.8s ease forwards;
-        }
-        .animate-fadeInRight {
-          animation: fadeInRight 0.8s ease forwards;
-        }
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-        .animation-delay-400 {
-          animation-delay: 0.4s;
-        }
-        .animation-delay-600 {
-          animation-delay: 0.6s;
-        }
-        @keyframes fadeInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
-    </>
       {/* Hero Section mit Video */}
       <section className="relative overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
