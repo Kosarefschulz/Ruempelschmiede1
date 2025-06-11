@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
 
-export default function BielefeldPage() {
+export default function DortmundPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const handleDotClick = (index: number) => {
@@ -41,11 +41,11 @@ export default function BielefeldPage() {
         <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
           <div className="text-center w-full">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
-              Entrümpelung Bielefeld - Schnell und günstig!
+              Entrümpelung Dortmund - Zuverlässig im Pott!
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 
-              in Bielefeld und Umgebung - Alles aus einer Hand mit Zufriedenheitsgarantie.
+              in Dortmund und Umgebung - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
@@ -64,10 +64,10 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              Berechnen Sie Ihre Entrümpelungskosten in Bielefeld sofort!
+              Berechnen Sie Ihre Entrümpelungskosten in Dortmund sofort!
             </h2>
             <p className="text-xl text-gray-600">
-              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung in Bielefeld kostet
+              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung in Dortmund kostet
             </p>
           </div>
 
@@ -75,7 +75,7 @@ export default function BielefeldPage() {
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">BASIC</h2>
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 690 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Bielefeld</p>
+              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Dortmund</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
@@ -104,8 +104,8 @@ export default function BielefeldPage() {
                 BELIEBTESTE WAHL
               </div>
               <h2 className="text-2xl font-bold text-[#2C4F5E]">KOMFORT</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.380 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Bielefeld</p>
+              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1380 €</p>
+              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Dortmund</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
@@ -135,8 +135,8 @@ export default function BielefeldPage() {
 
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">PREMIUM</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 2.050 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Bielefeld</p>
+              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 2050 €</p>
+              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Dortmund</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
@@ -171,7 +171,7 @@ export default function BielefeldPage() {
 
           <div className="text-center mt-8">
             <a href="/preise#kalkulator" className="text-[#2C4F5E] hover:text-[#1E3A47] font-semibold">
-              Zum detaillierten Preisrechner für Bielefeld →
+              Zum detaillierten Preisrechner für Dortmund →
             </a>
           </div>
         </div>
@@ -182,10 +182,10 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Ihre Entrümpelung in Bielefeld in sicheren Händen
+              Ihre Entrümpelung in Dortmund in sicheren Händen
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seit über 7 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Bielefeld 
+              Seit über 7 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Dortmund 
               - wir machen Platz für Neues.
             </p>
           </div>
@@ -198,7 +198,7 @@ export default function BielefeldPage() {
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold text-[#C73E3A] mb-2">850+</div>
-              <p className="text-gray-600">Zufriedene Kunden in Bielefeld</p>
+              <p className="text-gray-600">Zufriedene Kunden in Dortmund</p>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold text-[#C73E3A] mb-2">24h</div>
@@ -213,10 +213,10 @@ export default function BielefeldPage() {
           {/* Timeline */}
           <div className="mb-16">
             <h3 className="text-3xl font-bold text-[#2C4F5E] text-center mb-4">
-              So einfach funktioniert's in Bielefeld
+              So einfach funktioniert's in Dortmund
             </h3>
             <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              In nur 4 einfachen Schritten zu Ihrer professionellen Entrümpelung in Bielefeld - 
+              In nur 4 einfachen Schritten zu Ihrer professionellen Entrümpelung in Dortmund - 
               transparent, fair und zuverlässig.
             </p>
             
@@ -228,9 +228,9 @@ export default function BielefeldPage() {
                   </div>
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
-                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung in Bielefeld</h4>
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung in Dortmund</h4>
                   <p className="text-gray-600">
-                    Wir kommen zu Ihnen nach Bielefeld, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
+                    Wir kommen zu Ihnen nach Dortmund, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
                     natürlich kostenlos.
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function BielefeldPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
                   <p className="text-gray-600">
-                    Sie erhalten ein detailliertes Festpreisangebot für Ihre Immobilie in Bielefeld. Keine Überraschungen, 
+                    Sie erhalten ein detailliertes Festpreisangebot für Ihre Immobilie in Dortmund. Keine Überraschungen, 
                     keine nachträglichen Kosten - versprochen!
                   </p>
                 </div>
@@ -260,7 +260,7 @@ export default function BielefeldPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Professionelle Durchführung</h4>
                   <p className="text-gray-600">
-                    Unser erfahrenes Team in Bielefeld räumt schnell, sauber und zuverlässig. 
+                    Unser erfahrenes Team in Dortmund räumt schnell, sauber und zuverlässig. 
                     Wertgegenstände werden selbstverständlich angerechnet.
                   </p>
                 </div>
@@ -275,7 +275,7 @@ export default function BielefeldPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Besenreine Übergabe</h4>
                   <p className="text-gray-600">
-                    Wir hinterlassen Ihre Wohnung in Bielefeld besenrein. Auf Wunsch übernehmen wir auch 
+                    Wir hinterlassen Ihre Wohnung in Dortmund besenrein. Auf Wunsch übernehmen wir auch 
                     die Schlüsselübergabe an den Vermieter.
                   </p>
                 </div>
@@ -286,10 +286,10 @@ export default function BielefeldPage() {
           {/* Trust Elements */}
           <div className="bg-gradient-to-r from-[#2C4F5E] to-[#1E3A47] text-white rounded-2xl p-12 shadow-2xl">
             <h3 className="text-3xl font-bold mb-4 text-center">
-              Warum über 850 Kunden in Bielefeld uns vertrauen
+              Warum über 850 Kunden in Dortmund uns vertrauen
             </h3>
             <p className="text-center text-white/80 mb-12 max-w-2xl mx-auto">
-              Ihre Zufriedenheit ist unser Antrieb. Deshalb garantieren wir höchste Standards bei jeder Entrümpelung in Bielefeld.
+              Ihre Zufriedenheit ist unser Antrieb. Deshalb garantieren wir höchste Standards bei jeder Entrümpelung in Dortmund.
             </p>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
@@ -340,7 +340,7 @@ export default function BielefeldPage() {
                 </div>
                 <div>
                   <p className="text-3xl font-bold">0€</p>
-                  <p className="text-sm opacity-80">Anfahrtskosten in Bielefeld</p>
+                  <p className="text-sm opacity-80">Anfahrtskosten in Dortmund</p>
                 </div>
               </div>
             </div>
@@ -353,10 +353,10 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              Ihre Vorteile bei Entrümpelung Bielefeld
+              Ihre Vorteile bei Entrümpelung Dortmund
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bei uns erhalten Sie nicht nur eine professionelle Entrümpelung in Bielefeld, 
+              Bei uns erhalten Sie nicht nur eine professionelle Entrümpelung in Dortmund, 
               sondern ein Rundum-sorglos-Paket mit echtem Mehrwert.
             </p>
           </div>
@@ -369,9 +369,9 @@ export default function BielefeldPage() {
                   <img src="/icons/shield-icon.svg" alt="Sicherheit" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit in Bielefeld</h3>
+                  <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit in Dortmund</h3>
                   <p className="text-gray-600 text-sm">
-                    Vollversichert und zertifiziert - Ihre Immobilie in Bielefeld ist bei uns in professionellen Händen. 
+                    Vollversichert und zertifiziert - Ihre Immobilie in Dortmund ist bei uns in professionellen Händen. 
                     Garantierte Qualität und Kundenzufriedenheit.
                   </p>
                 </div>
@@ -387,8 +387,8 @@ export default function BielefeldPage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
                   <p className="text-gray-600 text-sm">
-                    Unverbindliche Beratung vor Ort in Bielefeld - völlig kostenfrei. Transparente Festpreise 
-                    ohne versteckte Kosten. Keine Anfahrtskosten in ganz Bielefeld.
+                    Unverbindliche Beratung vor Ort in Dortmund - völlig kostenfrei. Transparente Festpreise 
+                    ohne versteckte Kosten. Keine Anfahrtskosten in ganz Dortmund.
                   </p>
                 </div>
               </div>
@@ -401,7 +401,7 @@ export default function BielefeldPage() {
                   <img src="/icons/recycle-icon.svg" alt="Recycling" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung in Bielefeld</h3>
+                  <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung in Dortmund</h3>
                   <p className="text-gray-600 text-sm">
                     Fachgerechte und umweltschonende Entsorgung nach lokalen Standards. Über 85% der Materialien werden wiederverwertet. 
                     Sie erhalten alle erforderlichen Entsorgungsnachweise.
@@ -433,9 +433,9 @@ export default function BielefeldPage() {
                   <img src="/icons/heart-icon.svg" alt="Soziales Engagement" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement in Bielefeld</h3>
+                  <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement in Dortmund</h3>
                   <p className="text-gray-600 text-sm">
-                    Gut erhaltene Gegenstände spenden wir an lokale gemeinnützige Organisationen in Bielefeld. 
+                    Gut erhaltene Gegenstände spenden wir an lokale gemeinnützige Organisationen in Dortmund. 
                     Sie erhalten auf Wunsch eine Spendenbescheinigung.
                   </p>
                 </div>
@@ -451,7 +451,7 @@ export default function BielefeldPage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
                   <p className="text-gray-600 text-sm">
-                    Geschultes Personal in Bielefeld - keine Subunternehmer. Modernste Ausrüstung für effiziente Arbeit. 
+                    Geschultes Personal in Dortmund - keine Subunternehmer. Modernste Ausrüstung für effiziente Arbeit. 
                     98% Kundenzufriedenheit sprechen für sich.
                   </p>
                 </div>
@@ -462,10 +462,10 @@ export default function BielefeldPage() {
           {/* CTA Box */}
           <div className="bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">
-              Überzeugt? Lassen Sie uns gemeinsam Ihr Projekt in Bielefeld angehen!
+              Überzeugt? Lassen Sie uns gemeinsam Ihr Projekt in Dortmund angehen!
             </h3>
             <p className="mb-6 opacity-90">
-              Kostenlose Besichtigung • Unverbindliches Angebot • Günstige Festpreise für Bielefeld
+              Kostenlose Besichtigung • Unverbindliches Angebot • Günstige Festpreise für Dortmund
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/kontakt" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
@@ -484,11 +484,11 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Unsere Entrümpelungs-Leistungen in Bielefeld
+              Unsere Entrümpelungs-Leistungen in Dortmund
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Von der kleinen Kellerentrümpelung bis zur kompletten Entkernung - 
-              wir bieten maßgeschneiderte Lösungen für jeden Bedarf in Bielefeld.
+              wir bieten maßgeschneiderte Lösungen für jeden Bedarf in Dortmund.
             </p>
           </div>
 
@@ -498,7 +498,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Karton.png" 
-                  alt="Haushaltsauflösung Bielefeld"
+                  alt="Haushaltsauflösung Dortmund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -507,7 +507,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
                 <p className="text-gray-700 mb-4">
-                  Komplette Wohnungsauflösungen in Bielefeld mit Wertanrechnung. Wir kümmern uns um alles - 
+                  Komplette Wohnungsauflösungen in Dortmund mit Wertanrechnung. Wir kümmern uns um alles - 
                   von der Entrümpelung bis zur Endreinigung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -522,7 +522,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Gewerbe 2.jpg" 
-                  alt="Gewerbeauflösung Bielefeld"
+                  alt="Gewerbeauflösung Dortmund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -531,7 +531,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
                 <p className="text-gray-700 mb-4">
-                  Büros, Praxen, Läden in Bielefeld - schnell und diskret. Auch am Wochenende und 
+                  Büros, Praxen, Läden in Dortmund - schnell und diskret. Auch am Wochenende und 
                   außerhalb der Geschäftszeiten möglich.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -546,7 +546,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Voller Messie Flur .jpg" 
-                  alt="Messie-Wohnung Entrümpelung Bielefeld"
+                  alt="Messie-Wohnung Entrümpelung Dortmund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -555,7 +555,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
                 <p className="text-gray-700 mb-4">
-                  Sensible Räumung in Bielefeld mit Desinfektion. Wir arbeiten diskret, respektvoll 
+                  Sensible Räumung in Dortmund mit Desinfektion. Wir arbeiten diskret, respektvoll 
                   und ohne Vorurteile.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -570,7 +570,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/1-2.jpg" 
-                  alt="Kellerentrümpelung Bielefeld"
+                  alt="Kellerentrümpelung Dortmund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -579,7 +579,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
                 <p className="text-gray-700 mb-4">
-                  Endlich wieder Platz im Keller in Bielefeld! Schnell und günstig - oft schon ab 415€. 
+                  Endlich wieder Platz im Keller in Dortmund! Schnell und günstig - oft schon ab 415€. 
                   Inkl. fachgerechter Entsorgung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -594,7 +594,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Dachboden.jpg" 
-                  alt="Dachbodenentrümpelung Bielefeld"
+                  alt="Dachbodenentrümpelung Dortmund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -603,7 +603,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
                 <p className="text-gray-700 mb-4">
-                  Schwer zugängliche Dachböden in Bielefeld? Kein Problem für unser erfahrenes Team! 
+                  Schwer zugängliche Dachböden in Dortmund? Kein Problem für unser erfahrenes Team! 
                   Sicher und professionell.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -618,7 +618,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
-                  alt="Express Entrümpelung Bielefeld"
+                  alt="Express Entrümpelung Dortmund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -628,9 +628,9 @@ export default function BielefeldPage() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Express-Service Bielefeld</h3>
+                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Express-Service Dortmund</h3>
                 <p className="text-gray-700 mb-4">
-                  Eilig? Innerhalb von 48 Stunden räumen wir in Bielefeld für Sie - garantiert! 
+                  Eilig? Innerhalb von 48 Stunden räumen wir in Dortmund für Sie - garantiert! 
                   Perfekt bei kurzfristigen Terminen.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -644,7 +644,7 @@ export default function BielefeldPage() {
           {/* CTA am Ende */}
           <div className="text-center mt-12">
             <a href="/leistungen" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-              Alle Leistungen für Bielefeld ansehen
+              Alle Leistungen für Dortmund ansehen
               <span className="ml-2 text-lg">→</span>
             </a>
           </div>
@@ -655,10 +655,10 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Das sagen unsere Kunden in Bielefeld
+              Das sagen unsere Kunden in Dortmund
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Über 850 zufriedene Kunden in ganz Bielefeld - ihre Geschichten sprechen für sich
+              Über 850 zufriedene Kunden in ganz Dortmund - ihre Geschichten sprechen für sich
             </p>
           </div>
 
@@ -677,11 +677,11 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Professionelle Entrümpelung in Bielefeld. Das Team war pünktlich, freundlich und sehr gründlich."
+                      "Professionelle Entrümpelung in Dortmund. Das Team war pünktlich, freundlich und sehr gründlich."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Müller</p>
-                      <p className="text-sm text-gray-600">Haushaltsauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Haushaltsauflösung Dortmund</p>
                     </div>
                   </div>
 
@@ -692,7 +692,7 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Express-Service in Bielefeld - innerhalb von 48 Stunden war alles erledigt. Top!"
+                      "Express-Service in Dortmund - innerhalb von 48 Stunden war alles erledigt. Top!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Michael Schmidt</p>
@@ -711,7 +711,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Anna Weber</p>
-                      <p className="text-sm text-gray-600">Wohnungsauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Wohnungsauflösung Dortmund</p>
                     </div>
                   </div>
                 </div>
@@ -727,11 +727,11 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Kellerentrümpelung in Bielefeld - schnell und sauber. Der Festpreis wurde eingehalten."
+                      "Kellerentrümpelung in Dortmund - schnell und sauber. Der Festpreis wurde eingehalten."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Bauer</p>
-                      <p className="text-sm text-gray-600">Keller Bielefeld</p>
+                      <p className="text-sm text-gray-600">Keller Dortmund</p>
                     </div>
                   </div>
 
@@ -746,7 +746,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Vertraulich</p>
-                      <p className="text-sm text-gray-600">Messie-Hilfe Bielefeld</p>
+                      <p className="text-sm text-gray-600">Messie-Hilfe Dortmund</p>
                     </div>
                   </div>
 
@@ -761,7 +761,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Consulting GmbH</p>
-                      <p className="text-sm text-gray-600">Büroauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Büroauflösung Dortmund</p>
                     </div>
                   </div>
                 </div>
@@ -781,7 +781,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Thomas Hofmann</p>
-                      <p className="text-sm text-gray-600">Nachlassauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Nachlassauflösung Dortmund</p>
                     </div>
                   </div>
 
@@ -796,7 +796,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Sandra Krüger</p>
-                      <p className="text-sm text-gray-600">Dachboden Bielefeld</p>
+                      <p className="text-sm text-gray-600">Dachboden Dortmund</p>
                     </div>
                   </div>
 
@@ -807,11 +807,11 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Als Immobilienverwaltung sind wir sehr zufrieden. Zuverlässig und immer pünktlich in Bielefeld."
+                      "Als Immobilienverwaltung sind wir sehr zufrieden. Zuverlässig und immer pünktlich in Dortmund."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Immobilien Service GmbH</p>
-                      <p className="text-sm text-gray-600">Mehrere Objekte Bielefeld</p>
+                      <p className="text-sm text-gray-600">Mehrere Objekte Dortmund</p>
                     </div>
                   </div>
                 </div>
@@ -846,15 +846,15 @@ export default function BielefeldPage() {
         </div>
       </section>
 
-      {/* Städte-Bereich - Bielefeld Umgebung */}
+      {/* Städte-Bereich - Umgebung */}
       <section className="py-16 bg-[#2C4F5E] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
-              Entrümpelung im Großraum Bielefeld
+              Entrümpelung im Großraum Dortmund
             </h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Nicht nur in Bielefeld, sondern auch in allen umliegenden Städten und Gemeinden 
+              Nicht nur in Dortmund, sondern auch in allen umliegenden Städten und Gemeinden 
               sind wir für Sie da! Professionelle Entrümpelung in der ganzen Region.
             </p>
           </div>
@@ -864,11 +864,11 @@ export default function BielefeldPage() {
               Ihr Ort ist nicht dabei? Kein Problem!
             </p>
             <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
-              Wir fahren im gesamten Großraum Bielefeld und in die angrenzenden Regionen. 
+              Wir fahren im gesamten Großraum Dortmund und in die angrenzenden Regionen. 
               Kontaktieren Sie uns für eine individuelle Lösung!
             </p>
             <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
-              Jetzt Anfrage für Bielefeld senden
+              Jetzt Anfrage für Dortmund senden
               <span className="ml-2 text-lg">→</span>
             </a>
           </div>

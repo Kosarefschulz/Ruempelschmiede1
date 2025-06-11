@@ -1,9 +1,33 @@
-'use client'
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+
+const cities = [
+  { name: 'Köln', folder: 'koeln', price1: 720, price2: 1420, price3: 2090, customers: 1800, slogan: 'Professionell und zuverlässig!', kellerPrice: 430 },
+  { name: 'Frankfurt', folder: 'frankfurt', price1: 780, price2: 1520, price3: 2290, customers: 1300, slogan: 'Schnell und effizient!', kellerPrice: 450 },
+  { name: 'Stuttgart', folder: 'stuttgart', price1: 760, price2: 1490, price3: 2190, customers: 1100, slogan: 'Zuverlässig und fair!', kellerPrice: 440 },
+  { name: 'Düsseldorf', folder: 'duesseldorf', price1: 740, price2: 1450, price3: 2150, customers: 1000, slogan: 'Professionell und diskret!', kellerPrice: 430 },
+  { name: 'Leipzig', folder: 'leipzig', price1: 680, price2: 1350, price3: 1990, customers: 900, slogan: 'Schnell und günstig!', kellerPrice: 410 },
+  { name: 'Dortmund', folder: 'dortmund', price1: 690, price2: 1380, price3: 2050, customers: 850, slogan: 'Zuverlässig im Pott!', kellerPrice: 415 },
+  { name: 'Essen', folder: 'essen', price1: 690, price2: 1380, price3: 2050, customers: 800, slogan: 'Professionell im Ruhrgebiet!', kellerPrice: 415 },
+  { name: 'Bremen', folder: 'bremen', price1: 700, price2: 1390, price3: 2090, customers: 750, slogan: 'Moin und anpacken!', kellerPrice: 420 },
+  { name: 'Dresden', folder: 'dresden', price1: 670, price2: 1330, price3: 1980, customers: 700, slogan: 'Sächsisch gut!', kellerPrice: 405 },
+  { name: 'Hannover', folder: 'hannover', price1: 710, price2: 1410, price3: 2120, customers: 950, slogan: 'Norddeutsch zuverlässig!', kellerPrice: 425 },
+  { name: 'Nürnberg', folder: 'nuernberg', price1: 730, price2: 1440, price3: 2140, customers: 900, slogan: 'Fränkisch gut!', kellerPrice: 435 },
+  { name: 'Duisburg', folder: 'duisburg', price1: 685, price2: 1370, price3: 2040, customers: 600, slogan: 'Stark am Rhein!', kellerPrice: 410 },
+  { name: 'Bochum', folder: 'bochum', price1: 685, price2: 1370, price3: 2040, customers: 550, slogan: 'Ruhrpott-Power!', kellerPrice: 410 },
+  { name: 'Wuppertal', folder: 'wuppertal', price1: 695, price2: 1385, price3: 2070, customers: 500, slogan: 'Hoch hinaus!', kellerPrice: 418 },
+  { name: 'Bonn', folder: 'bonn', price1: 735, price2: 1455, price3: 2155, customers: 650, slogan: 'Rheinisch und gründlich!', kellerPrice: 435 },
+  { name: 'Münster', folder: 'muenster', price1: 705, price2: 1395, price3: 2095, customers: 700, slogan: 'Westfälisch solide!', kellerPrice: 422 }
+];
+
+const template = (city) => `'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
 
-export default function BielefeldPage() {
+export default function ${city.name}Page() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const handleDotClick = (index: number) => {
@@ -41,11 +65,11 @@ export default function BielefeldPage() {
         <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
           <div className="text-center w-full">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
-              Entrümpelung Bielefeld - Schnell und günstig!
+              Entrümpelung ${city.name} - ${city.slogan}
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 
-              in Bielefeld und Umgebung - Alles aus einer Hand mit Zufriedenheitsgarantie.
+              in ${city.name} und Umgebung - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
@@ -64,18 +88,18 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              Berechnen Sie Ihre Entrümpelungskosten in Bielefeld sofort!
+              Berechnen Sie Ihre Entrümpelungskosten in ${city.name} sofort!
             </h2>
             <p className="text-xl text-gray-600">
-              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung in Bielefeld kostet
+              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung in ${city.name} kostet
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">BASIC</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 690 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Bielefeld</p>
+              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab ${city.price1} €</p>
+              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in ${city.name}</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
@@ -104,8 +128,8 @@ export default function BielefeldPage() {
                 BELIEBTESTE WAHL
               </div>
               <h2 className="text-2xl font-bold text-[#2C4F5E]">KOMFORT</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.380 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Bielefeld</p>
+              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab ${city.price2} €</p>
+              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in ${city.name}</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
@@ -135,8 +159,8 @@ export default function BielefeldPage() {
 
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-[#2C4F5E]">PREMIUM</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 2.050 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in Bielefeld</p>
+              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab ${city.price3} €</p>
+              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung in ${city.name}</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
@@ -171,7 +195,7 @@ export default function BielefeldPage() {
 
           <div className="text-center mt-8">
             <a href="/preise#kalkulator" className="text-[#2C4F5E] hover:text-[#1E3A47] font-semibold">
-              Zum detaillierten Preisrechner für Bielefeld →
+              Zum detaillierten Preisrechner für ${city.name} →
             </a>
           </div>
         </div>
@@ -182,10 +206,10 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Ihre Entrümpelung in Bielefeld in sicheren Händen
+              Ihre Entrümpelung in ${city.name} in sicheren Händen
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seit über 7 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Bielefeld 
+              Seit über 7 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz ${city.name} 
               - wir machen Platz für Neues.
             </p>
           </div>
@@ -197,8 +221,8 @@ export default function BielefeldPage() {
               <p className="text-gray-600">Jahre Erfahrung</p>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#C73E3A] mb-2">850+</div>
-              <p className="text-gray-600">Zufriedene Kunden in Bielefeld</p>
+              <div className="text-5xl font-bold text-[#C73E3A] mb-2">${city.customers}+</div>
+              <p className="text-gray-600">Zufriedene Kunden in ${city.name}</p>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold text-[#C73E3A] mb-2">24h</div>
@@ -213,10 +237,10 @@ export default function BielefeldPage() {
           {/* Timeline */}
           <div className="mb-16">
             <h3 className="text-3xl font-bold text-[#2C4F5E] text-center mb-4">
-              So einfach funktioniert's in Bielefeld
+              So einfach funktioniert's in ${city.name}
             </h3>
             <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              In nur 4 einfachen Schritten zu Ihrer professionellen Entrümpelung in Bielefeld - 
+              In nur 4 einfachen Schritten zu Ihrer professionellen Entrümpelung in ${city.name} - 
               transparent, fair und zuverlässig.
             </p>
             
@@ -228,9 +252,9 @@ export default function BielefeldPage() {
                   </div>
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
-                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung in Bielefeld</h4>
+                  <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Kostenlose Besichtigung in ${city.name}</h4>
                   <p className="text-gray-600">
-                    Wir kommen zu Ihnen nach Bielefeld, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
+                    Wir kommen zu Ihnen nach ${city.name}, schauen uns alles an und erstellen ein unverbindliches Festpreis Angebot - 
                     natürlich kostenlos.
                   </p>
                 </div>
@@ -245,7 +269,7 @@ export default function BielefeldPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
                   <p className="text-gray-600">
-                    Sie erhalten ein detailliertes Festpreisangebot für Ihre Immobilie in Bielefeld. Keine Überraschungen, 
+                    Sie erhalten ein detailliertes Festpreisangebot für Ihre Immobilie in ${city.name}. Keine Überraschungen, 
                     keine nachträglichen Kosten - versprochen!
                   </p>
                 </div>
@@ -260,7 +284,7 @@ export default function BielefeldPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Professionelle Durchführung</h4>
                   <p className="text-gray-600">
-                    Unser erfahrenes Team in Bielefeld räumt schnell, sauber und zuverlässig. 
+                    Unser erfahrenes Team in ${city.name} räumt schnell, sauber und zuverlässig. 
                     Wertgegenstände werden selbstverständlich angerechnet.
                   </p>
                 </div>
@@ -275,7 +299,7 @@ export default function BielefeldPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Besenreine Übergabe</h4>
                   <p className="text-gray-600">
-                    Wir hinterlassen Ihre Wohnung in Bielefeld besenrein. Auf Wunsch übernehmen wir auch 
+                    Wir hinterlassen Ihre Wohnung in ${city.name} besenrein. Auf Wunsch übernehmen wir auch 
                     die Schlüsselübergabe an den Vermieter.
                   </p>
                 </div>
@@ -286,10 +310,10 @@ export default function BielefeldPage() {
           {/* Trust Elements */}
           <div className="bg-gradient-to-r from-[#2C4F5E] to-[#1E3A47] text-white rounded-2xl p-12 shadow-2xl">
             <h3 className="text-3xl font-bold mb-4 text-center">
-              Warum über 850 Kunden in Bielefeld uns vertrauen
+              Warum über ${city.customers} Kunden in ${city.name} uns vertrauen
             </h3>
             <p className="text-center text-white/80 mb-12 max-w-2xl mx-auto">
-              Ihre Zufriedenheit ist unser Antrieb. Deshalb garantieren wir höchste Standards bei jeder Entrümpelung in Bielefeld.
+              Ihre Zufriedenheit ist unser Antrieb. Deshalb garantieren wir höchste Standards bei jeder Entrümpelung in ${city.name}.
             </p>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
@@ -340,7 +364,7 @@ export default function BielefeldPage() {
                 </div>
                 <div>
                   <p className="text-3xl font-bold">0€</p>
-                  <p className="text-sm opacity-80">Anfahrtskosten in Bielefeld</p>
+                  <p className="text-sm opacity-80">Anfahrtskosten in ${city.name}</p>
                 </div>
               </div>
             </div>
@@ -353,10 +377,10 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              Ihre Vorteile bei Entrümpelung Bielefeld
+              Ihre Vorteile bei Entrümpelung ${city.name}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bei uns erhalten Sie nicht nur eine professionelle Entrümpelung in Bielefeld, 
+              Bei uns erhalten Sie nicht nur eine professionelle Entrümpelung in ${city.name}, 
               sondern ein Rundum-sorglos-Paket mit echtem Mehrwert.
             </p>
           </div>
@@ -369,9 +393,9 @@ export default function BielefeldPage() {
                   <img src="/icons/shield-icon.svg" alt="Sicherheit" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit in Bielefeld</h3>
+                  <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit in ${city.name}</h3>
                   <p className="text-gray-600 text-sm">
-                    Vollversichert und zertifiziert - Ihre Immobilie in Bielefeld ist bei uns in professionellen Händen. 
+                    Vollversichert und zertifiziert - Ihre Immobilie in ${city.name} ist bei uns in professionellen Händen. 
                     Garantierte Qualität und Kundenzufriedenheit.
                   </p>
                 </div>
@@ -387,8 +411,8 @@ export default function BielefeldPage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
                   <p className="text-gray-600 text-sm">
-                    Unverbindliche Beratung vor Ort in Bielefeld - völlig kostenfrei. Transparente Festpreise 
-                    ohne versteckte Kosten. Keine Anfahrtskosten in ganz Bielefeld.
+                    Unverbindliche Beratung vor Ort in ${city.name} - völlig kostenfrei. Transparente Festpreise 
+                    ohne versteckte Kosten. Keine Anfahrtskosten in ganz ${city.name}.
                   </p>
                 </div>
               </div>
@@ -401,7 +425,7 @@ export default function BielefeldPage() {
                   <img src="/icons/recycle-icon.svg" alt="Recycling" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung in Bielefeld</h3>
+                  <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung in ${city.name}</h3>
                   <p className="text-gray-600 text-sm">
                     Fachgerechte und umweltschonende Entsorgung nach lokalen Standards. Über 85% der Materialien werden wiederverwertet. 
                     Sie erhalten alle erforderlichen Entsorgungsnachweise.
@@ -433,9 +457,9 @@ export default function BielefeldPage() {
                   <img src="/icons/heart-icon.svg" alt="Soziales Engagement" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement in Bielefeld</h3>
+                  <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement in ${city.name}</h3>
                   <p className="text-gray-600 text-sm">
-                    Gut erhaltene Gegenstände spenden wir an lokale gemeinnützige Organisationen in Bielefeld. 
+                    Gut erhaltene Gegenstände spenden wir an lokale gemeinnützige Organisationen in ${city.name}. 
                     Sie erhalten auf Wunsch eine Spendenbescheinigung.
                   </p>
                 </div>
@@ -451,7 +475,7 @@ export default function BielefeldPage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
                   <p className="text-gray-600 text-sm">
-                    Geschultes Personal in Bielefeld - keine Subunternehmer. Modernste Ausrüstung für effiziente Arbeit. 
+                    Geschultes Personal in ${city.name} - keine Subunternehmer. Modernste Ausrüstung für effiziente Arbeit. 
                     98% Kundenzufriedenheit sprechen für sich.
                   </p>
                 </div>
@@ -462,10 +486,10 @@ export default function BielefeldPage() {
           {/* CTA Box */}
           <div className="bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">
-              Überzeugt? Lassen Sie uns gemeinsam Ihr Projekt in Bielefeld angehen!
+              Überzeugt? Lassen Sie uns gemeinsam Ihr Projekt in ${city.name} angehen!
             </h3>
             <p className="mb-6 opacity-90">
-              Kostenlose Besichtigung • Unverbindliches Angebot • Günstige Festpreise für Bielefeld
+              Kostenlose Besichtigung • Unverbindliches Angebot • Günstige Festpreise für ${city.name}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/kontakt" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
@@ -484,11 +508,11 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Unsere Entrümpelungs-Leistungen in Bielefeld
+              Unsere Entrümpelungs-Leistungen in ${city.name}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Von der kleinen Kellerentrümpelung bis zur kompletten Entkernung - 
-              wir bieten maßgeschneiderte Lösungen für jeden Bedarf in Bielefeld.
+              wir bieten maßgeschneiderte Lösungen für jeden Bedarf in ${city.name}.
             </p>
           </div>
 
@@ -498,7 +522,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Karton.png" 
-                  alt="Haushaltsauflösung Bielefeld"
+                  alt="Haushaltsauflösung ${city.name}"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -507,7 +531,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
                 <p className="text-gray-700 mb-4">
-                  Komplette Wohnungsauflösungen in Bielefeld mit Wertanrechnung. Wir kümmern uns um alles - 
+                  Komplette Wohnungsauflösungen in ${city.name} mit Wertanrechnung. Wir kümmern uns um alles - 
                   von der Entrümpelung bis zur Endreinigung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -522,7 +546,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Gewerbe 2.jpg" 
-                  alt="Gewerbeauflösung Bielefeld"
+                  alt="Gewerbeauflösung ${city.name}"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -531,7 +555,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
                 <p className="text-gray-700 mb-4">
-                  Büros, Praxen, Läden in Bielefeld - schnell und diskret. Auch am Wochenende und 
+                  Büros, Praxen, Läden in ${city.name} - schnell und diskret. Auch am Wochenende und 
                   außerhalb der Geschäftszeiten möglich.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -546,7 +570,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Voller Messie Flur .jpg" 
-                  alt="Messie-Wohnung Entrümpelung Bielefeld"
+                  alt="Messie-Wohnung Entrümpelung ${city.name}"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -555,7 +579,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
                 <p className="text-gray-700 mb-4">
-                  Sensible Räumung in Bielefeld mit Desinfektion. Wir arbeiten diskret, respektvoll 
+                  Sensible Räumung in ${city.name} mit Desinfektion. Wir arbeiten diskret, respektvoll 
                   und ohne Vorurteile.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -570,7 +594,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/1-2.jpg" 
-                  alt="Kellerentrümpelung Bielefeld"
+                  alt="Kellerentrümpelung ${city.name}"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -579,7 +603,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
                 <p className="text-gray-700 mb-4">
-                  Endlich wieder Platz im Keller in Bielefeld! Schnell und günstig - oft schon ab 415€. 
+                  Endlich wieder Platz im Keller in ${city.name}! Schnell und günstig - oft schon ab ${city.kellerPrice}€. 
                   Inkl. fachgerechter Entsorgung.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -594,7 +618,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Dachboden.jpg" 
-                  alt="Dachbodenentrümpelung Bielefeld"
+                  alt="Dachbodenentrümpelung ${city.name}"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -603,7 +627,7 @@ export default function BielefeldPage() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
                 <p className="text-gray-700 mb-4">
-                  Schwer zugängliche Dachböden in Bielefeld? Kein Problem für unser erfahrenes Team! 
+                  Schwer zugängliche Dachböden in ${city.name}? Kein Problem für unser erfahrenes Team! 
                   Sicher und professionell.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -618,7 +642,7 @@ export default function BielefeldPage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
-                  alt="Express Entrümpelung Bielefeld"
+                  alt="Express Entrümpelung ${city.name}"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -628,9 +652,9 @@ export default function BielefeldPage() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Express-Service Bielefeld</h3>
+                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Express-Service ${city.name}</h3>
                 <p className="text-gray-700 mb-4">
-                  Eilig? Innerhalb von 48 Stunden räumen wir in Bielefeld für Sie - garantiert! 
+                  Eilig? Innerhalb von 48 Stunden räumen wir in ${city.name} für Sie - garantiert! 
                   Perfekt bei kurzfristigen Terminen.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
@@ -644,7 +668,7 @@ export default function BielefeldPage() {
           {/* CTA am Ende */}
           <div className="text-center mt-12">
             <a href="/leistungen" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-              Alle Leistungen für Bielefeld ansehen
+              Alle Leistungen für ${city.name} ansehen
               <span className="ml-2 text-lg">→</span>
             </a>
           </div>
@@ -655,17 +679,17 @@ export default function BielefeldPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Das sagen unsere Kunden in Bielefeld
+              Das sagen unsere Kunden in ${city.name}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Über 850 zufriedene Kunden in ganz Bielefeld - ihre Geschichten sprechen für sich
+              Über ${city.customers} zufriedene Kunden in ganz ${city.name} - ihre Geschichten sprechen für sich
             </p>
           </div>
 
           <div className="relative overflow-hidden">
             <div 
               className="flex transition-transform duration-500 ease-in-out" 
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              style={{ transform: \`translateX(-\${currentSlide * 100}%)\` }}
             >
               {/* Slide 1 */}
               <div className="min-w-full">
@@ -677,11 +701,11 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Professionelle Entrümpelung in Bielefeld. Das Team war pünktlich, freundlich und sehr gründlich."
+                      "Professionelle Entrümpelung in ${city.name}. Das Team war pünktlich, freundlich und sehr gründlich."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Müller</p>
-                      <p className="text-sm text-gray-600">Haushaltsauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Haushaltsauflösung ${city.name}</p>
                     </div>
                   </div>
 
@@ -692,7 +716,7 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Express-Service in Bielefeld - innerhalb von 48 Stunden war alles erledigt. Top!"
+                      "Express-Service in ${city.name} - innerhalb von 48 Stunden war alles erledigt. Top!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Michael Schmidt</p>
@@ -711,7 +735,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Anna Weber</p>
-                      <p className="text-sm text-gray-600">Wohnungsauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Wohnungsauflösung ${city.name}</p>
                     </div>
                   </div>
                 </div>
@@ -727,11 +751,11 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Kellerentrümpelung in Bielefeld - schnell und sauber. Der Festpreis wurde eingehalten."
+                      "Kellerentrümpelung in ${city.name} - schnell und sauber. Der Festpreis wurde eingehalten."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Bauer</p>
-                      <p className="text-sm text-gray-600">Keller Bielefeld</p>
+                      <p className="text-sm text-gray-600">Keller ${city.name}</p>
                     </div>
                   </div>
 
@@ -746,7 +770,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Vertraulich</p>
-                      <p className="text-sm text-gray-600">Messie-Hilfe Bielefeld</p>
+                      <p className="text-sm text-gray-600">Messie-Hilfe ${city.name}</p>
                     </div>
                   </div>
 
@@ -761,7 +785,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Consulting GmbH</p>
-                      <p className="text-sm text-gray-600">Büroauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Büroauflösung ${city.name}</p>
                     </div>
                   </div>
                 </div>
@@ -781,7 +805,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Thomas Hofmann</p>
-                      <p className="text-sm text-gray-600">Nachlassauflösung Bielefeld</p>
+                      <p className="text-sm text-gray-600">Nachlassauflösung ${city.name}</p>
                     </div>
                   </div>
 
@@ -796,7 +820,7 @@ export default function BielefeldPage() {
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Sandra Krüger</p>
-                      <p className="text-sm text-gray-600">Dachboden Bielefeld</p>
+                      <p className="text-sm text-gray-600">Dachboden ${city.name}</p>
                     </div>
                   </div>
 
@@ -807,11 +831,11 @@ export default function BielefeldPage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Als Immobilienverwaltung sind wir sehr zufrieden. Zuverlässig und immer pünktlich in Bielefeld."
+                      "Als Immobilienverwaltung sind wir sehr zufrieden. Zuverlässig und immer pünktlich in ${city.name}."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Immobilien Service GmbH</p>
-                      <p className="text-sm text-gray-600">Mehrere Objekte Bielefeld</p>
+                      <p className="text-sm text-gray-600">Mehrere Objekte ${city.name}</p>
                     </div>
                   </div>
                 </div>
@@ -822,9 +846,9 @@ export default function BielefeldPage() {
               {[0, 1, 2].map((index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={\`w-3 h-3 rounded-full transition-all duration-300 \${
                     currentSlide === index ? 'bg-[#C73E3A]' : 'bg-gray-300'
-                  }`}
+                  }\`}
                   onClick={() => handleDotClick(index)}
                 />
               ))}
@@ -846,15 +870,15 @@ export default function BielefeldPage() {
         </div>
       </section>
 
-      {/* Städte-Bereich - Bielefeld Umgebung */}
+      {/* Städte-Bereich - Umgebung */}
       <section className="py-16 bg-[#2C4F5E] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
-              Entrümpelung im Großraum Bielefeld
+              Entrümpelung im Großraum ${city.name}
             </h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Nicht nur in Bielefeld, sondern auch in allen umliegenden Städten und Gemeinden 
+              Nicht nur in ${city.name}, sondern auch in allen umliegenden Städten und Gemeinden 
               sind wir für Sie da! Professionelle Entrümpelung in der ganzen Region.
             </p>
           </div>
@@ -864,11 +888,11 @@ export default function BielefeldPage() {
               Ihr Ort ist nicht dabei? Kein Problem!
             </p>
             <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
-              Wir fahren im gesamten Großraum Bielefeld und in die angrenzenden Regionen. 
+              Wir fahren im gesamten Großraum ${city.name} und in die angrenzenden Regionen. 
               Kontaktieren Sie uns für eine individuelle Lösung!
             </p>
             <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
-              Jetzt Anfrage für Bielefeld senden
+              Jetzt Anfrage für ${city.name} senden
               <span className="ml-2 text-lg">→</span>
             </a>
           </div>
@@ -876,4 +900,22 @@ export default function BielefeldPage() {
       </section>
     </>
   )
-}
+}`;
+
+// Generate all cities
+cities.forEach(city => {
+  const pageContent = template(city);
+  const dirPath = path.join(__dirname, '..', 'app', `entruempelung-${city.folder}`);
+  const filePath = path.join(dirPath, 'page.tsx');
+  
+  // Create directory if it doesn't exist
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
+  
+  // Write the file
+  fs.writeFileSync(filePath, pageContent, 'utf8');
+  console.log(`Created: ${filePath}`);
+});
+
+console.log(`Successfully generated ${cities.length} city pages!`);
