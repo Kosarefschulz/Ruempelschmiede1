@@ -85,7 +85,7 @@ export async function POST(request: Request) {
     `;
 
     // Create transporter for Strato SMTP
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.strato.de',
       port: 465,
       secure: true, // true for 465, false for other ports
