@@ -17,10 +17,11 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Unsere Leistungen</h3>
             <ul className="space-y-2">
-              <li><Link href="/leistungen/entruempelung" className="text-gray-400 hover:text-white">Entrümpelung</Link></li>
-              <li><Link href="/leistungen/haushaltsaufloesung" className="text-gray-400 hover:text-white">Haushaltsauflösung</Link></li>
-              <li><Link href="/leistungen/gewerbeaufloesung" className="text-gray-400 hover:text-white">Gewerbeauflösung</Link></li>
-              <li><Link href="/leistungen/messiewohnung" className="text-gray-400 hover:text-white">Messiewohnung</Link></li>
+              <li><Link href="/leistungen#haushaltsaufloesung" className="text-gray-400 hover:text-white">Haushaltsauflösung</Link></li>
+              <li><Link href="/leistungen#gewerbeaufloesung" className="text-gray-400 hover:text-white">Gewerbeauflösung</Link></li>
+              <li><Link href="/leistungen#messie-entruempelung" className="text-gray-400 hover:text-white">Messiewohnung</Link></li>
+              <li><Link href="/leistungen#keller-dachboden" className="text-gray-400 hover:text-white">Keller/Dachboden</Link></li>
+              <li><Link href="/leistungen#express-service" className="text-gray-400 hover:text-white">Express-Service</Link></li>
             </ul>
           </div>
 
@@ -30,7 +31,6 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/impressum" className="text-gray-400 hover:text-white">Impressum</Link></li>
               <li><Link href="/datenschutz" className="text-gray-400 hover:text-white">Datenschutz</Link></li>
-              <li><Link href="/agb" className="text-gray-400 hover:text-white">AGB</Link></li>
             </ul>
           </div>
 

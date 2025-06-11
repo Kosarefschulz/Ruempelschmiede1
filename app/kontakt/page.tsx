@@ -1,5 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
+import { useRecaptcha } from '../hooks/useRecaptcha';
+import { trackContactFormSubmit } from '../components/GoogleAnalytics';
 
 export default function KontaktPage() {
   const [formData, setFormData] = useState({
@@ -40,36 +43,69 @@ export default function KontaktPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const { executeRecaptchaWithAction } = useRecaptcha();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Formulardaten:', formData);
-    setFormSubmitted(true);
-    
-    setTimeout(() => {
-      const successElement = document.getElementById('success-message');
-      if (successElement) {
-        successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptchaWithAction('contact_form');
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        trackContactFormSubmit(formData.service);
+        
+        setTimeout(() => {
+          const successElement = document.getElementById('success-message');
+          if (successElement) {
+            successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 100);
+      } else {
+        setSubmitError(data.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
       }
-    }, 100);
+    } catch (error) {
+      setSubmitError('Ein Netzwerkfehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const quickEstimates = [
-    { size: '1-Zimmer', price: '690€', iconLabel: 'ICON_1ZIMMER' },
-    { size: '2-Zimmer', price: '990€', iconLabel: 'ICON_2ZIMMER' },
-    { size: '3-Zimmer', price: '1.490€', iconLabel: 'ICON_3ZIMMER' },
-    { size: '4+ Zimmer', price: 'ab 1.990€', iconLabel: 'ICON_4ZIMMER' },
+    { size: '1-Zimmer', price: '690€', icon: 'zimmer' },
+    { size: '2-Zimmer', price: '990€', icon: 'zimmer' },
+    { size: '3-Zimmer', price: '1.490€', icon: 'zimmer' },
+    { size: '4+ Zimmer', price: 'ab 1.990€', icon: 'zimmer' },
   ];
 
   const trustSignals = [
-    { number: '50.000+', text: 'Erfolgreiche Entrümpelungen', iconLabel: 'ICON_ERFOLG' },
-    { number: '4.9/5', text: 'Sterne Bewertung', iconLabel: 'ICON_BEWERTUNG' },
-    { number: '24h', text: 'Reaktionszeit garantiert', iconLabel: 'ICON_ZEIT' },
-    { number: '100%', text: 'Festpreisgarantie', iconLabel: 'ICON_GARANTIE' },
+    { number: '50.000+', text: 'Erfolgreiche Entrümpelungen', icon: 'award' },
+    { number: '4.9/5', text: 'Sterne Bewertung', icon: 'star' },
+    { number: '24h', text: 'Reaktionszeit garantiert', icon: 'blitz' },
+    { number: '100%', text: 'Festpreisgarantie', icon: 'shield' },
   ];
 
   const contactMethods = [
     {
-      iconLabel: 'ICON_TELEFON',
+      icon: 'telefon',
       title: 'Sofort-Beratung',
       subtitle: 'Rufen Sie jetzt an',
       value: '0521 / 1200 510',
@@ -80,7 +116,7 @@ export default function KontaktPage() {
       subtext: 'Kostenlose Erstberatung'
     },
     {
-      iconLabel: 'ICON_VIDEO',
+      icon: 'video',
       title: 'Video-Beratung',
       subtitle: 'Live-Besichtigung',
       value: 'Termin buchen',
@@ -91,7 +127,7 @@ export default function KontaktPage() {
       subtext: 'Zoom, WhatsApp, FaceTime'
     },
     {
-      iconLabel: 'ICON_WHATSAPP',
+      icon: 'whatsapp',
       title: 'WhatsApp',
       subtitle: 'Schnell & einfach',
       value: 'Chat starten',
@@ -101,7 +137,7 @@ export default function KontaktPage() {
       subtext: 'Antwort in < 30 Min'
     },
     {
-      iconLabel: 'ICON_EMAIL',
+      icon: 'email',
       title: 'E-Mail',
       subtitle: 'Detaillierte Anfrage',
       value: 'info@ruempelschmiede.de',
@@ -117,7 +153,7 @@ export default function KontaktPage() {
       {/* Emotionale Aktion Bar */}
       <div className="bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-2 text-center sticky top-0 z-40">
         <p className="text-sm font-medium px-4">
-          <span className="inline-block w-12 h-12 bg-white/20 rounded-lg mr-2 text-center leading-[3rem]">ICON_AKTION</span>
+          <Icon name="blitz" size={20} className="inline-block mr-2" color="white" />
           <strong>{currentMonth}-Aktion:</strong> <strong>15% Rabatt</strong> auf alle Entrümpelungen! 
           Nur noch <span className="font-mono font-bold bg-white/20 px-2 py-1 rounded">{formatTime(timeLeft)}</span> verfügbar
         </p>
@@ -155,7 +191,7 @@ export default function KontaktPage() {
                   className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center transform hover:scale-105 transition-all"
                 >
                   <div className="w-12 h-12 bg-white/20 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-xs font-bold">{signal.iconLabel}</span>
+                    <Icon name={signal.icon} size={24} color="white" />
                   </div>
                   <div className="text-2xl font-bold text-[#C73E3A]">{signal.number}</div>
                   <div className="text-sm text-white/80">{signal.text}</div>
@@ -193,7 +229,7 @@ export default function KontaktPage() {
                   )}
                   
                   <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span className="text-xs font-bold">{method.iconLabel}</span>
+                    <Icon name={method.icon} size={32} color="white" />
                   </div>
                   <h3 className="text-xl font-bold mb-1">{method.title}</h3>
                   <p className="text-sm opacity-90 mb-2">{method.subtitle}</p>
@@ -284,7 +320,7 @@ export default function KontaktPage() {
                 {formSubmitted ? (
                   <div id="success-message" className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center transform transition-all duration-500">
                     <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-sm font-bold">ICON_ERFOLG</span>
+                      <Icon name="check" size={40} color="#166534" />
                     </div>
                     <h3 className="text-2xl font-bold text-green-800 mb-2">
                       Vielen Dank für Ihr Vertrauen!
@@ -296,19 +332,19 @@ export default function KontaktPage() {
                       <p className="font-semibold text-gray-800 mb-2">Was passiert als nächstes?</p>
                       <ol className="space-y-2 text-sm text-gray-600">
                         <li className="flex items-start">
-                          <span className="text-green-500 mr-2">✓</span>
+                          <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                           <span>Wir prüfen Ihre Anfrage und erstellen ein erstes Angebot</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="text-green-500 mr-2">✓</span>
+                          <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                           <span>Ein Experte ruft Sie zur Terminvereinbarung an</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="text-green-500 mr-2">✓</span>
+                          <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                           <span>Kostenlose Besichtigung vor Ort</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="text-green-500 mr-2">✓</span>
+                          <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                           <span>Verbindliches Festpreisangebot ohne versteckte Kosten</span>
                         </li>
                       </ol>
@@ -337,7 +373,7 @@ export default function KontaktPage() {
                             }`}
                           >
                             <div className="w-8 h-8 bg-gray-200 rounded mx-auto mb-1 flex items-center justify-center">
-                              <span className="text-xs">{estimate.iconLabel}</span>
+                              <Icon name={estimate.icon} size={20} color="#4B5563" />
                             </div>
                             <div className="font-semibold text-sm">{estimate.size}</div>
                             <div className="text-xs text-[#C73E3A] font-bold">ab {estimate.price}</div>
@@ -468,16 +504,35 @@ export default function KontaktPage() {
                         />
                       </div>
 
+                      {submitError && (
+                        <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                          {submitError}
+                        </div>
+                      )}
+                      
                       <div className="pt-4">
                         <button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-4 px-6 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 group"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-4 px-6 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                         >
                           <span className="flex items-center justify-center">
-                            Jetzt kostenloses Angebot erhalten
-                            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
+                            {isSubmitting ? (
+                              <>
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Wird gesendet...
+                              </>
+                            ) : (
+                              <>
+                                Jetzt kostenloses Angebot erhalten
+                                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                              </>
+                            )}
                           </span>
                         </button>
                         
@@ -511,15 +566,15 @@ export default function KontaktPage() {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { iconLabel: 'ICON_FESTPREIS', title: '100% Festpreisgarantie', desc: 'Keine versteckten Kosten' },
-                    { iconLabel: 'ICON_ZEIT', title: '24h Rückmeldung', desc: 'Garantierte schnelle Antwort' },
-                    { iconLabel: 'ICON_VERSICHERUNG', title: 'Voll versichert', desc: 'Bis 5 Mio. Euro Deckung' },
-                    { iconLabel: 'ICON_UMWELT', title: 'Umweltgerecht', desc: 'Zertifizierte Entsorgung' },
-                    { iconLabel: 'ICON_DISKRET', title: 'Diskret & vertraulich', desc: 'Absolute Verschwiegenheit' }
+                    { icon: 'euro', title: '100% Festpreisgarantie', desc: 'Keine versteckten Kosten' },
+                    { icon: 'blitz', title: '24h Rückmeldung', desc: 'Garantierte schnelle Antwort' },
+                    { icon: 'shield', title: 'Voll versichert', desc: 'Bis 5 Mio. Euro Deckung' },
+                    { icon: 'leaf', title: 'Umweltgerecht', desc: 'Zertifizierte Entsorgung' },
+                    { icon: 'eye', title: 'Diskret & vertraulich', desc: 'Absolute Verschwiegenheit' }
                   ].map((guarantee, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-xs font-bold">{guarantee.iconLabel}</span>
+                        <Icon name={guarantee.icon} size={20} color="white" />
                       </div>
                       <div>
                         <h4 className="font-semibold">{guarantee.title}</h4>
@@ -548,7 +603,7 @@ export default function KontaktPage() {
                       </div>
                       <div className="flex mb-1">
                         {[1, 2, 3, 4, 5].map(star => (
-                          <span key={star} className="w-4 h-4 bg-yellow-400 rounded mr-1"></span>
+                          <Icon key={star} name="star" size={16} className="mr-1" />
                         ))}
                       </div>
                       <p className="text-sm text-gray-600 italic">"{review.text}"</p>
@@ -556,14 +611,14 @@ export default function KontaktPage() {
                   ))}
                 </div>
                 <a href="/bewertungen" className="block text-center text-[#C73E3A] font-semibold mt-4 hover:underline">
-                  Alle 2.847 Bewertungen ansehen →
+                  Alle 2.847 Bewertungen ansehen <Icon name="arrow-right" size={16} className="inline-block ml-1" />
                 </a>
               </div>
 
               {/* Notfall-Hotline */}
               <div className="bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] text-white rounded-3xl p-6 shadow-xl text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-3 flex items-center justify-center">
-                  <span className="text-xs font-bold">ICON_NOTFALL</span>
+                  <Icon name="telefon" size={32} color="white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Notfall-Hotline 24/7</h3>
                 <p className="text-3xl font-bold mb-2">0521 / 1200 510</p>
@@ -574,7 +629,7 @@ export default function KontaktPage() {
               <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 rounded-3xl p-6 shadow-xl">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-green-200 rounded-lg mr-3 flex items-center justify-center">
-                    <span className="text-xs font-bold">ICON_VIDEO</span>
+                    <Icon name="video" size={24} color="#166534" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800">NEU: Video-Besichtigung</h3>
                 </div>
@@ -583,20 +638,20 @@ export default function KontaktPage() {
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
+                    <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                     <span>Keine Anfahrt nötig</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
+                    <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                     <span>Sofortige Preiseinschätzung</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
+                    <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                     <span>Flexibel auch abends</span>
                   </li>
                 </ul>
                 <button className="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-all transform hover:scale-105 w-full">
-                  Jetzt Video-Termin buchen →
+                  Jetzt Video-Termin buchen <Icon name="arrow-right" size={16} className="inline-block ml-1" />
                 </button>
               </div>
             </div>
@@ -651,12 +706,12 @@ export default function KontaktPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+4952112000510" className="bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
               <span className="flex items-center justify-center">
-                <span className="w-6 h-6 bg-gray-300 rounded mr-2"></span>
+                <Icon name="telefon" size={24} className="mr-2" />
                 Jetzt anrufen: 0521 / 1200 510
               </span>
             </a>
             <a href="#contact-form-section" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
-              Zum Kontaktformular ↑
+              Zum Kontaktformular <Icon name="arrow-right" size={16} className="inline-block ml-1 rotate-[-90deg]" />
             </a>
           </div>
         </div>

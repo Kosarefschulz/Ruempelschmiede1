@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Icon from '../components/Icon';
 
 const BASE_PRICE_PER_CUBIC_METER = 85;
 const DISCOUNT_PERCENTAGE = 15;
@@ -8,7 +9,7 @@ const DISCOUNT_PERCENTAGE = 15;
 interface BuildingType {
   id: string;
   name: string;
-  iconPlaceholder: string;
+  icon: string;
   description: string;
   estimatedM3: number;
   popular?: boolean;
@@ -17,7 +18,7 @@ interface BuildingType {
 interface FurnitureItem {
   name: string;
   m3: number;
-  iconPlaceholder: string;
+  icon: string;
   popular?: boolean;
   category: string;
 }
@@ -34,7 +35,7 @@ const buildingTypes: BuildingType[] = [
   { 
     id: 'wohnung', 
     name: 'Wohnung', 
-    iconPlaceholder: 'Wohnung Icon', 
+    icon: 'haus', 
     description: 'Komplette Wohnungsauflösung', 
     estimatedM3: 15,
     popular: true 
@@ -42,7 +43,7 @@ const buildingTypes: BuildingType[] = [
   { 
     id: 'haus', 
     name: 'Haus', 
-    iconPlaceholder: 'Haus Icon', 
+    icon: 'haus', 
     description: 'Haushaltsauflösung inkl. Keller', 
     estimatedM3: 30,
     popular: true 
@@ -50,14 +51,14 @@ const buildingTypes: BuildingType[] = [
   { 
     id: 'keller', 
     name: 'Keller/Dachboden', 
-    iconPlaceholder: 'Keller Icon', 
+    icon: 'kiste', 
     description: 'Einzelne Räume', 
     estimatedM3: 8 
   },
   { 
     id: 'buero', 
     name: 'Büro/Gewerbe', 
-    iconPlaceholder: 'Büro Icon', 
+    icon: 'buero', 
     description: 'Geschäftsauflösung', 
     estimatedM3: 20 
   },
@@ -65,30 +66,30 @@ const buildingTypes: BuildingType[] = [
 
 const furnitureData: FurnitureItem[] = [
   // Große Möbel
-  { name: 'Sofa/Couch', m3: 2.0, iconPlaceholder: 'Sofa Icon', popular: true, category: 'Möbel' },
-  { name: 'Bett (komplett)', m3: 2.5, iconPlaceholder: 'Bett Icon', popular: true, category: 'Möbel' },
-  { name: 'Kleiderschrank', m3: 2.0, iconPlaceholder: 'Schrank Icon', popular: true, category: 'Möbel' },
-  { name: 'Esstisch mit Stühlen', m3: 2.0, iconPlaceholder: 'Tisch Icon', category: 'Möbel' },
-  { name: 'Schrankwand/Regal', m3: 2.5, iconPlaceholder: 'Regal Icon', category: 'Möbel' },
+  { name: 'Sofa/Couch', m3: 2.0, icon: 'kiste', popular: true, category: 'Möbel' },
+  { name: 'Bett (komplett)', m3: 2.5, icon: 'kiste', popular: true, category: 'Möbel' },
+  { name: 'Kleiderschrank', m3: 2.0, icon: 'kiste', popular: true, category: 'Möbel' },
+  { name: 'Esstisch mit Stühlen', m3: 2.0, icon: 'kiste', category: 'Möbel' },
+  { name: 'Schrankwand/Regal', m3: 2.5, icon: 'kiste', category: 'Möbel' },
   
   // Elektrogeräte
-  { name: 'Kühlschrank', m3: 0.8, iconPlaceholder: 'Kühlschrank Icon', popular: true, category: 'Elektro' },
-  { name: 'Waschmaschine', m3: 0.6, iconPlaceholder: 'Waschmaschine Icon', popular: true, category: 'Elektro' },
-  { name: 'Fernseher/Elektronik', m3: 0.3, iconPlaceholder: 'TV Icon', category: 'Elektro' },
+  { name: 'Kühlschrank', m3: 0.8, icon: 'kiste', popular: true, category: 'Elektro' },
+  { name: 'Waschmaschine', m3: 0.6, icon: 'kiste', popular: true, category: 'Elektro' },
+  { name: 'Fernseher/Elektronik', m3: 0.3, icon: 'kiste', category: 'Elektro' },
   
   // Kleinmöbel
-  { name: 'Kommode/Sideboard', m3: 0.8, iconPlaceholder: 'Kommode Icon', category: 'Kleinmöbel' },
-  { name: 'Schreibtisch', m3: 1.0, iconPlaceholder: 'Schreibtisch Icon', category: 'Kleinmöbel' },
-  { name: 'Sessel/Stuhl', m3: 0.5, iconPlaceholder: 'Stuhl Icon', category: 'Kleinmöbel' },
-  { name: 'Nachttisch', m3: 0.3, iconPlaceholder: 'Nachttisch Icon', category: 'Kleinmöbel' },
+  { name: 'Kommode/Sideboard', m3: 0.8, icon: 'kiste', category: 'Kleinmöbel' },
+  { name: 'Schreibtisch', m3: 1.0, icon: 'kiste', category: 'Kleinmöbel' },
+  { name: 'Sessel/Stuhl', m3: 0.5, icon: 'kiste', category: 'Kleinmöbel' },
+  { name: 'Nachttisch', m3: 0.3, icon: 'kiste', category: 'Kleinmöbel' },
   
   // Sonstiges
-  { name: 'Umzugskartons (10 Stk)', m3: 1.0, iconPlaceholder: 'Karton Icon', popular: true, category: 'Sonstiges' },
-  { name: 'Matratze', m3: 0.8, iconPlaceholder: 'Matratze Icon', category: 'Sonstiges' },
-  { name: 'Teppiche/Böden', m3: 0.5, iconPlaceholder: 'Teppich Icon', category: 'Sonstiges' },
-  { name: 'Gartengeräte/Werkzeug', m3: 1.0, iconPlaceholder: 'Werkzeug Icon', category: 'Sonstiges' },
-  { name: 'Fahrrad/Sportgeräte', m3: 0.8, iconPlaceholder: 'Fahrrad Icon', category: 'Sonstiges' },
-  { name: 'Sperrmüll/Diverses', m3: 2.0, iconPlaceholder: 'Sperrmüll Icon', popular: true, category: 'Sonstiges' },
+  { name: 'Umzugskartons (10 Stk)', m3: 1.0, icon: 'kiste', popular: true, category: 'Sonstiges' },
+  { name: 'Matratze', m3: 0.8, icon: 'kiste', category: 'Sonstiges' },
+  { name: 'Teppiche/Böden', m3: 0.5, icon: 'kiste', category: 'Sonstiges' },
+  { name: 'Gartengeräte/Werkzeug', m3: 1.0, icon: 'kiste', category: 'Sonstiges' },
+  { name: 'Fahrrad/Sportgeräte', m3: 0.8, icon: 'kiste', category: 'Sonstiges' },
+  { name: 'Sperrmüll/Diverses', m3: 2.0, icon: 'recycle', popular: true, category: 'Sonstiges' },
 ];
 
 // Get current month for dynamic discount display
@@ -318,7 +319,7 @@ export default function EntruempelungsRechner() {
                       </span>
                     )}
                     <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#C73E3A]/10 transition-colors">
-                      <span className="text-xs text-gray-500">{type.iconPlaceholder}</span>
+                      <Icon name={type.icon} size={32} className="text-gray-600" />
                     </div>
                     <h3 className="text-lg md:text-xl font-bold text-[#2C4F5E] mb-2">{type.name}</h3>
                     <p className="text-gray-600 text-sm mb-3">{type.description}</p>
@@ -332,7 +333,7 @@ export default function EntruempelungsRechner() {
               <div className="mt-8 bg-blue-50 rounded-xl p-6 text-center">
                 <div className="flex items-center justify-center mb-2">
                   <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-xs">Info</span>
+                    <Icon name="info" size={16} color="#1e40af" />
                   </div>
                   <p className="text-blue-800 font-semibold">
                     Keine Sorge - im nächsten Schritt können Sie alles anpassen!
@@ -388,7 +389,7 @@ export default function EntruempelungsRechner() {
               <div className="mb-8 bg-yellow-50 rounded-2xl p-6">
                 <h3 className="font-bold text-gray-800 mb-4 flex items-center justify-center">
                   <div className="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center mr-2">
-                    <span className="text-xs">⚡</span>
+                    <Icon name="blitz" size={16} color="#d97706" />
                   </div>
                   Schnellauswahl - Häufig entsorgte Gegenstände
                 </h3>
@@ -406,7 +407,7 @@ export default function EntruempelungsRechner() {
                         }`}
                       >
                         <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <span className="text-xs text-gray-500">{item.iconPlaceholder}</span>
+                          <Icon name={item.icon} size={20} className="text-gray-600" />
                         </div>
                         <span className="text-sm font-medium block">{item.name}</span>
                         {quantity > 0 && (
@@ -435,7 +436,7 @@ export default function EntruempelungsRechner() {
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-gray-200">
-                            <span className="text-xs text-gray-500">{item.iconPlaceholder}</span>
+                            <Icon name={item.icon} size={20} className="text-gray-600" />
                           </div>
                           <div>
                             <p className="font-medium text-gray-800">{item.name}</p>
@@ -491,8 +492,8 @@ export default function EntruempelungsRechner() {
           {currentStep === 3 && !showSuccess && (
             <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 transform transition-all duration-500">
               <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4 animate-bounce">
-                  ✓
+                <div className="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                  <Icon name="check" size={40} color="white" />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-[#2C4F5E] mb-3">
                   Ihr persönliches Angebot ist fertig!
@@ -526,19 +527,19 @@ export default function EntruempelungsRechner() {
                 <div className="grid md:grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center justify-center">
                     <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" size={16} color="#16a34a" />
                     </div>
                     <span>Anfahrt inklusive</span>
                   </div>
                   <div className="flex items-center justify-center">
                     <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" size={16} color="#16a34a" />
                     </div>
                     <span>Entsorgung inklusive</span>
                   </div>
                   <div className="flex items-center justify-center">
                     <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" size={16} color="#16a34a" />
                     </div>
                     <span>Festpreis-Garantie</span>
                   </div>
@@ -617,7 +618,7 @@ export default function EntruempelungsRechner() {
 
                 <div className="bg-blue-50 rounded-xl p-4 flex items-start">
                   <div className="w-8 h-8 bg-blue-200 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-xs">🛡️</span>
+                    <Icon name="shield" size={16} color="#3b82f6" />
                   </div>
                   <div>
                     <p className="font-semibold text-blue-800">100% Festpreis-Garantie</p>
@@ -629,7 +630,7 @@ export default function EntruempelungsRechner() {
                   onClick={handleSubmit}
                   className="w-full bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-4 md:py-5 px-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all"
                 >
-                  Jetzt kostenloses Angebot anfordern →
+                  Jetzt kostenloses Angebot anfordern <Icon name="arrow-right" size={20} className="inline-block ml-1" />
                 </button>
 
                 <p className="text-center text-xs text-gray-500">
@@ -651,7 +652,7 @@ export default function EntruempelungsRechner() {
             <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 transform transition-all duration-500">
               <div className="text-center">
                 <div className="w-24 h-24 bg-green-500 text-white rounded-full flex items-center justify-center text-5xl mx-auto mb-6 animate-bounce">
-                  🎉
+                  <Icon name="star" size={60} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-green-800 mb-4">
                   Vielen Dank für Ihre Anfrage!
@@ -665,24 +666,24 @@ export default function EntruempelungsRechner() {
                   <div className="space-y-4 text-left">
                     {[
                       { 
-                        icon: '📧', 
+                        icon: 'email', 
                         title: 'E-Mail-Bestätigung', 
                         desc: 'Sie erhalten sofort eine Bestätigung per E-Mail'
                       },
                       { 
-                        icon: '📞', 
+                        icon: 'telefon', 
                         title: 'Persönlicher Anruf', 
                         desc: 'Ein Experte meldet sich bei Ihnen (Mo-Fr 8-18 Uhr)'
                       },
                       { 
-                        icon: '🏠', 
+                        icon: 'haus', 
                         title: 'Termin vereinbaren', 
                         desc: 'Kostenlose Besichtigung oder direkte Terminvereinbarung'
                       }
                     ].map((step, index) => (
                       <div key={index} className="flex items-start">
                         <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                          <span className="text-xl">{step.icon}</span>
+                          <Icon name={step.icon} size={24} className="text-gray-700" />
                         </div>
                         <div>
                           <p className="font-semibold text-gray-800">{step.title}</p>
@@ -699,7 +700,7 @@ export default function EntruempelungsRechner() {
                     className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition-all transform hover:scale-105 flex items-center justify-center"
                   >
                     <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-2">
-                      <span className="text-xs">📞</span>
+                      <Icon name="telefon" size={16} color="white" />
                     </div>
                     Jetzt anrufen
                   </a>
@@ -721,14 +722,14 @@ export default function EntruempelungsRechner() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { icon: 'Star', value: '4.9/5', label: '500+ Bewertungen' },
-              { icon: 'Shield', value: '100%', label: 'Versichert' },
-              { icon: 'Recycle', value: 'Zertifiziert', label: 'Entsorgung' },
-              { icon: 'Clock', value: '24h', label: 'Notfall-Service' }
+              { icon: 'star', value: '4.9/5', label: '500+ Bewertungen' },
+              { icon: 'shield', value: '100%', label: 'Versichert' },
+              { icon: 'recycle', value: 'Zertifiziert', label: 'Entsorgung' },
+              { icon: 'clock', value: '24h', label: 'Notfall-Service' }
             ].map((item, index) => (
               <div key={index}>
                 <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <span className="text-xs text-gray-500">{item.icon}</span>
+                  <Icon name={item.icon} size={24} className="text-gray-600" />
                 </div>
                 <h3 className="font-bold text-[#2C4F5E]">{item.value}</h3>
                 <p className="text-sm text-gray-600">{item.label}</p>

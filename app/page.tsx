@@ -1,15 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Icon from './components/Icon'
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
 
   const handleDotClick = (index: number) => {
     setCurrentSlide(index)
@@ -43,22 +38,20 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
 
-        <div className="relative z-10 text-white px-4" style={{ height: '70vh', display: 'flex', alignItems: 'center' }}>
+        <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
           <div className="text-center w-full">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
               Wir machen kaputt, aber das richtig gut!
             </h1>
-            <p className="text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 
               Deutschlandweit - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-                <span className="inline-block w-2 h-2 bg-white rounded-full mr-3"></span>
                 Preis berechnen
               </a>
               <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-                <span className="inline-block w-2 h-2 bg-white rounded-full mr-3"></span>
                 Direktanfrage
               </a>
             </div>
@@ -71,7 +64,6 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              <span className="inline-block w-3 h-3 bg-[#C73E3A] rounded-full mr-3 mb-1"></span>
               Berechnen Sie Ihre Entrümpelungskosten sofort!
             </h2>
             <p className="text-xl text-gray-600">
@@ -85,10 +77,22 @@ export default function HomePage() {
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 650 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
               <ul className="text-left space-y-2 mb-6">
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Komplette Räumung aller Räume</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Fachgerechte Entsorgung</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Wertanrechnung möglich</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Entsorgungsnachweise</li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Komplette Räumung aller Räume</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Fachgerechte Entsorgung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Wertanrechnung möglich</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Entsorgungsnachweise</span>
+                </li>
               </ul>
               <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
@@ -103,11 +107,26 @@ export default function HomePage() {
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.290 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
               <ul className="text-left space-y-2 mb-6">
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Alle Leistungen aus BASIC</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Besenreine Endreinigung</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Kleine Reparaturen</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Schlüsselübergabe an Vermieter</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Abmeldung Strom/Gas möglich</li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Alle Leistungen aus BASIC</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Besenreine Endreinigung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Kleine Reparaturen</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Schlüsselübergabe an Vermieter</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Abmeldung Strom/Gas möglich</span>
+                </li>
               </ul>
               <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
@@ -119,12 +138,30 @@ export default function HomePage() {
               <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.890 €</p>
               <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
               <ul className="text-left space-y-2 mb-6">
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Alle Leistungen aus KOMFORT</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Persönlicher Projektmanager</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Komplette Behördengänge</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Nachlass-Verwaltung</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>6 Monate Nachbetreuung</li>
-                <li><span className="inline-block w-1 h-1 bg-[#C73E3A] rounded-full mr-3"></span>Digitales Erinnerungsalbum</li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Alle Leistungen aus KOMFORT</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Persönlicher Projektmanager</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Komplette Behördengänge</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Nachlass-Verwaltung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>6 Monate Nachbetreuung</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                  <span>Digitales Erinnerungsalbum</span>
+                </li>
               </ul>
               <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
                 Anfrage stellen
@@ -232,7 +269,7 @@ export default function HomePage() {
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
                   <div className="w-12 h-12 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    <span className="w-3 h-3 bg-white rounded-full"></span>
+                    4
                   </div>
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
@@ -256,65 +293,39 @@ export default function HomePage() {
             </p>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                  <img 
-                    src="/quality-badge.png?v=1" 
-                    alt="Festpreisgarantie Badge"
-                    className="w-16 h-16 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      console.log('Image failed to load:', target.src);
-                      target.style.display = 'none';
-                    }}
-                  />
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 00-2 2v6a2 2 0 002 2h2a1 1 0 100 2H6a4 4 0 01-4-4V5a4 4 0 014-4h2a1 1 0 100 2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2a1 1 0 100-2h2a4 4 0 014 4v8a4 4 0 01-4 4H6a4 4 0 01-4-4V5z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Festpreisgarantie</h4>
                 <p className="text-sm opacity-80">Keine versteckten Kosten</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                  <img 
-                    src="/shield-icon.png?v=1" 
-                    alt="Vollversichert Shield"
-                    className="w-16 h-16 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      console.log('Image failed to load:', target.src);
-                      target.style.display = 'none';
-                    }}
-                  />
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Vollversichert</h4>
                 <p className="text-sm opacity-80">Für Ihre Sicherheit</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                  <img 
-                    src="/recycle-icon.png?v=1" 
-                    alt="Umweltgerecht Recycling"
-                    className="w-16 h-16 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      console.log('Image failed to load:', target.src);
-                      target.style.display = 'none';
-                    }}
-                  />
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clipRule="evenodd" />
+                    <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Umweltgerecht</h4>
                 <p className="text-sm opacity-80">Fachgerechte Entsorgung</p>
               </div>
               <div className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                  <img 
-                    src="/handshake-icon.png?v=1" 
-                    alt="Persönlich" 
-                    className="w-16 h-16 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      console.error('Handshake icon failed to load:', target.src);
-                      target.style.display = 'none';
-                    }}
-                  />
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Persönlich</h4>
                 <p className="text-sm opacity-80">Ein Ansprechpartner</p>
@@ -358,7 +369,8 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <div className="w-6 h-6 border-4 border-white rounded-full"></div>
+                  {/* Icon Platzhalter für Sicherheit */}
+                  <img src="/icons/shield-icon.svg" alt="Sicherheit" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit</h3>
@@ -376,7 +388,8 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <div className="w-8 h-2 bg-white rounded-full"></div>
+                  {/* Icon Platzhalter für Kostenlose Besichtigung */}
+                  <img src="/icons/eye-icon.svg" alt="Besichtigung" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
@@ -394,7 +407,8 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <div className="w-6 h-6 bg-white rounded-sm rotate-45"></div>
+                  {/* Icon Platzhalter für Recycling */}
+                  <img src="/icons/recycle-icon.svg" alt="Recycling" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung</h3>
@@ -412,7 +426,8 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <div className="w-6 h-6 bg-white rounded-full"></div>
+                  {/* Icon Platzhalter für Wertanrechnung */}
+                  <img src="/icons/euro-icon.svg" alt="Wertanrechnung" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Wertanrechnung garantiert</h3>
@@ -430,7 +445,8 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <div className="w-6 h-3 bg-white rounded-full"></div>
+                  {/* Icon Platzhalter für Herz/Soziales */}
+                  <img src="/icons/heart-icon.svg" alt="Soziales Engagement" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement</h3>
@@ -448,7 +464,8 @@ export default function HomePage() {
             <div className="bg-[#F5F5F0] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                  <div className="w-6 h-6 bg-white rounded-full border-4 border-[#2C4F5E]"></div>
+                  {/* Icon Platzhalter für Professionalität */}
+                  <img src="/icons/star-icon.svg" alt="Professionalität" className="w-6 h-6 filter brightness-0 invert" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
@@ -476,7 +493,6 @@ export default function HomePage() {
                 Jetzt Termin vereinbaren
               </a>
               <a href="tel:+4952199999999" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
-                <span className="inline-block w-2 h-2 bg-white rounded-full mr-2"></span>
                 Direkt anrufen
               </a>
             </div>
@@ -500,13 +516,14 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Haushaltsauflösung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
-                  src="/4e8ee2de-8ca6-4622-8847-02226d7301d7.png" 
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
+                <Image 
+                  src="/Karton.png" 
                   alt="Haushaltsauflösung"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
@@ -516,20 +533,21 @@ export default function HomePage() {
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
-                  <span className="ml-2 text-lg">→</span>
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Gewerbeauflösung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
+                <Image 
                   src="/Gewerbe 2.jpg" 
                   alt="Gewerbeauflösung"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
@@ -539,20 +557,21 @@ export default function HomePage() {
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
-                  <span className="ml-2 text-lg">→</span>
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Messie-Wohnungen */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
+                <Image 
                   src="/Voller Messie Flur .jpg" 
                   alt="Messie-Wohnung Entrümpelung"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
@@ -562,20 +581,21 @@ export default function HomePage() {
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
-                  <span className="ml-2 text-lg">→</span>
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Kellerentrümpelung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
+                <Image 
                   src="/1-2.jpg" 
                   alt="Kellerentrümpelung"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
@@ -585,20 +605,21 @@ export default function HomePage() {
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
-                  <span className="ml-2 text-lg">→</span>
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Dachbodenentrümpelung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
+                <Image 
                   src="/Dachboden.jpg" 
                   alt="Dachbodenentrümpelung"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
@@ -608,20 +629,21 @@ export default function HomePage() {
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
-                  <span className="ml-2 text-lg">→</span>
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
 
             {/* Express-Service */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+              <div className="h-64 bg-gray-200 relative overflow-hidden">
+                <Image 
                   src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
                   alt="Express Entrümpelung"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 right-4 bg-[#C73E3A] text-white px-3 py-1 rounded-full text-sm font-bold">
                   48h Service
                 </div>
@@ -634,7 +656,7 @@ export default function HomePage() {
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
-                  <span className="ml-2 text-lg">→</span>
+                  <Icon name="arrow-right" size={20} className="ml-2" />
                 </a>
               </div>
             </div>
@@ -672,7 +694,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -688,7 +710,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -704,7 +726,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -725,7 +747,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -740,7 +762,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -755,7 +777,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -775,7 +797,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -790,7 +812,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
@@ -805,7 +827,7 @@ export default function HomePage() {
                   <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full mr-1"></div>
+                        <Icon key={i} name="star" size={16} className="mr-1" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">

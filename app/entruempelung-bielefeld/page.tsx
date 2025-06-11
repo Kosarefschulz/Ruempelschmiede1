@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function BielefeldPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -521,10 +522,12 @@ export default function BielefeldPage() {
             {/* Haushaltsauflösung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+                <Image 
                   src="/haushaltsaufloesung.jpg" 
                   alt="Haushaltsauflösung Bielefeld"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -546,10 +549,12 @@ export default function BielefeldPage() {
             {/* Gewerbeauflösung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+                <Image 
                   src="/gewerbeaufloesung.jpg" 
                   alt="Gewerbeauflösung Bielefeld"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -571,10 +576,12 @@ export default function BielefeldPage() {
             {/* Messie-Wohnungen */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+                <Image 
                   src="/messie-wohnung.jpg" 
                   alt="Messie-Wohnung Entrümpelung Bielefeld"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -596,10 +603,12 @@ export default function BielefeldPage() {
             {/* Kellerentrümpelung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+                <Image 
                   src="/kellerentruempelung.jpg" 
                   alt="Kellerentrümpelung Bielefeld"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -621,10 +630,12 @@ export default function BielefeldPage() {
             {/* Dachbodenentrümpelung */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+                <Image 
                   src="/dachboden.jpg" 
                   alt="Dachbodenentrümpelung Bielefeld"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -646,10 +657,12 @@ export default function BielefeldPage() {
             {/* Express-Service */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-56 bg-gray-200 relative overflow-hidden">
-                <img 
+                <Image 
                   src="/express-service.jpg" 
                   alt="Express Entrümpelung Bielefeld"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 right-4 bg-[#C73E3A] text-white px-3 py-1 rounded-full text-sm font-bold">

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <div className="relative h-[90vh] min-h-[600px] w-full overflow-hidden">
+    <div className="relative h-[90vh] min-h-[400px] sm:min-h-[600px] w-full overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/hero-bg.jpg"
@@ -13,6 +13,7 @@ export default function HeroSection() {
         fill
         priority
         className="object-cover brightness-[0.85]"
+        sizes="100vw"
       />
       
       {/* Content */}
@@ -24,7 +25,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl text-center"
           >
-            <h1 className="mb-6 text-4xl font-bold text-white drop-shadow-lg md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl lg:text-6xl">
               Professionelle Entrümpelung in Hamburg & Umgebung
             </h1>
             <p className="mb-8 text-lg text-white drop-shadow md:text-xl">

@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Host
+Host: https://ruempelschmiede.de
+
+# Sitemaps
+Sitemap: https://ruempelschmiede.de/sitemap.xml
+Sitemap: https://ruempelschmiede.com/sitemap.xml
+Sitemap: https://rümpel-schmiede.de/sitemap.xml
+Sitemap: https://rümpel-schmiede.com/sitemap.xml
