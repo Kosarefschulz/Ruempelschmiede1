@@ -87,12 +87,16 @@ export async function POST(request: Request) {
     // Create transporter for Strato SMTP
     const transporter = nodemailer.createTransport({
       host: 'smtp.strato.de',
-      port: 465,
-      secure: true, // true for 465, false for other ports
+      port: 587,
+      secure: false, // true for 465, false for 587
       auth: {
         user: process.env.SMTP_USER || 'info@ruempelmeister.de',
         pass: process.env.SMTP_PASSWORD,
       },
+      tls: {
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false
+      }
     });
 
     // Send email to business
@@ -147,7 +151,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Ein unerwarteter Fehler ist aufgetreten.' },
+      { error: `E-Mail-Fehler: ${error instanceof Error ? error.message : 'Unbekannter Fehler'}` },
       { status: 500 }
     );
   }
