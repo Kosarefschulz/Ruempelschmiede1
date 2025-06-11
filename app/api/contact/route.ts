@@ -101,7 +101,7 @@ export async function POST(request: Request) {
 
     // Send email to business
     await transporter.sendMail({
-      from: `"Rümpelschmiede Webseite" <${process.env.SMTP_USER || 'info@ruempelmeister.de'}>`,
+      from: `"Rümpelschmiede Webseite" <noreply@ruempel-schmiede.de>`,
       to: 'info@ruempelmeister.de',
       replyTo: email,
       subject: `Neue Anfrage von ${name} - ${service || 'Allgemeine Anfrage'}`,
