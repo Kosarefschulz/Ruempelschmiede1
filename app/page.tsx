@@ -5,6 +5,7 @@ import Icon from './components/Icon'
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [showBielefeldCities, setShowBielefeldCities] = useState(false)
 
   const handleDotClick = (index: number) => {
     setCurrentSlide(index)
@@ -880,7 +881,8 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
+          {/* Hauptstädte */}
+          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
             <a href="/entruempelung-berlin" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
               <h3 className="font-bold text-lg">Berlin</h3>
               <p className="text-sm opacity-80">3,7 Mio. Einwohner</p>
@@ -961,6 +963,77 @@ export default function HomePage() {
               <h3 className="font-bold text-lg">Münster</h3>
               <p className="text-sm opacity-80">320.000 Einwohner</p>
             </a>
+          </div>
+
+          {/* Bielefeld Region - Aufklappbarer Bereich */}
+          <div className="mb-8">
+            <button 
+              onClick={() => setShowBielefeldCities(!showBielefeldCities)}
+              className="bg-white/20 hover:bg-white/30 rounded-lg p-4 text-center transition-all duration-300 w-full flex items-center justify-center gap-3 group"
+            >
+              <h3 className="font-bold text-lg">Region Bielefeld</h3>
+              <p className="text-sm opacity-80">12 weitere Städte</p>
+              <svg 
+                className={`w-5 h-5 transition-transform duration-300 ${showBielefeldCities ? 'rotate-180' : ''}`} 
+                fill="currentColor" 
+                viewBox="0 0 20 20"
+              >
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+            
+            {showBielefeldCities && (
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 animate-fadeIn">
+                <a href="/entruempelung-guetersloh" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Gütersloh</h3>
+                  <p className="text-sm opacity-80">18 km</p>
+                </a>
+                <a href="/entruempelung-herford" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Herford</h3>
+                  <p className="text-sm opacity-80">20 km</p>
+                </a>
+                <a href="/entruempelung-paderborn" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Paderborn</h3>
+                  <p className="text-sm opacity-80">45 km</p>
+                </a>
+                <a href="/entruempelung-bad-salzuflen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Bad Salzuflen</h3>
+                  <p className="text-sm opacity-80">25 km</p>
+                </a>
+                <a href="/entruempelung-osnabrueck" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Osnabrück</h3>
+                  <p className="text-sm opacity-80">50 km</p>
+                </a>
+                <a href="/entruempelung-steinhagen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Steinhagen</h3>
+                  <p className="text-sm opacity-80">8 km</p>
+                </a>
+                <a href="/entruempelung-spenge" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Spenge</h3>
+                  <p className="text-sm opacity-80">15 km</p>
+                </a>
+                <a href="/entruempelung-halle-westfalen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Halle (Westfalen)</h3>
+                  <p className="text-sm opacity-80">12 km</p>
+                </a>
+                <a href="/entruempelung-lage" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Lage</h3>
+                  <p className="text-sm opacity-80">19 km</p>
+                </a>
+                <a href="/entruempelung-melle" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Melle</h3>
+                  <p className="text-sm opacity-80">23 km</p>
+                </a>
+                <a href="/entruempelung-detmold" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Detmold</h3>
+                  <p className="text-sm opacity-80">25 km</p>
+                </a>
+                <a href="/entruempelung-lemgo" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Lemgo</h3>
+                  <p className="text-sm opacity-80">22 km</p>
+                </a>
+              </div>
+            )}
           </div>
 
           <div className="text-center">
