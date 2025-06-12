@@ -59,14 +59,14 @@ export default function Header() {
                         {/* Platzhalter links für Balance */}
                         <div className="w-11"></div>
                         
-                        {/* Logo - Zentriert und angepasste Größe */}
-                        <Link href="/" className="relative h-16 w-auto">
+                        {/* Logo - Zentriert und optimierte Größe für mobile */}
+                        <Link href="/" className="logo-container relative h-14 w-auto">
                             <Image
                                 src="/Logo.png"
                                 alt="Rümpel Schmiede"
-                                width={200}
-                                height={64}
-                                className="h-16 w-auto"
+                                width={180}
+                                height={56}
+                                className="logo-image"
                                 priority
                             />
                         </Link>
@@ -89,14 +89,14 @@ export default function Header() {
 
                     {/* Desktop Header - Höhe angepasst */}
                     <div className="hidden lg:flex items-center justify-between h-20 md:h-24">
-                        {/* Logo - Links auf Desktop - Kleiner gemacht */}
-                        <Link href="/" className="flex-shrink-0">
+                        {/* Logo - Links auf Desktop - Optimiert für bessere Darstellung */}
+                        <Link href="/" className="logo-container flex-shrink-0">
                             <Image
                                 src="/Logo.png"
                                 alt="Rümpel Schmiede"
-                                width={250}
-                                height={80}
-                                className="h-16 md:h-20 w-auto"
+                                width={220}
+                                height={70}
+                                className="logo-image"
                                 priority
                             />
                         </Link>
