@@ -87,11 +87,22 @@ footer {
 /* Mobile Logo Optimierung (320px bis 767px) */
 @media (max-width: 767px) {
   .logo-image {
-    max-height: 64px;
+    max-height: 80px;
     width: auto;
   }
   .logo-container {
-    height: 64px;
+    height: 80px;
+  }
+}
+
+/* Sehr kleine Geräte (bis 380px) - leicht reduzierte Größe */
+@media (max-width: 380px) {
+  .logo-image {
+    max-height: 70px;
+    width: auto;
+  }
+  .logo-container {
+    height: 70px;
   }
 }
 

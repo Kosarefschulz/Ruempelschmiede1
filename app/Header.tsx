@@ -61,17 +61,17 @@ export default function Header() {
             <header className="bg-white shadow-sm sticky top-0 z-50">
                 <div className="container mx-auto px-4">
                     {/* Mobile Header - Höhe angepasst für größeres Logo */}
-                    <div className="flex lg:hidden items-center justify-between h-20 relative">
+                    <div className="flex lg:hidden items-center justify-between h-24 max-[380px]:h-20 relative">
                         {/* Platzhalter links für Balance */}
                         <div className="w-11"></div>
                         
                         {/* Logo - Zentriert und optimierte Größe für mobile */}
-                        <Link href="/" className="logo-container relative h-14 w-auto">
+                        <Link href="/" className="logo-container relative h-20 max-[380px]:h-[70px] w-auto">
                             <Image
                                 src="/Logo.png"
                                 alt="Rümpel Schmiede"
-                                width={180}
-                                height={56}
+                                width={220}
+                                height={70}
                                 className="logo-image"
                                 priority
                             />
