@@ -136,38 +136,38 @@ export default function FranchisePage() {
   const steps = [
     {
       number: '1',
-      title: 'Erstkontakt',
-      description: 'Unverbindliches Erstgespräch per Telefon oder E-Mail'
+      title: 'Erstberatung & Analyse',
+      description: 'Ausführliches Beratungsgespräch zu Ihren Zielen und Möglichkeiten. Wir analysieren gemeinsam Ihr Potenzial und die Marktchancen in Ihrer Region.'
     },
     {
       number: '2',
-      title: 'Kennenlernen',
-      description: 'Persönliches Treffen und Vorstellung unseres Konzepts'
+      title: 'Unternehmensbesichtigung',
+      description: 'Besuch unserer Zentrale und bestehender Standorte. Sie lernen alle Abläufe kennen und sprechen mit erfolgreichen Partnern.'
     },
     {
       number: '3',
-      title: 'Praxistag',
-      description: 'Begleiten Sie unser Team bei echten Aufträgen'
+      title: 'Praxiserfahrung sammeln',
+      description: 'Mehrere Tage aktive Mitarbeit im operativen Geschäft. Sie erleben hautnah, was Sie erwartet und ob die Tätigkeit zu Ihnen passt.'
     },
     {
       number: '4',
-      title: 'Businessplan',
-      description: 'Gemeinsame Erstellung Ihrer Unternehmensplanung'
+      title: 'Businessplan & Finanzierung',
+      description: 'Professionelle Unterstützung bei der Erstellung Ihres Businessplans. Begleitung bei Bankgesprächen und Fördermittelanträgen.'
     },
     {
       number: '5',
-      title: 'Vertragsabschluss',
-      description: 'Unterzeichnung des Partnervertrags'
+      title: 'Partnerschaftsvertrag',
+      description: 'Transparente Vertragsgestaltung mit fairen Konditionen. Juristische Prüfung und ausführliche Besprechung aller Details.'
     },
     {
       number: '6',
-      title: 'Schulung & Start',
-      description: 'Intensive Einarbeitung und Geschäftseröffnung'
+      title: 'Intensivschulung & Vorbereitung',
+      description: 'Zweiwöchige Intensivschulung in allen Geschäftsbereichen. Vorbereitung der Geschäftseröffnung mit Marketing und Vertrieb.'
     },
     {
       number: '7',
-      title: 'Begleitung',
-      description: 'Kontinuierliche Unterstützung im laufenden Betrieb'
+      title: 'Erfolgsbegleitung',
+      description: 'Intensive Betreuung in den ersten Monaten. Regelmäßige Erfolgskontrollen, Weiterbildungen und permanente Unterstützung.'
     }
   ]
 
@@ -374,19 +374,19 @@ export default function FranchisePage() {
                     <h4 className="font-bold text-[#2C4F5E] mb-3">Unterstützung von Anfang an:</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center">
-                        <span className="text-[#C73E3A] mr-2">✓</span>
+                        <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                         Intensive Einarbeitung & Schulung
                       </li>
                       <li className="flex items-center">
-                        <span className="text-[#C73E3A] mr-2">✓</span>
+                        <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                         Marketing & Vertriebsunterstützung
                       </li>
                       <li className="flex items-center">
-                        <span className="text-[#C73E3A] mr-2">✓</span>
+                        <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                         Operative Begleitung
                       </li>
                       <li className="flex items-center">
-                        <span className="text-[#C73E3A] mr-2">✓</span>
+                        <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                         Faire Konditionen
                       </li>
                     </ul>
