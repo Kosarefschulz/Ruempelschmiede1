@@ -8,6 +8,7 @@ interface Service {
     title: string;
     icon: string;
     image: string;
+    images?: string[];
     excerpt: string;
     seoText: string;
     details: string[];
@@ -21,6 +22,13 @@ const servicesData: Service[] = [
         title: 'Haushaltsauflösung deutschlandweit - Professionelle Wohnungsauflösung',
         icon: 'haus',
         image: '/images/Gewerbe.png',
+        images: [
+            '/images/services/haushaltsaufloesung_1.jpg',
+            '/images/services/haushaltsaufloesung_2.jpg',
+            '/images/services/haushaltsaufloesung_3.jpg',
+            '/images/services/haushaltsaufloesung_4.jpg',
+            '/images/services/haushaltsaufloesung_5.jpg'
+        ],
         excerpt: 'Komplette Räumung mit Wertanrechnung - schnell, sauber & günstig.',
         seoText: 'Haushaltsauflösung Deutschland: Professionelle Wohnungsauflösung deutschlandweit. Von der kostenlosen Besichtigung bis zur besenreinen Übergabe. Faire Wertanrechnung, Festpreise ab 890€.',
         details: [
@@ -38,6 +46,13 @@ const servicesData: Service[] = [
         title: 'Gewerbeauflösung deutschlandweit - Büroauflösung & Betriebsauflösung',
         icon: 'buero',
         image: '/images/Gewerbe.png',
+        images: [
+            '/images/services/gewerbeaufloesung_1.jpg',
+            '/images/services/gewerbeaufloesung_2.jpg',
+            '/images/services/gewerbeaufloesung_3.jpg',
+            '/images/services/gewerbeaufloesung_4.jpg',
+            '/images/services/gewerbeaufloesung_5.jpg'
+        ],
         excerpt: 'Büros, Praxen, Läden & Lagerhallen professionell räumen.',
         seoText: 'Gewerbeauflösung Deutschland: Betriebsauflösungen und Büroräumungen deutschlandweit. DSGVO-konforme Aktenvernichtung, flexible Termine, auch außerhalb der Geschäftszeiten.',
         details: [
@@ -55,6 +70,13 @@ const servicesData: Service[] = [
         title: 'Messie Wohnung Entrümpelung deutschlandweit - Diskret & Professionell',
         icon: 'besen',
         image: '/images/Gewerbe.png',
+        images: [
+            '/images/services/messie-entruempelung_1.jpg',
+            '/images/services/messie-entruempelung_2.jpg',
+            '/images/services/messie-entruempelung_3.jpg',
+            '/images/services/messie-entruempelung_4.jpg',
+            '/images/services/messie-entruempelung_5.jpg'
+        ],
         excerpt: 'Diskrete Hilfe bei Messie-Syndrom - ohne Vorurteile.',
         seoText: 'Messie-Entrümpelung Deutschland: Diskrete, professionelle Hilfe bei stark vermüllten Wohnungen deutschlandweit. Inklusive Desinfektion, Geruchsneutralisation und Wiederherstellung der Bewohnbarkeit.',
         details: [
@@ -72,6 +94,13 @@ const servicesData: Service[] = [
         title: 'Kellerentrümpelung & Dachbodenentrümpelung deutschlandweit',
         icon: 'kiste',
         image: '/images/Gewerbe.png',
+        images: [
+            '/images/services/keller-dachboden_1.jpg',
+            '/images/services/keller-dachboden_2.jpg',
+            '/images/services/keller-dachboden_3.jpg',
+            '/images/services/keller-dachboden_4.jpg',
+            '/images/services/keller-dachboden_5.jpg'
+        ],
         excerpt: 'Keller & Dachboden entrümpeln - schnell und günstig.',
         seoText: 'Keller- und Dachboden-Entrümpelung Deutschland: Schnelle, gründliche Räumung deutschlandweit. Auch schwer zugängliche Bereiche. Faire Wertanrechnung, Festpreise ab 390€.',
         details: [
@@ -89,6 +118,12 @@ const servicesData: Service[] = [
         title: 'Express Entrümpelung 48h deutschlandweit - 24/7 Notfall-Service',
         icon: 'blitz',
         image: '/images/Gewerbe.png',
+        images: [
+            '/images/services/express-service_1.jpg',
+            '/images/services/express-service_2.jpg',
+            '/images/services/express-service_3.jpg',
+            '/images/services/express-service_4.jpg'
+        ],
         excerpt: 'Garantierte Entrümpelung in 48 Stunden - bundesweit.',
         seoText: 'Express-Entrümpelung Deutschland: Garantierte Räumung innerhalb 48 Stunden deutschlandweit. 24/7 Notfall-Service für dringende Fälle, Räumungsklagen oder plötzliche Todesfälle.',
         details: [
@@ -116,6 +151,7 @@ export default function LeistungenPage() {
     
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+    const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: string]: number }>({});
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -133,6 +169,22 @@ export default function LeistungenPage() {
         sections.forEach(section => observer.observe(section));
 
         return () => observer.disconnect();
+    }, []);
+
+    // Auto-advance carousel
+    useEffect(() => {
+        const interval = setInterval(() => {
+            servicesData.forEach(service => {
+                if (service.images && service.images.length > 1) {
+                    setCurrentImageIndex(prev => ({
+                        ...prev,
+                        [service.id]: ((prev[service.id] || 0) + 1) % service.images!.length
+                    }));
+                }
+            });
+        }, 5000); // Change image every 5 seconds
+
+        return () => clearInterval(interval);
     }, []);
 
     // Simplified navigation
@@ -522,28 +574,97 @@ export default function LeistungenPage() {
                                 </div>
                             </div>
 
-                            {/* Image/Visual */}
+                            {/* Image Carousel */}
                             <div className={index % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}>
-                                <div className="relative h-96 rounded-xl overflow-hidden">
-                                    <Image 
-                                        src={service.image}
-                                        alt={service.title}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                                    />
-                                    {/* Light overlay for better brightness */}
-                                    <div className="absolute inset-0 bg-black/20"></div>
+                                <div className="relative h-[500px] rounded-xl overflow-hidden group">
+                                    {/* Images */}
+                                    {service.images && service.images.length > 0 ? (
+                                        <>
+                                            <Image 
+                                                src={service.images[currentImageIndex[service.id] || 0]}
+                                                alt={`${service.title} - Bild ${(currentImageIndex[service.id] || 0) + 1}`}
+                                                fill
+                                                className="object-cover"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                                            />
+                                            
+                                            {/* Navigation Arrows */}
+                                            {service.images.length > 1 && (
+                                                <>
+                                                    <button
+                                                        onClick={() => {
+                                                            const currentIdx = currentImageIndex[service.id] || 0;
+                                                            const newIdx = currentIdx === 0 ? service.images!.length - 1 : currentIdx - 1;
+                                                            setCurrentImageIndex(prev => ({ ...prev, [service.id]: newIdx }));
+                                                        }}
+                                                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                        aria-label="Vorheriges Bild"
+                                                    >
+                                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                                        </svg>
+                                                    </button>
+                                                    
+                                                    <button
+                                                        onClick={() => {
+                                                            const currentIdx = currentImageIndex[service.id] || 0;
+                                                            const newIdx = (currentIdx + 1) % service.images!.length;
+                                                            setCurrentImageIndex(prev => ({ ...prev, [service.id]: newIdx }));
+                                                        }}
+                                                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                        aria-label="Nächstes Bild"
+                                                    >
+                                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </button>
+                                                    
+                                                    {/* Image Indicators */}
+                                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                                        {service.images.map((_, idx) => (
+                                                            <button
+                                                                key={idx}
+                                                                onClick={() => setCurrentImageIndex(prev => ({ ...prev, [service.id]: idx }))}
+                                                                className={`w-2 h-2 rounded-full transition-all ${
+                                                                    (currentImageIndex[service.id] || 0) === idx 
+                                                                        ? 'w-8 bg-white' 
+                                                                        : 'bg-white/50 hover:bg-white/70'
+                                                                }`}
+                                                                aria-label={`Bild ${idx + 1}`}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                </>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Image 
+                                                src={service.image}
+                                                alt={service.title}
+                                                fill
+                                                className="object-cover"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                                            />
+                                            {/* Light overlay for better brightness */}
+                                            <div className="absolute inset-0 bg-black/20"></div>
+                                            
+                                            {/* Icon overlay */}
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                                                    <Icon name={service.icon} size={64} color="white" />
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                     
-                                    {/* Icon overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                                            <Icon name={service.icon} size={64} color="white" />
-                                        </div>
+                                    {/* Service Title Overlay */}
+                                    <div className="absolute top-4 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-3">
+                                        <h3 className="text-white font-bold text-lg">{service.title.split(' - ')[0]}</h3>
                                     </div>
                                     
-                                    {/* Overlay mit Städten */}
-                                    <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-4">
+                                    {/* Cities Overlay */}
+                                    <div className="absolute bottom-16 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-4">
                                         <p className="text-white text-sm font-semibold mb-2">Verfügbar in:</p>
                                         <div className="flex flex-wrap gap-2">
                                             {service.cities.slice(0, 6).map((city, idx) => (
