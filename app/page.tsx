@@ -68,7 +68,7 @@ export default function HomePage() {
               Berechnen Sie Ihre Entrümpelungskosten sofort!
             </h2>
             <p className="text-xl text-gray-600">
-              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Minuten, was Ihre Entrümpelung kostet
+              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Schritten, was Ihre Entrümpelung kostet
             </p>
           </div>
 
@@ -295,7 +295,10 @@ export default function HomePage() {
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center group">
                 <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <img src="/icons/icons8-euro.svg" alt="Festpreis" className="w-10 h-10 filter brightness-0 invert" />
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
+                </svg>
                 </div>
                 <h4 className="font-bold text-lg mb-2">Festpreisgarantie</h4>
                 <p className="text-sm opacity-80">Keine versteckten Kosten</p>
@@ -368,7 +371,9 @@ export default function HomePage() {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                   {/* Icon Platzhalter für Sicherheit */}
-                  <img src="/icons/shield-icon.svg" alt="Sicherheit" className="w-6 h-6 filter brightness-0 invert" />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit</h3>
@@ -387,7 +392,10 @@ export default function HomePage() {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                   {/* Icon Platzhalter für Kostenlose Besichtigung */}
-                  <img src="/icons/eye-icon.svg" alt="Besichtigung" className="w-6 h-6 filter brightness-0 invert" />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
@@ -406,7 +414,9 @@ export default function HomePage() {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                   {/* Icon Platzhalter für Recycling */}
-                  <img src="/icons/recycle-icon.svg" alt="Recycling" className="w-6 h-6 filter brightness-0 invert" />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Nachhaltige Entsorgung</h3>
@@ -425,7 +435,10 @@ export default function HomePage() {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                   {/* Icon Platzhalter für Wertanrechnung */}
-                  <img src="/icons/euro-icon.svg" alt="Wertanrechnung" className="w-6 h-6 filter brightness-0 invert" />
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Wertanrechnung garantiert</h3>
@@ -444,7 +457,9 @@ export default function HomePage() {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                   {/* Icon Platzhalter für Herz/Soziales */}
-                  <img src="/icons/heart-icon.svg" alt="Soziales Engagement" className="w-6 h-6 filter brightness-0 invert" />
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Soziales Engagement</h3>
@@ -463,7 +478,9 @@ export default function HomePage() {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#2C4F5E] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                   {/* Icon Platzhalter für Professionalität */}
-                  <img src="/icons/star-icon.svg" alt="Professionalität" className="w-6 h-6 filter brightness-0 invert" />
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
@@ -490,7 +507,7 @@ export default function HomePage() {
               <a href="/kontakt" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
                 Jetzt Termin vereinbaren
               </a>
-              <a href="tel:+4952199999999" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
+              <a href="tel:+4915755854945" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
                 Direkt anrufen
               </a>
             </div>
@@ -517,7 +534,7 @@ export default function HomePage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Karton.png" 
-                  alt="Haushaltsauflösung"
+                  alt="Haushaltsauflösung Bielefeld - Komplette Wohnungsräumung mit Umzugskartons in OWL"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -541,7 +558,7 @@ export default function HomePage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Gewerbe 2.jpg" 
-                  alt="Gewerbeauflösung"
+                  alt="Gewerbeauflösung Bielefeld - Professionelle Büroräumung & Betriebsauflösung in OWL"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -565,7 +582,7 @@ export default function HomePage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Voller Messie Flur .jpg" 
-                  alt="Messie-Wohnung Entrümpelung"
+                  alt="Messie-Wohnung Entrümpelung Steinhagen - Diskrete Wohnungsräumung mit Desinfektion OWL"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -589,7 +606,7 @@ export default function HomePage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/1-2.jpg" 
-                  alt="Kellerentrümpelung"
+                  alt="Kellerentrümpelung Bielefeld - Günstige Kellerräumung ab 390€ in OWL Region"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -613,7 +630,7 @@ export default function HomePage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/Dachboden.jpg" 
-                  alt="Dachbodenentrümpelung"
+                  alt="Dachbodenentrümpelung Steinhagen - Sichere Dachbodenräumung schwer zugänglicher Bereiche OWL"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -637,7 +654,7 @@ export default function HomePage() {
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <Image 
                   src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
-                  alt="Express Entrümpelung"
+                  alt="Express Entrümpelung Bielefeld - 48h Schnellservice Haushaltsauflösung in OWL"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -11,6 +11,9 @@ export default function Header() {
     const [isMobileB2BOpen, setIsMobileB2BOpen] = useState(false);
     const [isNachhaltigkeitOpen, setIsNachhaltigkeitOpen] = useState(false);
     const [isMobileNachhaltigkeitOpen, setIsMobileNachhaltigkeitOpen] = useState(false);
+    const [isMitmachenOpen, setIsMitmachenOpen] = useState(false);
+    const [isMobileMitmachenOpen, setIsMobileMitmachenOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
     // Schließe Menü beim Klick außerhalb
     useEffect(() => {
@@ -28,11 +31,14 @@ export default function Header() {
             if (isNachhaltigkeitOpen && !target.closest('.nachhaltigkeit-dropdown')) {
                 setIsNachhaltigkeitOpen(false);
             }
+            if (isMitmachenOpen && !target.closest('.mitmachen-dropdown')) {
+                setIsMitmachenOpen(false);
+            }
         };
         
         document.addEventListener('click', handleClickOutside);
         return () => document.removeEventListener('click', handleClickOutside);
-    }, [isMenuOpen, isLeistungenOpen, isB2BOpen, isNachhaltigkeitOpen]);
+    }, [isMenuOpen, isLeistungenOpen, isB2BOpen, isNachhaltigkeitOpen, isMitmachenOpen]);
 
     return (
         <>
@@ -112,7 +118,21 @@ export default function Header() {
                                         Start
                                     </Link>
                                 </li>
-                                <li className="relative leistungen-dropdown">
+                                <li className="relative leistungen-dropdown"
+                                    onMouseEnter={() => {
+                                        setActiveDropdown('leistungen');
+                                        setIsLeistungenOpen(true);
+                                        setIsNachhaltigkeitOpen(false);
+                                        setIsMitmachenOpen(false);
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const relatedTarget = e.relatedTarget as HTMLElement;
+                                        if (!relatedTarget || !e.currentTarget.contains(relatedTarget)) {
+                                            setIsLeistungenOpen(false);
+                                            setActiveDropdown(null);
+                                        }
+                                    }}
+                                >
                                     <button
                                         onClick={() => setIsLeistungenOpen(!isLeistungenOpen)}
                                         className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
@@ -123,61 +143,126 @@ export default function Header() {
                                         </svg>
                                     </button>
                                     
-                                    {/* Dropdown Menu - KORRIGIERTE LINKS OHNE "detail-" */}
+                                    {/* Erweitertes Dropdown Menu mit Privat & Gewerbe */}
                                     {isLeistungenOpen && (
-                                        <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-lg mt-2 py-2 z-50">
-                                            <Link
-                                                href="/leistungen#haushaltsaufloesung"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsLeistungenOpen(false)}
-                                            >
-                                                <div className="font-semibold">Haushaltsauflösungen</div>
-                                                <div className="text-sm text-gray-600">Komplette Räumung mit Wertanrechnung</div>
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#gewerbeaufloesung"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsLeistungenOpen(false)}
-                                            >
-                                                <div className="font-semibold">Gewerbeauflösungen</div>
-                                                <div className="text-sm text-gray-600">Büros, Praxen & Läden</div>
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#messie-entruempelung"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsLeistungenOpen(false)}
-                                            >
-                                                <div className="font-semibold">Messie-Wohnungen</div>
-                                                <div className="text-sm text-gray-600">Diskrete Hilfe & Desinfektion</div>
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#keller-dachboden"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsLeistungenOpen(false)}
-                                            >
-                                                <div className="font-semibold">Keller & Dachböden</div>
-                                                <div className="text-sm text-gray-600">Schnelle Räumung ab 390€</div>
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#express-service"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors border-t"
-                                                onClick={() => setIsLeistungenOpen(false)}
-                                            >
-                                                <div className="font-semibold text-[#C73E3A]">Express-Service 48h</div>
-                                                <div className="text-sm text-gray-600">Garantierte Räumung in 48 Stunden</div>
-                                            </Link>
+                                        <div className="absolute top-full left-0 w-[800px] bg-white shadow-xl rounded-lg mt-0 py-4 z-50">
+                                            <div className="grid grid-cols-2 gap-6 px-6">
+                                                {/* Private Leistungen */}
+                                                <div>
+                                                    <h3 className="text-lg font-bold text-[#2C4F5E] mb-4 pb-2 border-b border-gray-200">
+                                                        Private Leistungen
+                                                    </h3>
+                                                    <div className="space-y-1">
+                                                        <Link
+                                                            href="/leistungen#haushaltsaufloesung"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Haushaltsauflösungen</div>
+                                                            <div className="text-sm text-gray-600">Komplette Räumung mit Wertanrechnung</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/leistungen#messie-entruempelung"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Messie-Wohnungen</div>
+                                                            <div className="text-sm text-gray-600">Diskrete Hilfe & Desinfektion</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/leistungen#keller-dachboden"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Keller & Dachböden</div>
+                                                            <div className="text-sm text-gray-600">Schnelle Räumung ab 390€</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/leistungen#express-service"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#C73E3A] hover:text-[#B02E2A] transition-colors rounded border-t mt-2 pt-3"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Express-Service 48h</div>
+                                                            <div className="text-sm text-gray-600">Garantierte Räumung in 48 Stunden</div>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+
+                                                {/* Gewerbliche Leistungen */}
+                                                <div>
+                                                    <h3 className="text-lg font-bold text-[#2C4F5E] mb-4 pb-2 border-b border-gray-200">
+                                                        Gewerbliche Leistungen
+                                                    </h3>
+                                                    <div className="space-y-1">
+                                                        <Link
+                                                            href="/b2b#gewerbeaufloesung"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Gewerbeauflösung</div>
+                                                            <div className="text-sm text-gray-600">Büros, Produktionsstätten & Betriebe</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/b2b#bueroentruempelung"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Büroauflösung & Aktenvernichtung</div>
+                                                            <div className="text-sm text-gray-600">DSGVO-konforme Entsorgung</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/b2b#lagerraeumung"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Lager- & Hallenräumung</div>
+                                                            <div className="text-sm text-gray-600">Industrielle Großprojekte</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/b2b#praxisaufloesung"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Praxisauflösung</div>
+                                                            <div className="text-sm text-gray-600">Ärzte, Zahnärzte & Therapeuten</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/b2b#einzelhandel"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Ladenauflösung</div>
+                                                            <div className="text-sm text-gray-600">Einzelhandel & Geschäfte</div>
+                                                        </Link>
+                                                        <Link
+                                                            href="/b2b#gastronomie"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#C73E3A] hover:text-[#B02E2A] transition-colors rounded border-t mt-2 pt-3"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            <div className="font-semibold">Express-Service für Gewerbe</div>
+                                                            <div className="text-sm text-gray-600">Räumung innerhalb 48h</div>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
                                 </li>
-                                <li>
-                                    <Link
-                                        href="/preise"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
-                                    >
-                                        Preisrechner
-                                    </Link>
-                                </li>
-                                <li className="relative nachhaltigkeit-dropdown">
+                                <li className="relative nachhaltigkeit-dropdown"
+                                    onMouseEnter={() => {
+                                        setActiveDropdown('nachhaltigkeit');
+                                        setIsNachhaltigkeitOpen(true);
+                                        setIsLeistungenOpen(false);
+                                        setIsMitmachenOpen(false);
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const relatedTarget = e.relatedTarget as HTMLElement;
+                                        if (!relatedTarget || !e.currentTarget.contains(relatedTarget)) {
+                                            setIsNachhaltigkeitOpen(false);
+                                            setActiveDropdown(null);
+                                        }
+                                    }}
+                                >
                                     <button
                                         onClick={() => setIsNachhaltigkeitOpen(!isNachhaltigkeitOpen)}
                                         className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
@@ -190,7 +275,7 @@ export default function Header() {
                                     
                                     {/* Nachhaltigkeit Dropdown Menu */}
                                     {isNachhaltigkeitOpen && (
-                                        <div className="absolute top-full left-0 w-80 bg-white shadow-xl rounded-lg mt-2 py-2 z-50">
+                                        <div className="absolute top-full left-0 w-80 bg-white shadow-xl rounded-lg mt-0 py-2 z-50">
                                             <Link
                                                 href="/nachhaltigkeit"
                                                 className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors border-b"
@@ -234,75 +319,49 @@ export default function Header() {
                                         </div>
                                     )}
                                 </li>
-                                <li className="relative b2b-dropdown">
+                                <li className="relative mitmachen-dropdown"
+                                    onMouseEnter={() => {
+                                        setActiveDropdown('mitmachen');
+                                        setIsMitmachenOpen(true);
+                                        setIsLeistungenOpen(false);
+                                        setIsNachhaltigkeitOpen(false);
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const relatedTarget = e.relatedTarget as HTMLElement;
+                                        if (!relatedTarget || !e.currentTarget.contains(relatedTarget)) {
+                                            setIsMitmachenOpen(false);
+                                            setActiveDropdown(null);
+                                        }
+                                    }}
+                                >
                                     <button
-                                        onClick={() => setIsB2BOpen(!isB2BOpen)}
+                                        onClick={() => setIsMitmachenOpen(!isMitmachenOpen)}
                                         className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
                                     >
-                                        B2B
-                                        <svg className={`w-4 h-4 ml-1 transition-transform ${isB2BOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        Mach mit!
+                                        <svg className={`w-4 h-4 ml-1 transition-transform ${isMitmachenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
                                     
-                                    {/* B2B Dropdown Menu */}
-                                    {isB2BOpen && (
-                                        <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-lg mt-2 py-2 z-50">
+                                    {/* Mitmachen Dropdown Menu */}
+                                    {isMitmachenOpen && (
+                                        <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-lg mt-0 py-2 z-50">
                                             <Link
-                                                href="/b2b"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors border-b"
-                                                onClick={() => setIsB2BOpen(false)}
-                                            >
-                                                <div className="font-semibold">B2B Übersicht</div>
-                                                <div className="text-sm text-gray-600">Alle gewerblichen Leistungen</div>
-                                            </Link>
-                                            <Link
-                                                href="/b2b#gewerbeaufloesung"
+                                                href="/karriere"
                                                 className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsB2BOpen(false)}
+                                                onClick={() => setIsMitmachenOpen(false)}
                                             >
-                                                <div className="font-semibold">Gewerbeauflösung</div>
-                                                <div className="text-sm text-gray-600">Büros, Produktionsstätten & Betriebe</div>
+                                                <div className="font-semibold">Karriere</div>
+                                                <div className="text-sm text-gray-600">Stellenangebote & Benefits</div>
                                             </Link>
                                             <Link
-                                                href="/b2b#bueroentruempelung"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsB2BOpen(false)}
+                                                href="/franchise"
+                                                className="block px-4 py-3 hover:bg-gray-50 text-[#C73E3A] hover:text-[#B02E2A] transition-colors border-t"
+                                                onClick={() => setIsMitmachenOpen(false)}
                                             >
-                                                <div className="font-semibold">Büroauflösung & Aktenvernichtung</div>
-                                                <div className="text-sm text-gray-600">DSGVO-konforme Entsorgung</div>
-                                            </Link>
-                                            <Link
-                                                href="/b2b#lagerraeumung"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsB2BOpen(false)}
-                                            >
-                                                <div className="font-semibold">Lager- & Hallenräumung</div>
-                                                <div className="text-sm text-gray-600">Industrielle Großprojekte</div>
-                                            </Link>
-                                            <Link
-                                                href="/b2b#praxisaufloesung"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsB2BOpen(false)}
-                                            >
-                                                <div className="font-semibold">Praxisauflösung</div>
-                                                <div className="text-sm text-gray-600">Ärzte, Zahnärzte & Therapeuten</div>
-                                            </Link>
-                                            <Link
-                                                href="/b2b#einzelhandel"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsB2BOpen(false)}
-                                            >
-                                                <div className="font-semibold">Ladenauflösung</div>
-                                                <div className="text-sm text-gray-600">Einzelhandel & Geschäfte</div>
-                                            </Link>
-                                            <Link
-                                                href="/b2b#gastronomie"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors border-t"
-                                                onClick={() => setIsB2BOpen(false)}
-                                            >
-                                                <div className="font-semibold text-[#C73E3A]">Express-Service für Gewerbe</div>
-                                                <div className="text-sm text-gray-600">Räumung innerhalb 48h</div>
+                                                <div className="font-semibold">Unternehmer werden</div>
+                                                <div className="text-sm text-gray-600">Starten Sie Ihre Erfolgsgeschichte</div>
                                             </Link>
                                         </div>
                                     )}
@@ -334,13 +393,13 @@ export default function Header() {
                             </ul>
                         </nav>
 
-                        {/* Kontakt Button - Rechts auf Desktop */}
+                        {/* Preisrechner Button - Rechts auf Desktop */}
                         <div className="flex-shrink-0">
                             <Link
-                                href="/kontakt"
+                                href="/preise"
                                 className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all text-base"
                             >
-                                Anfrage stellen
+                                Preisrechner
                             </Link>
                         </div>
                     </div>
@@ -370,55 +429,98 @@ export default function Header() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    {/* Mobile Unterpunkte - KORRIGIERTE LINKS */}
+                                    {/* Mobile Leistungen erweitert mit Privat & Gewerbe */}
                                     {isMobileLeistungenOpen && (
-                                        <div className="ml-4 mt-2 space-y-2">
-                                            <Link
-                                                href="/leistungen#haushaltsaufloesung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
-                                            >
-                                                → Haushaltsauflösungen
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#gewerbeaufloesung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
-                                            >
-                                                → Gewerbeauflösungen
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#messie-entruempelung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
-                                            >
-                                                → Messie-Wohnungen
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#keller-dachboden"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
-                                            >
-                                                → Keller & Dachböden
-                                            </Link>
-                                            <Link
-                                                href="/leistungen#express-service"
-                                                className="block text-[#C73E3A] hover:text-[#B02E2A] text-base py-1 font-semibold"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
-                                            >
-                                                → Express-Service 48h
-                                            </Link>
+                                        <div className="ml-4 mt-2 space-y-3">
+                                            {/* Private Leistungen */}
+                                            <div>
+                                                <div className="text-sm font-bold text-[#2C4F5E] mb-2 px-2 py-1 bg-gray-50 rounded">
+                                                    Private Leistungen
+                                                </div>
+                                                <div className="space-y-1 ml-2">
+                                                    <Link
+                                                        href="/leistungen#haushaltsaufloesung"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Haushaltsauflösungen
+                                                    </Link>
+                                                    <Link
+                                                        href="/leistungen#messie-entruempelung"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Messie-Wohnungen
+                                                    </Link>
+                                                    <Link
+                                                        href="/leistungen#keller-dachboden"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Keller & Dachböden
+                                                    </Link>
+                                                    <Link
+                                                        href="/leistungen#express-service"
+                                                        className="block text-[#C73E3A] hover:text-[#B02E2A] text-base py-1 font-semibold"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Express-Service 48h
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                            
+                                            {/* Gewerbliche Leistungen */}
+                                            <div>
+                                                <div className="text-sm font-bold text-[#2C4F5E] mb-2 px-2 py-1 bg-gray-50 rounded">
+                                                    Gewerbliche Leistungen
+                                                </div>
+                                                <div className="space-y-1 ml-2">
+                                                    <Link
+                                                        href="/b2b#gewerbeaufloesung"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Gewerbeauflösung
+                                                    </Link>
+                                                    <Link
+                                                        href="/b2b#bueroentruempelung"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Büroauflösung
+                                                    </Link>
+                                                    <Link
+                                                        href="/b2b#lagerraeumung"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Lagerräumung
+                                                    </Link>
+                                                    <Link
+                                                        href="/b2b#praxisaufloesung"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Praxisauflösung
+                                                    </Link>
+                                                    <Link
+                                                        href="/b2b#einzelhandel"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Ladenauflösung
+                                                    </Link>
+                                                    <Link
+                                                        href="/b2b#gastronomie"
+                                                        className="block text-[#C73E3A] hover:text-[#B02E2A] text-base py-1 font-semibold"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Express-Service Gewerbe
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
-                                </li>
-                                <li>
-                                    <Link
-                                        href="/preise"
-                                        className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        Preisrechner
-                                    </Link>
                                 </li>
                                 <li>
                                     <button
@@ -473,65 +575,30 @@ export default function Header() {
                                 </li>
                                 <li>
                                     <button
-                                        onClick={() => setIsMobileB2BOpen(!isMobileB2BOpen)}
+                                        onClick={() => setIsMobileMitmachenOpen(!isMobileMitmachenOpen)}
                                         className="flex items-center justify-between w-full text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
                                     >
-                                        B2B
-                                        <svg className={`w-4 h-4 transition-transform ${isMobileB2BOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        Mach mit!
+                                        <svg className={`w-4 h-4 transition-transform ${isMobileMitmachenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    {/* Mobile B2B Unterpunkte */}
-                                    {isMobileB2BOpen && (
+                                    {/* Mobile Mach mit! Unterpunkte */}
+                                    {isMobileMitmachenOpen && (
                                         <div className="ml-4 mt-2 space-y-2">
                                             <Link
-                                                href="/b2b"
+                                                href="/karriere"
                                                 className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
+                                                onClick={() => {setIsMenuOpen(false); setIsMobileMitmachenOpen(false);}}
                                             >
-                                                → B2B Übersicht
+                                                → Karriere
                                             </Link>
                                             <Link
-                                                href="/b2b#gewerbeaufloesung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
-                                            >
-                                                → Gewerbeauflösung
-                                            </Link>
-                                            <Link
-                                                href="/b2b#bueroentruempelung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
-                                            >
-                                                → Büroauflösung
-                                            </Link>
-                                            <Link
-                                                href="/b2b#lagerraeumung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
-                                            >
-                                                → Lagerräumung
-                                            </Link>
-                                            <Link
-                                                href="/b2b#praxisaufloesung"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
-                                            >
-                                                → Praxisauflösung
-                                            </Link>
-                                            <Link
-                                                href="/b2b#einzelhandel"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
-                                            >
-                                                → Ladenauflösung
-                                            </Link>
-                                            <Link
-                                                href="/b2b#gastronomie"
+                                                href="/franchise"
                                                 className="block text-[#C73E3A] hover:text-[#B02E2A] text-base py-1 font-semibold"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileB2BOpen(false);}}
+                                                onClick={() => {setIsMenuOpen(false); setIsMobileMitmachenOpen(false);}}
                                             >
-                                                → Express-Service 48h
+                                                → Unternehmer werden
                                             </Link>
                                         </div>
                                     )}
@@ -565,11 +632,11 @@ export default function Header() {
                                 </li>
                                 <li className="pt-4">
                                     <Link
-                                        href="/kontakt"
+                                        href="/preise"
                                         className="block bg-[#C73E3A] hover:bg-[#B02E2A] text-white text-center px-6 py-3 rounded-lg font-semibold text-lg"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
-                                        Jetzt anfragen
+                                        Preisrechner
                                     </Link>
                                 </li>
                             </ul>

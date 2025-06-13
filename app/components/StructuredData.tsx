@@ -2,20 +2,23 @@ export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Rümpelschmiede",
-    "description": "Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung deutschlandweit",
+    "name": "Rümpel Schmiede",
+    "description": "Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung in Bielefeld, Steinhagen & OWL seit 2017",
     "url": "https://ruempelschmiede.de",
-    "telephone": "+49 521 12000510",
+    "telephone": "+49 157 55854945",
     "email": "info@ruempelschmiede.de",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Waldbadstraße 9-13",
+      "addressLocality": "Steinhagen",
+      "postalCode": "33803",
       "addressCountry": "DE",
       "addressRegion": "Nordrhein-Westfalen"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "52.0302",
-      "longitude": "8.5325"
+      "latitude": "52.0026",
+      "longitude": "8.4065"
     },
     "image": "https://ruempelschmiede.de/Logo.png",
     "priceRange": "€€",
@@ -26,13 +29,12 @@ export default function StructuredData() {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
+        "Friday"
       ],
-      "opens": "00:00",
-      "closes": "23:59"
+      "opens": "08:00",
+      "closes": "16:00"
     },
+    "foundingDate": "2017",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -79,83 +81,51 @@ export default function StructuredData() {
     "areaServed": [
       {
         "@type": "City",
-        "name": "Berlin"
+        "name": "Steinhagen"
       },
       {
-        "@type": "City",
-        "name": "Hamburg"
-      },
-      {
-        "@type": "City",
-        "name": "München"
-      },
-      {
-        "@type": "City",
-        "name": "Köln"
-      },
-      {
-        "@type": "City",
-        "name": "Frankfurt"
-      },
-      {
-        "@type": "City",
-        "name": "Stuttgart"
-      },
-      {
-        "@type": "City",
-        "name": "Düsseldorf"
-      },
-      {
-        "@type": "City",
-        "name": "Leipzig"
-      },
-      {
-        "@type": "City",
-        "name": "Dortmund"
-      },
-      {
-        "@type": "City",
-        "name": "Essen"
-      },
-      {
-        "@type": "City",
-        "name": "Bremen"
-      },
-      {
-        "@type": "City",
-        "name": "Dresden"
-      },
-      {
-        "@type": "City",
-        "name": "Hannover"
-      },
-      {
-        "@type": "City",
-        "name": "Nürnberg"
-      },
-      {
-        "@type": "City",
-        "name": "Duisburg"
-      },
-      {
-        "@type": "City",
-        "name": "Bochum"
-      },
-      {
-        "@type": "City",
-        "name": "Wuppertal"
-      },
-      {
-        "@type": "City",
+        "@type": "City", 
         "name": "Bielefeld"
       },
       {
         "@type": "City",
-        "name": "Bonn"
+        "name": "Gütersloh"
       },
       {
         "@type": "City",
-        "name": "Münster"
+        "name": "Herford"
+      },
+      {
+        "@type": "City",
+        "name": "Paderborn"
+      },
+      {
+        "@type": "City",
+        "name": "Bad Salzuflen"
+      },
+      {
+        "@type": "City",
+        "name": "Osnabrück"
+      },
+      {
+        "@type": "City",
+        "name": "Detmold"
+      },
+      {
+        "@type": "City",
+        "name": "Lemgo"
+      },
+      {
+        "@type": "City",
+        "name": "Lage"
+      },
+      {
+        "@type": "City",
+        "name": "Spenge"
+      },
+      {
+        "@type": "City",
+        "name": "Halle Westfalen"
       }
     ],
     "sameAs": [

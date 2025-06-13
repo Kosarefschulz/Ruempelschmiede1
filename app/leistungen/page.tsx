@@ -173,32 +173,56 @@ export default function LeistungenPage() {
 
     const benefits = [
         {
-            icon: '/icons/euro-icon.svg',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            ),
             title: 'Deutschlandweiter Service',
             text: 'Von Hamburg bis München - wir sind überall für Sie da.'
         },
         {
-            icon: '/icons/euro-icon.svg',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            ),
             title: 'Festpreisgarantie',
             text: 'Transparente Preise ohne versteckte Kosten bundesweit.'
         },
         {
-            icon: '/icons/award-icon.svg',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+            ),
             title: '15 Jahre Erfahrung',
             text: 'Über 50.000 erfolgreiche Entrümpelungen deutschlandweit.'
         },
         {
-            icon: '/icons/leaf-icon.svg',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+            ),
             title: 'Umweltgerecht',
             text: 'Zertifizierte Entsorgung mit Recycling in ganz Deutschland.'
         },
         {
-            icon: '/icons/star-icon.svg',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+            ),
             title: '4,9/5 Sterne',
             text: 'Top-Bewertungen von Kunden aus ganz Deutschland.'
         },
         {
-            icon: '/icons/shield-icon.svg',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            ),
             title: 'Voll versichert',
             text: 'Betriebshaftpflicht bis 5 Mio. Euro deutschlandweit.'
         },
@@ -263,13 +287,13 @@ export default function LeistungenPage() {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                             <a
-                                href="tel:+4952199999900"
+                                href="tel:+4915755854945"
                                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-[#C73E3A] rounded-xl shadow-lg hover:bg-[#B02E2A] transition-all"
                             >
                                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                0521 / 1200 510
+                                015 755854945
                             </a>
                             
                             <a
@@ -310,7 +334,7 @@ export default function LeistungenPage() {
                         </h2>
                         <div className="prose prose-lg text-gray-700">
                             <p className="mb-4">
-                                Die Rümpelschmiede ist Ihr spezialisierter Partner für professionelle Entrümpelungen 
+                                Die Rümpel Schmiede ist Ihr spezialisierter Partner für professionelle Entrümpelungen 
                                 in ganz Deutschland. Mit über 15 Jahren Erfahrung und einem bundesweiten Netzwerk 
                                 bieten wir Lösungen für Haushaltsauflösungen, Gewerbeentrümpelungen, Messie-Wohnungen 
                                 und Express-Services - von Hamburg bis München, von Berlin bis Stuttgart.
@@ -487,7 +511,7 @@ export default function LeistungenPage() {
                                         </svg>
                                     </a>
                                     <a
-                                        href="tel:+4952199999900"
+                                        href="tel:+4915755854945"
                                         className="inline-flex items-center justify-center px-6 py-3 border-2 border-[#C73E3A] text-[#C73E3A] font-semibold rounded-lg hover:bg-[#C73E3A] hover:text-white transition-all"
                                     >
                                         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -609,7 +633,7 @@ export default function LeistungenPage() {
                             Warum Kunden uns deutschlandweit vertrauen
                         </h2>
                         <p className="text-lg text-white/80 max-w-3xl mx-auto">
-                            6 gute Gründe für die Rümpelschmiede als Ihren Partner 
+                            6 gute Gründe für die Rümpel Schmiede als Ihren Partner 
                             für Entrümpelungen deutschlandweit
                         </p>
                     </div>
@@ -620,12 +644,16 @@ export default function LeistungenPage() {
                                 key={index}
                                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
                             >
-                                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4">
-                                    <img 
-                                        src={benefit.icon} 
-                                        alt="Benefit Icon"
-                                        className="w-8 h-8 filter brightness-0 invert"
-                                    />
+                                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 text-white">
+                                    {typeof benefit.icon === 'string' ? (
+                                        <img 
+                                            src={benefit.icon} 
+                                            alt="Benefit Icon"
+                                            className="w-8 h-8 filter brightness-0 invert"
+                                        />
+                                    ) : (
+                                        benefit.icon
+                                    )}
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
                                 <p className="text-white/80">{benefit.text}</p>
@@ -878,17 +906,21 @@ export default function LeistungenPage() {
 
                     {/* Direkte Kontaktmöglichkeiten */}
                     <div className="mt-12 grid md:grid-cols-2 gap-6">
-                        <a href="tel:+4952199999900" className="bg-[#2C4F5E] text-white p-6 rounded-xl text-center hover:bg-[#1E3A47] transition-all">
-                            <div className="icon-placeholder bg-white/20 mx-auto mb-3">
-                                Telefon
+                        <a href="tel:+4915755854945" className="bg-[#2C4F5E] text-white p-6 rounded-xl text-center hover:bg-[#1E3A47] transition-all">
+                            <div className="w-12 h-12 bg-white/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
                             </div>
                             <p className="text-sm mb-1">Deutschlandweite Hotline (Mo-Fr 7-19 Uhr)</p>
-                            <p className="text-xl font-bold">0521 / 1200 510</p>
+                            <p className="text-xl font-bold">015 755854945</p>
                         </a>
                         
                         <a href="mailto:info@ruempelschmiede-bielefeld.de" className="bg-[#2C4F5E] text-white p-6 rounded-xl text-center hover:bg-[#1E3A47] transition-all">
-                            <div className="icon-placeholder bg-white/20 mx-auto mb-3">
-                                E-Mail
+                            <div className="w-12 h-12 bg-white/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
                             </div>
                             <p className="text-sm mb-1">Antwort innerhalb 24h</p>
                             <p className="text-xl font-bold">E-Mail senden</p>
@@ -905,7 +937,7 @@ export default function LeistungenPage() {
                             Entrümpelung deutschlandweit - Ihr Partner in allen Bundesländern
                         </h3>
                         <p className="mb-4">
-                            Die Rümpelschmiede ist Ihr zuverlässiger Partner für professionelle Entrümpelungen 
+                            Die Rümpel Schmiede ist Ihr zuverlässiger Partner für professionelle Entrümpelungen 
                             in ganz Deutschland. Von Hamburg über Berlin bis München, von Köln über Frankfurt 
                             bis Stuttgart - mit unserem bundesweiten Netzwerk und regionalen Teams sind wir 
                             in allen 16 Bundesländern für Sie da. Über 15 Jahre Erfahrung und mehr als 50.000 

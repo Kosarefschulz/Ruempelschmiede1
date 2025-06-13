@@ -87,42 +87,42 @@ footer {
 /* Mobile Logo Optimierung (320px bis 767px) */
 @media (max-width: 767px) {
   .logo-image {
-    max-height: 48px;
+    max-height: 64px;
     width: auto;
   }
   .logo-container {
-    height: 48px;
+    height: 64px;
   }
 }
 
 /* Tablet Logo Optimierung (768px bis 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .logo-image {
-    max-height: 60px;
+    max-height: 70px;
     width: auto;
   }
   .logo-container {
-    height: 60px;
+    height: 70px;
   }
 }
 
 /* Desktop Logo Optimierung (1024px+) */
 @media (min-width: 1024px) {
   .logo-image {
-    max-height: 72px;
+    max-height: 90px;
     width: auto;
   }
   .logo-container {
-    height: 72px;
+    height: 90px;
   }
 }
 
 /* Ultra-weite Bildschirme */
 @media (min-width: 1440px) {
   .logo-image {
-    max-height: 80px;
+    max-height: 100px;
   }
   .logo-container {
-    height: 80px;
+    height: 100px;
   }
 }

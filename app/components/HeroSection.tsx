@@ -9,7 +9,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <Image
         src="/images/hero-bg.jpg"
-        alt="Entrümpelung Service"
+        alt="Professionelle Entrümpelung Bielefeld - Haushaltsauflösung & Wohnungsräumung Service in OWL"
         fill
         priority
         className="object-cover brightness-[0.85]"

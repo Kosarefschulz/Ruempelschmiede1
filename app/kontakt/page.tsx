@@ -108,8 +108,8 @@ export default function KontaktPage() {
       icon: 'telefon',
       title: 'Sofort-Beratung',
       subtitle: 'Rufen Sie jetzt an',
-      value: '0521 / 1200 510',
-      href: 'tel:+4952112000510',
+      value: '015 755854945',
+      href: 'tel:+4915755854945',
       bgColor: 'bg-gradient-to-br from-[#C73E3A] to-[#B02E2A]',
       popular: true,
       badge: 'Beliebteste Option',
@@ -621,7 +621,7 @@ export default function KontaktPage() {
                   <Icon name="telefon" size={32} color="white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Notfall-Hotline 24/7</h3>
-                <p className="text-3xl font-bold mb-2">0521 / 1200 510</p>
+                <p className="text-3xl font-bold mb-2">015 755854945</p>
                 <p className="text-sm opacity-90">Für dringende Fälle sind wir rund um die Uhr erreichbar</p>
               </div>
 
@@ -704,10 +704,10 @@ export default function KontaktPage() {
             wir begleiten Sie mit Verständnis und Professionalität.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+4952112000510" className="bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+            <a href="tel:+4915755854945" className="bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
               <span className="flex items-center justify-center">
                 <Icon name="telefon" size={24} className="mr-2" />
-                Jetzt anrufen: 0521 / 1200 510
+                Jetzt anrufen: 015 755854945
               </span>
             </a>
             <a href="#contact-form-section" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg">

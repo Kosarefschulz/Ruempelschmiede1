@@ -45,7 +45,7 @@ export default function FranchisePage() {
         </svg>
       ),
       investment: 'Ab 10.000 € Eigenkapital',
-      description: 'Werden Sie selbständiger Unternehmer mit der starken Marke Rümpelschmiede im Rücken.',
+      description: 'Werden Sie selbständiger Unternehmer mit der starken Marke Rümpel Schmiede im Rücken.',
       benefits: [
         'Exklusives Vertriebsgebiet',
         'Bewährtes Geschäftsmodell',
@@ -208,7 +208,7 @@ export default function FranchisePage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
-              Werden Sie <span className="text-[#C73E3A]">Rümpelschmiede</span> Unternehmer
+              Werden Sie <span className="text-[#C73E3A]">Rümpel Schmiede</span> Unternehmer
             </h1>
             <p className="text-xl sm:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed mb-8">
               Starten Sie erfolgreich in die Selbstständigkeit mit einem starken Partner an Ihrer Seite
@@ -243,7 +243,7 @@ export default function FranchisePage() {
               Ihre Chance auf eine erfolgreiche Zukunft
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Die Rümpelschmiede ist mehr als nur ein Entrümpelungsunternehmen – wir sind eine Familie von 
+              Die Rümpel Schmiede ist mehr als nur ein Entrümpelungsunternehmen – wir sind eine Familie von 
               Unternehmern, die gemeinsam wachsen. Mit unserem bewährten Franchise-System bieten wir Ihnen 
               die Möglichkeit, Teil dieser Erfolgsgeschichte zu werden.
             </p>

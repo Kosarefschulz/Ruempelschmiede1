@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 
 interface IconProps {
-  name: string;
+  name?: string;
+  type?: string;
   className?: string;
   size?: number;
   color?: string;
@@ -91,12 +92,29 @@ const inlineSvgIcons: { [key: string]: (props: {size: number, color?: string, cl
       <line x1="12" y1="16" x2="12" y2="12"></line>
       <line x1="12" y1="8" x2="12.01" y2="8"></line>
     </svg>
+  ),
+  'phone': ({size, color = 'currentColor', className}) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  ),
+  'plus': ({size, color = 'currentColor', className}) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  ),
+  'minus': ({size, color = 'currentColor', className}) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
   )
 };
 
-export default function Icon({ name, className = '', size = 24, color }: IconProps) {
-  const iconPath = iconMap[name.toLowerCase()];
-  const InlineSvg = inlineSvgIcons[name.toLowerCase()];
+export default function Icon({ name, type, className = '', size = 24, color }: IconProps) {
+  const iconName = (type || name || '').toLowerCase();
+  const iconPath = iconMap[iconName];
+  const InlineSvg = inlineSvgIcons[iconName];
   
   if (InlineSvg) {
     return <InlineSvg size={size} color={color} className={className} />;
@@ -106,7 +124,7 @@ export default function Icon({ name, className = '', size = 24, color }: IconPro
     // Fallback für nicht gemappte Icons
     return (
       <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
-        <span className="text-xs">{name}</span>
+        <span className="text-xs">{iconName}</span>
       </div>
     );
   }
@@ -114,7 +132,7 @@ export default function Icon({ name, className = '', size = 24, color }: IconPro
   return (
     <Image
       src={iconPath}
-      alt={name}
+      alt={iconName}
       width={size}
       height={size}
       className={className}

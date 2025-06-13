@@ -696,7 +696,7 @@ export default function EntruempelungsRechner() {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <a
-                    href="tel:+4952199999900"
+                    href="tel:+4915755854945"
                     className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition-all transform hover:scale-105 flex items-center justify-center"
                   >
                     <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-2">
