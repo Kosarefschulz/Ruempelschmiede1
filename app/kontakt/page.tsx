@@ -345,7 +345,7 @@ export default function KontaktPage() {
                         </li>
                         <li className="flex items-start">
                           <Icon name="check" size={16} className="text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Verbindliches Festpreisangebot ohne versteckte Kosten</span>
+                          <span>Verbindliches Festpreisangebot mit garantierter Kostentransparenz</span>
                         </li>
                       </ol>
                     </div>
@@ -566,7 +566,7 @@ export default function KontaktPage() {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { icon: 'euro', title: '100% Festpreisgarantie', desc: 'Keine versteckten Kosten' },
+                    { icon: 'euro', title: '100% Festpreisgarantie', desc: 'Garantierte Kostentransparenz' },
                     { icon: 'blitz', title: '24h Rückmeldung', desc: 'Garantierte schnelle Antwort' },
                     { icon: 'shield', title: 'Voll versichert', desc: 'Bis 5 Mio. Euro Deckung' },
                     { icon: 'leaf', title: 'Umweltgerecht', desc: 'Zertifizierte Entsorgung' },
@@ -594,7 +594,7 @@ export default function KontaktPage() {
                   {[
                     { name: 'Maria K.', time: 'vor 2 Tagen', text: 'Sehr einfühlsam und professionell. Haben mir in einer schweren Zeit sehr geholfen.' },
                     { name: 'Thomas B.', time: 'vor 5 Tagen', text: 'Nach dem Tod meiner Mutter haben sie alles diskret und respektvoll geregelt.' },
-                    { name: 'Sabine M.', time: 'vor 1 Woche', text: 'Trotz Messie-Situation kein Urteil, nur Verständnis und professionelle Hilfe.' }
+                    { name: 'Sabine M.', time: 'vor 1 Woche', text: 'Bei Messie-Situation stets respektvolles Verständnis und professionelle Hilfe.' }
                   ].map((review, index) => (
                     <div key={index} className="border-l-4 border-[#C73E3A] pl-4">
                       <div className="flex items-center justify-between mb-1">
@@ -669,7 +669,7 @@ export default function KontaktPage() {
             {[
               {
                 q: 'Ist die Anfrage wirklich kostenlos und unverbindlich?',
-                a: 'Ja, absolut! Die Anfrage, Beratung und auch die Vor-Ort-Besichtigung sind komplett kostenlos. Sie gehen keine Verpflichtung ein.'
+                a: 'Ja, absolut! Die Anfrage, Beratung und auch die Vor-Ort-Besichtigung sind komplett kostenlos. Sie bleiben völlig unverbindlich.'
               },
               {
                 q: 'Wie schnell können Sie mit der Entrümpelung beginnen?',
@@ -677,7 +677,7 @@ export default function KontaktPage() {
               },
               {
                 q: 'Was passiert mit meinen persönlichen Daten?',
-                a: 'Ihre Daten werden streng vertraulich behandelt und nur zur Bearbeitung Ihrer Anfrage verwendet. Wir geben keine Daten an Dritte weiter.'
+                a: 'Ihre Daten werden streng vertraulich behandelt und nur zur Bearbeitung Ihrer Anfrage verwendet. Wir schützen Ihre Daten vor Dritten.'
               },
               {
                 q: 'Arbeiten Sie auch am Wochenende?',
@@ -697,7 +697,7 @@ export default function KontaktPage() {
       <section className="py-16 bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            Sie sind nicht allein - wir sind für Sie da
+            Wir sind für Sie da - immer an Ihrer Seite
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Egal ob Nachlass, Umzug oder schwierige Lebenssituation - 

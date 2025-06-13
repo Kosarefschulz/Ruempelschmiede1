@@ -33,7 +33,7 @@ export default function HamburgPage() {
             style={{ height: '70vh' }}
           >
             <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
-            Ihr Browser unterstützt keine Videos.
+            Video wird geladen...
           </video>
           <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
@@ -246,7 +246,7 @@ export default function HamburgPage() {
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
                   <p className="text-gray-600">
                     Sie erhalten ein detailliertes Festpreisangebot für Ihre Hamburger Immobilie. Keine Überraschungen, 
-                    keine nachträglichen Kosten - versprochen!
+                    garantierte Kostentransparenz - versprochen!
                   </p>
                 </div>
               </div>
@@ -356,8 +356,8 @@ export default function HamburgPage() {
               Ihre Vorteile bei Entrümpelung Hamburg
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bei uns erhalten Sie nicht nur eine professionelle Entrümpelung in Hamburg, 
-              sondern ein Rundum-sorglos-Paket mit echtem Mehrwert.
+              Bei uns erhalten Sie sowohl eine professionelle Entrümpelung in Hamburg 
+              als auch ein Rundum-sorglos-Paket mit echtem Mehrwert.
             </p>
           </div>
 
@@ -388,7 +388,7 @@ export default function HamburgPage() {
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
                   <p className="text-gray-600 text-sm">
                     Unverbindliche Beratung vor Ort in Hamburg - völlig kostenfrei. Transparente Festpreise 
-                    ohne versteckte Kosten. Keine Anfahrtskosten in ganz Hamburg.
+                    mit garantierter Kostensicherheit. Kostenfreie Anfahrt in ganz Hamburg.
                   </p>
                 </div>
               </div>
@@ -451,7 +451,7 @@ export default function HamburgPage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
                   <p className="text-gray-600 text-sm">
-                    Geschultes Hamburger Personal - keine Subunternehmer. Modernste Ausrüstung für effiziente Arbeit. 
+                    Geschultes Hamburger Personal - ausschließlich eigene Mitarbeiter. Modernste Ausrüstung für effiziente Arbeit. 
                     98% Kundenzufriedenheit sprechen für sich.
                   </p>
                 </div>
@@ -556,7 +556,7 @@ export default function HamburgPage() {
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
                 <p className="text-gray-700 mb-4">
                   Sensible Räumung in Hamburg mit Desinfektion. Wir arbeiten diskret, respektvoll 
-                  und ohne Vorurteile.
+                  und mit respektvollem Verständnis.
                 </p>
                 <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                   Mehr erfahren
@@ -694,7 +694,7 @@ export default function HamburgPage() {
                     </div>
                     <p className="text-gray-700 mb-6 italic">
                       "Die Gewerbeauflösung unseres Büros in der HafenCity lief perfekt. 
-                      Sogar am Wochenende haben sie gearbeitet, damit der Betrieb nicht gestört wird."
+                      Sogar am Wochenende haben sie gearbeitet, damit der Betrieb reibungslos weiterläuft."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Tech Solutions GmbH</p>
@@ -710,7 +710,7 @@ export default function HamburgPage() {
                     </div>
                     <p className="text-gray-700 mb-6 italic">
                       "Kellerentrümpelung in Eimsbüttel - schnell und sauber erledigt. 
-                      Der Festpreis war fair und es gab keine Überraschungen."
+                      Der Festpreis war fair und alles verlief wie versprochen."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Klaus Hansen</p>
@@ -915,7 +915,7 @@ export default function HamburgPage() {
 
           <div className="text-center">
             <p className="text-lg mb-4 opacity-90">
-              Ihr Ort ist nicht dabei? Kein Problem!
+              Ihr Ort fehlt noch? Wir kommen trotzdem zu Ihnen!
             </p>
             <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
               Wir fahren im gesamten Großraum Hamburg und in die angrenzenden Regionen. 

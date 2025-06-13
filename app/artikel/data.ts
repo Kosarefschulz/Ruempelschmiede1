@@ -110,7 +110,7 @@ Eine Haushaltsauflösung kostet zwischen 800€ und 4.500€. Die genauen Kosten
         date: '15. November 2024',
         category: 'Kosten & Preise',
         readTime: '7 Min. Lesezeit',
-        image: '/images/haushaltsaufloesung-kosten.jpg'
+        image: '/images/artikel/haushaltsaufloesung-kosten.jpg'
     },
     {
         id: 'garage-entruempelung-guide',
@@ -158,7 +158,7 @@ Eine durchdachte Garageentrümpelung schafft nicht nur Platz für Ihr Fahrzeug, 
         date: '12. Dezember 2024',
         category: 'Ratgeber',
         readTime: '11 Min. Lesezeit',
-        image: '/images/garage-entruempelung.jpg'
+        image: '/images/artikel/entrümpelung-checkliste.jpg'
     },
     {
         id: 'sperrmuell-richtig-entsorgen-guide',
@@ -411,7 +411,7 @@ Mit der richtigen Planung und Kenntnis der örtlichen Regelungen ist Sperrmüll-
         date: '12. Dezember 2024',
         category: 'Ratgeber',
         readTime: '10 Min. Lesezeit',
-        image: '/images/sperrmuell-entsorgung.jpg'
+        image: '/images/artikel/umwelt-entsorgung.jpg'
     },
     {
         id: 'entruempelung-bielefeld-lokaler-guide',
@@ -680,7 +680,7 @@ Als Bielefelder profitieren Sie von kurzen Wegen, fairen Preisen und ausgezeichn
         date: '12. Dezember 2024',
         category: 'Ratgeber',
         readTime: '12 Min. Lesezeit',
-        image: '/images/bielefeld-entruempelung.jpg'
+        image: '/images/artikel/nachlassverwertung.jpg'
     },
     {
         id: 'bueroaufloesung-planung-kosten-guide',
@@ -780,7 +780,7 @@ Eine professionelle Büroauflösung in Bielefeld kostet zwischen 890€ und 15.0
         date: '18. Dezember 2024',
         category: 'B2B',
         readTime: '12 Min. Lesezeit',
-        image: '/images/bueroaufloesung-bielefeld.jpg'
+        image: '/images/artikel/wertvolle-gegenstände.jpg'
     },
     {
         id: 'entruempelung-vor-umzug-checkliste',
@@ -1095,7 +1095,7 @@ Eine systematische Entrümpelung vor dem Umzug spart nicht nur Geld, sondern mac
         date: '20. Dezember 2024',
         category: 'Tipps & Tricks',
         readTime: '14 Min. Lesezeit',
-        image: '/images/umzug-entruempelung.jpg'
+        image: '/images/artikel/entrümpelung-checkliste.jpg'
     },
     {
         id: 'professionell-vs-diy-entruempelung-vergleich',
@@ -1425,7 +1425,7 @@ Es gibt nicht DIE richtige Lösung für alle. DIY-Entrümpelung spart Geld bei k
         date: '22. Dezember 2024',
         category: 'Ratgeber',
         readTime: '11 Min. Lesezeit',
-        image: '/images/professionell-vs-diy-entruempelung.jpg'
+        image: '/images/artikel/messie-hilfe.jpg'
     }
     // Hier können weitere Artikel hinzugefügt werden
 ];

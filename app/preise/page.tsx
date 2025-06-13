@@ -622,7 +622,7 @@ export default function EntruempelungsRechner() {
                   </div>
                   <div>
                     <p className="font-semibold text-blue-800">100% Festpreis-Garantie</p>
-                    <p className="text-sm text-blue-600">Keine versteckten Kosten - der Preis bleibt wie angezeigt!</p>
+                    <p className="text-sm text-blue-600">Garantierte Kostentransparenz - der Preis bleibt wie angezeigt!</p>
                   </div>
                 </div>
 

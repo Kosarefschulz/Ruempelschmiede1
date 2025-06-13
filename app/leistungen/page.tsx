@@ -77,7 +77,7 @@ const servicesData: Service[] = [
             '/images/services/messie-entruempelung_4.jpg',
             '/images/services/messie-entruempelung_5.jpg'
         ],
-        excerpt: 'Diskrete Hilfe bei Messie-Syndrom - ohne Vorurteile.',
+        excerpt: 'Diskrete Hilfe bei Messie-Syndrom - mit Respekt und Verständnis.',
         seoText: 'Messie-Entrümpelung Deutschland: Diskrete, professionelle Hilfe bei stark vermüllten Wohnungen deutschlandweit. Inklusive Desinfektion, Geruchsneutralisation und Wiederherstellung der Bewohnbarkeit.',
         details: [
             "Deutschlandweiter Service mit lokalem Team",
@@ -240,7 +240,7 @@ export default function LeistungenPage() {
                 </svg>
             ),
             title: 'Festpreisgarantie',
-            text: 'Transparente Preise ohne versteckte Kosten bundesweit.'
+            text: 'Transparente Preise mit garantierter Kostensicherheit bundesweit.'
         },
         {
             icon: (
@@ -440,7 +440,7 @@ export default function LeistungenPage() {
                                             </p>
                                             <p className="mb-4">
                                                 Bei der <strong>professionellen Wohnungsauflösung</strong> erhalten Sie ein 
-                                                transparentes Festpreisangebot ohne versteckte Kosten. Wertvolle Gegenstände wie 
+                                                transparentes Festpreisangebot mit garantierter Kostensicherheit. Wertvolle Gegenstände wie 
                                                 Antiquitäten, Möbel oder Elektrogeräte rechnen wir direkt an oder spenden sie 
                                                 auf Wunsch an gemeinnützige Organisationen. Das reduziert Ihre Kosten erheblich.
                                             </p>
@@ -490,7 +490,7 @@ export default function LeistungenPage() {
                                             </p>
                                             <p>
                                                 Über 15 Jahre Erfahrung in der sensiblen Messie-Entrümpelung deutschlandweit. 
-                                                Wir arbeiten ohne Vorurteile und mit größtem Respekt für Ihre Situation.
+                                                Wir arbeiten mit respektvollem Verständnis und größtem Respekt für Ihre Situation.
                                             </p>
                                         </>
                                     )}
@@ -505,7 +505,7 @@ export default function LeistungenPage() {
                                             </p>
                                             <p className="mb-4">
                                                 <strong>Auch schwer zugängliche Bereiche</strong>, enge Treppen oder feuchte Keller 
-                                                sind für unser erfahrenes Team kein Problem. Brauchbare Gegenstände, Werkzeuge 
+                                                sind für unser erfahrenes Team problemlos machbar. Brauchbare Gegenstände, Werkzeuge 
                                                 oder Sammlerstücke werden fair angerechnet und reduzieren so Ihre Kosten.
                                             </p>
                                             <p>

@@ -33,7 +33,7 @@ export default function SteinhagenPage() {
             style={{ height: '70vh' }}
           >
             <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
-            Ihr Browser unterstützt keine Videos.
+            Video wird geladen...
           </video>
           <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
@@ -246,7 +246,7 @@ export default function SteinhagenPage() {
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
                   <p className="text-gray-600">
                     Sie erhalten ein detailliertes Festpreisangebot für Ihre Immobilie in Steinhagen. Keine Überraschungen, 
-                    keine nachträglichen Kosten - versprochen!
+                    garantierte Kostentransparenz - versprochen!
                   </p>
                 </div>
               </div>
@@ -463,7 +463,7 @@ export default function SteinhagenPage() {
 
           <div className="text-center">
             <p className="text-lg mb-4 opacity-90">
-              Ihr Ort ist nicht dabei? Kein Problem!
+              Ihr Ort fehlt noch? Wir kommen trotzdem zu Ihnen!
             </p>
             <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
               Wir fahren im gesamten Großraum Steinhagen und in die angrenzenden Regionen. 

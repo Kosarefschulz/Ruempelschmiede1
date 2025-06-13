@@ -30,12 +30,12 @@ export default function UeberUnsPage() {
     {
       icon: 'heart',
       title: 'Menschlichkeit & Empathie',
-      description: 'Wir sehen nicht nur Gegenstände – wir sehen die Geschichten dahinter und behandeln sie mit dem Respekt, den sie verdienen.',
+      description: 'Wir sehen mehr als Gegenstände – wir sehen die Geschichten dahinter und behandeln sie mit dem Respekt, den sie verdienen.',
     },
     {
       icon: 'handshake',
       title: 'Ehrlichkeit & Vertrauen',
-      description: 'Ein Wort ist ein Wort. Bei uns gibt es keine versteckten Kosten, keine bösen Überraschungen – nur klare Absprachen.',
+      description: 'Ein Wort ist ein Wort. Bei uns gibt es transparente Kosten, verlässliche Planung – stets klare Absprachen.',
     },
     {
       icon: 'shield',
@@ -45,14 +45,14 @@ export default function UeberUnsPage() {
     {
       icon: 'recycle',
       title: 'Nachhaltigkeit & Verantwortung',
-      description: 'Wir entsorgen nicht einfach – wir geben Dingen ein zweites Leben und schützen dabei unsere Umwelt.',
+      description: 'Wir entsorgen verantwortungsvoll – wir geben Dingen ein zweites Leben und schützen dabei unsere Umwelt.',
     },
   ];
 
   const differentiators = [
     { 
       title: 'Ein Gesicht, ein Versprechen', 
-      description: 'Bei uns haben Sie EINEN Ansprechpartner von Anfang bis Ende. Keine Call-Center, keine Vermittlung an Subunternehmer – nur Ihr persönlicher Betreuer.', 
+      description: 'Bei uns haben Sie EINEN Ansprechpartner von Anfang bis Ende. Persönlicher Service garantiert, eigene Mitarbeiter – stets Ihr persönlicher Betreuer.', 
       icon: 'heart' 
     },
     { 
@@ -62,12 +62,12 @@ export default function UeberUnsPage() {
     },
     { 
       title: 'Begleitung über den Auftrag hinaus', 
-      description: 'Nach der Entrümpelung lassen wir Sie nicht allein. Wir helfen bei Behördengängen, koordinieren Handwerker und sind für Sie da – so lange Sie uns brauchen.', 
+      description: 'Nach der Entrümpelung bleiben wir an Ihrer Seite. Wir helfen bei Behördengängen, koordinieren Handwerker und sind für Sie da – so lange Sie uns brauchen.', 
       icon: 'heart'
     },
     { 
       title: 'Premium-Service aus Überzeugung', 
-      description: 'Keine Billig-Tricks, keine falschen Versprechen. Wir arbeiten zu fairen Preisen mit höchster Qualität – weil Ihre Zufriedenheit unser Antrieb ist.', 
+      description: 'Ehrliche Preise, verlässliche Versprechen. Wir arbeiten zu fairen Preisen mit höchster Qualität – weil Ihre Zufriedenheit unser Antrieb ist.', 
       icon: 'award'
     },
   ];
@@ -125,7 +125,7 @@ export default function UeberUnsPage() {
               <p className="text-lg leading-relaxed mb-6">
                 <span className="font-bold text-[#C73E3A] text-xl">Der Markt ist überschwemmt.</span> Überschwemmt von unseriösen Entrümpelungsfirmen, 
                 die mit Dumpingpreisen locken und dann Nachforderungen stellen. Von Anbietern, die Ihre Notsituation 
-                ausnutzen und Sie in schwierigen Zeiten allein lassen. Von Firmen, die versprechen und nicht halten.
+                ausnutzen und Sie in schwierigen Zeiten im Stich lassen. Von Firmen, die versprechen und dann anders handeln.
               </p>
               
               <p className="text-lg leading-relaxed mb-6">
@@ -154,7 +154,7 @@ export default function UeberUnsPage() {
                 <div>
                   <h4 className="font-bold text-lg mb-2">Ein Ansprechpartner – Ein Wort</h4>
                   <p className="text-gray-700">
-                    Bei uns werden Sie nicht weitergereicht. Kein Call-Center, keine Subunternehmer. 
+                    Bei uns haben Sie einen festen Ansprechpartner. Persönlicher Service, eigene Mitarbeiter. 
                     <span className="font-semibold">IHR persönlicher Betreuer</span> begleitet Sie vom ersten Anruf bis zur besenreinen Übergabe.
                   </p>
                 </div>
@@ -169,7 +169,7 @@ export default function UeberUnsPage() {
                 <div>
                   <h4 className="font-bold text-lg mb-2">Als wäre es unser eigenes Zuhause</h4>
                   <p className="text-gray-700">
-                    Wir räumen nicht einfach aus. Wir verstehen, dass jeder Gegenstand eine Geschichte hat. 
+                    Wir räumen sorgfältig aus. Wir verstehen, dass jeder Gegenstand eine Geschichte hat. 
                     <span className="font-semibold">Mit Respekt und Würde</span> behandeln wir Ihr Hab und Gut – 
                     und vor allem Sie als Mensch.
                   </p>
@@ -185,7 +185,7 @@ export default function UeberUnsPage() {
                 <div>
                   <h4 className="font-bold text-lg mb-2">Speziell geschult für Ihre Situation</h4>
                   <p className="text-gray-700">
-                    Unsere Mitarbeiter sind keine Möbelpacker. Sie sind <span className="font-semibold">ausgebildete Begleiter</span> für 
+                    Unsere Mitarbeiter sind einfühlsame Profis. Sie sind <span className="font-semibold">ausgebildete Begleiter</span> für 
                     schwierige Lebenssituationen: Trauerfälle, Demenz, Messie-Syndrom, Scheidungen. 
                     Wir verstehen, dass eine Entrümpelung oft mehr ist als nur das Ausräumen von Gegenständen.
                   </p>
@@ -199,7 +199,7 @@ export default function UeberUnsPage() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-2">Wir lassen Sie nicht allein</h4>
+                  <h4 className="font-bold text-lg mb-2">Wir bleiben an Ihrer Seite</h4>
                   <p className="text-gray-700">
                     Nach der Entrümpelung ist vor dem Neuanfang. <span className="font-semibold">Wir bleiben an Ihrer Seite</span>: 
                     Hilfe bei Behördengängen, Koordination mit Handwerkern, Unterstützung bei der Wohnungsübergabe. 
@@ -211,7 +211,7 @@ export default function UeberUnsPage() {
 
             <div className="bg-[#2C4F5E] text-white p-8 rounded-2xl mt-12">
               <blockquote className="text-xl italic text-center">
-                "Wir schmieden nicht nur Ordnung aus Chaos – wir schmieden Vertrauen, 
+                "Wir schmieden mehr als Ordnung aus Chaos – wir schmieden Vertrauen, 
                 Hoffnung und neue Anfänge. Mit <span className="font-bold text-[#C73E3A]">Ehrlichkeit, 
                 Nächstenliebe und echtem Mitgefühl</span>."
               </blockquote>
@@ -244,7 +244,7 @@ export default function UeberUnsPage() {
               Das macht uns zur Premium-Entrümpelungsfirma
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Keine leeren Versprechen – sondern gelebte Werte, die Sie spüren werden.
+              Gelebte Werte – authentisch und spürbar in jeder Begegnung.
             </p>
           </div>
           
@@ -268,7 +268,7 @@ export default function UeberUnsPage() {
           <div className="text-center mt-12">
             <div className="bg-white p-8 rounded-2xl shadow-lg inline-block">
               <p className="text-lg text-gray-700 mb-6">
-                <span className="font-bold text-[#C73E3A]">Keine Risiken, nur Vorteile:</span> Kostenlose Besichtigung, 
+                <span className="font-bold text-[#C73E3A]">Ihre Vorteile auf einen Blick:</span> Kostenlose Besichtigung, 
                 Festpreisgarantie, 100% Diskretion
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -342,7 +342,7 @@ export default function UeberUnsPage() {
               Die Werte, die uns jeden Tag antreiben
             </h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Das ist kein Marketing-Sprech – das ist unser tägliches Handeln.
+              Das ist unsere Unternehmenskultur – das ist unser tägliches Handeln.
             </p>
           </div>
           
@@ -388,7 +388,7 @@ export default function UeberUnsPage() {
                   </svg>
                 ),
                 title: 'Festpreisgarantie',
-                desc: 'Keine versteckten Kosten'
+                desc: 'Transparente Preisgestaltung'
               },
               { 
                 icon: (
@@ -482,7 +482,7 @@ export default function UeberUnsPage() {
           </div>
 
           <p className="mt-8 text-gray-600">
-            <span className="font-semibold">Keine Verpflichtungen.</span> Kostenlose Besichtigung. 
+            <span className="font-semibold">Völlig unverbindlich.</span> Kostenlose Besichtigung. 
             Festpreisgarantie. Das ist unser Versprechen an Sie.
           </p>
         </div>

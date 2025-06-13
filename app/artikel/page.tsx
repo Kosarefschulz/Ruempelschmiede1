@@ -281,7 +281,7 @@ export default function ArtikelPage() {
                         ✓ Kostenlose Besichtigung & Beratung
                     </p>
                     <p className="text-lg md:text-xl mb-8 opacity-90">
-                        ✓ Festpreis-Garantie ohne versteckte Kosten
+                        ✓ Festpreis-Garantie mit transparenter Kalkulation
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">

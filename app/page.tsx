@@ -30,11 +30,10 @@ export default function HomePage() {
             loop
             muted
             playsInline
-            poster="/video-poster.jpg"
             style={{ height: '70vh' }}
           >
             <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
-            Ihr Browser unterstützt keine Videos.
+            Video wird geladen...
           </video>
           <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
@@ -246,8 +245,8 @@ export default function HomePage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex-1">
                   <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">Transparente Preisgestaltung</h4>
                   <p className="text-gray-600">
-                    Sie erhalten ein detailliertes Festpreisangebot. Keine Überraschungen, 
-                    keine nachträglichen Kosten - versprochen!
+                    Sie erhalten ein detailliertes Festpreisangebot. Transparente Preise, 
+                    garantierte Kostensicherheit - versprochen!
                   </p>
                 </div>
               </div>
@@ -360,8 +359,8 @@ export default function HomePage() {
               Ihre Vorteile auf einen Blick
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bei uns erhalten Sie nicht nur eine professionelle Entrümpelung, 
-              sondern ein Rundum-sorglos-Paket mit echtem Mehrwert.
+              Bei uns erhalten Sie eine professionelle Entrümpelung 
+              und zusätzlich ein Rundum-sorglos-Paket mit echtem Mehrwert.
             </p>
           </div>
 
@@ -400,9 +399,9 @@ export default function HomePage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Kostenlose Besichtigung</h3>
                   <p className="text-gray-600 text-sm">
-                    Unverbindliche Beratung vor Ort - völlig kostenfrei und ohne Verpflichtungen. Transparente, günstige Festpreise 
-                    ohne versteckte Kosten - Sie wissen immer, was auf Sie zukommt. Unser detailliertes Angebot listet alle 
-                    Positionen einzeln auf. Keine Anfahrtskosten in ganz Deutschland. Faire Preisgestaltung mit Bestpreis-Garantie. 
+                    Unverbindliche Beratung vor Ort - völlig kostenfrei und unverbindlich. Transparente, günstige Festpreise 
+                    mit garantierter Kostensicherheit - Sie wissen immer, was auf Sie zukommt. Unser detailliertes Angebot listet alle 
+                    Positionen einzeln auf. Kostenfreie Anfahrt in ganz Deutschland. Faire Preisgestaltung mit Bestpreis-Garantie. 
                     Zahlung erst nach erfolgreicher Durchführung möglich.
                   </p>
                 </div>
@@ -485,7 +484,7 @@ export default function HomePage() {
                 <div>
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Höchste Professionalität</h3>
                   <p className="text-gray-600 text-sm">
-                    Geschultes und festangestelltes Personal - keine Subunternehmer. Modernste Ausrüstung und Fahrzeuge 
+                    Geschultes und festangestelltes Personal - ausschließlich eigene Mitarbeiter. Modernste Ausrüstung und Fahrzeuge 
                     für effiziente Arbeit. Bewährte Prozesse und Qualitätsmanagement für perfekte Ergebnisse. 
                     Pünktlichkeit und Zuverlässigkeit sind selbstverständlich. Saubere Arbeitskleidung und höfliches 
                     Auftreten. 98% Kundenzufriedenheit sprechen für sich.
@@ -530,151 +529,163 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Haushaltsauflösung */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <Image 
-                  src="/Karton.png" 
-                  alt="Haushaltsauflösung Bielefeld - Komplette Wohnungsräumung mit Umzugskartons in OWL"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
-                <p className="text-gray-700 mb-4">
-                  Komplette Wohnungsauflösungen mit Wertanrechnung. Wir kümmern uns um alles - 
-                  von der Entrümpelung bis zur Endreinigung.
-                </p>
-                <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren
-                  <Icon name="arrow-right" size={20} className="ml-2" />
-                </a>
-              </div>
-            </div>
-
-            {/* Gewerbeauflösung */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <Image 
-                  src="/Gewerbe 2.jpg" 
-                  alt="Gewerbeauflösung Bielefeld - Professionelle Büroräumung & Betriebsauflösung in OWL"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
-                <p className="text-gray-700 mb-4">
-                  Büros, Praxen, Läden - schnell und diskret. Auch am Wochenende und 
-                  außerhalb der Geschäftszeiten möglich.
-                </p>
-                <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren
-                  <Icon name="arrow-right" size={20} className="ml-2" />
-                </a>
-              </div>
-            </div>
-
-            {/* Messie-Wohnungen */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <Image 
-                  src="/Voller Messie Flur .jpg" 
-                  alt="Messie-Wohnung Entrümpelung Steinhagen - Diskrete Wohnungsräumung mit Desinfektion OWL"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
-                <p className="text-gray-700 mb-4">
-                  Sensible Räumung mit Desinfektion. Wir arbeiten diskret, respektvoll 
-                  und ohne Vorurteile.
-                </p>
-                <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren
-                  <Icon name="arrow-right" size={20} className="ml-2" />
-                </a>
-              </div>
-            </div>
-
-            {/* Kellerentrümpelung */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <Image 
-                  src="/1-2.jpg" 
-                  alt="Kellerentrümpelung Bielefeld - Günstige Kellerräumung ab 390€ in OWL Region"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
-                <p className="text-gray-700 mb-4">
-                  Endlich wieder Platz im Keller! Schnell und günstig - oft schon ab 390€. 
-                  Inkl. fachgerechter Entsorgung.
-                </p>
-                <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren
-                  <Icon name="arrow-right" size={20} className="ml-2" />
-                </a>
-              </div>
-            </div>
-
-            {/* Dachbodenentrümpelung */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <Image 
-                  src="/Dachboden.jpg" 
-                  alt="Dachbodenentrümpelung Steinhagen - Sichere Dachbodenräumung schwer zugänglicher Bereiche OWL"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
-                <p className="text-gray-700 mb-4">
-                  Schwer zugängliche Dachböden? Kein Problem für unser erfahrenes Team! 
-                  Sicher und professionell.
-                </p>
-                <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren
-                  <Icon name="arrow-right" size={20} className="ml-2" />
-                </a>
-              </div>
-            </div>
-
-            {/* Express-Service */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <Image 
-                  src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
-                  alt="Express Entrümpelung Bielefeld - 48h Schnellservice Haushaltsauflösung in OWL"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute top-4 right-4 bg-[#C73E3A] text-white px-3 py-1 rounded-full text-sm font-bold">
-                  48h Service
+            <a href="/leistungen#haushaltsaufloesung" className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                <div className="h-64 bg-gray-200 relative overflow-hidden">
+                  <Image 
+                    src="/Karton.png" 
+                    alt="Haushaltsauflösung Bielefeld - Komplette Wohnungsräumung mit Umzugskartons in OWL"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Haushaltsauflösungen</h3>
+                  <p className="text-gray-700 mb-4">
+                    Komplette Wohnungsauflösungen mit Wertanrechnung. Wir kümmern uns um alles - 
+                    von der Entrümpelung bis zur Endreinigung.
+                  </p>
+                  <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                    Mehr erfahren
+                    <Icon name="arrow-right" size={20} className="ml-2" />
+                  </span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Express-Service</h3>
-                <p className="text-gray-700 mb-4">
-                  Eilig? Innerhalb von 48 Stunden räumen wir für Sie - garantiert! 
-                  Perfekt bei kurzfristigen Terminen.
-                </p>
-                <a href="/leistungen" className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  Mehr erfahren
-                  <Icon name="arrow-right" size={20} className="ml-2" />
-                </a>
+            </a>
+
+            {/* Gewerbeauflösung */}
+            <a href="/leistungen#gewerbeaufloesung" className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                <div className="h-64 bg-gray-200 relative overflow-hidden">
+                  <Image 
+                    src="/Gewerbe 2.jpg" 
+                    alt="Gewerbeauflösung Bielefeld - Professionelle Büroräumung & Betriebsauflösung in OWL"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Gewerbeauflösungen</h3>
+                  <p className="text-gray-700 mb-4">
+                    Büros, Praxen, Läden - schnell und diskret. Auch am Wochenende und 
+                    außerhalb der Geschäftszeiten möglich.
+                  </p>
+                  <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                    Mehr erfahren
+                    <Icon name="arrow-right" size={20} className="ml-2" />
+                  </span>
+                </div>
               </div>
-            </div>
+            </a>
+
+            {/* Messie-Wohnungen */}
+            <a href="/leistungen#messie-entruempelung" className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                <div className="h-64 bg-gray-200 relative overflow-hidden">
+                  <Image 
+                    src="/Voller Messie Flur .jpg" 
+                    alt="Messie-Wohnung Entrümpelung Steinhagen - Diskrete Wohnungsräumung mit Desinfektion OWL"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
+                  <p className="text-gray-700 mb-4">
+                    Sensible Räumung mit Desinfektion. Wir arbeiten diskret, respektvoll 
+                    und mit respektvollem Verständnis.
+                  </p>
+                  <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                    Mehr erfahren
+                    <Icon name="arrow-right" size={20} className="ml-2" />
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            {/* Kellerentrümpelung */}
+            <a href="/leistungen#keller-dachboden" className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                <div className="h-64 bg-gray-200 relative overflow-hidden">
+                  <Image 
+                    src="/1-2.jpg" 
+                    alt="Kellerentrümpelung Bielefeld - Günstige Kellerräumung ab 390€ in OWL Region"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
+                  <p className="text-gray-700 mb-4">
+                    Endlich wieder Platz im Keller! Schnell und günstig - oft schon ab 390€. 
+                    Inkl. fachgerechter Entsorgung.
+                  </p>
+                  <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                    Mehr erfahren
+                    <Icon name="arrow-right" size={20} className="ml-2" />
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            {/* Dachbodenentrümpelung */}
+            <a href="/leistungen#keller-dachboden" className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                <div className="h-64 bg-gray-200 relative overflow-hidden">
+                  <Image 
+                    src="/Dachboden.jpg" 
+                    alt="Dachbodenentrümpelung Steinhagen - Sichere Dachbodenräumung schwer zugänglicher Bereiche OWL"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
+                  <p className="text-gray-700 mb-4">
+                    Schwer zugängliche Dachböden? Kein Problem für unser erfahrenes Team! 
+                    Sicher und professionell.
+                  </p>
+                  <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                    Mehr erfahren
+                    <Icon name="arrow-right" size={20} className="ml-2" />
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            {/* Express-Service */}
+            <a href="/leistungen#express-service" className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                <div className="h-64 bg-gray-200 relative overflow-hidden">
+                  <Image 
+                    src="/76f2dd53-6826-4e2f-b45b-aaa99c3206c9.png" 
+                    alt="Express Entrümpelung Bielefeld - 48h Schnellservice Haushaltsauflösung in OWL"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute top-4 right-4 bg-[#C73E3A] text-white px-3 py-1 rounded-full text-sm font-bold">
+                    48h Service
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Express-Service</h3>
+                  <p className="text-gray-700 mb-4">
+                    Eilig? Innerhalb von 48 Stunden räumen wir für Sie - garantiert! 
+                    Perfekt bei kurzfristigen Terminen.
+                  </p>
+                  <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                    Mehr erfahren
+                    <Icon name="arrow-right" size={20} className="ml-2" />
+                  </span>
+                </div>
+              </div>
+            </a>
           </div>
 
           {/* CTA am Ende */}
@@ -683,6 +694,267 @@ export default function HomePage() {
               Alle Leistungen ansehen
               <span className="ml-2 text-lg">→</span>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Alles aus einer Hand - Renovierung */}
+      <section className="py-16 bg-gradient-to-br from-[#1E3A47] to-[#2C4F5E] text-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              Mehr als nur Entrümpelung - Ihre Komplettlösung
+            </h2>
+            <p className="text-xl opacity-90 max-w-3xl mx-auto">
+              Nach der Entrümpelung geht es oft erst richtig los. Deshalb bieten wir Ihnen 
+              gemeinsam mit unserem Partner alles aus einer Hand.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all">
+                <h3 className="text-2xl font-bold mb-3 flex items-center">
+                  <svg className="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                  Von der Entrümpelung zur Traumimmobilie
+                </h3>
+                <p className="opacity-90 mb-4">
+                  Ob Nachlasswohnung, Messie-Haushalt oder einfach nur Renovierungsbedarf - 
+                  wir machen nicht nur sauber, sondern auch schön!
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-[#C73E3A] mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Komplettsanierung nach Entrümpelung</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-[#C73E3A] mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Renovierung für Verkauf oder Vermietung</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-[#C73E3A] mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Modernisierung und Werterhöhung</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-[#C73E3A] mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Alles aus einer Hand - ein Ansprechpartner</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-[#C73E3A] rounded-xl p-6">
+                <h4 className="text-xl font-bold mb-2 flex items-center">
+                  <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                  Wussten Sie schon?
+                </h4>
+                <p className="opacity-90">
+                  Die Rümpel Schmiede und der Renovierungstrupp gehören zusammen! 
+                  Das bedeutet für Sie: Perfekte Abstimmung, nahtlose Übergänge und 
+                  garantierte Qualität von Anfang bis Ende.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center">
+              <h3 className="text-2xl font-bold mb-4">
+                Ihr Plus: Renovierung nach Maß
+              </h3>
+              <p className="opacity-90 mb-6">
+                Entdecken Sie, wie wir Ihre Immobilie nach der Entrümpelung 
+                in neuem Glanz erstrahlen lassen.
+              </p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <div className="flex items-center justify-center mb-2">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <p className="font-semibold">Komplettrenovierung</p>
+                  <p className="text-sm opacity-80">Vom Boden bis zur Decke</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4">
+                  <div className="flex items-center justify-center mb-2">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                  </div>
+                  <p className="font-semibold">Malerarbeiten</p>
+                  <p className="text-sm opacity-80">Frische Farben, neue Atmosphäre</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4">
+                  <div className="flex items-center justify-center mb-2">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                  </div>
+                  <p className="font-semibold">Bad & Sanitär</p>
+                  <p className="text-sm opacity-80">Moderne Bäder, zeitgemäße Technik</p>
+                </div>
+              </div>
+
+              <a 
+                href="https://renovierungstrupp.de" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transform hover:scale-105 transition-all shadow-lg"
+              >
+                Zum Renovierungstrupp
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-lg opacity-90">
+              <span className="font-bold">Sparen Sie Zeit und Nerven:</span> Ein Auftrag, ein Ansprechpartner, 
+              eine Rechnung - von der Entrümpelung bis zur schlüsselfertigen Übergabe.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Die Steinpfleger Partnerschaft */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
+              Unser Partner für professionelle Steinreinigung
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Als Franchise-Partner von Die Steinpfleger für das Gebiet um Höxter bieten wir Ihnen 
+              zusätzlich professionelle Steinreinigung und -sanierung aus einer Hand.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="bg-gradient-to-br from-[#F5F5F0] to-white rounded-xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-[#2C4F5E] mb-4 flex items-center">
+                <svg className="w-8 h-8 mr-3 text-[#C73E3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                Die Steinpfleger - Unser Partner im Raum Höxter
+              </h3>
+              
+              <p className="text-gray-700 mb-6">
+                Nach einer Entrümpelung sind oft auch Außenbereiche, Terrassen, Einfahrten oder 
+                Fassaden renovierungsbedürftig. Als offizieller Franchise-Partner von Die Steinpfleger 
+                bieten wir Ihnen im Raum Höxter professionelle Steinreinigung und -pflege.
+              </p>
+
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Professionelle Terrassenreinigung</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Fassadenreinigung und -schutz</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Pflasterstein- und Natursteinreinigung</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Langzeitschutz und Imprägnierung</span>
+                </li>
+              </ul>
+
+              <div className="bg-[#2C4F5E] text-white rounded-lg p-4 mb-6">
+                <p className="text-sm font-semibold mb-1">Exklusiv für die Region Höxter</p>
+                <p className="text-sm opacity-90">
+                  Als einziger autorisierter Die Steinpfleger Partner im Raum Höxter garantieren 
+                  wir höchste Qualität nach bewährtem System.
+                </p>
+              </div>
+
+              <a 
+                href="https://www.die-steinpfleger.de" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all w-full justify-center"
+              >
+                Mehr über Die Steinpfleger erfahren
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-[#F5F5F0] rounded-xl p-6">
+                <h4 className="text-xl font-bold text-[#2C4F5E] mb-3">
+                  Perfekte Ergänzung zur Entrümpelung
+                </h4>
+                <p className="text-gray-700 mb-4">
+                  Nach einer Haushaltsauflösung oder Entrümpelung sind oft auch die Außenbereiche 
+                  in einem schlechten Zustand. Mit unserem Steinpflege-Service machen wir auch 
+                  Terrassen, Einfahrten und Fassaden wieder wie neu.
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-white rounded-lg p-3 text-center">
+                    <div className="text-2xl font-bold text-[#C73E3A]">95%</div>
+                    <div className="text-sm text-gray-600">Schmutzentfernung</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3 text-center">
+                    <div className="text-2xl font-bold text-[#C73E3A]">10+</div>
+                    <div className="text-sm text-gray-600">Jahre Erfahrung</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-[#C73E3A] rounded-xl p-6">
+                <h4 className="text-lg font-bold text-[#2C4F5E] mb-2">
+                  Unser Service-Gebiet für Steinpflege:
+                </h4>
+                <p className="text-gray-700 mb-3">
+                  Als Die Steinpfleger Franchise-Partner betreuen wir exklusiv die Region um Höxter:
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-[#F5F5F0] px-3 py-1 rounded-full text-sm">Höxter</span>
+                  <span className="bg-[#F5F5F0] px-3 py-1 rounded-full text-sm">Holzminden</span>
+                  <span className="bg-[#F5F5F0] px-3 py-1 rounded-full text-sm">Bad Driburg</span>
+                  <span className="bg-[#F5F5F0] px-3 py-1 rounded-full text-sm">Brakel</span>
+                  <span className="bg-[#F5F5F0] px-3 py-1 rounded-full text-sm">Beverungen</span>
+                  <span className="bg-[#F5F5F0] px-3 py-1 rounded-full text-sm">und Umgebung</span>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-[#2C4F5E] to-[#1E3A47] text-white rounded-xl p-6">
+                <h4 className="text-lg font-bold mb-2">
+                  Alles aus einer Hand
+                </h4>
+                <p className="text-sm opacity-90">
+                  Entrümpelung + Renovierung + Steinpflege = Ihre Immobilie in Bestform! 
+                  Profitieren Sie von unserem einzigartigen Komplettservice.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -714,7 +986,7 @@ export default function HomePage() {
                     </div>
                     <p className="text-gray-700 mb-6 italic">
                       "Nach dem plötzlichen Tod meiner Mutter stand ich völlig überfordert vor ihrer Wohnung. 
-                      Das Team war nicht nur professionell, sondern auch unglaublich einfühlsam."
+                      Das Team war sowohl professionell als auch unglaublich einfühlsam."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Maria Schneider</p>
@@ -729,8 +1001,8 @@ export default function HomePage() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Das Team war diskret, respektvoll und hat uns keine Sekunde das Gefühl gegeben, 
-                      uns schämen zu müssen. Endlich können wir wieder durchatmen."
+                      "Das Team war diskret, respektvoll und hat uns stets das Gefühl gegeben, 
+                      verstanden zu werden. Endlich können wir wieder durchatmen."
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Weber</p>
@@ -746,7 +1018,7 @@ export default function HomePage() {
                     </div>
                     <p className="text-gray-700 mb-6 italic">
                       "Das Komfort-Paket war perfekt! Der Preis war fair und transparent - 
-                      keine bösen Überraschungen!"
+                      alles wie versprochen!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Thomas Bauer</p>
@@ -1055,7 +1327,7 @@ export default function HomePage() {
 
           <div className="text-center">
             <p className="text-lg mb-4 opacity-90">
-              Ihre Stadt ist nicht dabei? Keine Sorge!
+              Ihre Stadt fehlt noch? Wir kommen trotzdem zu Ihnen!
             </p>
             <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
               Wir sind deutschlandweit im Einsatz und kommen auch in kleinere Städte und Gemeinden. 

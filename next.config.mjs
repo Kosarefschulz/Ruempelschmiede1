@@ -6,15 +6,6 @@ const nextConfig = {
   // Core Web Vitals optimizations
   experimental: {
     scrollRestoration: true,
-    gzipSize: true,
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
   },
   
   // Image optimization for better LCP
