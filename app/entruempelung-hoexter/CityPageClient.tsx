@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Icon from '../../components/Icon'
+import Icon from '../components/Icon'
 import Link from 'next/link'
 import Script from 'next/script'
 
