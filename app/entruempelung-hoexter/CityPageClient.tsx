@@ -10,7 +10,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': 'https://ruempelschmiede.de/entruempelung-hoexter#localbusiness',
-  name: 'Rümpel Schmiede Höxter - Entrümpelung & Die Steinpfleger',
+  name: 'Rümpel Schmiede Höxter - Entrümpelung',
   image: [
     'https://ruempelschmiede.de/images/hoexter-hero.jpg',
     'https://ruempelschmiede.de/images/logo.png'
@@ -90,14 +90,6 @@ const faqStructuredData = {
     },
     {
       '@type': 'Question',
-      name: 'Bieten Sie auch Steinreinigung in Höxter an?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ja, als exklusiver Die Steinpfleger Franchise-Partner bieten wir professionelle Steinreinigung für Terrassen, Einfahrten und Fassaden in Höxter und Umgebung an. Alles aus einer Hand!'
-      }
-    },
-    {
-      '@type': 'Question',
       name: 'Wie schnell können Sie in Höxter entrümpeln?',
       acceptedAnswer: {
         '@type': 'Answer',
@@ -111,7 +103,6 @@ export default function CityPageClient() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [showVideo, setShowVideo] = useState(false)
-  const [activeTab, setActiveTab] = useState('entrumpelung')
 
   const handleDotClick = (index: number) => {
     setCurrentSlide(index)
@@ -144,12 +135,8 @@ export default function CityPageClient() {
       answer: 'Wir entrümpeln in ganz Höxter und allen Stadtteilen: Höxter-Kernstadt, Albaxen, Bödexen, Brenkhausen, Bruchhausen, Fürstenau, Godelheim, Lüchtringen, Lütmarsen, Ottbergen, Ovenhausen und Stahle. Auch in den umliegenden Gemeinden wie Holzminden, Bad Driburg und Beverungen sind wir aktiv.'
     },
     {
-      question: 'Was ist das Besondere an Ihrer Partnerschaft mit Die Steinpfleger?',
-      answer: 'Als exklusiver Die Steinpfleger Franchise-Partner für die Region Höxter bieten wir neben Entrümpelungen auch professionelle Steinreinigung und -pflege an. Das bedeutet: Komplettservice aus einer Hand - von der Haushaltsauflösung bis zur Terrassenreinigung. Ein Ansprechpartner, eine Rechnung, doppelte Qualität!'
-    },
-    {
       question: 'Wie läuft eine Entrümpelung in Höxter ab?',
-      answer: '1. Kontaktaufnahme und Terminvereinbarung. 2. Kostenlose Besichtigung vor Ort in Höxter. 3. Erstellung eines verbindlichen Festpreisangebots. 4. Durchführung der Entrümpelung zum Wunschtermin. 5. Besenreine Übergabe und Entsorgungsnachweise. Optional: Steinreinigung der Außenbereiche.'
+      answer: '1. Kontaktaufnahme und Terminvereinbarung. 2. Kostenlose Besichtigung vor Ort in Höxter. 3. Erstellung eines verbindlichen Festpreisangebots. 4. Durchführung der Entrümpelung zum Wunschtermin. 5. Besenreine Übergabe und Entsorgungsnachweise.'
     },
     {
       question: 'Arbeiten Sie auch am Wochenende in Höxter?',
@@ -210,11 +197,10 @@ export default function CityPageClient() {
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
               Entrümpelung Höxter<br />
-              <span className="text-[#C73E3A]">& Die Steinpfleger Services</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
-              Professionelle Entrümpelung und Steinreinigung in Höxter, Holzminden, Bad Driburg und Umgebung. 
-              ✓ Festpreise ab 690€ ✓ 24h Express ✓ Die Steinpfleger Partner
+              Professionelle Entrümpelung in Höxter, Holzminden, Bad Driburg und Umgebung. 
+              ✓ Festpreise ab 690€ ✓ 24h Express ✓ Ihr lokaler Partner
             </p>
             
             {/* Trust Indicators */}
@@ -257,28 +243,6 @@ export default function CityPageClient() {
         </div>
       </section>
 
-      {/* Die Steinpfleger Highlight Box */}
-      <section className="py-8 bg-[#C73E3A] text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              <div>
-                <h3 className="text-xl font-bold">Exklusiv: Die Steinpfleger Franchise-Partner</h3>
-                <p className="text-sm opacity-90">Einziger autorisierter Partner für professionelle Steinreinigung im Raum Höxter</p>
-              </div>
-            </div>
-            <a href="https://www.die-steinpfleger.de" target="_blank" rel="noopener noreferrer" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-6 py-2 rounded-lg font-semibold transition-all flex items-center gap-2">
-              Mehr erfahren
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Instant Price Calculator Section */}
       <section id="preisrechner" className="py-16 bg-gray-50">
@@ -410,34 +374,7 @@ export default function CityPageClient() {
             </p>
           </div>
 
-          {/* Service Tabs */}
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex bg-gray-100 rounded-lg p-1">
-              <button
-                onClick={() => setActiveTab('entrumpelung')}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                  activeTab === 'entrumpelung'
-                    ? 'bg-[#2C4F5E] text-white'
-                    : 'text-gray-600 hover:text-[#2C4F5E]'
-                }`}
-              >
-                Entrümpelung Services
-              </button>
-              <button
-                onClick={() => setActiveTab('steinpflege')}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                  activeTab === 'steinpflege'
-                    ? 'bg-[#C73E3A] text-white'
-                    : 'text-gray-600 hover:text-[#C73E3A]'
-                }`}
-              >
-                Die Steinpfleger Services
-              </button>
-            </div>
-          </div>
-
-          {/* Tab Content */}
-          {activeTab === 'entrumpelung' ? (
+          {/* Service Content */}
             <div className="grid md:grid-cols-3 gap-8">
               {/* Haushaltsauflösung */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -514,116 +451,6 @@ export default function CityPageClient() {
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="space-y-12">
-              {/* Die Steinpfleger Info */}
-              <div className="bg-gradient-to-r from-[#F5F5F0] to-white rounded-xl p-8 border border-gray-200">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#2C4F5E] mb-4">
-                      Die Steinpfleger - Exklusiv in Höxter
-                    </h3>
-                    <p className="text-gray-700 mb-6">
-                      Als einziger autorisierter Die Steinpfleger Franchise-Partner bieten wir in Höxter und Umgebung 
-                      professionelle Steinreinigung und -pflege nach höchsten Qualitätsstandards.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start">
-                        <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Umweltfreundliche Reinigungsverfahren</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Langzeitschutz durch Imprägnierung</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-6 h-6 text-[#C73E3A] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Zertifizierte Qualität deutschlandweit</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="bg-white rounded-xl p-6 shadow-lg">
-                    <h4 className="font-bold text-[#2C4F5E] mb-4">Unsere Steinpflege-Services:</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#C73E3A] rounded-full mr-3"></div>
-                        <span>Terrassenreinigung</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#C73E3A] rounded-full mr-3"></div>
-                        <span>Fassadenreinigung</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#C73E3A] rounded-full mr-3"></div>
-                        <span>Pflastersteinreinigung</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#C73E3A] rounded-full mr-3"></div>
-                        <span>Dachrinnenreinigung</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#C73E3A] rounded-full mr-3"></div>
-                        <span>Graffitientfernung</span>
-                      </div>
-                    </div>
-                    <a href="https://www.die-steinpfleger.de" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all">
-                      Zur Die Steinpfleger Website
-                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Service Process */}
-              <div className="bg-[#2C4F5E] text-white rounded-xl p-8">
-                <h3 className="text-2xl font-bold mb-8 text-center">
-                  Der perfekte Ablauf in Höxter
-                </h3>
-                <div className="grid md:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div className="bg-[#C73E3A] text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                      1
-                    </div>
-                    <h4 className="font-bold mb-2">Entrümpelung</h4>
-                    <p className="text-sm opacity-90">Professionelle Räumung Ihrer Immobilie</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="bg-[#C73E3A] text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                      2
-                    </div>
-                    <h4 className="font-bold mb-2">Renovierung</h4>
-                    <p className="text-sm opacity-90">Optional: Innenrenovierung</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="bg-[#C73E3A] text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                      3
-                    </div>
-                    <h4 className="font-bold mb-2">Steinpflege</h4>
-                    <p className="text-sm opacity-90">Reinigung aller Außenbereiche</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="bg-[#C73E3A] text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                      4
-                    </div>
-                    <h4 className="font-bold mb-2">Übergabe</h4>
-                    <p className="text-sm opacity-90">Immobilie innen & außen wie neu</p>
-                  </div>
-                </div>
-                <div className="mt-8 bg-white/10 rounded-lg p-4 text-center">
-                  <p className="font-semibold">Unser Versprechen:</p>
-                  <p>Alles aus einer Hand - ein Ansprechpartner - eine Rechnung!</p>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
@@ -684,10 +511,10 @@ export default function CityPageClient() {
                     <svg className="w-6 h-6 text-[#C73E3A] mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    Die Steinpfleger Partner
+                    Zuverlässiger Service
                   </h4>
                   <p className="text-gray-600">
-                    Einziger autorisierter Partner für Steinreinigung in der Region Höxter.
+                    Schnelle und professionelle Entrümpelung in der gesamten Region Höxter.
                   </p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-md">
@@ -734,11 +561,11 @@ export default function CityPageClient() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Haushaltsauflösung und Terrassenreinigung aus einer Hand. Die Steinpfleger-Qualität ist beeindruckend!"
+                      "Haushaltsauflösung professionell und zuverlässig durchgeführt. Sehr empfehlenswert!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Müller</p>
-                      <p className="text-sm text-gray-600">Haushaltsauflösung + Steinpflege Höxter</p>
+                      <p className="text-sm text-gray-600">Haushaltsauflösung Höxter</p>
                     </div>
                   </div>
 
@@ -749,7 +576,7 @@ export default function CityPageClient() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Nach der Entrümpelung haben sie auch unsere Einfahrt gereinigt. Sieht aus wie neu!"
+                      "Nach der Entrümpelung war alles besenrein. Schnell und gründlich!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Herr Schmidt</p>
@@ -764,7 +591,7 @@ export default function CityPageClient() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Professionelle Arbeit, faire Preise. Die Steinpflege war das i-Tüpfelchen!"
+                      "Professionelle Arbeit, faire Preise. Sehr zuverlässiger Service!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Frau Weber</p>
@@ -799,11 +626,11 @@ export default function CityPageClient() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Die Fassadenreinigung hat unser Haus verwandelt. Endlich wieder strahlend sauber!"
+                      "Die Entrümpelung war schnell und sauber. Alles wurde fachgerecht entsorgt!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Hoffmann</p>
-                      <p className="text-sm text-gray-600">Steinpflege Holzminden</p>
+                      <p className="text-sm text-gray-600">Entrümpelung Holzminden</p>
                     </div>
                   </div>
 
@@ -849,7 +676,7 @@ export default function CityPageClient() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Dachbodenentrümpelung und Dachreinigung perfekt koordiniert. Top Service!"
+                      "Dachbodenentrümpelung trotz schwieriger Zugangslage perfekt gemeistert. Top Service!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Peter Schulz</p>
@@ -864,11 +691,11 @@ export default function CityPageClient() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-6 italic">
-                      "Die Steinpfleger-Qualität merkt man sofort. Unsere Terrasse strahlt wieder!"
+                      "Die Qualität der Arbeit war erstklassig. Sehr empfehlenswert!"
                     </p>
                     <div className="border-t pt-4">
                       <p className="font-bold text-[#2C4F5E]">Familie Wagner</p>
-                      <p className="text-sm text-gray-600">Steinpflege Beverungen</p>
+                      <p className="text-sm text-gray-600">Entrümpelung Beverungen</p>
                     </div>
                   </div>
                 </div>
@@ -956,8 +783,8 @@ export default function CityPageClient() {
               Unser Service-Gebiet um Höxter
             </h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Als Die Steinpfleger Franchise-Partner betreuen wir exklusiv die Region Höxter. 
-              Professionelle Entrümpelung und Steinpflege in Ihrer Nähe!
+              Wir betreuen die gesamte Region Höxter und Umgebung. 
+              Professionelle Entrümpelung in Ihrer Nähe!
             </p>
           </div>
 
@@ -1006,21 +833,21 @@ export default function CityPageClient() {
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">
-              Die Steinpfleger - Exklusiv für die Region Höxter
+              Ihr zuverlässiger Partner in der Region Höxter
             </h3>
             <p className="mb-6 opacity-90 max-w-2xl mx-auto">
-              Als einziger autorisierter Die Steinpfleger Partner bieten wir in der gesamten Region 
-              professionelle Steinreinigung und -pflege nach höchsten Qualitätsstandards.
+              Professionelle Entrümpelung mit Festpreisgarantie. 
+              Schnell, sauber und zuverlässig in der gesamten Region.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
                 Jetzt Anfrage für Höxter senden
                 <span className="ml-2 text-lg">→</span>
               </a>
-              <a href="https://www.die-steinpfleger.de" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
-                Die Steinpfleger Website
+              <a href="tel:+4915755854945" className="inline-flex items-center bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
+                Sofort anrufen
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </a>
             </div>
@@ -1036,7 +863,7 @@ export default function CityPageClient() {
           </h2>
           <p className="text-xl mb-8 opacity-90">
             Nutzen Sie unseren kostenlosen Service für eine unverbindliche Beratung.
-            Als Die Steinpfleger Partner bieten wir Ihnen den Komplettservice!
+            Wir bieten Ihnen den Komplettservice aus einer Hand!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+4915755854945" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-flex items-center justify-center">

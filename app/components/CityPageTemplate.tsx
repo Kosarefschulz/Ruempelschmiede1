@@ -235,12 +235,6 @@ export default function CityPageTemplate({ cityData }: CityPageTemplateProps) {
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
               {cityData.heroTitle || `Entrümpelung ${cityData.name}`}
-              {cityData.specialPartnership && (
-                <>
-                  <br />
-                  <span className="text-[#C73E3A]">{cityData.specialPartnership.name}</span>
-                </>
-              )}
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
               {cityData.heroSubtitle || `Professionelle Entrümpelung und Haushaltsauflösung in ${cityData.name} und Umgebung. ✓ Festpreise ab ${cityData.basePrice}€ ✓ 24h Express-Service ✓ ${cityData.customerCount}+ zufriedene Kunden`}
@@ -293,30 +287,6 @@ export default function CityPageTemplate({ cityData }: CityPageTemplateProps) {
         </div>
       </section>
 
-      {/* Special Partnership Box (if applicable) */}
-      {cityData.specialPartnership && (
-        <section className="py-8 bg-[#C73E3A] text-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <div>
-                  <h3 className="text-xl font-bold">{cityData.specialPartnership.name}</h3>
-                  <p className="text-sm opacity-90">{cityData.specialPartnership.description}</p>
-                </div>
-              </div>
-              <a href={cityData.specialPartnership.url} target="_blank" rel="noopener noreferrer" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-6 py-2 rounded-lg font-semibold transition-all flex items-center gap-2">
-                Mehr erfahren
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Instant Price Calculator Section */}
       <section id="preisrechner" className="py-16 bg-gray-50">
@@ -866,7 +836,6 @@ export default function CityPageTemplate({ cityData }: CityPageTemplateProps) {
           </h2>
           <p className="text-xl mb-8 opacity-90">
             Nutzen Sie unseren kostenlosen Service für eine unverbindliche Beratung.
-            {cityData.specialPartnership && ` Als ${cityData.specialPartnership.name} bieten wir Ihnen den Komplettservice!`}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+4915755854945" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-flex items-center justify-center">

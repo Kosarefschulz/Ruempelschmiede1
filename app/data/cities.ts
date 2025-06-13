@@ -19,11 +19,6 @@ export interface CityData {
     distance: string
   }>
   localSpecialty?: string
-  specialPartnership?: {
-    name: string
-    description: string
-    url: string
-  }
   heroTitle?: string
   heroSubtitle?: string
   uniqueServices?: Array<{
@@ -69,11 +64,6 @@ export const cities: Record<string, CityData> = {
       'Ovenhausen',
       'Stahle'
     ],
-    specialPartnership: {
-      name: 'Die Steinpfleger',
-      description: 'Einziger autorisierter Partner für professionelle Steinreinigung im Raum Höxter',
-      url: 'https://www.die-steinpfleger.de'
-    },
     nearbyTowns: [
       { name: 'Holzminden', slug: 'holzminden', distance: '12 km' },
       { name: 'Bad Driburg', slug: 'bad-driburg', distance: '15 km' },
@@ -83,19 +73,19 @@ export const cities: Record<string, CityData> = {
     testimonials: [
       {
         name: 'Familie Müller',
-        text: 'Haushaltsauflösung und Terrassenreinigung aus einer Hand. Die Steinpfleger-Qualität ist beeindruckend!',
-        service: 'Haushaltsauflösung + Steinpflege Höxter',
+        text: 'Haushaltsauflösung professionell und zuverlässig durchgeführt. Sehr empfehlenswert!',
+        service: 'Haushaltsauflösung Höxter',
         rating: 5
       },
       {
         name: 'Herr Schmidt',
-        text: 'Nach der Entrümpelung haben sie auch unsere Einfahrt gereinigt. Sieht aus wie neu!',
+        text: 'Nach der Entrümpelung war alles besenrein. Schnell und gründlich!',
         service: 'Kellerentrümpelung Höxter',
         rating: 5
       },
       {
         name: 'Frau Weber',
-        text: 'Professionelle Arbeit, faire Preise. Die Steinpflege war das i-Tüpfelchen!',
+        text: 'Professionelle Arbeit, faire Preise. Sehr zuverlässiger Service!',
         service: 'Komplettservice Höxter',
         rating: 5
       },
@@ -107,8 +97,8 @@ export const cities: Record<string, CityData> = {
       },
       {
         name: 'Familie Hoffmann',
-        text: 'Die Fassadenreinigung hat unser Haus verwandelt. Endlich wieder strahlend sauber!',
-        service: 'Steinpflege Holzminden',
+        text: 'Die Entrümpelung war schnell und sauber. Alles wurde fachgerecht entsorgt!',
+        service: 'Entrümpelung Holzminden',
         rating: 5
       },
       {
@@ -126,10 +116,6 @@ export const cities: Record<string, CityData> = {
       {
         question: 'Welche Stadtteile in Höxter bedienen Sie?',
         answer: 'Wir entrümpeln in ganz Höxter und allen Stadtteilen: Höxter-Kernstadt, Albaxen, Bödexen, Brenkhausen, Bruchhausen, Fürstenau, Godelheim, Lüchtringen, Lütmarsen, Ottbergen, Ovenhausen und Stahle. Auch in den umliegenden Gemeinden wie Holzminden, Bad Driburg und Beverungen sind wir aktiv.'
-      },
-      {
-        question: 'Was ist das Besondere an Ihrer Partnerschaft mit Die Steinpfleger?',
-        answer: 'Als exklusiver Die Steinpfleger Franchise-Partner für die Region Höxter bieten wir neben Entrümpelungen auch professionelle Steinreinigung und -pflege an. Das bedeutet: Komplettservice aus einer Hand - von der Haushaltsauflösung bis zur Terrassenreinigung. Ein Ansprechpartner, eine Rechnung, doppelte Qualität!'
       },
       {
         question: 'Wie schnell können Sie in Höxter entrümpeln?',
