@@ -594,7 +594,7 @@ export default function CityPageTemplate({ cityData }: CityPageTemplateProps) {
               Ihre Entrümpelung in {cityData.name} in sicheren Händen
             </h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Seit über 7 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in {cityData.name} 
+              Seit über 8 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in {cityData.name} 
               - wir machen Platz für Neues.
             </p>
           </div>
@@ -602,7 +602,7 @@ export default function CityPageTemplate({ cityData }: CityPageTemplateProps) {
           {/* Statistics */}
           <div className="grid md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#C73E3A] mb-2">7+</div>
+              <div className="text-5xl font-bold text-[#C73E3A] mb-2">8+</div>
               <p>Jahre Erfahrung</p>
             </div>
             <div className="text-center">

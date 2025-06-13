@@ -193,7 +193,7 @@ export default function BerlinPage() {
           {/* Statistiken */}
           <div className="grid md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#C73E3A] mb-2">7+</div>
+              <div className="text-5xl font-bold text-[#C73E3A] mb-2">8+</div>
               <p className="text-gray-600">Jahre Erfahrung</p>
             </div>
             <div className="text-center">
@@ -373,7 +373,7 @@ export default function BerlinPage() {
                   <p className="text-gray-600 text-sm">
                     Vollversichert und zertifiziert - Ihre Berliner Immobilie ist bei uns in professionellen Händen - 
                     garantierte Qualität und Kundenzufriedenheit. Unsere Mitarbeiter sind geschult im Umgang mit sensiblen 
-                    Gegenständen und arbeiten stets diskret. Mit über 7 Jahren Erfahrung in Berlin wissen wir genau, worauf es ankommt. 
+                    Gegenständen und arbeiten stets diskret. Mit über 8 Jahren Erfahrung in Berlin wissen wir genau, worauf es ankommt. 
                     Alle Arbeiten werden dokumentiert und Sie erhalten eine Abnahmebestätigung.
                   </p>
                 </div>

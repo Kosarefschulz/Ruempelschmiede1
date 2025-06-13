@@ -249,8 +249,8 @@ export default function B2BPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
             ),
-            title: '15 Jahre Erfahrung',
-            text: 'Über 50.000 erfolgreiche Entrümpelungen deutschlandweit.'
+            title: '8+ Jahre Erfahrung',
+            text: 'Über 1.200 zufriedene Kunden deutschlandweit, davon 30 Gewerbekunden.'
         },
         {
             icon: (
@@ -409,8 +409,8 @@ export default function B2BPage() {
                                             auf Wunsch an gemeinnützige Organisationen. Das reduziert Ihre Kosten erheblich.
                                         </div>
                                         <div>
-                                            Profitieren Sie von über 15 Jahren Erfahrung und mehr als 50.000 erfolgreichen 
-                                            Haushaltsauflösungen deutschlandweit. Unser Service umfasst auch Keller, Dachboden 
+                                            Profitieren Sie von über 8 Jahren Erfahrung und mehr als 1.200 erfolgreichen 
+                                            Entrümpelungen deutschlandweit. Unser Service umfasst auch Keller, Dachboden 
                                             und Garage - alles besenrein und termingerecht.
                                         </div>
                                     </div>
@@ -431,7 +431,7 @@ export default function B2BPage() {
                                                 fachgerechten Recycling zu. Das minimiert Ihre Entsorgungskosten und schont die Umwelt.
                                             </div>
                                             <div>
-                                                Vertrauen Sie auf unsere Erfahrung aus über 10.000 Gewerbeauflösungen deutschlandweit. 
+                                                Vertrauen Sie auf unsere Erfahrung aus über 30 Gewerbeauflösungen deutschlandweit. 
                                                 Minimale Betriebsunterbrechung und diskrete Abwicklung garantiert.
                                             </div>
                                         </div>
@@ -452,7 +452,7 @@ export default function B2BPage() {
                                                 Medikamente inklusive.
                                             </div>
                                             <div>
-                                                Vertrauen Sie auf unsere Expertise bei über 5.000 Praxisauflösungen bundesweit. 
+                                                Vertrauen Sie auf unsere Expertise bei Praxisauflösungen bundesweit. 
                                                 Diskrete Abwicklung auch während der Praxiszeiten möglich.
                                             </div>
                                         </div>
@@ -474,7 +474,7 @@ export default function B2BPage() {
                                                 ist die Wohnung wieder vollständig bewohnbar.
                                             </div>
                                             <div>
-                                                Über 15 Jahre Erfahrung in der sensiblen Messie-Entrümpelung deutschlandweit. 
+                                                Über 8 Jahre Erfahrung in der sensiblen Messie-Entrümpelung deutschlandweit. 
                                                 Wir arbeiten mit respektvollem Verständnis und größtem Respekt für Ihre Situation.
                                             </div>
                                         </div>
@@ -494,7 +494,7 @@ export default function B2BPage() {
                                                 oder Sammlerstücke werden fair angerechnet und reduzieren so Ihre Kosten.
                                             </div>
                                             <div>
-                                                Profitieren Sie von unserer Erfahrung aus zehntausenden Kellerentrümpelungen 
+                                                Profitieren Sie von unserer Erfahrung aus hunderten Kellerentrümpelungen 
                                                 deutschlandweit. Schnelle Durchführung oft innerhalb 48 Stunden möglich.
                                             </div>
                                         </div>
@@ -514,7 +514,7 @@ export default function B2BPage() {
                                                 verwertet. Spezialentsorgung für Gefahrstoffe mit allen erforderlichen Nachweisen.
                                             </div>
                                             <div>
-                                                Über 20 Jahre Erfahrung in der Industrieräumung deutschlandweit. Von der kleinen 
+                                                Über 8 Jahre Erfahrung in der Industrieräumung deutschlandweit. Von der kleinen 
                                                 Lagerhalle bis zum großen Industriekomplex - wir sind Ihr zuverlässiger Partner.
                                             </div>
                                         </div>

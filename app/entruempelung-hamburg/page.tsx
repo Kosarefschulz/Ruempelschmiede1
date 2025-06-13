@@ -185,7 +185,7 @@ export default function HamburgPage() {
               Ihre Entrümpelung in Hamburg in sicheren Händen
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seit über 7 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Hamburg 
+              Seit über 8 Jahren sind wir der vertrauenswürdige Partner für Entrümpelungen in ganz Hamburg 
               - wir machen Platz für Neues.
             </p>
           </div>
@@ -193,7 +193,7 @@ export default function HamburgPage() {
           {/* Statistiken */}
           <div className="grid md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#C73E3A] mb-2">7+</div>
+              <div className="text-5xl font-bold text-[#C73E3A] mb-2">8+</div>
               <p className="text-gray-600">Jahre Erfahrung</p>
             </div>
             <div className="text-center">
@@ -372,7 +372,7 @@ export default function HamburgPage() {
                   <h3 className="font-bold text-[#2C4F5E] mb-2">Maximale Sicherheit in Hamburg</h3>
                   <p className="text-gray-600 text-sm">
                     Vollversichert und zertifiziert - Ihre Hamburger Immobilie ist bei uns in professionellen Händen. 
-                    Garantierte Qualität und Kundenzufriedenheit. Mit über 7 Jahren Erfahrung in Hamburg wissen wir genau, worauf es ankommt.
+                    Garantierte Qualität und Kundenzufriedenheit. Mit über 8 Jahren Erfahrung in Hamburg wissen wir genau, worauf es ankommt.
                   </p>
                 </div>
               </div>

@@ -379,7 +379,7 @@ export default function HomePage() {
                   <p className="text-gray-600 text-sm">
                     Wir sind Vollversichert- Ihre Immobilie ist bei uns in professionellen Händen - 
                     garantierte Qualität und Kundenzufriedenheit. Unsere Mitarbeiter sind geschult im Umgang mit sensiblen 
-                    Gegenständen und arbeiten stets diskret. Mit über 7 Jahren Erfahrung wissen wir genau, worauf es ankommt. 
+                    Gegenständen und arbeiten stets diskret. Mit über 8 Jahren Erfahrung wissen wir genau, worauf es ankommt. 
                     Alle Arbeiten werden dokumentiert und Sie erhalten eine Abnahmebestätigung.
                   </p>
                 </div>
