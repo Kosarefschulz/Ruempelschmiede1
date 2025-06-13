@@ -30,7 +30,7 @@ const b2bServicesData: B2BService[] = [
             '/images/services/b2b/gewerbe5.jpg'
         ],
         excerpt: 'Professionelle Betriebsauflösung in ganz Deutschland. Komplettservice für Büros, Praxen und Produktionsstätten.',
-        seoText: 'Gewerbeauflösung Deutschland: Komplette Räumung von Bürokomplexen, Produktionsstätten und Geschäftsräumen bundesweit. Über 15 Jahre Erfahrung, Festpreisgarantie, diskrete Abwicklung. Regionale Teams in allen Bundesländern.',
+        seoText: 'Gewerbeauflösung Deutschland: Komplette Räumung von Bürokomplexen, Produktionsstätten und Geschäftsräumen bundesweit. Über 8 Jahre Erfahrung, Festpreisgarantie, diskrete Abwicklung. Regionale Teams in allen Bundesländern.',
         details: [
             "Bundesweite Komplettauflösung von Geschäftsräumen",
             "Demontage von Maschinen und Betriebseinrichtungen", 
@@ -327,8 +327,8 @@ export default function B2BPage() {
                         {/* Trust Indicators */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                             {[
-                                { value: '15+', label: 'Jahre Erfahrung' },
-                                { value: '50.000+', label: 'Entrümpelungen' },
+                                { value: '8+', label: 'Jahre Erfahrung' },
+                                { value: '1.200+', label: 'Entrümpelungen' },
                                 { value: '16', label: 'Bundesländer' },
                                 { value: 'Festpreis', label: 'Garantie' }
                             ].map((stat, index) => (
@@ -352,7 +352,7 @@ export default function B2BPage() {
                         <div className="text-gray-700 space-y-4">
                             <p>
                                 Die Rümpel Schmiede ist Ihr spezialisierter Partner für professionelle Entrümpelungen 
-                                in ganz Deutschland. Mit über 15 Jahren Erfahrung und einem bundesweiten Netzwerk 
+                                in ganz Deutschland. Mit über 8 Jahren Erfahrung und einem bundesweiten Netzwerk 
                                 bieten wir Lösungen für Haushaltsauflösungen, Gewerbeentrümpelungen, Messie-Wohnungen 
                                 und Express-Services - von Hamburg bis München, von Berlin bis Stuttgart.
                             </p>
@@ -1111,7 +1111,7 @@ export default function B2BPage() {
                             Die Rümpel Schmiede ist Ihr zuverlässiger Partner für professionelle Entrümpelungen 
                             in ganz Deutschland. Von Hamburg über Berlin bis München, von Köln über Frankfurt 
                             bis Stuttgart - mit unserem bundesweiten Netzwerk und regionalen Teams sind wir 
-                            in allen 16 Bundesländern für Sie da. Über 15 Jahre Erfahrung und mehr als 50.000 
+                            in allen 16 Bundesländern für Sie da. Über 8 Jahre Erfahrung und mehr als 1.200 
                             erfolgreich abgeschlossene Entrümpelungen sprechen für sich.
                         </p>
                         <p>
