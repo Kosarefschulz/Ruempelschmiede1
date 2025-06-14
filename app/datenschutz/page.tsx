@@ -37,8 +37,20 @@ export default function DatenschutzPage() {
                 Wer ist verantwortlich für die Datenerfassung auf dieser Website?
               </h3>
               <p className="mb-4">
-                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. 
-                Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
+                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber:
+              </p>
+              <p className="mb-4">
+                <strong>NRW Entrümpelung Pro GmbH</strong><br />
+                Waldbadstraße 9-13<br />
+                33803 Steinhagen<br />
+                <br />
+                Geschäftsführer:<br />
+                Michael Michalowski<br />
+                Markus Knaub<br />
+                Sergej Schulz<br />
+                <br />
+                Telefon: 0521 / 999 999 99<br />
+                E-Mail: info@nrw-entruempelung-pro.de
               </p>
               
               <h3 className="font-semibold text-gray-800 mb-2">
