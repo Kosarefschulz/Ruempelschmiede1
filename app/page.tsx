@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from './components/Icon'
-import GermanyMap from './components/GermanyMap'
+import GermanyMapWrapper from './components/GermanyMapWrapper'
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -1046,7 +1046,7 @@ export default function HomePage() {
           </div>
 
           {/* Interaktive Karte */}
-          <GermanyMap />
+          <GermanyMapWrapper />
 
           <div className="text-center mt-12">
             <p className="text-lg mb-4 text-gray-700">
