@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Icon from '../components/Icon';
+import QualitySeals from '../components/common/QualitySeals';
 
 interface Service {
     id: string;
@@ -1091,6 +1092,9 @@ export default function LeistungenPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Qualitätssiegel */}
+            <QualitySeals />
         </div>
     );
 }

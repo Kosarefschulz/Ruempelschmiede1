@@ -1,3 +1,6 @@
+import CitiesSection from '../components/common/CitiesSection';
+import QualitySeals from '../components/common/QualitySeals';
+
 export default function DatenschutzPage() {
   return (
     <div className="py-16">
@@ -96,6 +99,12 @@ export default function DatenschutzPage() {
           </div>
         </div>
       </div>
+      
+      {/* Städte-Bereich */}
+      <CitiesSection />
+      
+      {/* Qualitätssiegel */}
+      <QualitySeals />
     </div>
   )
 }

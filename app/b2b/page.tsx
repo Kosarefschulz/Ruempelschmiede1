@@ -1145,6 +1145,9 @@ export default function B2BPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Qualitätssiegel */}
+            <QualitySeals />
         </div>
     );
 }
