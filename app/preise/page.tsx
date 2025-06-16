@@ -63,27 +63,36 @@ export default function PreiseSeite() {
 
     // Hauptobjekt Preis
     if (propertyType === 'wohnung' && propertySize && fillLevel) {
-      const priceData = priceTable.wohnung[propertySize as keyof typeof priceTable.wohnung];
+      const wohnungPrices = priceTable.wohnung as any;
+      const priceData = wohnungPrices[propertySize];
       if (priceData) {
-        totalPrice += priceData[fillLevel as keyof typeof priceData] || 0;
+        totalPrice += priceData[fillLevel] || 0;
         if (additionalServices.boden) totalPrice += priceData.boden || 0;
         if (additionalServices.decken) totalPrice += priceData.decken || 0;
       }
     } else if (propertyType === 'haus' && houseType && propertySize && fillLevel) {
-      const priceData = priceTable.haus[houseType as keyof typeof priceTable.haus]?.[propertySize as keyof typeof priceTable.haus.EFH];
-      if (priceData) {
-        totalPrice += priceData[fillLevel as keyof typeof priceData] || 0;
-        if (additionalServices.boden) totalPrice += priceData.boden || 0;
-        if (additionalServices.decken) totalPrice += priceData.decken || 0;
+      const hausPrices = priceTable.haus as any;
+      const houseTypePrices = hausPrices[houseType];
+      if (houseTypePrices) {
+        const priceData = houseTypePrices[propertySize];
+        if (priceData) {
+          totalPrice += priceData[fillLevel] || 0;
+          if (additionalServices.boden) totalPrice += priceData.boden || 0;
+          if (additionalServices.decken) totalPrice += priceData.decken || 0;
+        }
       }
     }
 
     // Sondergebäude
     Object.entries(specialBuildings).forEach(([building, data]) => {
       if (data.selected && data.size && data.fillLevel) {
-        const priceData = priceTable.sondergebäude[building as keyof typeof priceTable.sondergebäude]?.[data.size as keyof typeof priceTable.sondergebäude.keller];
-        if (priceData) {
-          totalPrice += priceData[data.fillLevel as keyof typeof priceData] || 0;
+        const sonderPrices = priceTable.sondergebäude as any;
+        const buildingPrices = sonderPrices[building];
+        if (buildingPrices) {
+          const priceData = buildingPrices[data.size];
+          if (priceData) {
+            totalPrice += priceData[data.fillLevel] || 0;
+          }
         }
       }
     });
