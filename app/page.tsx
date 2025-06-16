@@ -6,6 +6,11 @@ import Icon from './components/Icon'
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [showBielefeldCities, setShowBielefeldCities] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleDotClick = (index: number) => {
     setCurrentSlide(index)
@@ -19,10 +24,14 @@ export default function HomePage() {
     setCurrentSlide((prev) => (prev + 1) % 3)
   }
 
+  if (!mounted) {
+    return null
+  }
+
   return (
     <>
       {/* Hero Section mit Video */}
-      <section className="relative overflow-hidden w-full">
+      <section className="relative overflow-hidden w-full" style={{ height: '70vh' }}>
         <div className="absolute inset-0 z-0">
           <video 
             className="w-full h-full object-cover" 
@@ -30,31 +39,33 @@ export default function HomePage() {
             loop
             muted
             playsInline
-            style={{ height: '70vh' }}
           >
             <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
             Video wird geladen...
           </video>
           <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
+      </section>
 
-        <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
-          <div className="text-center w-full">
+      {/* CTA Buttons and Text Section */}
+      <section className="py-12 bg-[#2C4F5E]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all text-center">
+              Preis berechnen
+            </a>
+            <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all text-center">
+              Direktanfrage
+            </a>
+          </div>
+          <div className="text-center text-white">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
               Wir machen kaputt, aber das richtig gut!
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 
               Deutschlandweit - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all">
-                Preis berechnen
-              </a>
-              <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-                Direktanfrage
-              </a>
-            </div>
           </div>
         </div>
       </section>
