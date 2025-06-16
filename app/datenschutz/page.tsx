@@ -40,7 +40,7 @@ export default function DatenschutzPage() {
                 Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber:
               </p>
               <p className="mb-4">
-                <strong>NRW Entrümpelung Pro GmbH</strong><br />
+                <strong>Rümpelschmiede GmbH</strong><br />
                 Waldbadstraße 9-13<br />
                 33803 Steinhagen<br />
                 <br />
@@ -50,7 +50,7 @@ export default function DatenschutzPage() {
                 Sergej Schulz<br />
                 <br />
                 Telefon: 0521 / 999 999 99<br />
-                E-Mail: info@nrw-entruempelung-pro.de
+                E-Mail: info@ruempelschmiede.de
               </p>
               
               <h3 className="font-semibold text-gray-800 mb-2">

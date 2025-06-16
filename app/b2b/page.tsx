@@ -32,6 +32,9 @@ const b2bServicesData: B2BService[] = [
         excerpt: 'Professionelle Betriebsauflösung in ganz Deutschland. Komplettservice für Büros, Praxen und Produktionsstätten.',
         seoText: 'Gewerbeauflösung Deutschland: Komplette Räumung von Bürokomplexen, Produktionsstätten und Geschäftsräumen bundesweit. Über 8 Jahre Erfahrung, Festpreisgarantie, diskrete Abwicklung. Regionale Teams in allen Bundesländern.',
         details: [
+            "Spezialisiert auf Sozialämter, Behörden und öffentliche Einrichtungen",
+            "Vertrauenspartner für Betreuer, Rechtsanwälte und Nachlassverwalter",
+            "Diskrete Zusammenarbeit mit Bestattern bei Nachlassräumungen",
             "Bundesweite Komplettauflösung von Geschäftsräumen",
             "Demontage von Maschinen und Betriebseinrichtungen", 
             "Zusammenarbeit mit Insolvenzverwaltern deutschlandweit",

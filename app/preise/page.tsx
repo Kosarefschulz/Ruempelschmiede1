@@ -1,760 +1,470 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Icon from '../components/Icon';
 
-const BASE_PRICE_PER_CUBIC_METER = 85;
-const DISCOUNT_PERCENTAGE = 15;
-
-interface BuildingType {
-  id: string;
-  name: string;
-  icon: string;
-  description: string;
-  estimatedM3: number;
-  popular?: boolean;
-}
-
-interface FurnitureItem {
-  name: string;
-  m3: number;
-  icon: string;
-  popular?: boolean;
-  category: string;
-}
-
-interface CustomerData {
-  name: string;
-  email: string;
-  phone: string;
-  urgency: string;
-  message?: string;
-}
-
-const buildingTypes: BuildingType[] = [
-  { 
-    id: 'wohnung', 
-    name: 'Wohnung', 
-    icon: 'haus', 
-    description: 'Komplette Wohnungsauflösung', 
-    estimatedM3: 15,
-    popular: true 
+// ERWT Preistabelle in EUR
+const priceTable = {
+  wohnung: {
+    '<50': { '1/4': 1170, '1/2': 1560, '3/4': 1690, 'voll': 1950, 'boden': 65, 'decken': 65 },
+    '50-70': { '1/4': 1560, '1/2': 1950, '3/4': 2145, 'voll': 2405, 'boden': 104, 'decken': 104 },
+    '70-90': { '1/4': 1950, '1/2': 2210, '3/4': 2470, 'voll': 2730, 'boden': 156, 'decken': 156 },
+    '90-110': { '1/4': 2275, '1/2': 2535, '3/4': 2860, 'voll': 3250, 'boden': 195, 'decken': 195 },
+    '>110': { '1/4': 2860, '1/2': 3250, '3/4': 3575, 'voll': 3900, 'boden': 260, 'decken': 260 }
   },
-  { 
-    id: 'haus', 
-    name: 'Haus', 
-    icon: 'haus', 
-    description: 'Haushaltsauflösung inkl. Keller', 
-    estimatedM3: 30,
-    popular: true 
+  haus: {
+    einstöckig: {
+      '<100': { '1/4': 2470, '1/2': 2730, '3/4': 2990, 'voll': 3250, 'boden': 156, 'decken': 156 },
+      '>100': { '1/4': 2730, '1/2': 2990, '3/4': 3250, 'voll': 3510, 'boden': 195, 'decken': 195 }
+    },
+    '1.5stöckig': {
+      '<100': { '1/4': 2990, '1/2': 3250, '3/4': 3510, 'voll': 3770, 'boden': 234, 'decken': 234 },
+      '>100': { '1/4': 3250, '1/2': 3510, '3/4': 3770, 'voll': 4030, 'boden': 260, 'decken': 260 }
+    },
+    '2stöckig': {
+      '<100': { '1/4': 3510, '1/2': 3770, '3/4': 4030, 'voll': 4290, 'boden': 286, 'decken': 286 },
+      '>100': { '1/4': 3770, '1/2': 4160, '3/4': 4550, 'voll': 4940, 'boden': 325, 'decken': 325 }
+    }
   },
-  { 
-    id: 'keller', 
-    name: 'Keller/Dachboden', 
-    icon: 'kiste', 
-    description: 'Einzelne Räume', 
-    estimatedM3: 8 
-  },
-  { 
-    id: 'buero', 
-    name: 'Büro/Gewerbe', 
-    icon: 'buero', 
-    description: 'Geschäftsauflösung', 
-    estimatedM3: 20 
-  },
-];
-
-const furnitureData: FurnitureItem[] = [
-  // Große Möbel
-  { name: 'Sofa/Couch', m3: 2.0, icon: 'kiste', popular: true, category: 'Möbel' },
-  { name: 'Bett (komplett)', m3: 2.5, icon: 'kiste', popular: true, category: 'Möbel' },
-  { name: 'Kleiderschrank', m3: 2.0, icon: 'kiste', popular: true, category: 'Möbel' },
-  { name: 'Esstisch mit Stühlen', m3: 2.0, icon: 'kiste', category: 'Möbel' },
-  { name: 'Schrankwand/Regal', m3: 2.5, icon: 'kiste', category: 'Möbel' },
-  
-  // Elektrogeräte
-  { name: 'Kühlschrank', m3: 0.8, icon: 'kiste', popular: true, category: 'Elektro' },
-  { name: 'Waschmaschine', m3: 0.6, icon: 'kiste', popular: true, category: 'Elektro' },
-  { name: 'Fernseher/Elektronik', m3: 0.3, icon: 'kiste', category: 'Elektro' },
-  
-  // Kleinmöbel
-  { name: 'Kommode/Sideboard', m3: 0.8, icon: 'kiste', category: 'Kleinmöbel' },
-  { name: 'Schreibtisch', m3: 1.0, icon: 'kiste', category: 'Kleinmöbel' },
-  { name: 'Sessel/Stuhl', m3: 0.5, icon: 'kiste', category: 'Kleinmöbel' },
-  { name: 'Nachttisch', m3: 0.3, icon: 'kiste', category: 'Kleinmöbel' },
-  
-  // Sonstiges
-  { name: 'Umzugskartons (10 Stk)', m3: 1.0, icon: 'kiste', popular: true, category: 'Sonstiges' },
-  { name: 'Matratze', m3: 0.8, icon: 'kiste', category: 'Sonstiges' },
-  { name: 'Teppiche/Böden', m3: 0.5, icon: 'kiste', category: 'Sonstiges' },
-  { name: 'Gartengeräte/Werkzeug', m3: 1.0, icon: 'kiste', category: 'Sonstiges' },
-  { name: 'Fahrrad/Sportgeräte', m3: 0.8, icon: 'kiste', category: 'Sonstiges' },
-  { name: 'Sperrmüll/Diverses', m3: 2.0, icon: 'recycle', popular: true, category: 'Sonstiges' },
-];
-
-// Get current month for dynamic discount display
-const getCurrentMonth = () => {
-  const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 
-                  'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
-  return months[new Date().getMonth()];
+  sondergebäude: {
+    keller: {
+      '<15': { '1/4': 130, '1/2': 195, '3/4': 260, 'voll': 325 },
+      '>15': { '1/4': 195, '1/2': 260, '3/4': 325, 'voll': 390 }
+    },
+    dachboden: {
+      '<20': { '1/4': 195, '1/2': 260, '3/4': 325, 'voll': 390 },
+      '>20': { '1/4': 325, '1/2': 455, '3/4': 585, 'voll': 780 }
+    },
+    garage: {
+      '<20': { '1/4': 195, '1/2': 260, '3/4': 325, 'voll': 455 },
+      '>20': { '1/4': 260, '1/2': 455, '3/4': 520, 'voll': 650 }
+    }
+  }
 };
 
-export default function EntruempelungsRechner() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [selectedBuildingType, setSelectedBuildingType] = useState('');
-  const [selectedFurniture, setSelectedFurniture] = useState<Record<string, number>>({});
-  const [totalM3, setTotalM3] = useState(0);
-  const [customerData, setCustomerData] = useState<CustomerData>({
-    name: '',
-    email: '',
-    phone: '',
-    urgency: 'normal',
-    message: ''
+export default function PreiseSeite() {
+  const [propertyType, setPropertyType] = useState('');
+  const [propertySize, setPropertySize] = useState('');
+  const [houseType, setHouseType] = useState('');
+  const [fillLevel, setFillLevel] = useState('');
+  const [additionalServices, setAdditionalServices] = useState({
+    boden: false,
+    decken: false
   });
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(900);
-  const [activeCategory, setActiveCategory] = useState('all');
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [specialBuildings, setSpecialBuildings] = useState({
+    keller: { selected: false, size: '', fillLevel: '' },
+    dachboden: { selected: false, size: '', fillLevel: '' },
+    garage: { selected: false, size: '', fillLevel: '' }
+  });
+  const [showPrice, setShowPrice] = useState(false);
 
-  // Timer für Rabatt
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const calculatePrice = () => {
+    let totalPrice = 0;
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  // Calculate total m3
-  useEffect(() => {
-    const total = Object.entries(selectedFurniture).reduce((sum, [itemName, quantity]) => {
-      const item = furnitureData.find(f => f.name === itemName);
-      return sum + (item ? item.m3 * quantity : 0);
-    }, 0);
-    setTotalM3(Math.round(total * 100) / 100);
-  }, [selectedFurniture]);
-
-  // Price calculation with discount
-  const basePrice = totalM3 * BASE_PRICE_PER_CUBIC_METER;
-  const distanceSurcharge = 60;
-  const regularPrice = basePrice + distanceSurcharge;
-  const discountAmount = regularPrice * (DISCOUNT_PERCENTAGE / 100);
-  const finalPrice = regularPrice - discountAmount;
-
-  const handleBuildingSelect = (building: BuildingType) => {
-    setSelectedBuildingType(building.id);
-    // Pre-fill with smart suggestions based on building type
-    const prefilledItems: Record<string, number> = {};
-    
-    if (building.id === 'wohnung') {
-      prefilledItems['Sofa/Couch'] = 1;
-      prefilledItems['Bett (komplett)'] = 1;
-      prefilledItems['Kleiderschrank'] = 1;
-      prefilledItems['Umzugskartons (10 Stk)'] = 3;
-    } else if (building.id === 'haus') {
-      prefilledItems['Sofa/Couch'] = 2;
-      prefilledItems['Bett (komplett)'] = 2;
-      prefilledItems['Kleiderschrank'] = 2;
-      prefilledItems['Umzugskartons (10 Stk)'] = 5;
-      prefilledItems['Gartengeräte/Werkzeug'] = 1;
-    } else if (building.id === 'keller') {
-      prefilledItems['Umzugskartons (10 Stk)'] = 2;
-      prefilledItems['Sperrmüll/Diverses'] = 1;
-    } else if (building.id === 'buero') {
-      prefilledItems['Schreibtisch'] = 3;
-      prefilledItems['Umzugskartons (10 Stk)'] = 4;
-    }
-    
-    setSelectedFurniture(prefilledItems);
-    setCurrentStep(2);
-    scrollToTop();
-  };
-
-  const handleFurnitureChange = (itemName: string, delta: number) => {
-    setSelectedFurniture(prev => {
-      const currentQuantity = prev[itemName] || 0;
-      const newQuantity = Math.max(0, currentQuantity + delta);
-      
-      if (newQuantity === 0) {
-        const { [itemName]: removed, ...rest } = prev;
-        return rest;
+    // Hauptobjekt Preis
+    if (propertyType === 'wohnung' && propertySize && fillLevel) {
+      const priceData = priceTable.wohnung[propertySize];
+      if (priceData) {
+        totalPrice += priceData[fillLevel] || 0;
+        if (additionalServices.boden) totalPrice += priceData.boden || 0;
+        if (additionalServices.decken) totalPrice += priceData.decken || 0;
       }
-      return { ...prev, [itemName]: newQuantity };
+    } else if (propertyType === 'haus' && houseType && propertySize && fillLevel) {
+      const priceData = priceTable.haus[houseType]?.[propertySize];
+      if (priceData) {
+        totalPrice += priceData[fillLevel] || 0;
+        if (additionalServices.boden) totalPrice += priceData.boden || 0;
+        if (additionalServices.decken) totalPrice += priceData.decken || 0;
+      }
+    }
+
+    // Sondergebäude
+    Object.entries(specialBuildings).forEach(([building, data]) => {
+      if (data.selected && data.size && data.fillLevel) {
+        const priceData = priceTable.sondergebäude[building]?.[data.size];
+        if (priceData) {
+          totalPrice += priceData[data.fillLevel] || 0;
+        }
+      }
     });
+
+    return totalPrice;
   };
 
-  const scrollToTop = () => {
-    // Scroll to the calculator section, not the very top
-    const calculatorSection = document.querySelector('.calculator-section');
-    if (calculatorSection) {
-      calculatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const proceedToStep3 = () => {
-    if (totalM3 === 0) {
-      alert('Bitte wählen Sie mindestens einen Gegenstand aus.');
-      return;
-    }
-    setCurrentStep(3);
-    scrollToTop();
-  };
-
-  const handleSubmit = () => {
-    if (!customerData.name || !customerData.email || !customerData.phone) {
-      alert('Bitte füllen Sie alle Pflichtfelder aus.');
-      return;
-    }
-    setShowSuccess(true);
-    scrollToTop();
+  const handleCalculate = () => {
+    setShowPrice(true);
   };
 
   const resetCalculator = () => {
-    setCurrentStep(1);
-    setSelectedBuildingType('');
-    setSelectedFurniture({});
-    setCustomerData({ name: '', email: '', phone: '', urgency: 'normal', message: '' });
-    setShowSuccess(false);
-    setActiveCategory('all');
-    scrollToTop();
+    setPropertyType('');
+    setPropertySize('');
+    setHouseType('');
+    setFillLevel('');
+    setAdditionalServices({ boden: false, decken: false });
+    setSpecialBuildings({
+      keller: { selected: false, size: '', fillLevel: '' },
+      dachboden: { selected: false, size: '', fillLevel: '' },
+      garage: { selected: false, size: '', fillLevel: '' }
+    });
+    setShowPrice(false);
   };
 
-  // Filter furniture by category
-  const filteredFurniture = activeCategory === 'all' 
-    ? furnitureData 
-    : furnitureData.filter(item => item.category === activeCategory);
+  const finalPrice = calculatePrice();
+  const discountedPrice = Math.round(finalPrice * 0.81); // 19% Rabatt
 
   return (
-    <div className="bg-gray-50 min-h-screen" ref={containerRef}>
-      {/* Sticky Discount Banner - Monatsbezogen */}
-      <div className="bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-3 text-center sticky top-0 z-40 shadow-lg">
-        <p className="text-sm md:text-base font-medium px-4">
-          🎉 <strong>{getCurrentMonth()}-Aktion:</strong> {DISCOUNT_PERCENTAGE}% Rabatt auf alle Entrümpelungen! 
-          <span className="hidden sm:inline">Nur noch</span> <span className="font-mono font-bold bg-white/20 px-2 py-1 rounded ml-2">{formatTime(timeLeft)}</span>
-        </p>
-      </div>
-
-      {/* Hero Section - Kompakter */}
-      <section className="relative bg-gradient-to-br from-[#1a2b36] via-[#2C4F5E] to-[#1E3A47] text-white py-12 md:py-16">
-        <div className="absolute inset-0 opacity-5">
-          <div className="h-full w-full" style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-            <span className="text-[#C73E3A]">3 Schritte</span> zum Festpreis
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47] text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-4 text-center">
+            Entrümpelungs-Preisrechner
           </h1>
-          
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Berechnen Sie in nur 60 Sekunden Ihre Entrümpelungskosten
+          <p className="text-xl text-center opacity-90">
+            Berechnen Sie Ihre Entrümpelungskosten nach der offiziellen ERWT-Tabelle
           </p>
-
-          {/* Progress Steps - Visueller */}
-          <div className="flex justify-center items-center space-x-4 md:space-x-8 mt-8">
-            {[
-              { step: 1, label: 'Objekt wählen' },
-              { step: 2, label: 'Menge anpassen' },
-              { step: 3, label: 'Angebot erhalten' }
-            ].map((item, index) => (
-              <div key={item.step} className="flex items-center">
-                <div className="text-center">
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg transition-all ${
-                    currentStep >= item.step 
-                      ? 'bg-[#C73E3A] text-white scale-110' 
-                      : 'bg-white/20 text-white/60'
-                  }`}>
-                    {currentStep > item.step ? '✓' : item.step}
-                  </div>
-                  <p className={`text-xs mt-2 hidden md:block ${
-                    currentStep >= item.step ? 'text-white' : 'text-white/60'
-                  }`}>
-                    {item.label}
-                  </p>
-                </div>
-                {index < 2 && (
-                  <div className={`w-8 md:w-16 h-0.5 ml-2 transition-all ${
-                    currentStep > item.step ? 'bg-[#C73E3A]' : 'bg-white/20'
-                  }`} />
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Calculator Content */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 -mt-6 relative z-20 calculator-section">
-        <div className="max-w-5xl mx-auto">
-          
-          {/* Step 1: Building Type Selection */}
-          {currentStep === 1 && (
-            <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 transform transition-all duration-500">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#2C4F5E] mb-3">
-                  Was möchten Sie entrümpeln lassen?
+      {/* Calculator Section */}
+      <section className="py-12 px-4 max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8">
+          {!showPrice ? (
+            <>
+              {/* Step 1: Property Type */}
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-[#2C4F5E] mb-4">
+                  1. Art der Immobilie
                 </h2>
-                <p className="text-gray-600">
-                  Wählen Sie den Objekttyp - wir schlagen passende Gegenstände vor
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                {buildingTypes.map((type) => (
+                <div className="grid grid-cols-2 gap-4">
                   <button
-                    key={type.id}
-                    onClick={() => handleBuildingSelect(type)}
-                    className="group relative p-6 md:p-8 rounded-2xl border-2 border-gray-200 hover:border-[#C73E3A] hover:shadow-xl transform hover:scale-105 transition-all bg-white"
-                  >
-                    {type.popular && (
-                      <span className="absolute -top-2 -right-2 bg-[#C73E3A] text-white text-xs px-2 py-1 rounded-full">
-                        Beliebt
-                      </span>
-                    )}
-                    <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#C73E3A]/10 transition-colors">
-                      <Icon name={type.icon} size={32} className="text-gray-600" />
-                    </div>
-                    <h3 className="text-lg md:text-xl font-bold text-[#2C4F5E] mb-2">{type.name}</h3>
-                    <p className="text-gray-600 text-sm mb-3">{type.description}</p>
-                    <p className="text-xs text-[#C73E3A] font-semibold">
-                      ca. {type.estimatedM3} m³
-                    </p>
-                  </button>
-                ))}
-              </div>
-
-              <div className="mt-8 bg-blue-50 rounded-xl p-6 text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center mr-3">
-                    <Icon name="info" size={16} color="#1e40af" />
-                  </div>
-                  <p className="text-blue-800 font-semibold">
-                    Keine Sorge - im nächsten Schritt können Sie alles anpassen!
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Step 2: Furniture Selection - Verbesserte UX */}
-          {currentStep === 2 && (
-            <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 transform transition-all duration-500">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#2C4F5E] mb-4">
-                  Was soll entsorgt werden?
-                </h2>
-                
-                {/* Live Volume Display - Prominenter */}
-                <div className="inline-block bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white p-4 md:p-6 rounded-2xl shadow-lg">
-                  <p className="text-sm opacity-90">Geschätztes Volumen</p>
-                  <p className="text-3xl md:text-4xl font-bold">{totalM3} m³</p>
-                  {totalM3 > 0 && (
-                    <div className="mt-2">
-                      <p className="text-xs opacity-80">
-                        ≈ {Math.round(totalM3 * 1.5)} Umzugskartons
-                      </p>
-                      <p className="text-sm mt-1 font-semibold">
-                        ca. {finalPrice.toFixed(0)}€ <span className="text-xs font-normal">(inkl. Rabatt)</span>
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Category Filter */}
-              <div className="mb-6 flex flex-wrap justify-center gap-2">
-                {['all', 'Möbel', 'Elektro', 'Kleinmöbel', 'Sonstiges'].map(category => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      activeCategory === category
-                        ? 'bg-[#C73E3A] text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    onClick={() => {
+                      setPropertyType('wohnung');
+                      setHouseType('');
+                    }}
+                    className={`p-6 rounded-lg border-2 transition-all ${
+                      propertyType === 'wohnung'
+                        ? 'border-[#C73E3A] bg-[#C73E3A]/10'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    {category === 'all' ? 'Alle anzeigen' : category}
+                    <Icon name="haus" size={32} className="mx-auto mb-2" />
+                    <p className="font-semibold">Wohnung</p>
                   </button>
-                ))}
-              </div>
-
-              {/* Quick Add Popular Items */}
-              <div className="mb-8 bg-yellow-50 rounded-2xl p-6">
-                <h3 className="font-bold text-gray-800 mb-4 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center mr-2">
-                    <Icon name="blitz" size={16} color="#d97706" />
-                  </div>
-                  Schnellauswahl - Häufig entsorgte Gegenstände
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {furnitureData.filter(item => item.popular).map(item => {
-                    const quantity = selectedFurniture[item.name] || 0;
-                    return (
-                      <button
-                        key={item.name}
-                        onClick={() => handleFurnitureChange(item.name, 1)}
-                        className={`p-3 md:p-4 rounded-xl border-2 transition-all ${
-                          quantity > 0 
-                            ? 'border-[#C73E3A] bg-[#C73E3A]/10' 
-                            : 'border-yellow-300 bg-white hover:border-yellow-400 hover:shadow-md'
-                        }`}
-                      >
-                        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <Icon name={item.icon} size={20} className="text-gray-600" />
-                        </div>
-                        <span className="text-sm font-medium block">{item.name}</span>
-                        {quantity > 0 && (
-                          <span className="block text-xs text-[#C73E3A] font-bold mt-1">
-                            {quantity}x
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
+                  <button
+                    onClick={() => setPropertyType('haus')}
+                    className={`p-6 rounded-lg border-2 transition-all ${
+                      propertyType === 'haus'
+                        ? 'border-[#C73E3A] bg-[#C73E3A]/10'
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  >
+                    <Icon name="haus" size={32} className="mx-auto mb-2" />
+                    <p className="font-semibold">Haus</p>
+                  </button>
                 </div>
               </div>
 
-              {/* All Items List - Bessere Organisation */}
-              <div className="mb-8">
-                <h3 className="font-bold text-gray-800 mb-4">Detaillierte Auswahl</h3>
-                <div className="space-y-2 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
-                  {filteredFurniture.map(item => {
-                    const quantity = selectedFurniture[item.name] || 0;
-                    return (
-                      <div 
-                        key={item.name} 
-                        className={`flex items-center justify-between p-4 rounded-xl transition-all ${
-                          quantity > 0 ? 'bg-[#C73E3A]/5 border-2 border-[#C73E3A]/20' : 'bg-gray-50 hover:bg-gray-100'
-                        }`}
-                      >
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-gray-200">
-                            <Icon name={item.icon} size={20} className="text-gray-600" />
-                          </div>
-                          <div>
-                            <p className="font-medium text-gray-800">{item.name}</p>
-                            <p className="text-xs text-gray-500">{item.m3} m³ • {(item.m3 * BASE_PRICE_PER_CUBIC_METER).toFixed(0)}€</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
+              {/* Step 2: Size */}
+              {propertyType && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-[#2C4F5E] mb-4">
+                    2. Größe (m²)
+                  </h2>
+                  {propertyType === 'wohnung' ? (
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                      {['<50', '50-70', '70-90', '90-110', '>110'].map(size => (
+                        <button
+                          key={size}
+                          onClick={() => setPropertySize(size)}
+                          className={`p-4 rounded-lg border-2 transition-all ${
+                            propertySize === size
+                              ? 'border-[#C73E3A] bg-[#C73E3A]/10'
+                              : 'border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                          {size} m²
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="grid grid-cols-3 gap-3 mb-4">
+                        {['einstöckig', '1.5stöckig', '2stöckig'].map(type => (
                           <button
-                            onClick={() => handleFurnitureChange(item.name, -1)}
-                            className="w-8 h-8 bg-white border-2 border-gray-300 text-gray-600 rounded-lg hover:bg-red-50 hover:border-red-300 hover:text-red-600 transition-all font-bold disabled:opacity-50"
-                            disabled={quantity === 0}
+                            key={type}
+                            onClick={() => setHouseType(type)}
+                            className={`p-4 rounded-lg border-2 transition-all ${
+                              houseType === type
+                                ? 'border-[#C73E3A] bg-[#C73E3A]/10'
+                                : 'border-gray-200 hover:border-gray-300'
+                            }`}
                           >
-                            −
+                            {type}
                           </button>
-                          <span className="font-bold text-lg w-8 text-center">{quantity}</span>
-                          <button
-                            onClick={() => handleFurnitureChange(item.name, 1)}
-                            className="w-8 h-8 bg-[#C73E3A] text-white rounded-lg hover:bg-[#B02E2A] transition-all font-bold"
-                          >
-                            +
-                          </button>
-                        </div>
+                        ))}
                       </div>
-                    );
-                  })}
+                      {houseType && (
+                        <div className="grid grid-cols-2 gap-3">
+                          {['<100', '>100'].map(size => (
+                            <button
+                              key={size}
+                              onClick={() => setPropertySize(size)}
+                              className={`p-4 rounded-lg border-2 transition-all ${
+                                propertySize === size
+                                  ? 'border-[#C73E3A] bg-[#C73E3A]/10'
+                                  : 'border-gray-200 hover:border-gray-300'
+                              }`}
+                            >
+                              {size} m²
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
-              </div>
+              )}
 
-              {/* Navigation */}
-              <div className="flex justify-between items-center">
-                <button
-                  onClick={() => setCurrentStep(1)}
-                  className="px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors font-medium"
-                >
-                  ← Zurück
-                </button>
-                <button
-                  onClick={proceedToStep3}
-                  disabled={totalM3 === 0}
-                  className={`px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg transform transition-all ${
-                    totalM3 > 0
-                      ? 'bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white hover:shadow-xl hover:scale-105'
-                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  }`}
-                >
-                  Weiter zum Angebot →
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Contact & Price - Optimiert */}
-          {currentStep === 3 && !showSuccess && (
-            <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 transform transition-all duration-500">
-              <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
-                  <Icon name="check" size={40} color="white" />
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#2C4F5E] mb-3">
-                  Ihr persönliches Angebot ist fertig!
-                </h2>
-                <p className="text-gray-600">
-                  Sichern Sie sich jetzt Ihren {getCurrentMonth()}-Rabatt
-                </p>
-              </div>
-
-              {/* Price Display - Übersichtlicher */}
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 md:p-8 mb-8">
-                <div className="text-center mb-6">
-                  <p className="text-gray-600 mb-2">Ihr Preis mit {getCurrentMonth()}-Rabatt:</p>
-                  <div className="flex flex-col items-center">
-                    <p className="text-lg text-gray-500 line-through mb-1">
-                      {regularPrice.toFixed(0)}€
-                    </p>
-                    <p className="text-4xl md:text-5xl font-bold text-[#C73E3A]">
-                      {finalPrice.toFixed(0)}€
-                    </p>
-                    <p className="text-sm text-green-600 font-semibold mt-2">
-                      Sie sparen {discountAmount.toFixed(0)}€!
-                    </p>
-                  </div>
-                  <div className="mt-4 bg-white rounded-xl p-4 inline-block">
-                    <p className="text-sm text-gray-600">Volumen</p>
-                    <p className="text-2xl font-bold text-[#2C4F5E]">{totalM3} m³</p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-4 text-sm">
-                  <div className="flex items-center justify-center">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                      <Icon name="check" size={16} color="#16a34a" />
-                    </div>
-                    <span>Anfahrt inklusive</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                      <Icon name="check" size={16} color="#16a34a" />
-                    </div>
-                    <span>Entsorgung inklusive</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                      <Icon name="check" size={16} color="#16a34a" />
-                    </div>
-                    <span>Festpreis-Garantie</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contact Form - Vereinfacht */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-[#2C4F5E] mb-4">
-                  Jetzt {getCurrentMonth()}-Rabatt sichern
-                </h3>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Ihr Name*"
-                    value={customerData.name}
-                    onChange={(e) => setCustomerData({...customerData, name: e.target.value})}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C73E3A] focus:border-transparent"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Telefonnummer*"
-                    value={customerData.phone}
-                    onChange={(e) => setCustomerData({...customerData, phone: e.target.value})}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C73E3A] focus:border-transparent"
-                  />
-                </div>
-
-                <input
-                  type="email"
-                  placeholder="E-Mail-Adresse*"
-                  value={customerData.email}
-                  onChange={(e) => setCustomerData({...customerData, email: e.target.value})}
-                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C73E3A] focus:border-transparent"
-                />
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Wann soll die Entrümpelung stattfinden?
-                  </label>
-                  <div className="grid grid-cols-3 gap-3">
+              {/* Step 3: Fill Level */}
+              {((propertyType === 'wohnung' && propertySize) || 
+                (propertyType === 'haus' && houseType && propertySize)) && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-[#2C4F5E] mb-4">
+                    3. Füllgrad
+                  </h2>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     {[
-                      { value: 'normal', label: 'Flexibel', desc: '2-4 Wochen' },
-                      { value: 'dringend', label: 'Dringend', desc: 'Diese Woche' },
-                      { value: 'sofort', label: 'Express', desc: '48 Stunden', hot: true }
-                    ].map((option) => (
+                      { value: '1/4', label: '1/4 voll' },
+                      { value: '1/2', label: '1/2 voll' },
+                      { value: '3/4', label: '3/4 voll' },
+                      { value: 'voll', label: 'Voll' }
+                    ].map(level => (
                       <button
-                        key={option.value}
-                        onClick={() => setCustomerData({...customerData, urgency: option.value})}
-                        className={`relative p-3 md:p-4 rounded-lg border-2 transition-all ${
-                          customerData.urgency === option.value
+                        key={level.value}
+                        onClick={() => setFillLevel(level.value)}
+                        className={`p-4 rounded-lg border-2 transition-all ${
+                          fillLevel === level.value
                             ? 'border-[#C73E3A] bg-[#C73E3A]/10'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
-                        {option.hot && (
-                          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
-                            +20€
-                          </span>
-                        )}
-                        <div className="font-semibold text-sm md:text-base">{option.label}</div>
-                        <div className="text-xs text-gray-600">{option.desc}</div>
+                        {level.label}
                       </button>
                     ))}
                   </div>
                 </div>
+              )}
 
-                <textarea
-                  placeholder="Besondere Hinweise (optional)"
-                  value={customerData.message}
-                  onChange={(e) => setCustomerData({...customerData, message: e.target.value})}
-                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C73E3A] focus:border-transparent"
-                  rows={3}
-                />
-
-                <div className="bg-blue-50 rounded-xl p-4 flex items-start">
-                  <div className="w-8 h-8 bg-blue-200 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                    <Icon name="shield" size={16} color="#3b82f6" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-blue-800">100% Festpreis-Garantie</p>
-                    <p className="text-sm text-blue-600">Garantierte Kostentransparenz - der Preis bleibt wie angezeigt!</p>
+              {/* Step 4: Additional Services */}
+              {fillLevel && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-[#2C4F5E] mb-4">
+                    4. Zusätzliche Leistungen
+                  </h2>
+                  <div className="space-y-3">
+                    <label className="flex items-center p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 cursor-pointer">
+                      <div className="relative mr-3">
+                        <input
+                          type="checkbox"
+                          checked={additionalServices.boden}
+                          onChange={e => setAdditionalServices({...additionalServices, boden: e.target.checked})}
+                          className="w-6 h-6 appearance-none border-2 border-[#2C4F5E] rounded cursor-pointer checked:bg-[#C73E3A] checked:border-[#C73E3A] transition-all"
+                        />
+                        {additionalServices.boden && (
+                          <svg className="absolute top-0.5 left-0.5 w-5 h-5 text-white pointer-events-none" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="font-medium">Bodenentfernung</span>
+                    </label>
+                    <label className="flex items-center p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 cursor-pointer">
+                      <div className="relative mr-3">
+                        <input
+                          type="checkbox"
+                          checked={additionalServices.decken}
+                          onChange={e => setAdditionalServices({...additionalServices, decken: e.target.checked})}
+                          className="w-6 h-6 appearance-none border-2 border-[#2C4F5E] rounded cursor-pointer checked:bg-[#C73E3A] checked:border-[#C73E3A] transition-all"
+                        />
+                        {additionalServices.decken && (
+                          <svg className="absolute top-0.5 left-0.5 w-5 h-5 text-white pointer-events-none" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="font-medium">Deckenentfernung</span>
+                    </label>
                   </div>
                 </div>
+              )}
 
-                <button
-                  onClick={handleSubmit}
-                  className="w-full bg-gradient-to-r from-[#C73E3A] to-[#B02E2A] text-white py-4 md:py-5 px-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all"
-                >
-                  Jetzt kostenloses Angebot anfordern <Icon name="arrow-right" size={20} className="inline-block ml-1" />
-                </button>
+              {/* Step 5: Special Buildings */}
+              {fillLevel && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-[#2C4F5E] mb-4">
+                    5. Sondergebäude (optional)
+                  </h2>
+                  {Object.entries(specialBuildings).map(([building, data]) => (
+                    <div key={building} className="mb-4">
+                      <label className="flex items-center mb-2">
+                        <div className="relative mr-3">
+                          <input
+                            type="checkbox"
+                            checked={data.selected}
+                            onChange={e => setSpecialBuildings({
+                              ...specialBuildings,
+                              [building]: { ...data, selected: e.target.checked }
+                            })}
+                            className="w-6 h-6 appearance-none border-2 border-[#2C4F5E] rounded cursor-pointer checked:bg-[#C73E3A] checked:border-[#C73E3A] transition-all"
+                          />
+                          {data.selected && (
+                            <svg className="absolute top-0.5 left-0.5 w-5 h-5 text-white pointer-events-none" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          )}
+                        </div>
+                        <span className="font-medium capitalize">{building}</span>
+                      </label>
+                      {data.selected && (
+                        <div className="ml-8 grid grid-cols-2 gap-3">
+                          <select
+                            value={data.size}
+                            onChange={e => setSpecialBuildings({
+                              ...specialBuildings,
+                              [building]: { ...data, size: e.target.value }
+                            })}
+                            className="p-3 border-2 border-[#2C4F5E] rounded-lg focus:border-[#C73E3A] focus:outline-none bg-white"
+                          >
+                            <option value="">Größe wählen</option>
+                            {building === 'keller' && (
+                              <>
+                                <option value="<15">&lt; 15 m²</option>
+                                <option value=">15">&gt; 15 m²</option>
+                              </>
+                            )}
+                            {(building === 'dachboden' || building === 'garage') && (
+                              <>
+                                <option value="<20">&lt; 20 m²</option>
+                                <option value=">20">&gt; 20 m²</option>
+                              </>
+                            )}
+                          </select>
+                          <select
+                            value={data.fillLevel}
+                            onChange={e => setSpecialBuildings({
+                              ...specialBuildings,
+                              [building]: { ...data, fillLevel: e.target.value }
+                            })}
+                            className="p-3 border-2 border-[#2C4F5E] rounded-lg focus:border-[#C73E3A] focus:outline-none bg-white"
+                          >
+                            <option value="">Füllgrad wählen</option>
+                            <option value="1/4">1/4 voll</option>
+                            <option value="1/2">1/2 voll</option>
+                            <option value="3/4">3/4 voll</option>
+                            <option value="voll">Voll</option>
+                          </select>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
 
-                <p className="text-center text-xs text-gray-500">
-                  🔒 SSL-verschlüsselt • 100% kostenlos & unverbindlich • Antwort in 2h
+              {/* Calculate Button */}
+              <button
+                onClick={handleCalculate}
+                disabled={!fillLevel}
+                className={`w-full py-4 rounded-lg font-bold text-lg transition-all ${
+                  fillLevel
+                    ? 'bg-[#C73E3A] text-white hover:bg-[#B02E2A]'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                Preis berechnen
+              </button>
+            </>
+          ) : (
+            /* Price Display */
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-[#2C4F5E] mb-6">
+                Ihr Entrümpelungspreis
+              </h2>
+              
+              <div className="bg-gray-50 rounded-xl p-8 mb-8">
+                <p className="text-gray-600 mb-2">Normalpreis:</p>
+                <p className="text-2xl text-gray-500 line-through mb-4">
+                  {finalPrice.toLocaleString('de-DE')} €
+                </p>
+                
+                <p className="text-gray-600 mb-2">Ihr Preis (inkl. 19% Rabatt):</p>
+                <p className="text-5xl font-bold text-[#C73E3A] mb-4">
+                  {discountedPrice.toLocaleString('de-DE')} €
+                </p>
+                
+                <p className="text-green-600 font-semibold">
+                  Sie sparen {(finalPrice - discountedPrice).toLocaleString('de-DE')} €!
                 </p>
               </div>
 
-              <button
-                onClick={() => setCurrentStep(2)}
-                className="w-full mt-4 text-gray-600 hover:text-gray-800 transition-colors text-center"
-              >
-                ← Zurück zur Auswahl
-              </button>
-            </div>
-          )}
-
-          {/* Success Message - Optimiert */}
-          {showSuccess && (
-            <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 transform transition-all duration-500">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-green-500 text-white rounded-full flex items-center justify-center text-5xl mx-auto mb-6 animate-bounce">
-                  <Icon name="star" size={60} />
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="flex items-center justify-center">
+                  <Icon name="check" size={20} color="#16a34a" className="mr-2" />
+                  <span>Festpreis-Garantie</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-green-800 mb-4">
-                  Vielen Dank für Ihre Anfrage!
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  Wir melden uns innerhalb von 2 Stunden bei Ihnen.
-                </p>
-
-                <div className="bg-gray-50 rounded-xl p-6 mb-8">
-                  <h3 className="font-bold text-gray-800 mb-4">So geht es weiter:</h3>
-                  <div className="space-y-4 text-left">
-                    {[
-                      { 
-                        icon: 'email', 
-                        title: 'E-Mail-Bestätigung', 
-                        desc: 'Sie erhalten sofort eine Bestätigung per E-Mail'
-                      },
-                      { 
-                        icon: 'telefon', 
-                        title: 'Persönlicher Anruf', 
-                        desc: 'Ein Experte meldet sich bei Ihnen (Mo-Fr 8-18 Uhr)'
-                      },
-                      { 
-                        icon: 'haus', 
-                        title: 'Termin vereinbaren', 
-                        desc: 'Kostenlose Besichtigung oder direkte Terminvereinbarung'
-                      }
-                    ].map((step, index) => (
-                      <div key={index} className="flex items-start">
-                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                          <Icon name={step.icon} size={24} className="text-gray-700" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-800">{step.title}</p>
-                          <p className="text-sm text-gray-600">{step.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex items-center justify-center">
+                  <Icon name="check" size={20} color="#16a34a" className="mr-2" />
+                  <span>Alles inklusive</span>
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <a
-                    href="tel:+4915755854945"
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition-all transform hover:scale-105 flex items-center justify-center"
-                  >
-                    <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-2">
-                      <Icon name="telefon" size={16} color="white" />
-                    </div>
-                    Jetzt anrufen
-                  </a>
-                  <button
-                    onClick={resetCalculator}
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-4 px-6 rounded-xl transition-all"
-                  >
-                    Neue Berechnung
-                  </button>
+                <div className="flex items-center justify-center">
+                  <Icon name="check" size={20} color="#16a34a" className="mr-2" />
+                  <span>Keine versteckten Kosten</span>
                 </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <a
+                  href="/kontakt"
+                  className="bg-[#C73E3A] text-white py-4 px-6 rounded-lg font-bold hover:bg-[#B02E2A] transition-all"
+                >
+                  Jetzt anfragen
+                </a>
+                <button
+                  onClick={resetCalculator}
+                  className="bg-gray-200 text-gray-700 py-4 px-6 rounded-lg font-bold hover:bg-gray-300 transition-all"
+                >
+                  Neue Berechnung
+                </button>
               </div>
             </div>
           )}
         </div>
       </section>
 
-      {/* Trust Section - Kompakter */}
+      {/* Info Section */}
       <section className="py-12 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { icon: 'star', value: '4.9/5', label: '500+ Bewertungen' },
-              { icon: 'shield', value: '100%', label: 'Versichert' },
-              { icon: 'recycle', value: 'Zertifiziert', label: 'Entsorgung' },
-              { icon: 'clock', value: '24h', label: 'Notfall-Service' }
-            ].map((item, index) => (
-              <div key={index}>
-                <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Icon name={item.icon} size={24} className="text-gray-600" />
-                </div>
-                <h3 className="font-bold text-[#2C4F5E]">{item.value}</h3>
-                <p className="text-sm text-gray-600">{item.label}</p>
-              </div>
-            ))}
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-[#2C4F5E] mb-6 text-center">
+            Über unseren Preisrechner
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-bold text-lg mb-3">ERWT-Richtwerttabelle</h3>
+              <p className="text-gray-600">
+                Unsere Preise basieren auf der offiziellen Entrümpelungsrichtwerttabelle (ERWT), 
+                die faire und transparente Preise für alle Entrümpelungsarten gewährleistet.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-3">Alles inklusive</h3>
+              <p className="text-gray-600">
+                Die angezeigten Preise enthalten bereits alle Leistungen: Anfahrt, Arbeitszeit, 
+                Entsorgung und alle anfallenden Gebühren. Keine versteckten Kosten!
+              </p>
+            </div>
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #C73E3A;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #B02E2A;
-        }
-      `}</style>
     </div>
   );
 }

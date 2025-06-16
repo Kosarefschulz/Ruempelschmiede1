@@ -25,7 +25,7 @@ export default function HomePage() {
   }
 
   if (!mounted) {
-    return null
+    return (<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C73E3A]"></div></div>)
   }
 
   return (
@@ -47,18 +47,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Buttons and Text Section */}
+      {/* Text and CTA Buttons Section */}
       <section className="py-12 bg-[#2C4F5E]">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all text-center">
-              Preis berechnen
-            </a>
-            <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all text-center">
-              Direktanfrage
-            </a>
-          </div>
-          <div className="text-center text-white">
+          <div className="text-center text-white mb-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
               Wir machen kaputt, aber das richtig gut!
             </h1>
@@ -67,126 +59,17 @@ export default function HomePage() {
               Deutschlandweit - Alles aus einer Hand mit Zufriedenheitsgarantie.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Preispakete */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#2C4F5E] mb-4">
-              Berechnen Sie Ihre Entrümpelungskosten sofort!
-            </h2>
-            <p className="text-xl text-gray-600">
-              Unser einzigartiger Kalkulator zeigt Ihnen in 2 Schritten, was Ihre Entrümpelung kostet
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-              <h2 className="text-2xl font-bold text-[#2C4F5E]">BASIC</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 650 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
-              <ul className="text-left space-y-2 mb-6">
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Komplette Räumung aller Räume</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Fachgerechte Entsorgung</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Wertanrechnung möglich</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Entsorgungsnachweise</span>
-                </li>
-              </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
-                Anfrage stellen
-              </a>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-[#2C4F5E]">
-              <div className="bg-[#2C4F5E] text-white py-1 px-4 rounded-full inline-block mb-4">
-                BELIEBTESTE WAHL
-              </div>
-              <h2 className="text-2xl font-bold text-[#2C4F5E]">KOMFORT</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.290 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
-              <ul className="text-left space-y-2 mb-6">
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Alle Leistungen aus BASIC</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Besenreine Endreinigung</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Kleine Reparaturen</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Schlüsselübergabe an Vermieter</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Abmeldung Strom/Gas möglich</span>
-                </li>
-              </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
-                Anfrage stellen
-              </a>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-              <h2 className="text-2xl font-bold text-[#2C4F5E]">PREMIUM</h2>
-              <p className="text-3xl font-bold text-[#C73E3A] my-4">ab 1.890 €</p>
-              <p className="text-gray-600 mb-6">für 1-Zimmer-Wohnung</p>
-              <ul className="text-left space-y-2 mb-6">
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Alle Leistungen aus KOMFORT</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Persönlicher Projektmanager</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Komplette Behördengänge</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Nachlass-Verwaltung</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>6 Monate Nachbetreuung</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="inline-block w-2 h-2 bg-[#C73E3A] rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                  <span>Digitales Erinnerungsalbum</span>
-                </li>
-              </ul>
-              <a href="/kontakt" className="w-full bg-[#C73E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#B02E2A] inline-block">
-                Anfrage stellen
-              </a>
-            </div>
-          </div>
-
-          <div className="text-center mt-8">
-            <a href="/preise#kalkulator" className="text-[#2C4F5E] hover:text-[#1E3A47] font-semibold">
-              Zum detaillierten Preisrechner →
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/preise#kalkulator" className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-4 rounded-lg font-semibold text-lg transform hover:scale-105 transition-all text-center">
+              Preis berechnen
+            </a>
+            <a href="/kontakt" className="border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all text-center">
+              Direktanfrage
             </a>
           </div>
         </div>
       </section>
+
 
       {/* Warum wir */}
       <section className="py-16 bg-white">
@@ -617,23 +500,23 @@ export default function HomePage() {
               </div>
             </a>
 
-            {/* Kellerentrümpelung */}
+            {/* Keller, Dachboden & Garage */}
             <a href="/leistungen#keller-dachboden" className="block">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
                 <div className="h-64 bg-gray-200 relative overflow-hidden">
                   <Image 
                     src="/1-2.jpg" 
-                    alt="Kellerentrümpelung Bielefeld - Günstige Kellerräumung ab 390€ in OWL Region"
+                    alt="Keller, Dachboden und Garagenentrümpelung Bielefeld - Günstige Räumung ab 390€"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Kellerentrümpelung</h3>
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Keller, Dachboden & Garage</h3>
                   <p className="text-gray-700 mb-4">
-                    Endlich wieder Platz im Keller! Schnell und günstig - oft schon ab 390€. 
-                    Inkl. fachgerechter Entsorgung.
+                    Verstaubte Keller, vollgestellte Dachböden oder überquellende Garagen - 
+                    wir befreien Ihre Räume! Schnell, sauber und ab 390€.
                   </p>
                   <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                     Mehr erfahren
@@ -643,23 +526,23 @@ export default function HomePage() {
               </div>
             </a>
 
-            {/* Dachbodenentrümpelung */}
-            <a href="/leistungen#keller-dachboden" className="block">
+            {/* Allgemeine Entrümpelungen */}
+            <a href="/leistungen#entruempelung" className="block">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
                 <div className="h-64 bg-gray-200 relative overflow-hidden">
                   <Image 
-                    src="/Dachboden.jpg" 
-                    alt="Dachbodenentrümpelung Steinhagen - Sichere Dachbodenräumung schwer zugänglicher Bereiche OWL"
+                    src="/PHOTO-2025-06-04-21-23-13.jpg" 
+                    alt="Professionelle Entrümpelung Bielefeld - Wohnungen, Häuser & mehr in OWL"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Dachbodenentrümpelung</h3>
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Entrümpelungen aller Art</h3>
                   <p className="text-gray-700 mb-4">
-                    Schwer zugängliche Dachböden? Kein Problem für unser erfahrenes Team! 
-                    Sicher und professionell.
+                    Wintergärten, Schuppen, Gartenhäuser oder einzelne Zimmer - kein Auftrag 
+                    zu klein oder zu groß! Faire Festpreise garantiert.
                   </p>
                   <span className="inline-flex items-center text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
                     Mehr erfahren
@@ -771,9 +654,9 @@ export default function HomePage() {
                   Wussten Sie schon?
                 </h4>
                 <p className="opacity-90">
-                  Die Rümpel Schmiede und der Renovierungstrupp gehören zusammen! 
-                  Das bedeutet für Sie: Perfekte Abstimmung, nahtlose Übergänge und 
-                  garantierte Qualität von Anfang bis Ende.
+                  Die Rümpelschmiede bietet Ihnen als Teil der Wertvoll Dienstleistungen GmbH
+                  das volle Spektrum: Von der Entrümpelung bis zur optionalen Renovierung -
+                  alles aus einer Hand mit garantierter Qualität!
                 </p>
               </div>
             </div>
@@ -824,7 +707,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transform hover:scale-105 transition-all shadow-lg"
               >
-                Zum Renovierungstrupp
+                Mehr zu unseren Renovierungsleistungen
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
@@ -832,12 +715,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="text-lg opacity-90">
-              <span className="font-bold">Sparen Sie Zeit und Nerven:</span> Ein Auftrag, ein Ansprechpartner, 
-              eine Rechnung - von der Entrümpelung bis zur schlüsselfertigen Übergabe.
-            </p>
-          </div>
         </div>
       </section>
 

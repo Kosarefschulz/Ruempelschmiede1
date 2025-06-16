@@ -9,8 +9,6 @@ export default function Header() {
     const [isMobileLeistungenOpen, setIsMobileLeistungenOpen] = useState(false);
     const [isB2BOpen, setIsB2BOpen] = useState(false);
     const [isMobileB2BOpen, setIsMobileB2BOpen] = useState(false);
-    const [isNachhaltigkeitOpen, setIsNachhaltigkeitOpen] = useState(false);
-    const [isMobileNachhaltigkeitOpen, setIsMobileNachhaltigkeitOpen] = useState(false);
     const [isMitmachenOpen, setIsMitmachenOpen] = useState(false);
     const [isMobileMitmachenOpen, setIsMobileMitmachenOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -28,9 +26,6 @@ export default function Header() {
             if (isB2BOpen && !target.closest('.b2b-dropdown')) {
                 setIsB2BOpen(false);
             }
-            if (isNachhaltigkeitOpen && !target.closest('.nachhaltigkeit-dropdown')) {
-                setIsNachhaltigkeitOpen(false);
-            }
             if (isMitmachenOpen && !target.closest('.mitmachen-dropdown')) {
                 setIsMitmachenOpen(false);
             }
@@ -38,7 +33,7 @@ export default function Header() {
         
         document.addEventListener('click', handleClickOutside);
         return () => document.removeEventListener('click', handleClickOutside);
-    }, [isMenuOpen, isLeistungenOpen, isB2BOpen, isNachhaltigkeitOpen, isMitmachenOpen]);
+    }, [isMenuOpen, isLeistungenOpen, isB2BOpen, isMitmachenOpen]);
 
     return (
         <>
@@ -122,7 +117,6 @@ export default function Header() {
                                     onMouseEnter={() => {
                                         setActiveDropdown('leistungen');
                                         setIsLeistungenOpen(true);
-                                        setIsNachhaltigkeitOpen(false);
                                         setIsMitmachenOpen(false);
                                     }}
                                     onMouseLeave={(e) => {
@@ -248,83 +242,19 @@ export default function Header() {
                                         </div>
                                     )}
                                 </li>
-                                <li className="relative nachhaltigkeit-dropdown"
-                                    onMouseEnter={() => {
-                                        setActiveDropdown('nachhaltigkeit');
-                                        setIsNachhaltigkeitOpen(true);
-                                        setIsLeistungenOpen(false);
-                                        setIsMitmachenOpen(false);
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        const relatedTarget = e.relatedTarget as HTMLElement;
-                                        if (!relatedTarget || !e.currentTarget.contains(relatedTarget)) {
-                                            setIsNachhaltigkeitOpen(false);
-                                            setActiveDropdown(null);
-                                        }
-                                    }}
-                                >
-                                    <button
-                                        onClick={() => setIsNachhaltigkeitOpen(!isNachhaltigkeitOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
+                                <li>
+                                    <Link
+                                        href="/nachhaltigkeit"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
                                     >
                                         Nachhaltigkeit
-                                        <svg className={`w-4 h-4 ml-1 transition-transform ${isNachhaltigkeitOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                    
-                                    {/* Nachhaltigkeit Dropdown Menu */}
-                                    {isNachhaltigkeitOpen && (
-                                        <div className="absolute top-full left-0 w-80 bg-white shadow-xl rounded-lg mt-0 py-2 z-50">
-                                            <Link
-                                                href="/nachhaltigkeit"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors border-b"
-                                                onClick={() => setIsNachhaltigkeitOpen(false)}
-                                            >
-                                                <div className="font-semibold">Nachhaltigkeit Übersicht</div>
-                                                <div className="text-sm text-gray-600">Unser Umwelt- & Sozialkonzept</div>
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#recycling"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsNachhaltigkeitOpen(false)}
-                                            >
-                                                <div className="font-semibold">Recycling & Wiederverwertung</div>
-                                                <div className="text-sm text-gray-600">85% Wiederverwertungsquote</div>
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#spenden"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsNachhaltigkeitOpen(false)}
-                                            >
-                                                <div className="font-semibold">Spenden & Soziales</div>
-                                                <div className="text-sm text-gray-600">Caritas, DRK & lokale Vereine</div>
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#umweltschutz"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors"
-                                                onClick={() => setIsNachhaltigkeitOpen(false)}
-                                            >
-                                                <div className="font-semibold">Umweltgerechte Entsorgung</div>
-                                                <div className="text-sm text-gray-600">Zertifizierte Fachbetriebe</div>
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#co2-neutral"
-                                                className="block px-4 py-3 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors border-t"
-                                                onClick={() => setIsNachhaltigkeitOpen(false)}
-                                            >
-                                                <div className="font-semibold text-green-600">CO2-neutraler Service</div>
-                                                <div className="text-sm text-gray-600">Klimafreundliche Entrümpelung</div>
-                                            </Link>
-                                        </div>
-                                    )}
+                                    </Link>
                                 </li>
                                 <li className="relative mitmachen-dropdown"
                                     onMouseEnter={() => {
                                         setActiveDropdown('mitmachen');
                                         setIsMitmachenOpen(true);
                                         setIsLeistungenOpen(false);
-                                        setIsNachhaltigkeitOpen(false);
                                     }}
                                     onMouseLeave={(e) => {
                                         const relatedTarget = e.relatedTarget as HTMLElement;
@@ -523,55 +453,13 @@ export default function Header() {
                                     )}
                                 </li>
                                 <li>
-                                    <button
-                                        onClick={() => setIsMobileNachhaltigkeitOpen(!isMobileNachhaltigkeitOpen)}
-                                        className="flex items-center justify-between w-full text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                                    <Link
+                                        href="/nachhaltigkeit"
+                                        className="block text-[#2C4F5E] hover:text-[#C73E3A] font-semibold text-lg py-2"
+                                        onClick={() => setIsMenuOpen(false)}
                                     >
                                         Nachhaltigkeit
-                                        <svg className={`w-4 h-4 transition-transform ${isMobileNachhaltigkeitOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                    {/* Mobile Nachhaltigkeit Unterpunkte */}
-                                    {isMobileNachhaltigkeitOpen && (
-                                        <div className="ml-4 mt-2 space-y-2">
-                                            <Link
-                                                href="/nachhaltigkeit"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileNachhaltigkeitOpen(false);}}
-                                            >
-                                                → Nachhaltigkeit Übersicht
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#recycling"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileNachhaltigkeitOpen(false);}}
-                                            >
-                                                → Recycling & Wiederverwertung
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#spenden"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileNachhaltigkeitOpen(false);}}
-                                            >
-                                                → Spenden & Soziales
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#umweltschutz"
-                                                className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileNachhaltigkeitOpen(false);}}
-                                            >
-                                                → Umweltgerechte Entsorgung
-                                            </Link>
-                                            <Link
-                                                href="/nachhaltigkeit#co2-neutral"
-                                                className="block text-green-600 hover:text-green-700 text-base py-1 font-semibold"
-                                                onClick={() => {setIsMenuOpen(false); setIsMobileNachhaltigkeitOpen(false);}}
-                                            >
-                                                → CO2-neutraler Service
-                                            </Link>
-                                        </div>
-                                    )}
+                                    </Link>
                                 </li>
                                 <li>
                                     <button

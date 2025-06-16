@@ -8,7 +8,7 @@ export default function ImpressumPage() {
           <div className="space-y-6 text-gray-700">
             <div>
               <h2 className="text-xl font-bold text-gray-800 mb-2">
-                NRW Entrümpelung Pro GmbH
+                Rümpelschmiede GmbH
               </h2>
               <p>
                 Waldbadstraße 9-13<br />
@@ -30,8 +30,8 @@ export default function ImpressumPage() {
             <div>
               <h3 className="font-bold text-gray-800 mb-2">Kontakt:</h3>
               <p>
-                Telefon: 0521 / 999 999 99<br />
-                E-Mail: info@nrw-entruempelung-pro.de
+                Telefon: 0800 / 006090<br />
+                E-Mail: info@ruempelschmiede.de
               </p>
             </div>
 
@@ -40,7 +40,7 @@ export default function ImpressumPage() {
               <p>
                 Eintragung im Handelsregister<br />
                 Registergericht: Amtsgericht Bielefeld<br />
-                Registernummer: HRB 12345
+                Registernummer: HRB 45873
               </p>
             </div>
 
@@ -48,7 +48,7 @@ export default function ImpressumPage() {
               <h3 className="font-bold text-gray-800 mb-2">Umsatzsteuer-ID:</h3>
               <p>
                 Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-                DE123456789
+                305/5883/3310
               </p>
             </div>
 
@@ -80,9 +80,9 @@ export default function ImpressumPage() {
               </h3>
               <p>
                 Name und Sitz des Versicherers:<br />
-                Beispiel Versicherung AG<br />
-                Beispielstraße 123<br />
-                12345 Beispielstadt
+                  Allianz Versicherung AG<br />
+                  Allianzstraße 1<br />
+                  80686 München
               </p>
               <p className="mt-2">
                 Geltungsraum der Versicherung: Deutschland

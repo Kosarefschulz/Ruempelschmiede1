@@ -99,7 +99,7 @@ export default function RootLayout({
         <CriticalCSS />
         <StructuredData />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <RecaptchaProvider>
           <Suspense fallback={null}>
             <GoogleAnalytics />
