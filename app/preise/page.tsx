@@ -63,16 +63,16 @@ export default function PreiseSeite() {
 
     // Hauptobjekt Preis
     if (propertyType === 'wohnung' && propertySize && fillLevel) {
-      const priceData = priceTable.wohnung[propertySize];
+      const priceData = priceTable.wohnung[propertySize as keyof typeof priceTable.wohnung];
       if (priceData) {
-        totalPrice += priceData[fillLevel] || 0;
+        totalPrice += priceData[fillLevel as keyof typeof priceData] || 0;
         if (additionalServices.boden) totalPrice += priceData.boden || 0;
         if (additionalServices.decken) totalPrice += priceData.decken || 0;
       }
     } else if (propertyType === 'haus' && houseType && propertySize && fillLevel) {
-      const priceData = priceTable.haus[houseType]?.[propertySize];
+      const priceData = priceTable.haus[houseType as keyof typeof priceTable.haus]?.[propertySize as keyof typeof priceTable.haus.EFH];
       if (priceData) {
-        totalPrice += priceData[fillLevel] || 0;
+        totalPrice += priceData[fillLevel as keyof typeof priceData] || 0;
         if (additionalServices.boden) totalPrice += priceData.boden || 0;
         if (additionalServices.decken) totalPrice += priceData.decken || 0;
       }
@@ -81,9 +81,9 @@ export default function PreiseSeite() {
     // Sondergebäude
     Object.entries(specialBuildings).forEach(([building, data]) => {
       if (data.selected && data.size && data.fillLevel) {
-        const priceData = priceTable.sondergebäude[building]?.[data.size];
+        const priceData = priceTable.sondergebäude[building as keyof typeof priceTable.sondergebäude]?.[data.size as keyof typeof priceTable.sondergebäude.keller];
         if (priceData) {
-          totalPrice += priceData[data.fillLevel] || 0;
+          totalPrice += priceData[data.fillLevel as keyof typeof priceData] || 0;
         }
       }
     });
