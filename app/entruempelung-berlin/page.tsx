@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
+import CitiesSection from '../components/common/CitiesSection'
+import QualitySeals from '../components/common/QualitySeals'
 
 export default function BerlinPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -861,113 +863,11 @@ export default function BerlinPage() {
         </div>
       </section>
 
-      {/* Städte-Bereich - Berlin Umgebung */}
-      <section className="py-16 bg-[#2C4F5E] text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Entrümpelung im Großraum Berlin
-            </h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Nicht nur in Berlin, sondern auch in allen umliegenden Städten und Gemeinden 
-              im Umkreis von 150 km sind wir für Sie da! Professionelle Entrümpelung in Brandenburg und darüber hinaus.
-            </p>
-          </div>
+      {/* Städte-Bereich */}
+      <CitiesSection />
 
-          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
-            <a href="/entruempelung-brandenburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Brandenburg/Havel</h3>
-              <p className="text-sm opacity-80">80 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-frankfurt-oder" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Frankfurt (Oder)</h3>
-              <p className="text-sm opacity-80">95 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-cottbus" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Cottbus</h3>
-              <p className="text-sm opacity-80">125 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-oranienburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Oranienburg</h3>
-              <p className="text-sm opacity-80">35 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-bernau" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Bernau</h3>
-              <p className="text-sm opacity-80">25 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-eberswalde" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Eberswalde</h3>
-              <p className="text-sm opacity-80">60 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-neuruppin" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Neuruppin</h3>
-              <p className="text-sm opacity-80">80 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-falkensee" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Falkensee</h3>
-              <p className="text-sm opacity-80">25 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-hennigsdorf" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Hennigsdorf</h3>
-              <p className="text-sm opacity-80">25 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-strausberg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Strausberg</h3>
-              <p className="text-sm opacity-80">35 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-koenigs-wusterhausen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Königs Wusterhausen</h3>
-              <p className="text-sm opacity-80">30 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-teltow" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Teltow</h3>
-              <p className="text-sm opacity-80">20 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-kleinmachnow" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Kleinmachnow</h3>
-              <p className="text-sm opacity-80">25 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-blankenfelde" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Blankenfelde-Mahlow</h3>
-              <p className="text-sm opacity-80">25 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-ludwigsfelde" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Ludwigsfelde</h3>
-              <p className="text-sm opacity-80">35 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-bad-belzig" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Bad Belzig</h3>
-              <p className="text-sm opacity-80">80 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-wittenberg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Wittenberg</h3>
-              <p className="text-sm opacity-80">100 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-dessau" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Dessau-Roßlau</h3>
-              <p className="text-sm opacity-80">120 km von Berlin</p>
-            </a>
-            <a href="/entruempelung-magdeburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Magdeburg</h3>
-              <p className="text-sm opacity-80">145 km von Berlin</p>
-            </a>
-          </div>
-
-          <div className="text-center">
-            <p className="text-lg mb-4 opacity-90">
-              Ihr Ort fehlt noch? Wir kommen trotzdem zu Ihnen!
-            </p>
-            <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
-              Wir fahren im gesamten Großraum Berlin und Brandenburg. 
-              Kontaktieren Sie uns für eine individuelle Lösung!
-            </p>
-            <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
-              Jetzt Anfrage für Berlin senden
-              <span className="ml-2 text-lg">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Qualitätssiegel */}
+      <QualitySeals />
     </>
   )
 }

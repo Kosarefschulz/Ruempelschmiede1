@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
+import CitiesSection from '../components/common/CitiesSection'
+import QualitySeals from '../components/common/QualitySeals'
 
 export default function HamburgPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -849,85 +851,11 @@ export default function HamburgPage() {
         </div>
       </section>
 
-      {/* Städte-Bereich - Hamburg Umgebung */}
-      <section className="py-16 bg-[#2C4F5E] text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Entrümpelung im Großraum Hamburg
-            </h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Nicht nur in Hamburg, sondern auch in allen umliegenden Städten und Gemeinden 
-              sind wir für Sie da! Professionelle Entrümpelung in Schleswig-Holstein und Niedersachsen.
-            </p>
-          </div>
+      {/* Städte-Bereich */}
+      <CitiesSection />
 
-          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
-            <a href="/entruempelung-luebeck" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Lübeck</h3>
-              <p className="text-sm opacity-80">65 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-kiel" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Kiel</h3>
-              <p className="text-sm opacity-80">95 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-neumünster" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Neumünster</h3>
-              <p className="text-sm opacity-80">60 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-elmshorn" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Elmshorn</h3>
-              <p className="text-sm opacity-80">30 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-pinneberg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Pinneberg</h3>
-              <p className="text-sm opacity-80">25 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-norderstedt" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Norderstedt</h3>
-              <p className="text-sm opacity-80">20 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-ahrensburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Ahrensburg</h3>
-              <p className="text-sm opacity-80">25 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-bad-segeberg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Bad Segeberg</h3>
-              <p className="text-sm opacity-80">45 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-reinbek" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Reinbek</h3>
-              <p className="text-sm opacity-80">20 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-stade" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Stade</h3>
-              <p className="text-sm opacity-80">45 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-buchholz" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Buchholz</h3>
-              <p className="text-sm opacity-80">30 km von Hamburg</p>
-            </a>
-            <a href="/entruempelung-seevetal" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Seevetal</h3>
-              <p className="text-sm opacity-80">25 km von Hamburg</p>
-            </a>
-          </div>
-
-          <div className="text-center">
-            <p className="text-lg mb-4 opacity-90">
-              Ihr Ort fehlt noch? Wir kommen trotzdem zu Ihnen!
-            </p>
-            <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
-              Wir fahren im gesamten Großraum Hamburg und in die angrenzenden Regionen. 
-              Kontaktieren Sie uns für eine individuelle Lösung!
-            </p>
-            <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
-              Jetzt Anfrage für Hamburg senden
-              <span className="ml-2 text-lg">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Qualitätssiegel */}
+      <QualitySeals />
     </>
   )
 }

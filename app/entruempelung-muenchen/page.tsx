@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
+import CitiesSection from '../components/common/CitiesSection'
+import QualitySeals from '../components/common/QualitySeals'
 
 export default function MuenchenPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -846,85 +848,11 @@ export default function MuenchenPage() {
         </div>
       </section>
 
-      {/* Städte-Bereich - München Umgebung */}
-      <section className="py-16 bg-[#2C4F5E] text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Entrümpelung im Großraum München
-            </h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Nicht nur in München, sondern auch in allen umliegenden Städten und Gemeinden 
-              sind wir für Sie da! Professionelle Entrümpelung in ganz Bayern.
-            </p>
-          </div>
+      {/* Städte-Bereich */}
+      <CitiesSection />
 
-          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
-            <a href="/entruempelung-augsburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Augsburg</h3>
-              <p className="text-sm opacity-80">70 km von München</p>
-            </a>
-            <a href="/entruempelung-ingolstadt" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Ingolstadt</h3>
-              <p className="text-sm opacity-80">85 km von München</p>
-            </a>
-            <a href="/entruempelung-regensburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Regensburg</h3>
-              <p className="text-sm opacity-80">120 km von München</p>
-            </a>
-            <a href="/entruempelung-freising" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Freising</h3>
-              <p className="text-sm opacity-80">35 km von München</p>
-            </a>
-            <a href="/entruempelung-dachau" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Dachau</h3>
-              <p className="text-sm opacity-80">25 km von München</p>
-            </a>
-            <a href="/entruempelung-erding" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Erding</h3>
-              <p className="text-sm opacity-80">40 km von München</p>
-            </a>
-            <a href="/entruempelung-starnberg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Starnberg</h3>
-              <p className="text-sm opacity-80">25 km von München</p>
-            </a>
-            <a href="/entruempelung-fuerstenfeldbruck" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Fürstenfeldbruck</h3>
-              <p className="text-sm opacity-80">25 km von München</p>
-            </a>
-            <a href="/entruempelung-germering" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Germering</h3>
-              <p className="text-sm opacity-80">20 km von München</p>
-            </a>
-            <a href="/entruempelung-unterschleissheim" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Unterschleißheim</h3>
-              <p className="text-sm opacity-80">15 km von München</p>
-            </a>
-            <a href="/entruempelung-haar" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Haar</h3>
-              <p className="text-sm opacity-80">15 km von München</p>
-            </a>
-            <a href="/entruempelung-ottobrunn" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
-              <h3 className="font-bold text-lg">Ottobrunn</h3>
-              <p className="text-sm opacity-80">15 km von München</p>
-            </a>
-          </div>
-
-          <div className="text-center">
-            <p className="text-lg mb-4 opacity-90">
-              Ihr Ort fehlt noch? Wir kommen trotzdem zu Ihnen!
-            </p>
-            <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
-              Wir fahren im gesamten Großraum München und in ganz Bayern. 
-              Kontaktieren Sie uns für eine individuelle Lösung!
-            </p>
-            <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
-              Jetzt Anfrage für München senden
-              <span className="ml-2 text-lg">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Qualitätssiegel */}
+      <QualitySeals />
     </>
   )
 }

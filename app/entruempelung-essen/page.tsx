@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
+import CitiesSection from '../components/common/CitiesSection'
+import QualitySeals from '../components/common/QualitySeals'
 
 export default function EssenPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -846,34 +848,11 @@ export default function EssenPage() {
         </div>
       </section>
 
-      {/* Städte-Bereich - Umgebung */}
-      <section className="py-16 bg-[#2C4F5E] text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Entrümpelung im Großraum Essen
-            </h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Nicht nur in Essen, sondern auch in allen umliegenden Städten und Gemeinden 
-              sind wir für Sie da! Professionelle Entrümpelung in der ganzen Region.
-            </p>
-          </div>
+      {/* Städte-Bereich */}
+      <CitiesSection />
 
-          <div className="text-center">
-            <p className="text-lg mb-4 opacity-90">
-              Ihr Ort fehlt noch? Wir kommen trotzdem zu Ihnen!
-            </p>
-            <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
-              Wir fahren im gesamten Großraum Essen und in die angrenzenden Regionen. 
-              Kontaktieren Sie uns für eine individuelle Lösung!
-            </p>
-            <a href="/kontakt" className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all">
-              Jetzt Anfrage für Essen senden
-              <span className="ml-2 text-lg">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Qualitätssiegel */}
+      <QualitySeals />
     </>
   )
 }
