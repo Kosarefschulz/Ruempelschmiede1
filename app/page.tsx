@@ -2,10 +2,10 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from './components/Icon'
-import GermanyMapWrapper from './components/GermanyMapWrapper'
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [showBielefeldCities, setShowBielefeldCities] = useState(false)
 
   const handleDotClick = (index: number) => {
     setCurrentSlide(index)
@@ -1029,30 +1029,179 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Städte-Bereich mit interaktiver Karte */}
-      <section className="py-16 bg-white">
+      {/* Städte-Bereich */}
+      <section className="py-16 bg-[#2C4F5E] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#2C4F5E] mb-4">
-              Für Sie entrümpeln wir deutschlandweit!
+            <h2 className="text-4xl font-bold mb-4">
+              Deutschlandweit für Sie da
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Durch unsere langjährige Erfahrung im gesamten Bundesgebiet gewähren wir eine 
-              faire Preis-Leistung mit marktgerechter „WERTANRECHNUNG" von Verwertbarem.
-            </p>
-            <p className="text-lg text-gray-600 mt-4">
-              In folgenden Städten sind wir dabei besonders aktiv:
+            <p className="text-xl opacity-90 max-w-3xl mx-auto">
+              Von Hamburg bis München, von Berlin bis Köln - wir sind in allen großen Städten 
+              und deren Umgebung für Sie im Einsatz.
             </p>
           </div>
 
-          {/* Interaktive Karte */}
-          <GermanyMapWrapper />
+          {/* Hauptstädte */}
+          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+            <a href="/entruempelung-berlin" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Berlin</h3>
+              <p className="text-sm opacity-80">3,7 Mio. Einwohner</p>
+            </a>
+            <a href="/entruempelung-hamburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Hamburg</h3>
+              <p className="text-sm opacity-80">1,9 Mio. Einwohner</p>
+            </a>
+            <a href="/entruempelung-muenchen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">München</h3>
+              <p className="text-sm opacity-80">1,5 Mio. Einwohner</p>
+            </a>
+            <a href="/entruempelung-koeln" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Köln</h3>
+              <p className="text-sm opacity-80">1,1 Mio. Einwohner</p>
+            </a>
+            <a href="/entruempelung-frankfurt" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Frankfurt am Main</h3>
+              <p className="text-sm opacity-80">750.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-stuttgart" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Stuttgart</h3>
+              <p className="text-sm opacity-80">630.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-duesseldorf" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Düsseldorf</h3>
+              <p className="text-sm opacity-80">620.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-leipzig" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Leipzig</h3>
+              <p className="text-sm opacity-80">600.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-dortmund" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Dortmund</h3>
+              <p className="text-sm opacity-80">590.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-essen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Essen</h3>
+              <p className="text-sm opacity-80">580.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-bremen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Bremen</h3>
+              <p className="text-sm opacity-80">570.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-dresden" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Dresden</h3>
+              <p className="text-sm opacity-80">560.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-hannover" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Hannover</h3>
+              <p className="text-sm opacity-80">540.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-nuernberg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Nürnberg</h3>
+              <p className="text-sm opacity-80">520.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-duisburg" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Duisburg</h3>
+              <p className="text-sm opacity-80">500.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-bochum" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Bochum</h3>
+              <p className="text-sm opacity-80">365.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-wuppertal" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Wuppertal</h3>
+              <p className="text-sm opacity-80">355.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-bielefeld" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Bielefeld</h3>
+              <p className="text-sm opacity-80">340.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-bonn" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Bonn</h3>
+              <p className="text-sm opacity-80">330.000 Einwohner</p>
+            </a>
+            <a href="/entruempelung-muenster" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+              <h3 className="font-bold text-lg">Münster</h3>
+              <p className="text-sm opacity-80">320.000 Einwohner</p>
+            </a>
+          </div>
 
-          <div className="text-center mt-12">
-            <p className="text-lg mb-4 text-gray-700">
+          {/* Bielefeld Region - Aufklappbarer Bereich */}
+          <div className="mb-8">
+            <button 
+              onClick={() => setShowBielefeldCities(!showBielefeldCities)}
+              className="bg-white/20 hover:bg-white/30 rounded-lg p-4 text-center transition-all duration-300 w-full flex items-center justify-center gap-3 group"
+            >
+              <h3 className="font-bold text-lg">Region Bielefeld</h3>
+              <p className="text-sm opacity-80">12 weitere Städte</p>
+              <svg 
+                className={`w-5 h-5 transition-transform duration-300 ${showBielefeldCities ? 'rotate-180' : ''}`} 
+                fill="currentColor" 
+                viewBox="0 0 20 20"
+              >
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+            
+            {showBielefeldCities && (
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 animate-fadeIn">
+                <a href="/entruempelung-guetersloh" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Gütersloh</h3>
+                  <p className="text-sm opacity-80">18 km</p>
+                </a>
+                <a href="/entruempelung-herford" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Herford</h3>
+                  <p className="text-sm opacity-80">20 km</p>
+                </a>
+                <a href="/entruempelung-paderborn" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Paderborn</h3>
+                  <p className="text-sm opacity-80">45 km</p>
+                </a>
+                <a href="/entruempelung-bad-salzuflen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Bad Salzuflen</h3>
+                  <p className="text-sm opacity-80">25 km</p>
+                </a>
+                <a href="/entruempelung-osnabrueck" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Osnabrück</h3>
+                  <p className="text-sm opacity-80">50 km</p>
+                </a>
+                <a href="/entruempelung-steinhagen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Steinhagen</h3>
+                  <p className="text-sm opacity-80">8 km</p>
+                </a>
+                <a href="/entruempelung-spenge" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Spenge</h3>
+                  <p className="text-sm opacity-80">15 km</p>
+                </a>
+                <a href="/entruempelung-halle-westfalen" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Halle (Westfalen)</h3>
+                  <p className="text-sm opacity-80">12 km</p>
+                </a>
+                <a href="/entruempelung-lage" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Lage</h3>
+                  <p className="text-sm opacity-80">19 km</p>
+                </a>
+                <a href="/entruempelung-melle" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Melle</h3>
+                  <p className="text-sm opacity-80">23 km</p>
+                </a>
+                <a href="/entruempelung-detmold" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Detmold</h3>
+                  <p className="text-sm opacity-80">25 km</p>
+                </a>
+                <a href="/entruempelung-lemgo" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105">
+                  <h3 className="font-bold text-lg">Lemgo</h3>
+                  <p className="text-sm opacity-80">22 km</p>
+                </a>
+              </div>
+            )}
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg mb-4 opacity-90">
               Ihre Stadt fehlt noch? Wir kommen trotzdem zu Ihnen!
             </p>
-            <p className="text-sm text-gray-600 max-w-2xl mx-auto mb-6">
+            <p className="text-sm opacity-80 max-w-2xl mx-auto mb-6">
               Wir sind deutschlandweit im Einsatz und kommen auch in kleinere Städte und Gemeinden. 
               Kontaktieren Sie uns einfach - wir finden eine Lösung für Sie!
             </p>
