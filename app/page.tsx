@@ -453,7 +453,7 @@ export default function HomePage() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
                 <div className="h-64 bg-gray-200 relative overflow-hidden">
                   <Image 
-                    src="/Gewerbe 2.jpg" 
+                    src="/images/gewerbeaufloesung-lagerhalle.jpg" 
                     alt="Gewerbeauflösung Bielefeld - Professionelle Büroräumung & Betriebsauflösung in OWL"
                     fill
                     className="object-cover"
@@ -479,7 +479,7 @@ export default function HomePage() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
                 <div className="h-64 bg-gray-200 relative overflow-hidden">
                   <Image 
-                    src="/Voller Messie Flur .jpg" 
+                    src="/images/messie-entruempelung-hauptseite.jpg" 
                     alt="Messie-Wohnung Entrümpelung Steinhagen - Diskrete Wohnungsräumung mit Desinfektion OWL"
                     fill
                     className="object-cover"
@@ -487,7 +487,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Wohnungen</h3>
+                  <h3 className="text-2xl font-bold text-[#2C4F5E] mb-3">Messie-Entrümpelung</h3>
                   <p className="text-gray-700 mb-4">
                     Sensible Räumung mit Desinfektion. Wir arbeiten diskret, respektvoll 
                     und mit respektvollem Verständnis.
@@ -505,7 +505,7 @@ export default function HomePage() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
                 <div className="h-64 bg-gray-200 relative overflow-hidden">
                   <Image 
-                    src="/1-2.jpg" 
+                    src="/images/keller-dachboden-hauptseite.jpg" 
                     alt="Keller, Dachboden und Garagenentrümpelung Bielefeld - Günstige Räumung ab 390€"
                     fill
                     className="object-cover"
@@ -615,7 +615,7 @@ export default function HomePage() {
                   Von der Entrümpelung zur Traumimmobilie
                 </h3>
                 <p className="opacity-90 mb-4">
-                  Ob Nachlasswohnung, Messie-Haushalt oder einfach nur Renovierungsbedarf - 
+                  Ob Nachlasswohnung, Messie-Entrümpelung oder einfach nur Renovierungsbedarf - 
                   wir machen nicht nur sauber, sondern auch schön!
                 </p>
                 <ul className="space-y-2">

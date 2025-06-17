@@ -31,6 +31,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/impressum" className="text-gray-400 hover:text-white">Impressum</Link></li>
               <li><Link href="/datenschutz" className="text-gray-400 hover:text-white">Datenschutz</Link></li>
+              <li><Link href="/faq" className="text-gray-400 hover:text-white">FAQ</Link></li>
               <li><Link href="/karriere" className="text-gray-400 hover:text-white">💼 Karriere</Link></li>
               <li><Link href="/franchise" className="text-gray-400 hover:text-white">🚀 Unternehmer werden</Link></li>
             </ul>

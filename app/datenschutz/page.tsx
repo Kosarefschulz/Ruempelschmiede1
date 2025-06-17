@@ -52,7 +52,7 @@ export default function DatenschutzPage() {
                 Markus Knaub<br />
                 Sergej Schulz<br />
                 <br />
-                Telefon: 0521 / 999 999 99<br />
+                Telefon: 0800 0060970<br />
                 E-Mail: info@ruempelschmiede.de
               </p>
               

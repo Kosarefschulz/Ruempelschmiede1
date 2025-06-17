@@ -95,8 +95,8 @@ export default function Header() {
                             <Image
                                 src="/Logo.png"
                                 alt="Rümpel Schmiede"
-                                width={220}
-                                height={70}
+                                width={180}
+                                height={58}
                                 className="logo-image"
                                 priority
                             />
@@ -104,11 +104,11 @@ export default function Header() {
 
                         {/* Desktop Navigation - ÜBER DIE GESAMTE BREITE VERTEILT */}
                         <nav className="flex-1 flex items-center justify-center lg:px-4 xl:px-8">
-                            <ul className="flex items-center lg:gap-2 xl:justify-between w-full max-w-5xl">
+                            <ul className="flex items-center lg:gap-0.5 xl:gap-1 2xl:gap-2 justify-between w-full max-w-5xl">
                                 <li>
                                     <Link
                                         href="/"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
                                     >
                                         Start
                                     </Link>
@@ -129,7 +129,7 @@ export default function Header() {
                                 >
                                     <button
                                         onClick={() => setIsLeistungenOpen(!isLeistungenOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2 flex items-center"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2 flex items-center"
                                     >
                                         Leistungen
                                         <svg className={`w-4 h-4 ml-1 transition-transform ${isLeistungenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -245,7 +245,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/nachhaltigkeit"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
                                     >
                                         Nachhaltigkeit
                                     </Link>
@@ -266,7 +266,7 @@ export default function Header() {
                                 >
                                     <button
                                         onClick={() => setIsMitmachenOpen(!isMitmachenOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2 flex items-center"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2 flex items-center whitespace-nowrap"
                                     >
                                         Mach mit!
                                         <svg className={`w-4 h-4 ml-1 transition-transform ${isMitmachenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -299,7 +299,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/artikel"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
                                     >
                                         Ratgeber
                                     </Link>
@@ -307,7 +307,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/ueber-uns"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2 whitespace-nowrap"
                                     >
                                         Über uns
                                     </Link>
@@ -315,7 +315,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/kontakt"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
                                     >
                                         Kontakt
                                     </Link>
@@ -327,7 +327,7 @@ export default function Header() {
                         <div className="flex-shrink-0">
                             <Link
                                 href="/preise"
-                                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white lg:px-4 xl:px-6 lg:py-2 xl:py-3 rounded-lg font-semibold transition-all lg:text-sm xl:text-base"
+                                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white lg:px-4 xl:px-6 lg:py-2 xl:py-3 rounded-lg font-semibold transition-all lg:text-xs xl:text-sm 2xl:text-base"
                             >
                                 Preisrechner
                             </Link>

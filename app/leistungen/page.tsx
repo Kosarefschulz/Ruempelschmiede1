@@ -20,15 +20,16 @@ interface Service {
 const servicesData: Service[] = [
     {
         id: 'haushaltsaufloesung',
-        title: 'Haushaltsauflösung deutschlandweit - Professionelle Wohnungsauflösung',
+        title: 'Haushaltsauflösung',
         icon: 'haus',
         image: '/images/Gewerbe.png',
         images: [
-            '/images/services/haushaltsaufloesung_1.jpg',
-            '/images/services/haushaltsaufloesung_2.jpg',
-            '/images/services/haushaltsaufloesung_3.jpg',
-            '/images/services/haushaltsaufloesung_4.jpg',
-            '/images/services/haushaltsaufloesung_5.jpg'
+            '/images/services/haushaltsaufloesung_1.jpg?v=2',
+            '/images/services/haushaltsaufloesung_2.jpg?v=2',
+            '/images/services/haushaltsaufloesung_3.jpg?v=2',
+            '/images/services/haushaltsaufloesung_4.jpg?v=2',
+            '/images/services/haushaltsaufloesung_5.jpg?v=2',
+            '/images/services/haushaltsaufloesung_6.jpg?v=2'
         ],
         excerpt: 'Komplette Räumung mit Wertanrechnung - schnell, sauber & günstig.',
         seoText: 'Haushaltsauflösung Deutschland: Professionelle Wohnungsauflösung deutschlandweit. Von der kostenlosen Besichtigung bis zur besenreinen Übergabe. Faire Wertanrechnung, Festpreise ab 890€.',
@@ -44,7 +45,7 @@ const servicesData: Service[] = [
     },
     {
         id: 'gewerbeaufloesung',
-        title: 'Gewerbeauflösung deutschlandweit - Büroauflösung & Betriebsauflösung',
+        title: 'Gewerbeauflösung',
         icon: 'buero',
         image: '/images/Gewerbe.png',
         images: [
@@ -68,7 +69,7 @@ const servicesData: Service[] = [
     },
     {
         id: 'messie-entruempelung',
-        title: 'Messie Wohnung Entrümpelung deutschlandweit - Diskret & Professionell',
+        title: 'Messie-Entrümpelung',
         icon: 'besen',
         image: '/images/Gewerbe.png',
         images: [
@@ -92,7 +93,7 @@ const servicesData: Service[] = [
     },
     {
         id: 'keller-dachboden',
-        title: 'Kellerentrümpelung & Dachbodenentrümpelung deutschlandweit',
+        title: 'Keller, Dachboden & Garage',
         icon: 'kiste',
         image: '/images/Gewerbe.png',
         images: [
@@ -102,21 +103,21 @@ const servicesData: Service[] = [
             '/images/services/keller-dachboden_4.jpg',
             '/images/services/keller-dachboden_5.jpg'
         ],
-        excerpt: 'Keller & Dachboden entrümpeln - schnell und günstig.',
-        seoText: 'Keller- und Dachboden-Entrümpelung Deutschland: Schnelle, gründliche Räumung deutschlandweit. Auch schwer zugängliche Bereiche. Faire Wertanrechnung, Festpreise ab 390€.',
+        excerpt: 'Platz schaffen wo er gebraucht wird - Keller, Dachboden, Garage.',
+        seoText: 'Keller-, Dachboden- und Garagenentrümpelung in ganz Deutschland. Schnell Platz schaffen für Neues. Inklusive Entsorgung und besenreiner Übergabe.',
         details: [
-            "Deutschlandweiter Service - schnelle Teams vor Ort",
-            "Schnelle Durchführung - oft innerhalb 48h",
-            "Auch schwer zugängliche Bereiche möglich",
-            "Faire Wertanrechnung für Brauchbares",
-            "Besenreine, saubere Übergabe"
+            "Deutschlandweite Kellerentrümpelung",
+            "Professionelle Dachbodenräumung", 
+            "Garagenentrümpelung inklusive",
+            "Verwertung & Recycling wertvoller Gegenstände",
+            "Oft innerhalb 48 Stunden möglich"
         ],
         keywords: ['Kellerentrümpelung', 'Dachbodenentrümpelung', 'Entrümpelung', 'Deutschland', 'schnell'],
         cities: ['Nürnberg', 'Augsburg', 'Würzburg', 'Regensburg', 'Ingolstadt', 'Fürth', 'Erlangen', 'Bamberg']
     },
     {
         id: 'express-service',
-        title: 'Express Entrümpelung 48h deutschlandweit - 24/7 Notfall-Service',
+        title: 'Express-Service 48h',
         icon: 'blitz',
         image: '/images/Gewerbe.png',
         images: [
@@ -325,7 +326,7 @@ export default function LeistungenPage() {
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <span className="inline-block px-6 py-2 mb-6 text-sm font-semibold text-white bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
-                            ENTRÜMPELUNG DEUTSCHLANDWEIT SEIT 2009
+                            ENTRÜMPELUNG DEUTSCHLANDWEIT - 8+ JAHRE ERFAHRUNG
                         </span>
                         
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
@@ -337,43 +338,47 @@ export default function LeistungenPage() {
                             Professionelle Entrümpelungen in ganz Deutschland - Berlin, Hamburg, München, Köln 
                             und überall dazwischen. Schnell, sauber, zuverlässig mit Festpreisgarantie.
                         </p>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 mb-12 max-w-3xl mx-auto">
+                            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                                <p className="text-5xl font-bold text-[#C73E3A] mb-3">8+</p>
+                                <p className="text-white text-lg font-medium mb-1">Jahre</p>
+                                <p className="text-white/70 text-sm">Erfahrung</p>
+                            </div>
+                            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                                <p className="text-5xl font-bold text-[#C73E3A] mb-3">1.200+</p>
+                                <p className="text-white text-lg font-medium mb-1">Erfolgreiche</p>
+                                <p className="text-white/70 text-sm">Entrümpelungen</p>
+                            </div>
+                            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                                <p className="text-5xl font-bold text-[#C73E3A] mb-3">100%</p>
+                                <p className="text-white text-lg font-medium mb-1">Kunden</p>
+                                <p className="text-white/70 text-sm">Zufriedenheit</p>
+                            </div>
+                        </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="tel:+4908000060970"
-                                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-[#C73E3A] rounded-xl shadow-lg hover:bg-[#B02E2A] transition-all"
+                                className="inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-[#C73E3A] rounded-xl shadow-xl hover:bg-[#B02E2A] transform hover:scale-105 transition-all duration-300"
                             >
-                                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                0800 0060970
+                                <span>0800 0060970</span>
                             </a>
                             
                             <a
-                                href="#kontakt-formular"
-                                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-xl hover:bg-white/10 transition-all"
+                                href="/kontakt"
+                                className="inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-[#2C4F5E] bg-white rounded-xl shadow-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300"
                             >
-                                Kostenloses Angebot anfordern
-                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <span>Kostenloses Angebot</span>
+                                <svg className="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
                             </a>
                         </div>
 
-                        {/* Trust Indicators */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                            {[
-                                { value: '15+', label: 'Jahre Erfahrung' },
-                                { value: '50.000+', label: 'Entrümpelungen' },
-                                { value: '16', label: 'Bundesländer' },
-                                { value: 'Festpreis', label: 'Garantie' }
-                            ].map((stat, index) => (
-                                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                                    <div className="text-2xl md:text-3xl font-bold text-[#C73E3A]">{stat.value}</div>
-                                    <div className="text-white/80 text-sm">{stat.label}</div>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </section>
@@ -388,7 +393,7 @@ export default function LeistungenPage() {
                         <div className="prose prose-lg text-gray-700">
                             <p className="mb-4">
                                 Die Rümpel Schmiede ist Ihr spezialisierter Partner für professionelle Entrümpelungen 
-                                in ganz Deutschland. Mit über 15 Jahren Erfahrung und einem bundesweiten Netzwerk 
+                                in ganz Deutschland. Mit über 8+ Jahren Erfahrung und einem bundesweiten Netzwerk 
                                 bieten wir Lösungen für Haushaltsauflösungen, Gewerbeentrümpelungen, Messie-Wohnungen 
                                 und Express-Services - von Hamburg bis München, von Berlin bis Stuttgart.
                             </p>
@@ -446,7 +451,7 @@ export default function LeistungenPage() {
                                                 auf Wunsch an gemeinnützige Organisationen. Das reduziert Ihre Kosten erheblich.
                                             </p>
                                             <p>
-                                                Profitieren Sie von über 15 Jahren Erfahrung und mehr als 50.000 erfolgreichen 
+                                                Profitieren Sie von über 8+ Jahren Erfahrung und mehr als 1.200 erfolgreichen 
                                                 Haushaltsauflösungen deutschlandweit. Unser Service umfasst auch Keller, Dachboden 
                                                 und Garage - alles besenrein und termingerecht.
                                             </p>
@@ -468,7 +473,7 @@ export default function LeistungenPage() {
                                                 fachgerechten Recycling zu. Das minimiert Ihre Entsorgungskosten und schont die Umwelt.
                                             </p>
                                             <p>
-                                                Vertrauen Sie auf unsere Erfahrung aus über 10.000 Gewerbeauflösungen deutschlandweit. 
+                                                Vertrauen Sie auf unsere Erfahrung aus über 30 Gewerbeauflösungen deutschlandweit. 
                                                 Minimale Betriebsunterbrechung und diskrete Abwicklung garantiert.
                                             </p>
                                         </>
@@ -490,7 +495,7 @@ export default function LeistungenPage() {
                                                 ist die Wohnung wieder vollständig bewohnbar.
                                             </p>
                                             <p>
-                                                Über 15 Jahre Erfahrung in der sensiblen Messie-Entrümpelung deutschlandweit. 
+                                                Über 8+ Jahre Erfahrung in der sensiblen Messie-Entrümpelung deutschlandweit. 
                                                 Wir arbeiten mit respektvollem Verständnis und größtem Respekt für Ihre Situation.
                                             </p>
                                         </>
@@ -499,18 +504,18 @@ export default function LeistungenPage() {
                                     {service.id === 'keller-dachboden' && (
                                         <>
                                             <p className="mb-4">
-                                                <strong>Keller- und Dachboden-Entrümpelung deutschlandweit</strong> - Keller und 
-                                                Dachböden werden über die Jahre oft zur Rumpelkammer. Wir schaffen wieder Platz 
+                                                <strong>Keller-, Dachboden- und Garagenentrümpelung deutschlandweit</strong> - Keller, 
+                                                Dachböden und Garagen werden über die Jahre oft zur Rumpelkammer. Wir schaffen wieder Platz 
                                                 und Ordnung - schnell, gründlich und zu fairen Preisen. Egal ob in Leipzig, 
                                                 Nürnberg, Bremen oder Hannover - unser deutschlandweites Netzwerk ist für Sie da.
                                             </p>
                                             <p className="mb-4">
-                                                <strong>Auch schwer zugängliche Bereiche</strong>, enge Treppen oder feuchte Keller 
-                                                sind für unser erfahrenes Team problemlos machbar. Brauchbare Gegenstände, Werkzeuge 
-                                                oder Sammlerstücke werden fair angerechnet und reduzieren so Ihre Kosten.
+                                                <strong>Auch schwer zugängliche Bereiche</strong>, enge Treppen, feuchte Keller oder vollgestellte 
+                                                Garagen sind für unser erfahrenes Team problemlos machbar. Brauchbare Gegenstände, Werkzeuge, 
+                                                Gartengeräte oder Sammlerstücke werden fair angerechnet und reduzieren so Ihre Kosten.
                                             </p>
                                             <p>
-                                                Profitieren Sie von unserer Erfahrung aus zehntausenden Kellerentrümpelungen 
+                                                Profitieren Sie von unserer Erfahrung aus zehntausenden Keller-, Dachboden- und Garagenentrümpelungen 
                                                 deutschlandweit. Schnelle Durchführung oft innerhalb 48 Stunden möglich.
                                             </p>
                                         </>
@@ -1062,7 +1067,7 @@ export default function LeistungenPage() {
                             Die Rümpel Schmiede ist Ihr zuverlässiger Partner für professionelle Entrümpelungen 
                             in ganz Deutschland. Von Hamburg über Berlin bis München, von Köln über Frankfurt 
                             bis Stuttgart - mit unserem bundesweiten Netzwerk und regionalen Teams sind wir 
-                            in allen 16 Bundesländern für Sie da. Über 15 Jahre Erfahrung und mehr als 50.000 
+                            in allen 16 Bundesländern für Sie da. Über 8+ Jahre Erfahrung und mehr als 1.200 
                             erfolgreich abgeschlossene Entrümpelungen sprechen für sich.
                         </p>
                         <p className="mb-4">
