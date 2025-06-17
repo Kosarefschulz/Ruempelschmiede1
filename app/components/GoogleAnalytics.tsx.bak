@@ -127,24 +127,6 @@ export default function GoogleAnalytics() {
           `,
         }}
       />
-      
-      {/* Google Ads Conversion Tracking */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=AW-17218905669"
-      />
-      <Script
-        id="google-ads-conversion"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17218905669');
-          `,
-        }}
-      />
     </>
   );
 }

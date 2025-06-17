@@ -488,7 +488,7 @@ export default function UeberUnsPage() {
               <h3 className="font-bold text-[#2C4F5E] mb-3">WhatsApp</h3>
               <p className="text-gray-600 mb-4 text-sm">Schnell & unkompliziert</p>
               <a
-                href="https://wa.me/4952199999900"
+                href="https://wa.me/4952112005511"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"

@@ -131,7 +131,7 @@ export default function KontaktPage() {
       title: 'WhatsApp',
       subtitle: 'Schnell & einfach',
       value: 'Chat starten',
-      href: 'https://wa.me/4908000060970?text=Hallo,%20ich%20interessiere%20mich%20für%20eine%20Entrümpelung',
+      href: 'https://wa.me/4952112005511?text=Hallo,%20ich%20interessiere%20mich%20für%20eine%20Entrümpelung',
       bgColor: 'bg-gradient-to-br from-green-600 to-green-700',
       popular: false,
       subtext: 'Antwort in < 30 Min'
