@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from './components/Icon'
 
-import YouTubeVideo from './components/YouTubeVideo'
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [showBielefeldCities, setShowBielefeldCities] = useState(false)
@@ -34,7 +33,17 @@ export default function HomePage() {
       {/* Hero Section mit Video */}
       <section className="relative overflow-hidden w-full" style={{ height: '70vh' }}>
         <div className="absolute inset-0 z-0">
-          <YouTubeVideo />          <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
+          <video 
+            className="w-full h-full object-cover" 
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
+            Video wird geladen...
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
       </section>
 

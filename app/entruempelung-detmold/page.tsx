@@ -1,5 +1,4 @@
 'use client'
-import YouTubeVideo from '../components/YouTubeVideo'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Icon from '../components/Icon'
@@ -26,7 +25,19 @@ export default function DetmoldPage() {
       {/* Hero Section mit Video */}
       <section className="relative overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
-          <YouTubeVideo />          <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
+          <video 
+            className="w-full h-full object-cover" 
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/video-poster.jpg"
+            style={{ height: '70vh' }}
+          >
+            <source src="https://ruempelschmiede-cdn.b-cdn.net/Mein%20Film.mp4" type="video/mp4" />
+            Ihr Browser unterstützt keine Videos.
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2C4F5E]/40 to-[#2C4F5E]/40"></div>
         </div>
 
         <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
