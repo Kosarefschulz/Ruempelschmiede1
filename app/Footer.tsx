@@ -43,7 +43,7 @@ export default function Footer() {
             <p className="text-gray-400 mb-2">Zentrale Bielefeld</p>
             <p className="text-gray-400 mb-2">Tel: 0800 0060970</p>
             <p className="text-gray-400 mb-2">E-Mail: info@ruempelschmiede.de</p>
-            <p className="text-gray-400">Mo-Sa: 07:00 - 20:00 Uhr</p>
+            <p className="text-gray-400">Mo-Fr: 08:00 - 20:00 Uhr</p>
           </div>
         </div>
 
