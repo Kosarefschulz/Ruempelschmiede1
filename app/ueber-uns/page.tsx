@@ -5,24 +5,31 @@ export default function UeberUnsPage() {
   const teamMembers = [
     {
       name: 'Michael Michalowski',
-      role: 'Geschäftsführer & Gründer',
-      specialty: 'Der Mann mit der Vision – seit über 20 Jahren kämpft er gegen unseriöse Praktiken in der Branche.',
-      imagePlaceholder: 'Bild Michael',
-      bio: 'Michael gründete die Rümpel Schmiede aus einem einfachen Grund: Er wollte beweisen, dass Entrümpelung auch mit Herz und Verstand funktioniert. Seine Vision von Ehrlichkeit und Menschlichkeit prägt jeden Tag unsere Arbeit.'
+      role: 'Gründer & Geschäftsführer',
+      specialty: 'Der Visionär – Mit über 8+ Jahren Erfahrung setzt er neue Standards für faire und transparente Entrümpelung.',
+      image: '/images/team/michael.jpg',
+      bio: 'Michael gründete die Rümpel Schmiede aus Überzeugung: Entrümpelung muss ehrlich, fair und menschlich sein. Als Gründer prägt er die Unternehmenskultur und sorgt dafür, dass jeder Kunde die beste Betreuung erhält.'
     },
     {
       name: 'Markus Knaub',
-      role: 'Geschäftsführer',
-      specialty: 'Der Organisator – er macht aus dem Chaos Ordnung und behält dabei immer den Menschen im Blick.',
-      imagePlaceholder: 'Bild Markus',
-      bio: 'Markus kennt die Sorgen von Unternehmern. Wenn eine Firma schließen muss, ist er der ruhende Pol, der alles regelt – diskret, professionell und immer mit einem offenen Ohr.'
+      role: 'Projektleiter & Geschäftsführer',
+      specialty: 'Der Stratege – Er koordiniert alle Projekte und sorgt für reibungslose Abläufe von A bis Z.',
+      image: '/images/team/markus.jpg',
+      bio: 'Markus ist unser Mann für die perfekte Organisation. Mit seinem Blick fürs Detail und seiner ruhigen Art meistert er auch die komplexesten Projekte. Bei ihm laufen alle Fäden zusammen.'
     },
     {
       name: 'Sergej Schulz',
-      role: 'Geschäftsführer',
-      specialty: 'Der Seelentröster – spezialisiert auf die schwierigsten Momente im Leben unserer Kunden.',
-      imagePlaceholder: 'Bild Sergej',
-      bio: 'Sergej hat ein besonderes Talent: Er spürt, wenn Menschen mehr brauchen als nur eine Entrümpelung. Mit unendlicher Geduld und Verständnis begleitet er Sie durch emotionale Ausnahmesituationen.'
+      role: 'Prozessoptimierung & Key Account Management',
+      specialty: 'Der Innovator – Er entwickelt unsere Prozesse weiter und betreut unsere wichtigsten Geschäftskunden.',
+      image: '/images/team/sergej.jpg',
+      bio: 'Sergej verbindet technisches Know-how mit menschlichem Fingerspitzengefühl. Er optimiert unsere Abläufe und sorgt dafür, dass besonders anspruchsvolle Projekte perfekt umgesetzt werden.'
+    },
+    {
+      name: 'Melanie',
+      role: 'Finanzcontrolling & Administration',
+      specialty: 'Die Zahlenkünstlerin – Sie behält den Überblick über alle finanziellen Aspekte und sorgt für transparente Abrechnungen.',
+      image: '/images/team/melanie.jpg',
+      bio: 'Melanie ist unser Ass im Ärmel, wenn es um Zahlen geht. Mit ihrer präzisen Art sorgt sie dafür, dass alle Abrechnungen stimmen und unsere Kunden faire, transparente Preise erhalten.'
     },
   ];
 
@@ -298,18 +305,28 @@ export default function UeberUnsPage() {
               Die Menschen hinter der <span className="text-[#C73E3A]">Rümpel Schmiede</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Drei Geschäftsführer, eine Mission: Entrümpelung mit Herz und Verstand.
+              Unser Führungsteam: Vier Experten, eine gemeinsame Vision für bessere Entrümpelung.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
                 className="bg-[#F5F5F0] rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300"
               >
-                <div className="w-40 h-40 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-sm text-gray-500">{member.imagePlaceholder}</span>
+                <div className="w-40 h-40 bg-gray-200 rounded-full mx-auto mb-6 overflow-hidden">
+                  {member.image ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className={`w-full h-full object-cover ${member.name === 'Markus Knaub' ? 'object-[center_10%]' : ''}`}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-sm text-gray-500">Kein Bild</span>
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-2xl font-bold text-[#2C4F5E] mb-1">{member.name}</h3>
                 <p className="text-[#C73E3A] font-semibold mb-3">{member.role}</p>

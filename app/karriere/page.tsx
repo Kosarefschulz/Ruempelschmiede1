@@ -11,7 +11,7 @@ export default function KarrierePage() {
       id: 1,
       category: 'operations',
       title: 'Entrümpler / Räumungshelfer (m/w/d)',
-      location: 'Bielefeld, Steinhagen & Umgebung',
+      location: 'Deutschlandweit',
       type: 'Vollzeit / Teilzeit',
       description: 'Werden Sie Teil unseres Teams und helfen Sie Menschen in besonderen Lebenssituationen.',
       requirements: [
@@ -33,7 +33,7 @@ export default function KarrierePage() {
       id: 2,
       category: 'office',
       title: 'Bürokraft / Vertriebsmitarbeiter (m/w/d)',
-      location: 'Steinhagen',
+      location: 'Deutschlandweit (Remote möglich)',
       type: 'Vollzeit',
       description: 'Verstärken Sie unser Büroteam und sorgen Sie für reibungslose Abläufe im Tagesgeschäft.',
       requirements: [
@@ -55,7 +55,7 @@ export default function KarrierePage() {
       id: 3,
       category: 'management',
       title: 'Teamleitung / Standortleitung (m/w/d)',
-      location: 'Bielefeld & neue Standorte',
+      location: 'Deutschlandweit',
       type: 'Vollzeit',
       description: 'Übernehmen Sie Verantwortung und führen Sie Ihr eigenes Team zum Erfolg.',
       requirements: [
@@ -77,7 +77,7 @@ export default function KarrierePage() {
       id: 4,
       category: 'operations',
       title: 'LKW-Fahrer / Berufskraftfahrer (m/w/d)',
-      location: 'Bielefeld & Umgebung',
+      location: 'Deutschlandweit',
       type: 'Vollzeit',
       description: 'Sicherer Umgang mit 7,5t LKW und Freude am Kundenkontakt.',
       requirements: [
@@ -504,12 +504,12 @@ export default function KarrierePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
               <div>
                 <h3 className="font-semibold mb-2">Ihre Ansprechpartnerin</h3>
-                <p className="mb-4">Frau Sarah Schmidt<br />Personalleitung</p>
-                <a href="tel:08000060970" className="flex items-center justify-center gap-2 hover:text-[#C73E3A] transition-colors">
+                <p className="mb-4">Frau Wall<br />Personalleitung</p>
+                <a href="tel:01744715414" className="flex items-center justify-center gap-2 hover:text-[#C73E3A] transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  0800 0060970
+                  0174 4715414
                 </a>
               </div>
               <div>
@@ -519,7 +519,7 @@ export default function KarrierePage() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  bewerbung@ruempelschmiede.de
+                  info@ruempelschmiede.de
                 </a>
               </div>
             </div>

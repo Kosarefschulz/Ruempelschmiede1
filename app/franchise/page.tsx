@@ -95,7 +95,7 @@ export default function FranchisePage() {
     {
       icon: 'award',
       title: 'Etablierte Marke',
-      description: 'Profitieren Sie von unserem starken Markenauftritt und über 20 Jahren Erfahrung in der Entrümpelungsbranche.'
+      description: 'Profitieren Sie von unserem starken Markenauftritt und über 8+ Jahren Erfahrung in der Entrümpelungsbranche.'
     },
     {
       icon: 'star',
@@ -252,7 +252,7 @@ export default function FranchisePage() {
           <div className="bg-[#F5F5F5] rounded-xl p-8 shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-[#C73E3A] mb-2">20+</div>
+                <div className="text-4xl font-bold text-[#C73E3A] mb-2">8+</div>
                 <div className="text-gray-600">Jahre Erfahrung</div>
               </div>
               <div>
@@ -260,7 +260,7 @@ export default function FranchisePage() {
                 <div className="text-gray-600">Kundenzufriedenheit</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-[#C73E3A] mb-2">15+</div>
+                <div className="text-4xl font-bold text-[#C73E3A] mb-2">3+</div>
                 <div className="text-gray-600">Standorte deutschlandweit</div>
               </div>
             </div>
