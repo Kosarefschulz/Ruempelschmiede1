@@ -97,7 +97,7 @@ export default function KontaktPage() {
   ];
 
   const trustSignals = [
-    { number: '50.000+', text: 'Erfolgreiche Entrümpelungen', icon: 'award' },
+    { number: '1.200+', text: 'Erfolgreiche Entrümpelungen', icon: 'award' },
     { number: '4.9/5', text: 'Sterne Bewertung', icon: 'star' },
     { number: '24h', text: 'Reaktionszeit garantiert', icon: 'blitz' },
     { number: '100%', text: 'Festpreisgarantie', icon: 'shield' },
