@@ -29,7 +29,7 @@ const structuredData = {
     longitude: 9.3811
   },
   url: 'https://ruempelschmiede.de/entruempelung-hoexter',
-  telephone: '+4915755854945',
+  telephone: '+4908000060970',
   priceRange: '€€',
   openingHoursSpecification: [
     {
@@ -230,7 +230,7 @@ export default function CityPageClient() {
                   Sofort Preis berechnen
                 </span>
               </a>
-              <a href="tel:+4915755854945" className="bg-white/20 backdrop-blur-sm border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+              <a href="tel:+4908000060970" className="bg-white/20 backdrop-blur-sm border-2 border-white hover:bg-white hover:text-[#2C4F5E] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
                 <span className="flex items-center justify-center">
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -844,7 +844,7 @@ export default function CityPageClient() {
                 Jetzt Anfrage für Höxter senden
                 <span className="ml-2 text-lg">→</span>
               </a>
-              <a href="tel:+4915755854945" className="inline-flex items-center bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
+              <a href="tel:+4908000060970" className="inline-flex items-center bg-white text-[#2C4F5E] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
                 Sofort anrufen
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -866,11 +866,11 @@ export default function CityPageClient() {
             Wir bieten Ihnen den Komplettservice aus einer Hand!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+4915755854945" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-flex items-center justify-center">
+            <a href="tel:+4908000060970" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-flex items-center justify-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              Jetzt anrufen: 01575 5854945
+              Jetzt anrufen: 0800 0060970
             </a>
             <a href="/kontakt" className="bg-transparent border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-flex items-center justify-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

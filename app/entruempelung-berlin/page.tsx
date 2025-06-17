@@ -485,7 +485,7 @@ export default function BerlinPage() {
               <a href="/kontakt" className="bg-white text-[#C73E3A] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all">
                 Jetzt Termin vereinbaren
               </a>
-              <a href="tel:+4915755854945" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
+              <a href="tel:+4908000060970" className="border-2 border-white hover:bg-white hover:text-[#C73E3A] px-8 py-3 rounded-lg font-semibold transition-all">
                 Direkt anrufen
               </a>
             </div>

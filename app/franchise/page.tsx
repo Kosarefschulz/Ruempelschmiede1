@@ -222,7 +222,7 @@ export default function FranchisePage() {
                 Jetzt informieren
               </a>
               <a
-                href="tel:015755854945"
+                href="tel:+4908000060970"
                 className="inline-block bg-white text-[#2C4F5E] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 <span className="flex items-center justify-center gap-2">
@@ -278,7 +278,7 @@ export default function FranchisePage() {
               Modelle vergleichen
             </a>
             <a
-              href="tel:015755854945"
+              href="tel:+4908000060970"
               className="inline-flex items-center justify-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -421,7 +421,7 @@ export default function FranchisePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:015755854945"
+              href="tel:+4908000060970"
               className="inline-block bg-white text-[#2C4F5E] px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 shadow-lg"
             >
               <span className="flex items-center justify-center gap-2">
@@ -535,8 +535,8 @@ export default function FranchisePage() {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-[#2C4F5E] mb-1">Anrufen</h4>
-                <a href="tel:015755854945" className="text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
-                  015 755854945
+                <a href="tel:+4908000060970" className="text-[#C73E3A] hover:text-[#B02E2A] font-semibold">
+                  0800 0060970
                 </a>
               </div>
               <div className="text-center">
@@ -658,7 +658,7 @@ export default function FranchisePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:015755854945"
+                href="tel:+4908000060970"
                 className="inline-flex items-center bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -774,9 +774,9 @@ export default function FranchisePage() {
               <div>
                 <h3 className="font-semibold mb-2">Ihr Ansprechpartner</h3>
                 <p className="mb-4">Michael Michalowski<br />Geschäftsführer & Partnerbetreuung</p>
-                <a href="tel:015755854945" className="flex items-center justify-center gap-2 hover:text-[#C73E3A] transition-colors">
+                <a href="tel:+4908000060970" className="flex items-center justify-center gap-2 hover:text-[#C73E3A] transition-colors">
                   <Icon type="phone" className="w-5 h-5" />
-                  015 755854945
+                  0800 0060970
                 </a>
               </div>
               <div>
@@ -798,7 +798,7 @@ export default function FranchisePage() {
               Kontaktformular öffnen
             </Link>
             <a
-              href="tel:015755854945"
+              href="tel:+4908000060970"
               className="inline-block bg-white text-[#2C4F5E] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Sofort anrufen

@@ -102,11 +102,11 @@ export default function UeberUnsPage() {
                 Jetzt unverbindlich beraten lassen
               </a>
               <a
-                href="tel:+4915755854945"
+                href="tel:+4908000060970"
                 className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 border-2 border-white/50"
               >
                 <span className="inline-block w-5 h-5 bg-white/30 rounded mr-2"></span>
-                Direkt anrufen: 0521 / 999 999 00
+                Direkt anrufen: 0800 0060970
               </a>
             </div>
           </div>
@@ -325,7 +325,7 @@ export default function UeberUnsPage() {
               Ein gemeinsames Herz für Menschen in schwierigen Situationen.
             </p>
             <a
-              href="tel:+4915755854945"
+              href="tel:+4908000060970"
               className="inline-block bg-white hover:bg-gray-100 text-[#2C4F5E] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             >
               Persönliches Gespräch vereinbaren
@@ -439,10 +439,10 @@ export default function UeberUnsPage() {
               <h3 className="font-bold text-[#2C4F5E] mb-3">Sofort-Beratung</h3>
               <p className="text-gray-600 mb-4 text-sm">Rufen Sie uns jetzt an</p>
               <a
-                href="tel:+4915755854945"
+                href="tel:+4908000060970"
                 className="inline-block bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
               >
-                0521 / 999 999 00
+                0800 0060970
               </a>
             </div>
             

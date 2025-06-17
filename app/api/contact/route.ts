@@ -127,7 +127,7 @@ export async function POST(request: Request) {
       <hr>
       <p style="color: #666; font-size: 12px;">
         Rümpelschmiede<br>
-        Tel: 0521 / 1200 510<br>
+        Tel: 0800 0060970<br>
         E-Mail: info@ruempelschmiede.de<br>
         Web: www.ruempel-schmiede.de
       </p>

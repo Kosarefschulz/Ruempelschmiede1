@@ -31,7 +31,7 @@ export const metadata = {
     template: '%s | Rümpel Schmiede'
   },
   description: 'Professionelle Entrümpelung in Bielefeld, Steinhagen & OWL ✓ Haushaltsauflösung ab 650€ ✓ Express-Service 48h ✓ Kostenlose Besichtigung ✓ Festpreise ohne Nachkosten ✓ Seit 2017',
-  keywords: 'Entrümpelung Bielefeld, Haushaltsauflösung Steinhagen, Wohnungsauflösung Gütersloh, Messie Hilfe Bielefeld, Kellerentrümpelung OWL, Dachbodenentrümpelung, Büroauflösung, Gewerbeauflösung, Express-Service, Festpreis, 015755854945',
+  keywords: 'Entrümpelung Bielefeld, Haushaltsauflösung Steinhagen, Wohnungsauflösung Gütersloh, Messie Hilfe Bielefeld, Kellerentrümpelung OWL, Dachbodenentrümpelung, Büroauflösung, Gewerbeauflösung, Express-Service, Festpreis, 08000060970',
   authors: [{ name: 'Rümpel Schmiede' }],
   creator: 'Rümpel Schmiede',
   publisher: 'Rümpel Schmiede',

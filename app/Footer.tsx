@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Kontakt</h3>
             <p className="text-gray-400 mb-2">Zentrale Bielefeld</p>
-            <p className="text-gray-400 mb-2">Tel: 015 755854945</p>
+            <p className="text-gray-400 mb-2">Tel: 0800 0060970</p>
             <p className="text-gray-400 mb-2">E-Mail: info@ruempelschmiede.de</p>
             <p className="text-gray-400">Mo-Sa: 07:00 - 20:00 Uhr</p>
           </div>

@@ -7,7 +7,7 @@ import { trackWhatsAppClick } from './GoogleAnalytics';
 export default function WhatsAppButton() {
   const handleClick = () => {
     trackWhatsAppClick();
-    window.open('https://wa.me/+4952112000510', '_blank');
+    window.open('https://wa.me/+4908000060970', '_blank');
   };
 
   return (

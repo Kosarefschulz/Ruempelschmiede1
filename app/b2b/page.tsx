@@ -308,13 +308,13 @@ export default function B2BPage() {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                             <a
-                                href="tel:+4915755854945"
+                                href="tel:+4908000060970"
                                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-[#C73E3A] rounded-xl shadow-lg hover:bg-[#B02E2A] transition-all"
                             >
                                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                015 755854945
+                                0800 0060970
                             </a>
                             
                             <a
@@ -551,7 +551,7 @@ export default function B2BPage() {
                                         </svg>
                                     </a>
                                     <a
-                                        href="tel:+4915755854945"
+                                        href="tel:+4908000060970"
                                         className="inline-flex items-center justify-center px-6 py-3 border-2 border-[#C73E3A] text-[#C73E3A] font-semibold rounded-lg hover:bg-[#C73E3A] hover:text-white transition-all"
                                     >
                                         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1081,14 +1081,14 @@ export default function B2BPage() {
 
                     {/* Direkte Kontaktmöglichkeiten */}
                     <div className="mt-12 grid md:grid-cols-2 gap-6">
-                        <a href="tel:+4915755854945" className="bg-[#2C4F5E] text-white p-6 rounded-xl text-center hover:bg-[#1E3A47] transition-all">
+                        <a href="tel:+4908000060970" className="bg-[#2C4F5E] text-white p-6 rounded-xl text-center hover:bg-[#1E3A47] transition-all">
                             <div className="w-12 h-12 bg-white/20 rounded-full mx-auto mb-3 flex items-center justify-center">
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
                             </div>
                             <p className="text-sm mb-1">Deutschlandweite Hotline (Mo-Fr 7-19 Uhr)</p>
-                            <p className="text-xl font-bold">015 755854945</p>
+                            <p className="text-xl font-bold">0800 0060970</p>
                         </a>
                         
                         <a href="mailto:info@ruempelschmiede-bielefeld.de" className="bg-[#2C4F5E] text-white p-6 rounded-xl text-center hover:bg-[#1E3A47] transition-all">
