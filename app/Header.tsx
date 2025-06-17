@@ -56,7 +56,7 @@ export default function Header() {
             <header className="bg-white shadow-sm sticky top-0 z-50">
                 <div className="container mx-auto px-4">
                     {/* Mobile Header - Höhe angepasst für größeres Logo */}
-                    <div className="flex lg:hidden items-center justify-between h-24 max-[380px]:h-20 relative">
+                    <div className="flex xl:hidden items-center justify-between h-24 max-[380px]:h-20 relative">
                         {/* Platzhalter links für Balance */}
                         <div className="w-11"></div>
                         
@@ -89,7 +89,7 @@ export default function Header() {
                     </div>
 
                     {/* Desktop Header - Höhe angepasst */}
-                    <div className="hidden lg:flex items-center justify-between h-20 md:h-24">
+                    <div className="hidden xl:flex items-center justify-between h-20 md:h-24">
                         {/* Logo - Links auf Desktop - Optimiert für bessere Darstellung */}
                         <Link href="/" className="logo-container flex-shrink-0">
                             <Image
@@ -103,12 +103,12 @@ export default function Header() {
                         </Link>
 
                         {/* Desktop Navigation - ÜBER DIE GESAMTE BREITE VERTEILT */}
-                        <nav className="flex-1 flex items-center justify-center px-8">
-                            <ul className="flex items-center justify-between w-full max-w-5xl">
+                        <nav className="flex-1 flex items-center justify-center lg:px-4 xl:px-8">
+                            <ul className="flex items-center lg:gap-2 xl:justify-between w-full max-w-5xl">
                                 <li>
                                     <Link
                                         href="/"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
                                     >
                                         Start
                                     </Link>
@@ -129,7 +129,7 @@ export default function Header() {
                                 >
                                     <button
                                         onClick={() => setIsLeistungenOpen(!isLeistungenOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2 flex items-center"
                                     >
                                         Leistungen
                                         <svg className={`w-4 h-4 ml-1 transition-transform ${isLeistungenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -245,7 +245,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/nachhaltigkeit"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
                                     >
                                         Nachhaltigkeit
                                     </Link>
@@ -266,7 +266,7 @@ export default function Header() {
                                 >
                                     <button
                                         onClick={() => setIsMitmachenOpen(!isMitmachenOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2 flex items-center"
                                     >
                                         Mach mit!
                                         <svg className={`w-4 h-4 ml-1 transition-transform ${isMitmachenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -299,7 +299,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/artikel"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
                                     >
                                         Ratgeber
                                     </Link>
@@ -307,7 +307,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/ueber-uns"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
                                     >
                                         Über uns
                                     </Link>
@@ -315,7 +315,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/kontakt"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-base xl:text-lg lg:px-2 xl:px-4 py-2"
                                     >
                                         Kontakt
                                     </Link>
@@ -327,7 +327,7 @@ export default function Header() {
                         <div className="flex-shrink-0">
                             <Link
                                 href="/preise"
-                                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all text-base"
+                                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white lg:px-4 xl:px-6 lg:py-2 xl:py-3 rounded-lg font-semibold transition-all lg:text-sm xl:text-base"
                             >
                                 Preisrechner
                             </Link>
@@ -337,7 +337,7 @@ export default function Header() {
 
                 {/* Mobile Menu */}
                 {isMenuOpen && (
-                    <div className="lg:hidden bg-white border-t border-gray-100 absolute top-full left-0 right-0 shadow-lg max-h-[80vh] overflow-y-auto">
+                    <div className="xl:hidden bg-white border-t border-gray-100 absolute top-full left-0 right-0 shadow-lg max-h-[80vh] overflow-y-auto">
                         <nav className="container mx-auto px-4 py-6">
                             <ul className="space-y-4">
                                 <li>
@@ -536,7 +536,7 @@ export default function Header() {
             {/* Mobile Call Button */}
             <a
                 href="tel:+4952112000510"
-                className="fixed bottom-6 right-6 lg:hidden bg-[#C73E3A] hover:bg-[#B02E2A] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
+                className="fixed bottom-6 right-6 xl:hidden bg-[#C73E3A] hover:bg-[#B02E2A] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
                 aria-label="Jetzt anrufen"
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
