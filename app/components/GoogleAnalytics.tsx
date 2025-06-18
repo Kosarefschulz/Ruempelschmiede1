@@ -14,6 +14,9 @@ declare global {
   }
 }
 
+
+// Google Ads Conversion ID
+const GOOGLE_ADS_ID = 'AW-17218905669';
 export default function GoogleAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
