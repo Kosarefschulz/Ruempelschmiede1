@@ -351,38 +351,6 @@ export default function UeberUnsPage() {
         </div>
       </section>
 
-      {/* Unsere Werte */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Die Werte, die uns jeden Tag antreiben
-            </h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Das ist unsere Unternehmenskultur – das ist unser tägliches Handeln.
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {coreValues.map((value, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur p-8 rounded-xl text-center hover:bg-white/20 transition-all duration-300"
-              >
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  {value.icon.startsWith('/') ? (
-                    <img src={value.icon} alt={`${value.title} - Entrümpelung Werte Bielefeld & OWL`} className="w-8 h-8 filter brightness-0 invert" />
-                  ) : (
-                    <Icon name={value.icon} size={32} color="white" />
-                  )}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                <p className="opacity-90 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Finaler CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-gray-100 to-gray-200">
