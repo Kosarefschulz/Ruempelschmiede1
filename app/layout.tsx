@@ -110,7 +110,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
-          <DynamicWhatsAppButton />
+          {/* <DynamicWhatsAppButton /> */}
           <DynamicCookieConsent />
         </RecaptchaProvider>
       </body>
