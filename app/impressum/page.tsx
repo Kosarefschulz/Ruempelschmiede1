@@ -11,7 +11,7 @@ export default function ImpressumPage() {
           <div className="space-y-6 text-gray-700">
             <div>
               <h2 className="text-xl font-bold text-gray-800 mb-2">
-                Rümpelschmiede GmbH
+                Wertvoll Dienstleistungen GmbH
               </h2>
               <p>
                 Waldbadstraße 9-13<br />

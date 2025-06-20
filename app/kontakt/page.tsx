@@ -131,7 +131,7 @@ export default function KontaktPage() {
       title: 'WhatsApp',
       subtitle: 'Schnell & einfach',
       value: 'Chat starten',
-      href: 'https://wa.me/4952112005511?text=Hallo,%20ich%20interessiere%20mich%20für%20eine%20Entrümpelung',
+      href: 'https://wa.me/4908000060970?text=Hallo,%20ich%20interessiere%20mich%20für%20eine%20Entrümpelung',
       bgColor: 'bg-gradient-to-br from-green-600 to-green-700',
       popular: false,
       subtext: 'Antwort in < 30 Min'
@@ -252,7 +252,7 @@ export default function KontaktPage() {
               <h3 className="font-bold text-[#2C4F5E] mb-2">Unsere Erreichbarkeit</h3>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <span className="font-semibold">Mo-Fr:</span> 7:00 - 19:00 Uhr
+                  <span className="font-semibold">Mo-Fr:</span> 8:00 - 20:00 Uhr
                 </div>
                 <div>
                   <span className="font-semibold">Samstag:</span> 8:00 - 16:00 Uhr
