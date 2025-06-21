@@ -234,8 +234,14 @@ export default function Header() {
                                                             onClick={() => setIsLeistungenOpen(false)}
                                                         >
                                                             <div className="font-semibold">Express-Service für Gewerbe</div>
-                                                            <div className="text-sm text-gray-600">Räumung innerhalb 48h</div>
                                                         </Link>
+                                                        <Link
+                                                            href="/b2b#behoerden"
+                                                            className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
+                                                            onClick={() => setIsLeistungenOpen(false)}
+                                                        >
+                                                            Behörden & Institutionen
+                                                            <div className="text-sm text-gray-600">Sozialämter, Betreuer, Rechtsanwälte</div>                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -447,6 +453,12 @@ export default function Header() {
                                                     >
                                                         → Express-Service Gewerbe
                                                     </Link>
+                                                    <Link
+                                                        href="/b2b#behoerden"
+                                                        className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
+                                                        onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
+                                                    >
+                                                        → Behörden & Institutionen                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
