@@ -154,6 +154,7 @@ const b2bServicesData: B2BService[] = [
             '/images/services/behoerden-partner5.jpg'
         ],
         excerpt: 'Vertrauensvoller Partner für Sozialämter, Betreuungsstellen, Rechtsanwälte, Bestatter und Nachlassverwalter.',
+        seoText: 'Professioneller Entrümpelungspartner für Behörden, Sozialämter, Betreuer, Rechtsanwälte, Bestatter und Nachlassverwalter. Diskrete Abwicklung sensibler Fälle, schnelle Reaktionszeiten, rechtssichere Dokumentation. Spezialisiert auf Zwangsräumungen und Messie-Wohnungen.',
         details: [
             'Spezialisiert auf behördliche Aufträge',
             'Diskrete Abwicklung sensibler Fälle',
