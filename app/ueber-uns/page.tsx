@@ -112,7 +112,6 @@ export default function UeberUnsPage() {
                 href="tel:+4908000060970"
                 className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 border-2 border-white/50"
               >
-                <span className="inline-block w-5 h-5 bg-white/30 rounded mr-2"></span>
                 Direkt anrufen: 0800 0060970
               </a>
             </div>
@@ -376,11 +375,7 @@ export default function UeberUnsPage() {
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#2C4F5E]/5 rounded-full -ml-20 -mb-20"></div>
             
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-[#C73E3A]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-[#C73E3A]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-              </div>
+
               
               <blockquote className="text-2xl md:text-3xl font-semibold text-[#2C4F5E] italic mb-4">
                 „Liebe deinen Nächsten wie dich selbst"
