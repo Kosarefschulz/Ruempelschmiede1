@@ -145,13 +145,13 @@ const b2bServicesData: B2BService[] = [
         id: 'behoerden',
         title: 'Professioneller Partner für Behörden & Institutionen',
         icon: 'bank',
-        image: '/images/services/behoerden-partner.jpg',
+        image: '/images/behoerden-partner.jpg',
         images: [
-            '/images/services/behoerden-partner.jpg',
-            '/images/services/behoerden-partner2.jpg',
-            '/images/services/behoerden-partner3.jpg',
-            '/images/services/behoerden-partner4.jpg',
-            '/images/services/behoerden-partner5.jpg'
+            '/images/behoerden-partner.jpg',
+            '/images/behoerden-partner2.jpg',
+            '/images/behoerden-partner3.jpg',
+            '/images/behoerden-partner4.jpg',
+            '/images/behoerden-partner5.jpg'
         ],
         excerpt: 'Vertrauensvoller Partner für Sozialämter, Betreuungsstellen, Rechtsanwälte, Bestatter und Nachlassverwalter.',
         seoText: 'Professioneller Entrümpelungspartner für Behörden, Sozialämter, Betreuer, Rechtsanwälte, Bestatter und Nachlassverwalter. Diskrete Abwicklung sensibler Fälle, schnelle Reaktionszeiten, rechtssichere Dokumentation. Spezialisiert auf Zwangsräumungen und Messie-Wohnungen.',
