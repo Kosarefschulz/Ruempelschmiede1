@@ -350,6 +350,97 @@ export default function UeberUnsPage() {
           </div>
         </div>
       </section>
+      {/* Unsere christlichen Werte */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#F5F5F0] to-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="h-full w-full" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, #2C4F5E 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#2C4F5E] mb-6">
+              Unsere christlichen Werte
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Wir sind ein christliches Unternehmen, das mit Ehrlichkeit, Freundschaft und Vertrauen 
+              dazu berufen ist, Menschen in ihre Berufung zu führen.
+            </p>
+          </div>
+
+          {/* Bibelvers Highlight */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12 text-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#C73E3A]/5 rounded-full -mr-16 -mt-16"></div>
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#2C4F5E]/5 rounded-full -ml-20 -mb-20"></div>
+            
+            <div className="relative z-10">
+              <div className="w-16 h-16 bg-[#C73E3A]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-[#C73E3A]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              
+              <blockquote className="text-2xl md:text-3xl font-semibold text-[#2C4F5E] italic mb-4">
+                „Liebe deinen Nächsten wie dich selbst"
+              </blockquote>
+              <p className="text-gray-600 text-lg">- Markus 12,31</p>
+            </div>
+          </div>
+
+          {/* Werte Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#2C4F5E] mb-3">Nächstenliebe</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Jeder Mensch verdient Respekt und Würde. Wir begegnen unseren Kunden mit echter 
+                Anteilnahme und behandeln ihre Anliegen wie unsere eigenen.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#2C4F5E] to-[#1E3A47] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#2C4F5E] mb-3">Vertrauen & Ehrlichkeit</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Transparenz und Aufrichtigkeit sind die Grundpfeiler unserer Arbeit. 
+                Bei uns gibt es keine versteckten Kosten, nur klare Absprachen.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#C73E3A] to-[#B02E2A] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#2C4F5E] mb-3">Hingabe</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Mit ganzem Herzen widmen wir uns Ihrer Situation. Wir sind nicht nur Dienstleister, 
+                sondern Begleiter in schwierigen Zeiten.
+              </p>
+            </div>
+          </div>
+
+          {/* Abschluss Statement */}
+          <div className="mt-12 text-center bg-gradient-to-r from-[#2C4F5E] to-[#1E3A47] text-white p-8 rounded-2xl">
+            <p className="text-lg md:text-xl leading-relaxed">
+              <span className="font-bold">Unsere Mission:</span> Als christliches Unternehmen sehen wir es als unsere 
+              Berufung, Menschen in schwierigen Lebensphasen zu begleiten und ihnen mit Gottes Liebe 
+              und praktischer Hilfe zur Seite zu stehen.
+            </p>
+          </div>
+        </div>
+      </section>
 
 
       {/* Finaler CTA */}
