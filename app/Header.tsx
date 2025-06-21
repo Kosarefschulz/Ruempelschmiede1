@@ -42,11 +42,11 @@ export default function Header() {
                 <div className="container mx-auto px-4 flex justify-between items-center text-sm">
                     <span>24/7 Notfall-Service verfügbar</span>
                     <div className="flex items-center gap-2">
-                        <a href="tel:+4908000060970" className="hover:text-white/80 flex items-center gap-1">
+                        <a href="tel:+4952112000510" className="hover:text-white/80 flex items-center gap-1">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <span className="font-semibold">0800 0060970</span>
+                            <span className="font-semibold">0521 / 1200 510</span>
                         </a>
                     </div>
                 </div>
@@ -95,20 +95,20 @@ export default function Header() {
                             <Image
                                 src="/Logo.png"
                                 alt="Rümpel Schmiede"
-                                width={180}
-                                height={58}
+                                width={220}
+                                height={70}
                                 className="logo-image"
                                 priority
                             />
                         </Link>
 
                         {/* Desktop Navigation - ÜBER DIE GESAMTE BREITE VERTEILT */}
-                        <nav className="flex-1 flex items-center justify-center lg:px-4 xl:px-8">
-                            <ul className="flex items-center lg:gap-0.5 xl:gap-1 2xl:gap-2 justify-between w-full max-w-5xl">
+                        <nav className="flex-1 flex items-center justify-center px-8">
+                            <ul className="flex items-center justify-between w-full max-w-5xl">
                                 <li>
                                     <Link
                                         href="/"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
                                     >
                                         Start
                                     </Link>
@@ -129,7 +129,7 @@ export default function Header() {
                                 >
                                     <button
                                         onClick={() => setIsLeistungenOpen(!isLeistungenOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2 flex items-center"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
                                     >
                                         Leistungen
                                         <svg className={`w-4 h-4 ml-1 transition-transform ${isLeistungenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -233,15 +233,18 @@ export default function Header() {
                                                             className="block px-3 py-2 hover:bg-gray-50 text-[#2C4F5E] hover:text-[#C73E3A] transition-colors rounded"
                                                             onClick={() => setIsLeistungenOpen(false)}
                                                         >
-                                                            Behörden & Institutionen
+                                                            <div className="font-semibold">Behörden & Institutionen</div>
                                                             <div className="text-sm text-gray-600">Sozialämter, Betreuer, Rechtsanwälte</div>
-                                                        </Link>                                                        <Link
+                                                        </Link>
+                                                        <Link
                                                             href="/b2b#gastronomie"
                                                             className="block px-3 py-2 hover:bg-gray-50 text-[#C73E3A] hover:text-[#B02E2A] transition-colors rounded border-t mt-2 pt-3"
                                                             onClick={() => setIsLeistungenOpen(false)}
                                                         >
                                                             <div className="font-semibold">Express-Service für Gewerbe</div>
+                                                            <div className="text-sm text-gray-600">Räumung innerhalb 48h</div>
                                                         </Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,7 +253,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/nachhaltigkeit"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
                                     >
                                         Nachhaltigkeit
                                     </Link>
@@ -271,7 +274,7 @@ export default function Header() {
                                 >
                                     <button
                                         onClick={() => setIsMitmachenOpen(!isMitmachenOpen)}
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2 flex items-center whitespace-nowrap"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2 flex items-center"
                                     >
                                         Mach mit!
                                         <svg className={`w-4 h-4 ml-1 transition-transform ${isMitmachenOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,7 +307,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/artikel"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
                                     >
                                         Ratgeber
                                     </Link>
@@ -312,7 +315,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/ueber-uns"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2 whitespace-nowrap"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
                                     >
                                         Über uns
                                     </Link>
@@ -320,7 +323,7 @@ export default function Header() {
                                 <li>
                                     <Link
                                         href="/kontakt"
-                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors lg:text-xs xl:text-sm 2xl:text-base lg:px-1 xl:px-2 2xl:px-3 py-2"
+                                        className="text-[#2C4F5E] hover:text-[#C73E3A] font-semibold transition-colors text-lg px-4 py-2"
                                     >
                                         Kontakt
                                     </Link>
@@ -332,7 +335,7 @@ export default function Header() {
                         <div className="flex-shrink-0">
                             <Link
                                 href="/preise"
-                                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white lg:px-4 xl:px-6 lg:py-2 xl:py-3 rounded-lg font-semibold transition-all lg:text-xs xl:text-sm 2xl:text-base"
+                                className="bg-[#C73E3A] hover:bg-[#B02E2A] text-white px-6 py-3 rounded-lg font-semibold transition-all text-base"
                             >
                                 Preisrechner
                             </Link>
@@ -450,7 +453,7 @@ export default function Header() {
                                                         className="block text-[#2C4F5E]/80 hover:text-[#C73E3A] text-base py-1"
                                                         onClick={() => {setIsMenuOpen(false); setIsMobileLeistungenOpen(false);}}
                                                     >
-                                                        → Behörden & Institutionen</Link>
+                                                        → Behörden & Institutionen                                                    </Link>
                                                     <Link
                                                         href="/b2b#gastronomie"
                                                         className="block text-[#C73E3A] hover:text-[#B02E2A] text-base py-1 font-semibold"
@@ -458,6 +461,7 @@ export default function Header() {
                                                     >
                                                         → Express-Service Gewerbe
                                                     </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     )}
@@ -545,7 +549,7 @@ export default function Header() {
 
             {/* Mobile Call Button */}
             <a
-                href="tel:+4908000060970"
+                href="tel:+4952112000510"
                 className="fixed bottom-6 right-6 xl:hidden bg-[#C73E3A] hover:bg-[#B02E2A] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
                 aria-label="Jetzt anrufen"
             >
