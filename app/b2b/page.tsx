@@ -1150,4 +1150,4 @@ export default function B2BPage() {
             <QualitySeals />
         </div>
     );
-}
+}// Behörden section added
