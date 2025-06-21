@@ -43,7 +43,7 @@ export default function CityPageClient() {
         <div className="relative z-10 text-white px-4" style={{ height: 'clamp(400px, 70vh, 800px)', display: 'flex', alignItems: 'center' }}>
           <div className="text-center w-full">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
-              Entrümpelung Berlin - Wir machen kaputt, aber das richtig gut!
+              Entrümpelung Berlin - Professionelle Entrümpelung - Schnell, Sauber, Zuverlässig!
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 

@@ -52,7 +52,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center text-white mb-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
-              Wir machen kaputt, aber das richtig gut!
+              Professionelle Entrümpelung - Schnell, Sauber, Zuverlässig!
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl opacity-90 max-w-4xl mx-auto">
               Professionelle Entrümpelung, Haushaltsauflösung und Gewerbeauflösung 
