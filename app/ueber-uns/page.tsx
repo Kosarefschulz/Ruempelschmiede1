@@ -567,3 +567,4 @@ export default function UeberUnsPage() {
   )
 }// Force rebuild Fri Jun 20 17:43:07 CEST 2025
 // Christian values section added
+// Icons removed
