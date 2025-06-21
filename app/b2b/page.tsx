@@ -140,8 +140,35 @@ const b2bServicesData: B2BService[] = [
         ],
         keywords: ['Lagerräumung', 'Industriehalle', 'Hallenräumung', 'Deutschland', 'Industrie'],
         cities: ['Mannheim', 'Karlsruhe', 'Freiburg', 'Heidelberg', 'Pforzheim', 'Ulm', 'Heilbronn', 'Reutlingen']
-    }
-];
+    },
+    {
+        id: 'behoerden',
+        title: 'Professioneller Partner für Behörden & Institutionen',
+        icon: 'bank',
+        image: '/images/services/behoerden-partner.jpg',
+        images: [
+            '/images/services/behoerden-partner.jpg',
+            '/images/services/behoerden-partner2.jpg',
+            '/images/services/behoerden-partner3.jpg',
+            '/images/services/behoerden-partner4.jpg',
+            '/images/services/behoerden-partner5.jpg'
+        ],
+        excerpt: 'Vertrauensvoller Partner für Sozialämter, Betreuungsstellen, Rechtsanwälte, Bestatter und Nachlassverwalter.',
+        details: [
+            'Spezialisiert auf behördliche Aufträge',
+            'Diskrete Abwicklung sensibler Fälle',
+            '24h Notfallservice für dringende Fälle',
+            'Rechtssichere Dokumentation und Protokolle',
+            'Erfahrung mit Zwangsräumungen',
+            'Messie-Wohnungen Spezialreinigung',
+            'Nachlassverwaltung und -verwertung',
+            'Rahmenverträge für regelmäßige Aufträge',
+            'Zusammenarbeit mit Gesundheitsämtern',
+            'Würdevoller Umgang in Todesfällen'
+        ],
+        keywords: ['Sozialamt', 'Behörden', 'Betreuer', 'Rechtsanwälte', 'Bestatter', 'Nachlassverwalter'],
+        cities: ['Bielefeld', 'Steinhagen', 'Gütersloh', 'Paderborn', 'Herford', 'Detmold', 'Minden', 'Bad Salzuflen']
+    }];
 
 export default function B2BPage() {
     const [formData, setFormData] = useState({
